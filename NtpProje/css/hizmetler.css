@@ -1,0 +1,292 @@
+.hizmetler_container {
+	padding: 40px 0;
+}
+
+.hizmetler_hero {
+	text-align: center;
+	padding: 60px 20px;
+	background: linear-gradient(135deg, #63207c 0%, #4f1a63 100%);
+	border-radius: 15px;
+	margin-bottom: 50px;
+	color: #fff;
+}
+
+.hizmetler_hero h1 {
+	font-size: 42px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.hizmetler_hero p {
+	font-size: 18px;
+	max-width: 800px;
+	margin: 0 auto;
+	line-height: 1.8;
+	opacity: 0.95;
+}
+
+.hizmet_grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 30px;
+	margin-bottom: 60px;
+}
+
+.hizmet_card {
+	background: #fff;
+	border-radius: 15px;
+	padding: 35px;
+	box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+	transition: all 0.4s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+.hizmet_card::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 5px;
+	background: linear-gradient(90deg, #63207c, #9b59b6);
+	transform: scaleX(0);
+	transition: transform 0.4s ease;
+}
+
+.hizmet_card:hover::before {
+	transform: scaleX(1);
+}
+
+.hizmet_card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 15px 40px rgba(99, 32, 124, 0.2);
+}
+
+.hizmet_icon {
+	width: 70px;
+	height: 70px;
+	background: linear-gradient(135deg, #63207c, #9b59b6);
+	border-radius: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 32px;
+	margin-bottom: 25px;
+	box-shadow: 0 5px 15px rgba(99, 32, 124, 0.3);
+}
+
+.hizmet_card_baslik {
+	font-size: 24px;
+	color: #63207c;
+	font-weight: bold;
+	margin-bottom: 15px;
+	line-height: 1.3;
+}
+
+.hizmet_card_aciklama {
+	font-size: 15px;
+	color: #666;
+	line-height: 1.8;
+	margin-bottom: 25px;
+	min-height: 80px;
+}
+
+.hizmet_features {
+	margin-bottom: 25px;
+}
+
+.hizmet_feature_item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	font-size: 14px;
+	color: #555;
+}
+
+.hizmet_feature_item::before {
+	content: "✓";
+	color: #63207c;
+	font-weight: bold;
+	margin-right: 10px;
+	font-size: 18px;
+}
+
+.hizmet_detay_link {
+	display: inline-flex;
+	align-items: center;
+	background: #63207c;
+	color: #fff;
+	padding: 12px 25px;
+	border-radius: 8px;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+	transition: all 0.3s;
+}
+
+.hizmet_detay_link:hover {
+	background: #4f1a63;
+	transform: translateX(5px);
+}
+
+.hizmet_detay_link::after {
+	content: "→";
+	margin-left: 10px;
+	transition: margin-left 0.3s;
+}
+
+.hizmet_detay_link:hover::after {
+	margin-left: 15px;
+}
+
+/* Neden Biz Bölümü */
+.neden_biz_section {
+	background: #f9f9f9;
+	padding: 60px 40px;
+	border-radius: 15px;
+	margin: 60px 0;
+}
+
+.neden_biz_baslik {
+	text-align: center;
+	font-size: 32px;
+	color: #63207c;
+	font-weight: bold;
+	margin-bottom: 50px;
+}
+
+.neden_biz_grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px;
+}
+
+.neden_biz_item {
+	text-align: center;
+	padding: 30px 20px;
+	background: #fff;
+	border-radius: 12px;
+	transition: transform 0.3s;
+}
+
+.neden_biz_item:hover {
+	transform: translateY(-5px);
+}
+
+.neden_biz_icon {
+	font-size: 48px;
+	margin-bottom: 20px;
+	display: block;
+}
+
+.neden_biz_item h3 {
+	font-size: 18px;
+	color: #63207c;
+	margin-bottom: 12px;
+	font-weight: bold;
+}
+
+.neden_biz_item p {
+	font-size: 14px;
+	color: #666;
+	line-height: 1.6;
+}
+
+/* CTA Bölümü */
+.hizmetler_cta {
+	background: linear-gradient(135deg, #63207c 0%, #4f1a63 100%);
+	padding: 60px 40px;
+	border-radius: 15px;
+	text-align: center;
+	color: #fff;
+	margin-top: 60px;
+}
+
+.hizmetler_cta h2 {
+	font-size: 32px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+.hizmetler_cta p {
+	font-size: 18px;
+	margin-bottom: 35px;
+	opacity: 0.95;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cta_buttons {
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.cta_button {
+	display: inline-block;
+	padding: 15px 35px;
+	border-radius: 8px;
+	text-decoration: none;
+	font-size: 16px;
+	font-weight: bold;
+	transition: all 0.3s;
+}
+
+.cta_button.primary {
+	background: #fff;
+	color: #63207c;
+}
+
+.cta_button.primary:hover {
+	background: #f0f0f0;
+	transform: translateY(-3px);
+	box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.cta_button.secondary {
+	background: transparent;
+	color: #fff;
+	border: 2px solid #fff;
+}
+
+.cta_button.secondary:hover {
+	background: rgba(255,255,255,0.1);
+	transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+	.hizmet_grid {
+		grid-template-columns: 1fr;
+	}
+	
+	.neden_biz_grid {
+		grid-template-columns: 1fr;
+	}
+	
+	.hizmetler_hero h1 {
+		font-size: 32px;
+	}
+}
+
+@media (max-width: 768px) {
+	.hizmet_card {
+		padding: 25px;
+	}
+	
+	.cta_buttons {
+		flex-direction: column;
+		align-items: center;
+	}
+	
+	.cta_button {
+		width: 100%;
+		max-width: 300px;
+		text-align: center;
+	}
+}
+

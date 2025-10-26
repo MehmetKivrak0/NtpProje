@@ -1,0 +1,234 @@
+.projeler_container {
+	padding: 40px 0;
+}
+
+.projeler_baslik {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.projeler_baslik h1 {
+	font-size: 36px;
+	color: #63207c;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.projeler_baslik p {
+	font-size: 16px;
+	color: #666;
+	max-width: 700px;
+	margin: 0 auto;
+	line-height: 1.6;
+}
+
+.proje_grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 30px;
+	margin-bottom: 50px;
+}
+
+.proje_card {
+	background: #fff;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+	transition: transform 0.3s, box-shadow 0.3s;
+	position: relative;
+}
+
+.proje_card:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 8px 30px rgba(99, 32, 124, 0.2);
+}
+
+.proje_card_image {
+	width: 100%;
+	height: 300px;
+	overflow: hidden;
+	position: relative;
+	background: #f5f5f5;
+}
+
+.proje_card_image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.5s;
+}
+
+.proje_card:hover .proje_card_image img {
+	transform: scale(1.1);
+}
+
+.proje_kategori_badge {
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	background: rgba(99, 32, 124, 0.9);
+	color: #fff;
+	padding: 6px 15px;
+	border-radius: 20px;
+	font-size: 12px;
+	font-weight: bold;
+	z-index: 10;
+}
+
+.proje_card_content {
+	padding: 25px;
+}
+
+.proje_card_baslik {
+	font-size: 22px;
+	color: #63207c;
+	font-weight: bold;
+	margin-bottom: 15px;
+	line-height: 1.3;
+}
+
+.proje_card_aciklama {
+	font-size: 14px;
+	color: #666;
+	line-height: 1.7;
+	margin-bottom: 20px;
+	min-height: 60px;
+}
+
+.proje_card_footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 15px;
+	border-top: 1px solid #e0e0e0;
+}
+
+.proje_teknolojiler {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.teknoloji_tag {
+	background: #f0f0f0;
+	color: #666;
+	padding: 4px 10px;
+	border-radius: 12px;
+	font-size: 11px;
+}
+
+.proje_detay_btn {
+	background: #63207c;
+	color: #fff;
+	padding: 8px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+	font-size: 13px;
+	font-weight: bold;
+	transition: background 0.3s;
+	white-space: nowrap;
+}
+
+.proje_detay_btn:hover {
+	background: #4f1a63;
+}
+
+.proje_detay_icon {
+	margin-left: 5px;
+}
+
+/* İstatistik Bölümü */
+.projeler_istatistik {
+	background: linear-gradient(135deg, #63207c 0%, #4f1a63 100%);
+	padding: 50px 30px;
+	border-radius: 10px;
+	margin: 50px 0;
+}
+
+.istatistik_grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 30px;
+}
+
+.istatistik_item {
+	text-align: center;
+	color: #fff;
+}
+
+.istatistik_sayi {
+	font-size: 48px;
+	font-weight: bold;
+	display: block;
+	margin-bottom: 10px;
+	text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.istatistik_label {
+	font-size: 14px;
+	opacity: 0.9;
+}
+
+/* CTA Bölümü */
+.proje_cta {
+	background: #f9f9f9;
+	padding: 50px;
+	border-radius: 10px;
+	text-align: center;
+	margin: 50px 0;
+}
+
+.proje_cta h2 {
+	font-size: 28px;
+	color: #63207c;
+	margin-bottom: 15px;
+}
+
+.proje_cta p {
+	font-size: 16px;
+	color: #666;
+	margin-bottom: 25px;
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cta_btn {
+	display: inline-block;
+	background: #63207c;
+	color: #fff;
+	padding: 15px 40px;
+	border-radius: 5px;
+	text-decoration: none;
+	font-size: 16px;
+	font-weight: bold;
+	transition: all 0.3s;
+	box-shadow: 0 4px 15px rgba(99, 32, 124, 0.3);
+}
+
+.cta_btn:hover {
+	background: #4f1a63;
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(99, 32, 124, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.proje_grid {
+		grid-template-columns: 1fr;
+	}
+	
+	.istatistik_grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+	}
+	
+	.proje_card_image {
+		height: 220px;
+	}
+	
+	.projeler_baslik h1 {
+		font-size: 28px;
+	}
+}
+

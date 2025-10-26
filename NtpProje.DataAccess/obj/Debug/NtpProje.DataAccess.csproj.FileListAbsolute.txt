@@ -1,0 +1,16 @@
+C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\bin\Debug\NtpProje.DataAccess.dll.config
+C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\bin\Debug\NtpProje.DataAccess.dll
+C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\bin\Debug\NtpProje.DataAccess.pdb
+C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\bin\Debug\NtpProje.Entities.dll
+C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\bin\Debug\NtpProje.Entities.pdb
+C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\obj\Debug\NtpProje.DataAccess.csproj.AssemblyReference.cache
+C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\obj\Debug\NtpProje.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\obj\Debug\NtpProje.046C82EF.Up2Date
+C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\obj\Debug\NtpProje.DataAccess.dll
+C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\obj\Debug\NtpProje.DataAccess.pdb
+C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\obj\Debug\NtpProje.DataAccess.Migrations.Kurulum.resources
+C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\obj\Debug\NtpProje.DataAccess.csproj.GenerateResource.cache

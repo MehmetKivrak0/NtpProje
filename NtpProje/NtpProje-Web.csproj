@@ -1,0 +1,370 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3EE2B221-1D40-472D-B18E-083B39C512DE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NtpProje</RootNamespace>
+    <AssemblyName>NtpProje</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44329</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="css\admin.css" />
+    <Content Include="css\base.css" />
+    <Content Include="css\blog.css" />
+    <Content Include="css\blog_detay.css" />
+    <Content Include="css\ekip.css" />
+    <Content Include="css\genc_birey_stil.css" />
+    <Content Include="css\hakkimizda.css" />
+    <Content Include="css\hizmetler.css" />
+    <Content Include="css\hizmet_detay.css" />
+    <Content Include="css\iletisim.css" />
+    <Content Include="css\index.css" />
+    <Content Include="css\projeler.css" />
+    <Content Include="css\proje_detay.css" />
+    <Content Include="css\screen.css" />
+    <Content Include="example\10_b.jpg" />
+    <Content Include="example\10_s.jpg" />
+    <Content Include="example\11_b.jpg" />
+    <Content Include="example\11_s.jpg" />
+    <Content Include="example\12_b.jpg" />
+    <Content Include="example\12_s.jpg" />
+    <Content Include="example\1_b.jpg" />
+    <Content Include="example\1_s.jpg" />
+    <Content Include="example\2_b.jpg" />
+    <Content Include="example\2_s.jpg" />
+    <Content Include="example\3_b.jpg" />
+    <Content Include="example\3_s.jpg" />
+    <Content Include="example\4_b.jpg" />
+    <Content Include="example\4_s.jpg" />
+    <Content Include="example\5_b.jpg" />
+    <Content Include="example\5_s.jpg" />
+    <Content Include="example\6_b.jpg" />
+    <Content Include="example\6_s.jpg" />
+    <Content Include="example\7_b.jpg" />
+    <Content Include="example\7_s.jpg" />
+    <Content Include="example\8_b.jpg" />
+    <Content Include="example\8_s.jpg" />
+    <Content Include="example\9_b.jpg" />
+    <Content Include="example\9_s.jpg" />
+    <Content Include="fancybox\blank.gif" />
+    <Content Include="fancybox\fancybox-x.png" />
+    <Content Include="fancybox\fancybox-y.png" />
+    <Content Include="fancybox\fancybox.png" />
+    <Content Include="fancybox\fancy_close.png" />
+    <Content Include="fancybox\fancy_loading.png" />
+    <Content Include="fancybox\fancy_nav_left.png" />
+    <Content Include="fancybox\fancy_nav_right.png" />
+    <Content Include="fancybox\fancy_shadow_e.png" />
+    <Content Include="fancybox\fancy_shadow_n.png" />
+    <Content Include="fancybox\fancy_shadow_ne.png" />
+    <Content Include="fancybox\fancy_shadow_nw.png" />
+    <Content Include="fancybox\fancy_shadow_s.png" />
+    <Content Include="fancybox\fancy_shadow_se.png" />
+    <Content Include="fancybox\fancy_shadow_sw.png" />
+    <Content Include="fancybox\fancy_shadow_w.png" />
+    <Content Include="fancybox\fancy_title_left.png" />
+    <Content Include="fancybox\fancy_title_main.png" />
+    <Content Include="fancybox\fancy_title_over.png" />
+    <Content Include="fancybox\fancy_title_right.png" />
+    <Content Include="fancybox\jquery.easing-1.3.pack.js" />
+    <Content Include="fancybox\jquery.fancybox-1.3.4.css" />
+    <Content Include="fancybox\jquery.fancybox-1.3.4.js" />
+    <Content Include="fancybox\jquery.fancybox-1.3.4.pack.js" />
+    <Content Include="fancybox\jquery.mousewheel-3.0.4.pack.js" />
+    <Content Include="images\1.jpg" />
+    <Content Include="images\adobelogo.png" />
+    <Content Include="images\arrow-banner.png" />
+    <Content Include="images\arrows-small.png" />
+    <Content Include="images\autodesk.jpeg" />
+    <Content Include="images\BANNER.jpg" />
+    <Content Include="images\baslik_Bg.png" />
+    <Content Include="images\black.png" />
+    <Content Include="images\body_bg.png" />
+    <Content Include="images\egitim_program_resim.jpeg" />
+    <Content Include="images\egitim_takvimi_bg.png" />
+    <Content Include="images\europaslogo.gif" />
+    <Content Include="images\genc_birey_logo.png" />
+    <Content Include="images\logo\logo.png" />
+    <Content Include="images\menu_breaker.png" />
+    <Content Include="images\menu_golgelik.png" />
+    <Content Include="images\netsislogo.jpeg" />
+    <Content Include="images\phone.png" />
+    <Content Include="images\slider_1.png" />
+    <Content Include="images\slider_2.png" />
+    <Content Include="images\slider_numeric_bg.png" />
+    <Content Include="images\social_facebook.png" />
+    <Content Include="images\social_google_plus.png" />
+    <Content Include="images\social_twitter.png" />
+    <Content Include="images\tumunu-gor.png" />
+    <Content Include="index.aspx" />
+    <Content Include="jquery-1.4.3.min.js" />
+    <Content Include="jquery.flow.1.2.js" />
+    <Content Include="pages\Admin\admin_dashboard.html" />
+    <Content Include="pages\Admin\IletisimMesajlari.html" />
+    <Content Include="pages\Admin\KategoriYonetimi.html" />
+    <Content Include="pages\Admin\login.html" />
+    <Content Include="pages\Admin\Raporlar.html" />
+    <Content Include="pages\Admin\register.html" />
+    <Content Include="pages\Admin\YaziEkleDuzenle.html" />
+    <Content Include="pages\Admin\YaziYonetimi.html" />
+    <Content Include="pages\blog.aspx" />
+    <Content Include="pages\blog_detay.aspx" />
+    <Content Include="pages\ekip.aspx" />
+    <Content Include="pages\hakkimizda.aspx" />
+    <Content Include="pages\hizmetler.aspx" />
+    <Content Include="pages\hizmet_detay.aspx" />
+    <Content Include="pages\iletisim.aspx" />
+    <Content Include="pages\projeler.aspx" />
+    <Content Include="pages\proje_detay.aspx" />
+    <Content Include="scripts\easySlider1.7.js" />
+    <Content Include="scripts\frontend\contentslider.js" />
+    <Content Include="scripts\frontend\jquery.sudoSlider.min.js" />
+    <Content Include="scripts\jquery-1.7.2.min.js" />
+    <Content Include="scripts\jquery.js" />
+    <Content Include="uploads\10-150x150.jpg" />
+    <Content Include="uploads\10-299x175.jpg" />
+    <Content Include="uploads\11-1000x406.jpg" />
+    <Content Include="uploads\11-150x150.jpg" />
+    <Content Include="uploads\12-1000x406.jpg" />
+    <Content Include="uploads\12-150x150.jpg" />
+    <Content Include="uploads\12-299x175.jpg" />
+    <Content Include="uploads\3-299x175.jpg" />
+    <Content Include="uploads\4-1000x406.jpg" />
+    <Content Include="uploads\4-150x150.jpg" />
+    <Content Include="uploads\5-1000x406.jpg" />
+    <Content Include="uploads\5-150x150.jpg" />
+    <Content Include="uploads\6-1000x406.jpg" />
+    <Content Include="uploads\6-150x150.jpg" />
+    <Content Include="uploads\7-1000x406.jpg" />
+    <Content Include="uploads\7-150x150.jpg" />
+    <Content Include="uploads\8-150x150.jpg" />
+    <Content Include="uploads\9-150x150.jpg" />
+    <Content Include="uploads\9-299x175.jpg" />
+    <Content Include="uploads\adobelogo.png" />
+    <Content Include="uploads\autodesk.jpeg" />
+    <Content Include="uploads\cs_dd.png" />
+    <Content Include="uploads\europaslogo.gif" />
+    <Content Include="uploads\favicon.png" />
+    <Content Include="uploads\gencbireybanner.jpg" />
+    <Content Include="uploads\gencbireybanner1.jpg" />
+    <Content Include="uploads\img1.jpg" />
+    <Content Include="uploads\img2.jpg" />
+    <Content Include="uploads\img3.jpg" />
+    <Content Include="uploads\logo.png" />
+    <Content Include="uploads\netsislogo.jpeg" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Include="pages\Admin\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Admin\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="pages\blog.aspx.cs">
+      <DependentUpon>blog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\blog.aspx.designer.cs">
+      <DependentUpon>blog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\blog_detay.aspx.cs">
+      <DependentUpon>blog_detay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\blog_detay.aspx.designer.cs">
+      <DependentUpon>blog_detay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\ekip.aspx.cs">
+      <DependentUpon>ekip.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\ekip.aspx.designer.cs">
+      <DependentUpon>ekip.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\hakkimizda.aspx.cs">
+      <DependentUpon>hakkimizda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\hakkimizda.aspx.designer.cs">
+      <DependentUpon>hakkimizda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\hizmetler.aspx.cs">
+      <DependentUpon>hizmetler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\hizmetler.aspx.designer.cs">
+      <DependentUpon>hizmetler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\hizmet_detay.aspx.cs">
+      <DependentUpon>hizmet_detay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\hizmet_detay.aspx.designer.cs">
+      <DependentUpon>hizmet_detay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\iletisim.aspx.cs">
+      <DependentUpon>iletisim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\iletisim.aspx.designer.cs">
+      <DependentUpon>iletisim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\projeler.aspx.cs">
+      <DependentUpon>projeler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\projeler.aspx.designer.cs">
+      <DependentUpon>projeler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\proje_detay.aspx.cs">
+      <DependentUpon>proje_detay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\proje_detay.aspx.designer.cs">
+      <DependentUpon>proje_detay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\NtpProje.csproj.AssemblyReference.cache" />
+    <None Include="packages.config" />
+    <Content Include="pages\Admin\Admin.Master" />
+    <Content Include="Site.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NtpProje.Business\NtpProje.Business.csproj">
+      <Project>{0b524617-84dd-443f-ac04-62b9a8ebb5d7}</Project>
+      <Name>NtpProje.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NtpProje.Entities\NtpProje.Entities.csproj">
+      <Project>{9d4d5c0f-4c14-40f1-a7ea-879106d352c9}</Project>
+      <Name>NtpProje.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54509</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44329/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

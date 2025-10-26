@@ -1,0 +1,169 @@
+.iletisim_container {
+	padding: 40px 0;
+}
+
+.iletisim_hero {
+	text-align: center;
+	padding: 60px 20px;
+	background: linear-gradient(135deg, #63207c 0%, #4f1a63 100%);
+	border-radius: 15px;
+	margin-bottom: 50px;
+	color: #fff;
+}
+
+.iletisim_hero h1 {
+	font-size: 42px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.iletisim_hero p {
+	font-size: 18px;
+	max-width: 800px;
+	margin: 0 auto;
+	line-height: 1.8;
+	opacity: 0.95;
+}
+
+.iletisim_form {
+	background: #fff;
+	padding: 40px;
+	border-radius: 15px;
+	box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+.form_grup {
+	margin-bottom: 20px;
+}
+.form_label {
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	color: #333;
+	margin-bottom: 8px;
+}
+.form_input, .form_textarea {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 14px;
+	font-family: Arial;
+	box-sizing: border-box;
+}
+.form_input:focus, .form_textarea:focus {
+	border-color: #63207c;
+	outline: none;
+}
+.form_textarea {
+	height: 150px;
+	resize: vertical;
+}
+.form_button {
+	background: #63207c;
+	color: #fff;
+	padding: 14px 45px;
+	border: none;
+	border-radius: 8px;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all 0.3s;
+	box-shadow: 0 4px 15px rgba(99, 32, 124, 0.3);
+}
+.form_button:hover {
+	background: #4f1a63;
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(99, 32, 124, 0.4);
+}
+.iletisim_bilgi {
+	background: #fff;
+	padding: 40px;
+	border-radius: 15px;
+	margin-bottom: 40px;
+	box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.iletisim_bilgi_baslik {
+	font-size: 24px;
+	color: #63207c;
+	font-weight: bold;
+	margin-bottom: 30px;
+	text-align: center;
+}
+.iletisim_grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 25px;
+}
+
+.iletisim_item {
+	background: #f9f9f9;
+	padding: 25px;
+	border-radius: 12px;
+	border-left: 4px solid #63207c;
+	transition: transform 0.3s;
+}
+
+.iletisim_item:hover {
+	transform: translateX(5px);
+}
+
+.iletisim_baslik {
+	font-weight: bold;
+	color: #63207c;
+	margin-bottom: 10px;
+	font-size: 16px;
+}
+
+.iletisim_detay {
+	color: #666;
+	font-size: 14px;
+	line-height: 1.6;
+}
+.harita_wrapper {
+	width: 100%;
+	height: 450px;
+	border-radius: 15px;
+	overflow: hidden;
+	margin-top: 40px;
+	box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.form_container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 30px;
+	margin-bottom: 40px;
+}
+
+.form_baslik {
+	font-size: 24px;
+	color: #63207c;
+	font-weight: bold;
+	margin-bottom: 25px;
+	text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+	.form_container,
+	.iletisim_grid {
+		grid-template-columns: 1fr;
+	}
+	
+	.iletisim_hero h1 {
+		font-size: 32px;
+	}
+}
+
+@media (max-width: 768px) {
+	.iletisim_form {
+		padding: 25px;
+	}
+	
+	.iletisim_bilgi {
+		padding: 25px;
+	}
+}
+

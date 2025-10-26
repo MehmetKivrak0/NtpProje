@@ -1,0 +1,191 @@
+.ekip_container {
+	padding: 40px 0;
+}
+
+.ekip_hero {
+	text-align: center;
+	padding: 60px 20px;
+	background: linear-gradient(135deg, #63207c 0%, #4f1a63 100%);
+	border-radius: 15px;
+	margin-bottom: 50px;
+	color: #fff;
+}
+
+.ekip_hero h1 {
+	font-size: 42px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.ekip_hero p {
+	font-size: 18px;
+	max-width: 800px;
+	margin: 0 auto;
+	line-height: 1.8;
+	opacity: 0.95;
+}
+
+.ekip_grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 30px;
+	margin-bottom: 60px;
+}
+
+.ekip_item {
+	background: #fff;
+	border-radius: 15px;
+	padding: 30px 20px;
+	text-align: center;
+	box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+	transition: all 0.4s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+.ekip_item::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 5px;
+	background: linear-gradient(90deg, #63207c, #9b59b6);
+	transform: scaleX(0);
+	transition: transform 0.4s ease;
+}
+
+.ekip_item:hover::before {
+	transform: scaleX(1);
+}
+
+.ekip_item:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 15px 40px rgba(99, 32, 124, 0.2);
+}
+
+.ekip_foto {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	margin: 0 auto 20px;
+	overflow: hidden;
+	border: 4px solid #63207c;
+	box-shadow: 0 5px 15px rgba(99, 32, 124, 0.3);
+	transition: border-color 0.3s;
+}
+
+.ekip_item:hover .ekip_foto {
+	border-color: #9b59b6;
+}
+
+.ekip_foto img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.3s;
+}
+
+.ekip_item:hover .ekip_foto img {
+	transform: scale(1.1);
+}
+
+.ekip_isim {
+	font-size: 18px;
+	font-weight: bold;
+	color: #63207c;
+	margin-bottom: 8px;
+}
+
+.ekip_pozisyon {
+	font-size: 13px;
+	color: #fff;
+	background: #63207c;
+	padding: 5px 15px;
+	border-radius: 15px;
+	display: inline-block;
+	margin-bottom: 15px;
+	font-weight: 500;
+}
+
+.ekip_aciklama {
+	font-size: 13px;
+	color: #666;
+	line-height: 1.6;
+	min-height: 65px;
+}
+
+.ekip_istatistik {
+	background: #f9f9f9;
+	padding: 50px 30px;
+	border-radius: 15px;
+	margin: 60px 0;
+}
+
+.ekip_istatistik_baslik {
+	text-align: center;
+	font-size: 32px;
+	color: #63207c;
+	font-weight: bold;
+	margin-bottom: 40px;
+}
+
+.ekip_istatistik_grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 30px;
+}
+
+.ekip_istatistik_item {
+	text-align: center;
+	background: #fff;
+	padding: 30px 20px;
+	border-radius: 12px;
+	box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.ekip_istatistik_sayi {
+	font-size: 48px;
+	font-weight: bold;
+	color: #63207c;
+	display: block;
+	margin-bottom: 10px;
+}
+
+.ekip_istatistik_label {
+	font-size: 14px;
+	color: #666;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+	.ekip_grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (max-width: 992px) {
+	.ekip_grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	
+	.ekip_istatistik_grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 768px) {
+	.ekip_grid {
+		grid-template-columns: 1fr;
+	}
+	
+	.ekip_hero h1 {
+		font-size: 32px;
+	}
+	
+	.ekip_istatistik_grid {
+		grid-template-columns: 1fr;
+	}
+}
+

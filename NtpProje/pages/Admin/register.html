@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin Kayıt - Genç Birey</title>
+    <link rel="stylesheet" href="../../css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <div class="auth-logo">GB</div>
+                <h1>Yeni Hesap Oluştur</h1>
+                <p>Admin paneline kayıt olun</p>
+            </div>
+
+            <!-- Hata/Başarı mesajı için alan -->
+            <div id="alert-message" style="display: none;"></div>
+
+            <form id="registerForm" method="post" action="">
+                <div class="form-group">
+                    <label for="fullname">Ad Soyad</label>
+                    <input 
+                        type="text" 
+                        id="fullname" 
+                        name="fullname" 
+                        placeholder="Ahmet Yılmaz" 
+                        required
+                        autocomplete="name"
+                        minlength="3"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-posta Adresi</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="ornek@email.com" 
+                        required
+                        autocomplete="email"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefon Numarası</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        placeholder="0555 123 45 67" 
+                        autocomplete="tel"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Şifre</label>
+                    <div class="password-field">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            placeholder="••••••••" 
+                            required
+                            autocomplete="new-password"
+                            minlength="6"
+                        >
+                        <span class="password-toggle" onclick="togglePassword('password')">👁️</span>
+                    </div>
+                    <small style="color: #666; font-size: 12px;">En az 6 karakter olmalıdır</small>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">
+                        <a href="#" style="color: #667eea;">Kullanım koşullarını</a> kabul ediyorum
+                    </label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter">E-posta bülteni almak istiyorum</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+
+                <div class="divider">
+                    <span>VEYA</span>
+                </div>
+
+                <div class="auth-links">
+                    <p style="color: #666; font-size: 14px;">
+                        Zaten hesabınız var mı? 
+                        <a href="login.html">Giriş yapın</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+
+        <div class="auth-links" style="margin-top: 20px; text-align: center;">
+            <a href="../../index.html" style="color: #ffffff; text-decoration: none;">
+                ← Ana Sayfaya Dön
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Şifre görünürlük toggle
+        function togglePassword(fieldId) {
+            const passwordInput = document.getElementById(fieldId);
+            const toggleIcon = passwordInput.nextElementSibling;
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.textContent = '👁️';
+            }
+        }
+
+        // E-posta validasyonu
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Telefon formatı
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                if (value.length <= 4) {
+                    value = value;
+                } else if (value.length <= 7) {
+                    value = value.slice(0, 4) + ' ' + value.slice(4);
+                } else if (value.length <= 9) {
+                    value = value.slice(0, 4) + ' ' + value.slice(4, 7) + ' ' + value.slice(7);
+                } else {
+                    value = value.slice(0, 4) + ' ' + value.slice(4, 7) + ' ' + value.slice(7, 9) + ' ' + value.slice(9, 11);
+                }
+            }
+            e.target.value = value;
+        });
+
+        // Form gönderimi
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const password = document.getElementById('password').value;
+            const terms = document.getElementById('terms').checked;
+            const newsletter = document.getElementById('newsletter').checked;
+            
+            // Validasyonlar
+            if (!fullname || fullname.length < 3) {
+                showAlert('Ad Soyad en az 3 karakter olmalıdır!', 'error');
+                return;
+            }
+
+            if (!email || !isValidEmail(email)) {
+                showAlert('Geçerli bir e-posta adresi girin!', 'error');
+                return;
+            }
+
+            if (!password || password.length < 6) {
+                showAlert('Şifre en az 6 karakter olmalıdır!', 'error');
+                return;
+            }
+
+            if (!terms) {
+                showAlert('Kullanım koşullarını kabul etmelisiniz!', 'error');
+                return;
+            }
+
+            // Demo amaçlı - gerçek uygulamada backend'e istek gönderilmeli
+            const userData = {
+                fullname: fullname,
+                email: email,
+                phone: phone,
+                newsletter: newsletter,
+                registeredAt: new Date().toISOString()
+            };
+
+            // LocalStorage'a kaydet (gerçek uygulamada veritabanına kaydedilmeli)
+            const existingUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+            
+            // E-posta kontrolü
+            const emailExists = existingUsers.some(user => user.email === email);
+            if (emailExists) {
+                showAlert('Bu e-posta adresi zaten kullanılıyor!', 'error');
+                return;
+            }
+
+            existingUsers.push(userData);
+            localStorage.setItem('registeredUsers', JSON.stringify(existingUsers));
+
+            showAlert('Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz...', 'success');
+
+            // Form'u temizle
+            document.getElementById('registerForm').reset();
+
+            // Login sayfasına yönlendir
+            setTimeout(function() {
+                window.location.href = 'login.html';
+            }, 2000);
+        });
+
+        // Alert mesajı göster
+        function showAlert(message, type) {
+            const alertDiv = document.getElementById('alert-message');
+            alertDiv.className = 'alert alert-' + type;
+            alertDiv.textContent = message;
+            alertDiv.style.display = 'block';
+            
+            // Sayfayı en üste kaydır
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // 5 saniye sonra mesajı gizle
+            setTimeout(function() {
+                alertDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        // Şifre güvenlik göstergesi (opsiyonel)
+        document.getElementById('password').addEventListener('input', function(e) {
+            const password = e.target.value;
+            let strength = 0;
+            
+            if (password.length >= 6) strength++;
+            if (password.length >= 10) strength++;
+            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+            if (/\d/.test(password)) strength++;
+            if (/[@$!%*?&#]/.test(password)) strength++;
+            
+            // Şifre güvenlik seviyesine göre görsel feedback verilebilir
+            // Bu özellik isteğe bağlı olarak eklenebilir
+        });
+    </script>
+</body>
+</html>
+
