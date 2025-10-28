@@ -56,6 +56,10 @@
     <Compile Include="Migrations\202510261022503_Kurulum.Designer.cs">
       <DependentUpon>202510261022503_Kurulum.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202510281416078_AddBioToUser.cs" />
+    <Compile Include="Migrations\202510281416078_AddBioToUser.Designer.cs">
+      <DependentUpon>202510281416078_AddBioToUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProjeContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,6 +77,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202510261022503_Kurulum.resx">
       <DependentUpon>202510261022503_Kurulum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510281416078_AddBioToUser.resx">
+      <DependentUpon>202510281416078_AddBioToUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

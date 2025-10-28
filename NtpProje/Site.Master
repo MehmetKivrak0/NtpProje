@@ -99,8 +99,7 @@
                         </li>
 
                         <li class='<%= (AktifSayfaAdi == "login.aspx" || AktifSayfaAdi == "register.aspx") ? "active" : "" %>'>
-                            <a href="/pages/Admin/login.aspx" style="color: #87257b; font-weight: bold;">🔐 Admin</a>
-                        </li>
+                            <a href='<%= ResolveUrl("~/Login.aspx") %>' style="color: #87257b; font-weight: bold;">🔐 Admin</a>                        </li>
 
                         <li class="social"><a href="#" class="social_facebook" title="Facebook'tan takip edin.."></a></li>
                         <li class="social"><a href="#" class="social_twitter" title="Twitter'dan takip edin.."></a></li>

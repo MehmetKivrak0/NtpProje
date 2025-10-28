@@ -15,5 +15,7 @@ namespace NtpProje.Entities
         public string Password { get; set; }
         public string Role { get; set; }
 
+        public string Bio { get; set; }
+
     }
 }
