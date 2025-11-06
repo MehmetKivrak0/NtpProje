@@ -52,17 +52,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Migrations\202510261022503_Kurulum.cs" />
-    <Compile Include="Migrations\202510261022503_Kurulum.Designer.cs">
-      <DependentUpon>202510261022503_Kurulum.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202510281416078_AddBioToUser.cs" />
-    <Compile Include="Migrations\202510281416078_AddBioToUser.Designer.cs">
-      <DependentUpon>202510281416078_AddBioToUser.cs</DependentUpon>
+    <Compile Include="Migrations\202511022013375_AddCommentTable.cs" />
+    <Compile Include="Migrations\202511022013375_AddCommentTable.Designer.cs">
+      <DependentUpon>202511022013375_AddCommentTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProjeContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NtpProje.Entities\NtpProje.Entities.csproj">
@@ -71,15 +70,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202510261022503_Kurulum.resx">
-      <DependentUpon>202510261022503_Kurulum.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202510281416078_AddBioToUser.resx">
-      <DependentUpon>202510281416078_AddBioToUser.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202511022013375_AddCommentTable.resx">
+      <DependentUpon>202511022013375_AddCommentTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

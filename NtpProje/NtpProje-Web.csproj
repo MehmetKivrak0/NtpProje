@@ -74,8 +74,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
-    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
     <Content Include="css\admin.css" />
     <Content Include="css\base.css" />
     <Content Include="css\blog.css" />
@@ -168,13 +166,13 @@
     <Content Include="jquery-1.4.3.min.js" />
     <Content Include="jquery.flow.1.2.js" />
     <Content Include="Login.aspx" />
-    <Content Include="pages\Admin\admin_dashboard.html" />
-    <Content Include="pages\Admin\IletisimMesajlari.html" />
-    <Content Include="pages\Admin\KategoriYonetimi.html" />
-    <Content Include="pages\Admin\Raporlar.html" />
+    <Content Include="pages\Admin\IletisimMesajlari.aspx" />
+    <Content Include="pages\Admin\KategoriYonetimi.aspx" />
+    <Content Include="pages\Admin\Raporlar.aspx" />
     <Content Include="pages\Admin\UyePaneli.aspx" />
-    <Content Include="pages\Admin\YaziEkleDuzenle.html" />
-    <Content Include="pages\Admin\YaziYonetimi.html" />
+    <Content Include="pages\Admin\admin_dashboard.aspx" />
+    <Content Include="pages\Admin\YaziEkleDuzenle.aspx" />
+    <Content Include="pages\Admin\YaziYonetimi.aspx" />
     <Content Include="pages\blog.aspx" />
     <Content Include="pages\blog_detay.aspx" />
     <Content Include="pages\ekip.aspx" />
@@ -238,13 +236,26 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
-    <Compile Include="pages\Admin\Admin.Master.cs">
-      <DependentUpon>Admin.Master</DependentUpon>
+    <Compile Include="pages\Admin\IletisimMesajlari.aspx.cs">
+      <DependentUpon>IletisimMesajlari.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\Admin\Admin.Master.designer.cs">
-      <DependentUpon>Admin.Master</DependentUpon>
+    <Compile Include="pages\Admin\IletisimMesajlari.aspx.designer.cs">
+      <DependentUpon>IletisimMesajlari.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Admin\KategoriYonetimi.aspx.cs">
+      <DependentUpon>KategoriYonetimi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Admin\KategoriYonetimi.aspx.designer.cs">
+      <DependentUpon>KategoriYonetimi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Admin\Raporlar.aspx.cs">
+      <DependentUpon>Raporlar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Admin\Raporlar.aspx.designer.cs">
+      <DependentUpon>Raporlar.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\Admin\UyePaneli.aspx.cs">
       <DependentUpon>UyePaneli.aspx</DependentUpon>
@@ -252,6 +263,27 @@
     </Compile>
     <Compile Include="pages\Admin\UyePaneli.aspx.designer.cs">
       <DependentUpon>UyePaneli.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Admin\admin_dashboard.aspx.cs">
+      <DependentUpon>admin_dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Admin\admin_dashboard.aspx.designer.cs">
+      <DependentUpon>admin_dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Admin\YaziEkleDuzenle.aspx.cs">
+      <DependentUpon>YaziEkleDuzenle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Admin\YaziEkleDuzenle.aspx.designer.cs">
+      <DependentUpon>YaziEkleDuzenle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Admin\YaziYonetimi.aspx.cs">
+      <DependentUpon>YaziYonetimi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Admin\YaziYonetimi.aspx.designer.cs">
+      <DependentUpon>YaziYonetimi.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\blog.aspx.cs">
       <DependentUpon>blog.aspx</DependentUpon>
@@ -333,10 +365,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Debug\NtpProje.csproj.AssemblyReference.cache" />
     <None Include="packages.config" />
-    <Content Include="pages\Admin\Admin.Master" />
     <Content Include="Site.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -345,9 +374,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="obj\Debug\TempPE\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\NtpProje.Business\NtpProje.Business.csproj">
       <Project>{0b524617-84dd-443f-ac04-62b9a8ebb5d7}</Project>

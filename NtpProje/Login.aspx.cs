@@ -25,23 +25,27 @@ namespace NtpProje
             if (loggedınUser != null)
             {
                 Session["UserId"] = loggedınUser.UserId;
-                Session["UserNameFull"] = loggedınUser.FullName;
-                Session["UserRole"] = loggedınUser.Role;
+                Session["UserFullName"] = loggedınUser.FullName;
+                Session["UserRole"] = loggedınUser.Role; // Session'a orijinal haliyle kaydet
 
-                if (loggedınUser.Role == "Admin")
+                // --- DEĞİŞEN SATIR BURASI ---
+                // Karşılaştırmayı güvenli yap:
+                if (loggedınUser.Role.Trim().ToUpper() == "ADMİN")
                 {
-                    Response.Redirect("~/pages/Admin/Default.aspx");
+                    // ... Admin yönlendirmesi ...
+                    Response.Redirect("~/pages/Admin/admin_dashboard.aspx");
                 }
                 else
                 {
-                    Response.Redirect("~/pages/Admin/UyePaneli.aspx");
+                    // ... Üye yönlendirmesi ...
+                    Response.Redirect("~/pages/Admin/UyePaneli.aspx"); // Burayı Ana Sayfa olarak düzelttik
                 }
-
-
             }
-
-
-
+            else
+            {
+                // Hata mesajı...
+                ltrMesaj.Text = "<div style='color:red;'>Hata: E-posta veya şifre hatalı.</div>";
+            }
         }
     }
 }

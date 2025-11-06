@@ -1,5 +1,6 @@
-﻿using System.Data.Entity; // Yüklediğimiz EntityFramework'ü kullan
-using NtpProje.Entities;   // Adım 6'da yazdığımız User sınıfını bulabilmek için
+﻿using NtpProje.Entities;   // Adım 6'da yazdığımız User sınıfını bulabilmek için
+using System.Data.Entity; // Yüklediğimiz EntityFramework'ü kullan
+using System.Data.Entity.Core.Metadata.Edm;
 
 namespace NtpProje.DataAccess
 {
@@ -18,5 +19,15 @@ namespace NtpProje.DataAccess
 
         // Gelecekte ekleyeceğin diğer sınıflar (örn: Post, Category)
         // buraya eklenecek.
+
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<TeamMember> TeamMembers { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
     }
 }
