@@ -1,0 +1,318 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0" version="26.2.5">
+  <diagram name="Sayfa -1" id="aQP5okGj3HC7PBukEsk6">
+    <mxGraphModel dx="2765" dy="1260" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-1" target="GY3mJVUCw9PVslaSXWhC-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="210" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1655" y="180" />
+              <mxPoint x="225" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-1" target="GY3mJVUCw9PVslaSXWhC-15">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1655" y="180" />
+              <mxPoint x="845" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-1" target="GY3mJVUCw9PVslaSXWhC-50">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1655" y="180" />
+              <mxPoint x="1525" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-1" target="GY3mJVUCw9PVslaSXWhC-81">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1655" y="180" />
+              <mxPoint x="2415" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-1" value="E-Ticaret Sitesi" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1602" y="50" width="106" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-4" target="GY3mJVUCw9PVslaSXWhC-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-4" target="GY3mJVUCw9PVslaSXWhC-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-4" target="GY3mJVUCw9PVslaSXWhC-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-4" target="GY3mJVUCw9PVslaSXWhC-11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="1030" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-4" target="GY3mJVUCw9PVslaSXWhC-13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="1380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-4" value=".aspx sayfaları" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="210" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-5" target="GY3mJVUCw9PVslaSXWhC-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-5" value="index.aspx" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="271" y="270" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-7" target="GY3mJVUCw9PVslaSXWhC-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-7" value="listings.aspx" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="272" y="460" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-9" target="GY3mJVUCw9PVslaSXWhC-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-9" value="static_page.aspx" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="271" y="680" width="109" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-11" target="GY3mJVUCw9PVslaSXWhC-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-11" value="categories.aspx" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="272" y="1010" width="109" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-13" target="GY3mJVUCw9PVslaSXWhC-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-13" value="detail.aspx" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="1360" width="109" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-15" target="GY3mJVUCw9PVslaSXWhC-37">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="845" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-15" target="GY3mJVUCw9PVslaSXWhC-41">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="845" y="445" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-15" target="GY3mJVUCw9PVslaSXWhC-45">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="845" y="555" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-15" value="Business Layer" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="215" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-24" value="Kullanıcıların göreceği kısım&lt;div&gt;İçerikler;&lt;/div&gt;&lt;div&gt;- Örnek ürünler için slider&lt;/div&gt;&lt;div&gt;- Laptop galeri&lt;/div&gt;&lt;div&gt;- Sınırlı Stoklar Ürün Yeri&lt;br&gt;- Footer&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Bu belirtilen yerler için tüm metinler ve fotoğraflar veri tabanı üzerinden gelecek.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="422" y="215" width="224" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-28" value="Kullanıcıların göreceği kısım&lt;div&gt;İçerikler;&lt;/div&gt;&lt;div&gt;- Kampanyada Bulunan Bilgisayarlar&lt;/div&gt;&lt;div&gt;- Filtreleme Özelliği&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Bu belirtilen yerler için tüm metinler ve fotoğraflar veri tabanı üzerinden gelecek.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Filtreleme özelliği Business katmanında bulunan bir özellik ile gelecek.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="422" y="400" width="268" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-30" value="Kullanıcıların göreceği kısım&lt;div&gt;İçerikler;&lt;/div&gt;&lt;div&gt;- Site Hakkında Bilgi&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Bu belirtilen yerler için tüm metinler ve fotoğraflar veri tabanı üzerinden gelecek.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="422" y="640" width="268" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-33" value="Kullanıcıların göreceği kısım&lt;div&gt;İçerikler;&lt;/div&gt;&lt;div&gt;- Laptop galeri&lt;/div&gt;&lt;div&gt;-&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Filtreleme Özelliği&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Bu belirtilen yerler için tüm metinler ve fotoğraflar veri tabanı üzerinden gelecek.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Filtreleme özelliği Business katmanında bulunan bir özellik ile gelecek.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="942.5" width="290" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-35" value="Kullanıcıların göreceği kısım&lt;div&gt;İçerikler;&lt;/div&gt;&lt;div&gt;- Seçilen Ürün İle İlgili Tüm Bilgiler&lt;/div&gt;&lt;div&gt;-&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Filtreleme Özelliği&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Bu belirtilen yerler için tüm metinler ve fotoğraflar veri tabanı üzerinden gelecek.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Filtreleme özelliği Business katmanında bulunan bir özellik ile gelecek.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="1297.5" width="290" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-37" target="GY3mJVUCw9PVslaSXWhC-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-37" value="IProductService" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="330" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-39" value="&lt;div&gt;Tüm ürünler ile ilgili işlemlerin yapıldığı interface idir (örnek olarak arama, ürünlerin gelmesi vb.).&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="320" width="224" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-41" target="GY3mJVUCw9PVslaSXWhC-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-41" value="ICategoryService" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="425" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-43" value="&lt;div&gt;Kategoriler ile ilgili işlemlerin yapıldığı interface idir (örnek olarak GetAll(), GetById vb.).&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="415" width="224" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-45" target="GY3mJVUCw9PVslaSXWhC-47">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-45" value="IBrandService" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="535" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-47" value="&lt;div&gt;Markalar ile ilgili işlemlerin yapıldığı interface idir (örnek olarak GetAll(), GetById vb.).&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="525" width="224" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-50" target="GY3mJVUCw9PVslaSXWhC-53">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1525" y="345" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-50" target="GY3mJVUCw9PVslaSXWhC-57">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1525" y="445" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-50" target="GY3mJVUCw9PVslaSXWhC-61">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1525" y="540" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-68" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-50" target="GY3mJVUCw9PVslaSXWhC-67">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-50" target="GY3mJVUCw9PVslaSXWhC-72">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-50" target="GY3mJVUCw9PVslaSXWhC-76">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-50" value="DTO Layer" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="230" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-53" target="GY3mJVUCw9PVslaSXWhC-55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-53" value="PagingDTO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="325" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-55" value="Page (int) = Aktif olan sayfa numarası&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;PageSize (int) = Sayfa başına kaç tane ürün gözükeceğini belirten sayı&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;TotalItems (int) = Filtrelendikten sonra filtreye uyan ürün sayısı&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;TotalPages (int) = Toplam sayfa sayısı&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1740" y="306.25" width="390" height="77.5" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-60" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-57" target="GY3mJVUCw9PVslaSXWhC-59">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-57" value="CategoryDTO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="425" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-59" value="ID (int) = Kategoriye ait özel ID&lt;div&gt;Name (string) = Kategoriye ait olan isim&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="417.5" width="330" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-66" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-61" target="GY3mJVUCw9PVslaSXWhC-65">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-61" value="BrandDTO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="520" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-65" value="ID (int) = Markaya ait özel ID&lt;div&gt;Name (string) = Markaya ait olan isim&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1740" y="512.5" width="330" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-70" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-67" target="GY3mJVUCw9PVslaSXWhC-69">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-67" value="ProductListItemDTO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1570" y="700" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-69" value="ID (int) = Ürüne ait özel ID&lt;div&gt;Name (string) = Ürüne ait olan isim&lt;/div&gt;&lt;div&gt;ImageUrl (string) = Ürüne ait olan resmin URL linki&lt;/div&gt;&lt;div&gt;Price (decimal) = Ürünün fiyatı&lt;/div&gt;&lt;div&gt;BrandName (string) = Markanın adı&lt;/div&gt;&lt;div&gt;Rating (double) = Ürünün puanı&lt;/div&gt;&lt;div&gt;Cpu (string) = Ürünün kullandığı CPU&lt;/div&gt;&lt;div&gt;RamGB (int) = Ürünün sahip olduğu RAM&lt;/div&gt;&lt;div&gt;StorageGB = Ürünün sahip olduğu depolama alanı&lt;/div&gt;&lt;div&gt;ScreenInches (double) = Ürünün ekranının inç boyutu&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1770" y="635" width="330" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-75" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-72" target="GY3mJVUCw9PVslaSXWhC-74">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-72" value="ProductFilterDTO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1570" y="1010" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-74" value="Query (string) = Ürün arama metni (gaming, Asus vb.)&amp;nbsp;&lt;div&gt;CategoryId (int) = Kategoriye ait olan özel ID&amp;nbsp;&lt;/div&gt;&lt;div&gt;BrandIds (List&amp;lt;int&amp;gt;) = Marka ID&#39;lerinin olduğu ID&amp;nbsp;&lt;/div&gt;&lt;div&gt;PriceMin (decimal) = Minimum fiyat filtresi&amp;nbsp;&lt;/div&gt;&lt;div&gt;PriceMax (decimal) = Maksimum fiyat filtresi&amp;nbsp;&lt;/div&gt;&lt;div&gt;RamMin (int) = Minimum RAM filtresi&amp;nbsp;&lt;/div&gt;&lt;div&gt;ScreenMin (double) = Minimum ekran boyutu filtresi&amp;nbsp;&lt;/div&gt;&lt;div&gt;ScreenMax (double) = Maksimum ekran boyutu filtresi&amp;nbsp;&lt;/div&gt;&lt;div&gt;Page (int) = İstenilen sayfa numarası&amp;nbsp;&lt;/div&gt;&lt;div&gt;PageSize (int) = Her sayfada gösterilecek ürün sayısı&lt;/div&gt;&lt;div&gt;Sort (string) = Sıralama türü (relevance, price_asc ve price_desc)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="942.5" width="470" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-80" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-76" target="GY3mJVUCw9PVslaSXWhC-79">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-76" value="ProductListResponseDTO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1570" y="1310" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-79" value="Items (List&amp;lt;ProductListItemDTO&amp;gt;) = Filtrelenen ürünlerin listesi&amp;nbsp;&lt;div&gt;Paging (PagingDTO) = Sayfalama bilgileri (mevcut sayfa, toplam ürün, toplam sayfa)&amp;nbsp;&lt;/div&gt;&lt;div&gt;Brands (List&amp;lt;BrandDTO&amp;gt;) = Filtre seçenekleri için marka listesi&amp;nbsp;&lt;/div&gt;&lt;div&gt;Categories (List&amp;lt;CategoryDTO&amp;gt;) = Filtre seçenekleri için kategori listesi&amp;nbsp;&lt;/div&gt;&lt;div&gt;Sort (string) = Mevcut sıralama türü&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1820" y="1280" width="410" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-81" target="GY3mJVUCw9PVslaSXWhC-83">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2415" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-81" target="GY3mJVUCw9PVslaSXWhC-87">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2415" y="435" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-81" target="GY3mJVUCw9PVslaSXWhC-91">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2415" y="640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-81" value="Model Layer" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2370" y="220" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-86" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-83" target="GY3mJVUCw9PVslaSXWhC-85">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-83" value="Category" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2490" y="290" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-85" value="ID (int) =&amp;nbsp;&amp;nbsp;Kategoriye ait özel ID&lt;div&gt;Name (string) =&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Kategoriye ait olan isim&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2660" y="275" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-90" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-87" target="GY3mJVUCw9PVslaSXWhC-89">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-87" value="Brand" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2490" y="415" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-89" value="ID (int) =&amp;nbsp;&amp;nbsp;Markaya ait özel ID&lt;div&gt;Name (string) =&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Markaya ait olan isim&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2660" y="400" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-94" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GY3mJVUCw9PVslaSXWhC-91" target="GY3mJVUCw9PVslaSXWhC-93">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-91" value="Product" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2490" y="620" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GY3mJVUCw9PVslaSXWhC-93" value="ID (int) = Ürüne ait özel ID&amp;nbsp;&lt;div&gt;Name (string) = Ürüne ait olan isim&lt;/div&gt;&lt;div&gt;CategoryId (int) = Ürünün ait olduğu kategorinin ID numarası (Category tablosuna bağlı)&amp;nbsp;&lt;/div&gt;&lt;div&gt;BrandId (int) = Ürünün ait olduğu markanın ID numarası (Brand tablosuna bağlı)&amp;nbsp;&lt;/div&gt;&lt;div&gt;Price (decimal) = Ürünün fiyatı&amp;nbsp;&lt;/div&gt;&lt;div&gt;ImageUrl (string) = Ürüne ait görselin URL bağlantısı&amp;nbsp;&lt;/div&gt;&lt;div&gt;Description (string) = Ürün hakkında açıklama / detay metni&amp;nbsp;&lt;/div&gt;&lt;div&gt;Cpu (string) = Üründe kullanılan işlemci modeli&lt;/div&gt;&lt;div&gt;RamGB (int) = Ürünün sahip olduğu RAM miktarı&lt;/div&gt;&lt;div&gt;StorageGB (int) = Ürünün depolama kapasitesi&amp;nbsp;&lt;/div&gt;&lt;div&gt;Gpu (string) = Üründe kullanılan ekran kartı&lt;/div&gt;&lt;div&gt;ScreenInches (double) = Ürünün inç olarak ekran boyutu&lt;/div&gt;&lt;div&gt;Rating (double) = Ürünün kullanıcı puanı&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2670" y="545" width="570" height="190" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

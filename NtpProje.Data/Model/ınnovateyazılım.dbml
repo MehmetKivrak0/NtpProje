@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NtpProjeDB" Class="ınnovateyazılımDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=NtpProjeDB;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="NtpProje.Data.Properties.Settings" SettingsPropertyName="NtpProjeDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Categories" Member="Categories">
+    <Type Name="Category">
+      <Column Name="CategoryId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CategoryName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Category_Post" Member="Posts" ThisKey="CategoryId" OtherKey="CategoryId" Type="Post" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Role" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Bio" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="User_Comment" Member="Comments" ThisKey="UserId" OtherKey="UserId" Type="Comment" />
+      <Association Name="User_Post" Member="Posts" ThisKey="UserId" OtherKey="UserId" Type="Post" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Comments" Member="Comments">
+    <Type Name="Comment">
+      <Column Name="CommentId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AuthorName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorEmail" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Content" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="CommentDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PostId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="User_Comment" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+      <Association Name="Post_Comment" Member="Post" ThisKey="PostId" OtherKey="PostId" Type="Post" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Posts" Member="Posts">
+    <Type Name="Post">
+      <Column Name="PostId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Post_Comment" Member="Comments" ThisKey="PostId" OtherKey="PostId" Type="Comment" />
+      <Association Name="Category_Post" Member="Category" ThisKey="CategoryId" OtherKey="CategoryId" Type="Category" IsForeignKey="true" />
+      <Association Name="User_Post" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Projects" Member="Projects">
+    <Type Name="Project">
+      <Column Name="ProjectId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ImageUrl" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ProjectDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Services" Member="Services">
+    <Type Name="Service">
+      <Column Name="ServiceId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ServiceName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IconClass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TeamMembers" Member="TeamMembers">
+    <Type Name="TeamMember">
+      <Column Name="TeamMemberId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ImageUrl" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Bio" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

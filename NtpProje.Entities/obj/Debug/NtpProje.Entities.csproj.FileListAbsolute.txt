@@ -4,3 +4,7 @@ C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.Entities\obj\Debug\NtpProje
 C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.Entities\obj\Debug\NtpProje.Entities.csproj.CoreCompileInputs.cache
 C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.Entities\obj\Debug\NtpProje.Entities.dll
 C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.Entities\obj\Debug\NtpProje.Entities.pdb
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Entities\obj\Debug\NtpProje.Entities.csproj.AssemblyReference.cache
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Entities\obj\Debug\NtpProje.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Entities\obj\Debug\NtpProje.Entities.dll
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Entities\obj\Debug\NtpProje.Entities.pdb

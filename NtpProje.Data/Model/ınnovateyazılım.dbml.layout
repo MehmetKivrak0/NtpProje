@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ınnovateyazılım">
+  <DataContextMoniker Name="/ınnovateyazılımDataContext" />
+  <nestedChildShapes>
+    <classShape Id="d2052c09-474e-4e95-9c4c-5e48a9e8fd84" absoluteBounds="3.5, 0.5, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/ınnovateyazılımDataContext/Category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="767e3a32-d95b-47cc-9cc6-a83b64f95ec7" absoluteBounds="3.515, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3fc71e84-156e-4cbb-b51c-524a0a756927" absoluteBounds="0.875, 3, 2, 2.1554996744791675">
+      <DataClassMoniker Name="/ınnovateyazılımDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5dacd1b3-54f2-46dd-93fc-8fecdf2993f0" absoluteBounds="0.89, 3.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="432608e7-dd8f-4418-ab32-f094c0ea8672" absoluteBounds="6.375, 2.875, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/ınnovateyazılımDataContext/Comment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5ca06fd0-fa3f-4861-9c85-bfd6c1033644" absoluteBounds="6.39, 3.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ccc4d5f9-5464-4564-ad64-e76a7354bcbe" absoluteBounds="3.625, 3, 2, 2.155499674479167">
+      <DataClassMoniker Name="/ınnovateyazılımDataContext/Post" />
+      <nestedChildShapes>
+        <elementListCompartment Id="78472a87-68a4-4213-98c0-9cfaa0027b8e" absoluteBounds="3.64, 3.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d106375c-2acc-4ebb-aa15-63abe84c4209" absoluteBounds="0.875, 6.125, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/ınnovateyazılımDataContext/Project" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0ff16699-8048-48f1-82fb-741e785d3338" absoluteBounds="0.89, 6.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a92f813c-f847-43c2-9a13-cd85b14bc0aa" absoluteBounds="3.875, 6.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ınnovateyazılımDataContext/Service" />
+      <nestedChildShapes>
+        <elementListCompartment Id="810b84fc-1bc8-44cc-972b-8b64886218f9" absoluteBounds="3.89, 6.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c44fdb94-e6e3-44f6-b276-0b2fb53e976d" absoluteBounds="6.875, 6.125, 2, 1.7708968098958326">
+      <DataClassMoniker Name="/ınnovateyazılımDataContext/TeamMember" />
+      <nestedChildShapes>
+        <elementListCompartment Id="789a512f-2b9f-42d7-bf3f-ed05439c5a9f" absoluteBounds="6.89, 6.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.875 : 5.15549967447917); (3.25 : 5.53049967447917); (3.25 : 5.59780110677083); (6 : 5.59780110677083); (6.375 : 5.22280110677083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ınnovateyazılımDataContext/User/User_Comment" />
+      <nodes>
+        <classShapeMoniker Id="3fc71e84-156e-4cbb-b51c-524a0a756927" />
+        <classShapeMoniker Id="432608e7-dd8f-4418-ab32-f094c0ea8672" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.625 : 4.07774983723958); (6.375 : 4.07774983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ınnovateyazılımDataContext/Post/Post_Comment" />
+      <nodes>
+        <classShapeMoniker Id="ccc4d5f9-5464-4564-ad64-e76a7354bcbe" />
+        <classShapeMoniker Id="432608e7-dd8f-4418-ab32-f094c0ea8672" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5625 : 1.69399251302083); (4.5625 : 3)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ınnovateyazılımDataContext/Category/Category_Post" />
+      <nodes>
+        <classShapeMoniker Id="d2052c09-474e-4e95-9c4c-5e48a9e8fd84" />
+        <classShapeMoniker Id="ccc4d5f9-5464-4564-ad64-e76a7354bcbe" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.875 : 4.04649733723958); (3.625 : 4.04649733723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ınnovateyazılımDataContext/User/User_Post" />
+      <nodes>
+        <classShapeMoniker Id="3fc71e84-156e-4cbb-b51c-524a0a756927" />
+        <classShapeMoniker Id="ccc4d5f9-5464-4564-ad64-e76a7354bcbe" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

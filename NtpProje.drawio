@@ -1,0 +1,807 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0" version="26.2.5">
+  <diagram name="NtpProje Architecture" id="ntpproje-architecture">
+    <mxGraphModel dx="2765" dy="1260" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Root Node -->
+        <mxCell id="root-1" value="NtpProje Web Sitesi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1600" y="50" width="160" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Connection to Presentation Layer -->
+        <mxCell id="edge-root-presentation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="root-1" target="presentation-layer">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1680" y="150" />
+              <mxPoint x="220" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Connection to Business Layer -->
+        <mxCell id="edge-root-business" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="root-1" target="business-layer">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1680" y="150" />
+              <mxPoint x="840" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Connection to DTO Layer -->
+        <mxCell id="edge-root-dto" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="root-1" target="dto-layer">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1680" y="150" />
+              <mxPoint x="1480" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Connection to Data Layer -->
+        <mxCell id="edge-root-data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="root-1" target="data-layer">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1680" y="150" />
+              <mxPoint x="2300" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Presentation Layer -->
+        <mxCell id="presentation-layer" value="Presentation Layer&#xa;(.aspx Sayfaları)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="150" y="180" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Public Pages -->
+        <mxCell id="edge-pres-index" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="presentation-layer" target="page-index">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="page-index" value="index.aspx" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="260" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-index-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="page-index" target="desc-index">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-index" value="Ana sayfa - Kullanıcıların göreceği ilk sayfa&#xa;İçerikler:&#xa;- Slider/Banner bölümü&#xa;- Öne çıkan projeler&#xa;- Hizmet özetleri&#xa;- Son blog yazıları&#xa;&#xa;Tüm veriler veritabanından gelir." style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="470" y="215" width="250" height="130" as="geometry" />
+        </mxCell>
+        
+        <!-- Blog Pages -->
+        <mxCell id="edge-pres-blog" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="presentation-layer" target="page-blog">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="page-blog" value="blog.aspx" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="360" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-blog-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="page-blog" target="desc-blog">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-blog" value="Blog liste sayfası&#xa;İçerikler:&#xa;- Tüm blog yazıları listesi&#xa;- Kategori filtreleme&#xa;- Yazar bilgileri&#xa;&#xa;PostService ve CategoryService kullanılır." style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="470" y="345" width="250" height="110" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-pres-blogdetail" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="presentation-layer" target="page-blogdetail">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="page-blogdetail" value="blog_detay.aspx" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="470" width="110" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-blogdetail-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="page-blogdetail" target="desc-blogdetail">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-blogdetail" value="Blog detay sayfası&#xa;İçerikler:&#xa;- Seçilen blog yazısının tüm içeriği&#xa;- Yazar bilgisi&#xa;- Yorumlar listesi&#xa;- Yorum yapma formu&#xa;&#xa;PostService ve CommentService kullanılır." style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="480" y="465" width="250" height="130" as="geometry" />
+        </mxCell>
+        
+        <!-- Project Pages -->
+        <mxCell id="edge-pres-projects" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="presentation-layer" target="page-projects">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="625" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="page-projects" value="projeler.aspx" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="605" width="110" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-projects-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="page-projects" target="desc-projects">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-projects" value="Projeler liste sayfası&#xa;İçerikler:&#xa;- Tamamlanan projelerin listesi&#xa;- Proje görselleri&#xa;- Proje özet bilgileri&#xa;&#xa;ProjectService kullanılır." style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="480" y="595" width="250" height="110" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-pres-projectdetail" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="presentation-layer" target="page-projectdetail">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="735" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="page-projectdetail" value="proje_detay.aspx" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="715" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-projectdetail-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="page-projectdetail" target="desc-projectdetail">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-projectdetail" value="Proje detay sayfası&#xa;İçerikler:&#xa;- Seçilen projenin tüm detayları&#xa;- Proje görselleri&#xa;- Müşteri bilgisi&#xa;- Proje tarihi&#xa;&#xa;ProjectService kullanılır." style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="490" y="705" width="250" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Service Pages -->
+        <mxCell id="edge-pres-services" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="presentation-layer" target="page-services">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="860" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="page-services" value="hizmetler.aspx" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="840" width="110" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-services-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="page-services" target="desc-services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-services" value="Hizmetler liste sayfası&#xa;İçerikler:&#xa;- Sunulan hizmetlerin listesi&#xa;- Hizmet açıklamaları&#xa;- İkonlar&#xa;&#xa;ServiceService kullanılır." style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="480" y="835" width="250" height="110" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-pres-servicedetail" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="presentation-layer" target="page-servicedetail">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="970" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="page-servicedetail" value="hizmet_detay.aspx" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="950" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-servicedetail-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="page-servicedetail" target="desc-servicedetail">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-servicedetail" value="Hizmet detay sayfası&#xa;İçerikler:&#xa;- Seçilen hizmetin tüm detayları&#xa;- Açıklama metni&#xa;&#xa;ServiceService kullanılır." style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="490" y="945" width="250" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Other Pages -->
+        <mxCell id="edge-pres-team" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="presentation-layer" target="page-team">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="1085" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="page-team" value="ekip.aspx" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="1065" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-team-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="page-team" target="desc-team">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-team" value="Ekip sayfası&#xa;İçerikler:&#xa;- Ekip üyelerinin listesi&#xa;- Fotoğraflar&#xa;- Ünvanlar&#xa;- Kısa biyografiler&#xa;&#xa;TeamMemberService kullanılır." style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="470" y="1055" width="250" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-pres-about" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="presentation-layer" target="page-about">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="1205" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="page-about" value="hakkimizda.aspx" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="1185" width="110" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-about-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="page-about" target="desc-about">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-about" value="Hakkımızda sayfası&#xa;İçerikler:&#xa;- Şirket/kurum hakkında bilgi&#xa;- Misyon ve vizyon&#xa;- İletişim bilgileri&#xa;&#xa;Statik içerik veya veritabanından." style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="480" y="1175" width="250" height="110" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-pres-contact" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="presentation-layer" target="page-contact">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="1315" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="page-contact" value="iletisim.aspx" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="1295" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-contact-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="page-contact" target="desc-contact">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-contact" value="İletişim sayfası&#xa;İçerikler:&#xa;- İletişim formu&#xa;- Adres, telefon, e-posta&#xa;- Harita entegrasyonu&#xa;&#xa;Form gönderiminde mesaj kaydedilir." style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="470" y="1285" width="250" height="110" as="geometry" />
+        </mxCell>
+        
+        <!-- Admin Pages Group -->
+        <mxCell id="edge-pres-admin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="presentation-layer" target="admin-group">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="1455" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="admin-group" value="Admin Sayfaları" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="340" y="1425" width="130" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-admin-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="admin-group" target="desc-admin">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-admin" value="Admin Panel Sayfaları:&#xa;- admin_dashboard.aspx (Admin ana sayfa)&#xa;- KategoriYonetimi.aspx (Kategori CRUD)&#xa;- YaziYonetimi.aspx (Blog yazı listesi)&#xa;- YaziEkleDuzenle.aspx (Yazı ekleme/düzenleme)&#xa;- IletisimMesajlari.aspx (Gelen mesajlar)&#xa;- UyePaneli.aspx (Üye yönetimi)&#xa;- Raporlar.aspx (Raporlar)&#xa;&#xa;Tüm admin işlemleri için ilgili Service'ler kullanılır." style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="510" y="1385" width="280" height="180" as="geometry" />
+        </mxCell>
+        
+        <!-- Business Layer -->
+        <mxCell id="business-layer" value="Business Layer&#xa;(Service Sınıfları)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="770" y="180" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- IBaseService -->
+        <mxCell id="edge-bus-ibase" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="business-layer" target="service-ibase">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="840" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="service-ibase" value="IBaseService&lt;T&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="260" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-ibase-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="service-ibase" target="desc-ibase">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-ibase" value="Generic interface - Tüm servisler için temel&#xa;Metodlar:&#xa;- List&lt;T&gt; GetAll()&#xa;- T GetById(int id)&#xa;- void Add(T entity)&#xa;- void Update(T entity)&#xa;- void Delete(int id)" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="245" width="270" height="110" as="geometry" />
+        </mxCell>
+        
+        <!-- CategoryService -->
+        <mxCell id="edge-bus-category" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="business-layer" target="service-category">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="840" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="service-category" value="CategoryService" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="370" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-category-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="service-category" target="desc-category">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-category" value="Kategori işlemleri için servis&#xa;IBaseService&lt;CategoryDTO&gt; implement eder&#xa;CategoryRepository kullanır&#xa;Business logic: Kategori adı kontrolü vb." style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="365" width="270" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- PostService -->
+        <mxCell id="edge-bus-post" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="business-layer" target="service-post">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="840" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="service-post" value="PostService" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="460" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-post-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="service-post" target="desc-post">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-post" value="Blog yazıları için servis&#xa;IBaseService&lt;PostDTO&gt; implement eder&#xa;PostRepository kullanır&#xa;Ek metodlar: GetByCategory(int categoryId)&#xa;Business logic: Yayın tarihi, durum kontrolü" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="450" width="270" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- ProjectService -->
+        <mxCell id="edge-bus-project" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="business-layer" target="service-project">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="840" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="service-project" value="ProjectService" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="560" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-project-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="service-project" target="desc-project-svc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-project-svc" value="Proje işlemleri için servis&#xa;IBaseService&lt;ProjectDTO&gt; implement eder&#xa;ProjectRepository kullanır" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="555" width="270" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- ServiceService -->
+        <mxCell id="edge-bus-service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="business-layer" target="service-service">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="840" y="660" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="service-service" value="ServiceService" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="640" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-service-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="service-service" target="desc-service-svc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-service-svc" value="Hizmet işlemleri için servis&#xa;IBaseService&lt;ServiceDTO&gt; implement eder&#xa;ServiceRepository kullanır" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="635" width="270" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- TeamMemberService -->
+        <mxCell id="edge-bus-team" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="business-layer" target="service-team">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="840" y="740" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="service-team" value="TeamMemberService" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="720" width="140" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-team-svc-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="service-team" target="desc-team-svc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-team-svc" value="Ekip üyeleri işlemleri için servis&#xa;IBaseService&lt;TeamMemberDTO&gt; implement eder&#xa;TeamMemberRepository kullanır" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="715" width="270" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- CommentService -->
+        <mxCell id="edge-bus-comment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="business-layer" target="service-comment">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="840" y="820" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="service-comment" value="CommentService" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="800" width="130" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-comment-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="service-comment" target="desc-comment-svc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-comment-svc" value="Yorum işlemleri için servis&#xa;IBaseService&lt;CommentDTO&gt; implement eder&#xa;CommentRepository kullanır&#xa;Business logic: Onay durumu kontrolü" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="790" width="270" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- UserService -->
+        <mxCell id="edge-bus-user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="business-layer" target="service-user">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="840" y="910" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="service-user" value="UserService" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="890" width="110" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-user-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="service-user" target="desc-user-svc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-user-svc" value="Kullanıcı işlemleri için servis&#xa;IBaseService&lt;UserDTO&gt; implement eder&#xa;UserRepository kullanır&#xa;Business logic: Login, Register, Password hash" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="880" width="270" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- DTO Layer -->
+        <mxCell id="dto-layer" value="DTO Layer&#xa;(Data Transfer Objects)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1410" y="180" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- BaseDTO -->
+        <mxCell id="edge-dto-base" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dto-layer" target="dto-base">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1480" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="dto-base" value="BaseDTO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1590" y="250" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-base-dto-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dto-base" target="desc-base-dto">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-base-dto" value="Temel DTO sınıfı (abstract)&#xa;Properties:&#xa;- int Id&#xa;- string Name" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1720" y="245" width="220" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- CategoryDTO -->
+        <mxCell id="edge-dto-category" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dto-layer" target="dto-category">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1480" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="dto-category" value="CategoryDTO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1590" y="330" width="110" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-category-dto-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dto-category" target="desc-category-dto">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-category-dto" value="BaseDTO'dan türer&#xa;Id ve Name inherited olarak gelir&#xa;(CategoryId, CategoryName)" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1740" y="325" width="220" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- PostDTO -->
+        <mxCell id="edge-dto-post" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dto-layer" target="dto-post">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1480" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="dto-post" value="PostDTO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1590" y="420" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-post-dto-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dto-post" target="desc-post-dto">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-post-dto" value="Blog yazısı DTO&#xa;Properties:&#xa;- int PostId&#xa;- string Title&#xa;- string Content&#xa;- DateTime PublishDate&#xa;- string Status&#xa;- int UserId&#xa;- string AuthorName (join için)&#xa;- int CategoryId&#xa;- string CategoryName (join için)" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1720" y="400" width="250" height="180" as="geometry" />
+        </mxCell>
+        
+        <!-- ProjectDTO -->
+        <mxCell id="edge-dto-project" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dto-layer" target="dto-project">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1480" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="dto-project" value="ProjectDTO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1590" y="600" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-project-dto-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dto-project" target="desc-project-dto">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-project-dto" value="Proje DTO&#xa;Properties:&#xa;- int ProjectId&#xa;- string ProjectName&#xa;- string Description&#xa;- string ImageUrl&#xa;- DateTime ProjectDate&#xa;- string ClientName" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1730" y="590" width="230" height="130" as="geometry" />
+        </mxCell>
+        
+        <!-- ServiceDTO -->
+        <mxCell id="edge-dto-service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dto-layer" target="dto-service">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1480" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="dto-service" value="ServiceDTO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1590" y="740" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-service-dto-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dto-service" target="desc-service-dto">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-service-dto" value="BaseDTO'dan türer&#xa;Ek Properties:&#xa;- string Description&#xa;- string IconClass" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1730" y="735" width="220" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- TeamMemberDTO -->
+        <mxCell id="edge-dto-team" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dto-layer" target="dto-team">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1480" y="860" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="dto-team" value="TeamMemberDTO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="840" width="130" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-team-dto-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dto-team" target="desc-team-dto">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-team-dto" value="BaseDTO'dan türer&#xa;Ek Properties:&#xa;- string Title&#xa;- string ImageUrl&#xa;- string Bio" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="835" width="220" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- CommentDTO -->
+        <mxCell id="edge-dto-comment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dto-layer" target="dto-comment">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1480" y="975" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="dto-comment" value="CommentDTO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1590" y="955" width="110" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-comment-dto-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dto-comment" target="desc-comment-dto">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-comment-dto" value="Yorum DTO&#xa;Properties:&#xa;- int CommentId&#xa;- string AuthorName&#xa;- string AuthorEmail&#xa;- string Content&#xa;- DateTime CommentDate&#xa;- bool IsApproved&#xa;- int PostId&#xa;- int? UserId" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1740" y="940" width="230" height="150" as="geometry" />
+        </mxCell>
+        
+        <!-- UserDTO -->
+        <mxCell id="edge-dto-user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dto-layer" target="dto-user">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1480" y="1130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="dto-user" value="UserDTO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1590" y="1110" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-user-dto-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dto-user" target="desc-user-dto">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-user-dto" value="Kullanıcı DTO&#xa;Properties:&#xa;- int UserId&#xa;- string FullName&#xa;- string Email&#xa;- string PhoneNumber&#xa;- string Password&#xa;- string Role&#xa;- string Bio" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1720" y="1100" width="220" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- Data/Model Layer -->
+        <mxCell id="data-layer" value="Data/Model Layer&#xa;(Database Entities)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="2230" y="180" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- DataContext -->
+        <mxCell id="edge-data-context" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="data-layer" target="data-context">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2300" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="data-context" value="NtpProjeDataContext" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2410" y="260" width="160" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-context-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="data-context" target="desc-context">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-context" value="LINQ to SQL DataContext&#xa;Veritabanı: NtpProjeDB&#xa;Tables:&#xa;- Users, Categories, Posts&#xa;- Projects, Services, TeamMembers&#xa;- Comments" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="2610" y="245" width="240" height="110" as="geometry" />
+        </mxCell>
+        
+        <!-- Category Entity -->
+        <mxCell id="edge-data-category" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="data-layer" target="entity-category">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2300" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="entity-category" value="Category" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2410" y="370" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-entity-category-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="entity-category" target="desc-entity-category">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-entity-category" value="Table: dbo.Categories&#xa;Columns:&#xa;- int CategoryId (PK, Identity)&#xa;- nvarchar(100) CategoryName" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="2540" y="365" width="240" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Post Entity -->
+        <mxCell id="edge-data-post" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="data-layer" target="entity-post">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2300" y="490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="entity-post" value="Post" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2410" y="470" width="70" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-entity-post-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="entity-post" target="desc-entity-post">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-entity-post" value="Table: dbo.Posts&#xa;Columns:&#xa;- int PostId (PK, Identity)&#xa;- nvarchar(200) Title&#xa;- nvarchar(MAX) Content&#xa;- DateTime PublishDate&#xa;- nvarchar(50) Status&#xa;- int UserId (FK)&#xa;- int CategoryId (FK)" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="2520" y="455" width="240" height="150" as="geometry" />
+        </mxCell>
+        
+        <!-- Project Entity -->
+        <mxCell id="edge-data-project" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="data-layer" target="entity-project">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2300" y="640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="entity-project" value="Project" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2410" y="620" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-entity-project-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="entity-project" target="desc-entity-project">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-entity-project" value="Table: dbo.Projects&#xa;Columns:&#xa;- int ProjectId (PK, Identity)&#xa;- nvarchar(200) ProjectName&#xa;- nvarchar(MAX) Description&#xa;- nvarchar(500) ImageUrl&#xa;- DateTime ProjectDate&#xa;- nvarchar(100) ClientName" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="2530" y="615" width="260" height="130" as="geometry" />
+        </mxCell>
+        
+        <!-- Service Entity -->
+        <mxCell id="edge-data-service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="data-layer" target="entity-service">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2300" y="780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="entity-service" value="Service" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2410" y="760" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-entity-service-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="entity-service" target="desc-entity-service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-entity-service" value="Table: dbo.Services&#xa;Columns:&#xa;- int ServiceId (PK, Identity)&#xa;- nvarchar(100) ServiceName&#xa;- nvarchar(MAX) Description&#xa;- nvarchar(50) IconClass" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="2530" y="755" width="250" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- TeamMember Entity -->
+        <mxCell id="edge-data-team" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="data-layer" target="entity-team">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2300" y="890" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="entity-team" value="TeamMember" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2400" y="870" width="110" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-entity-team-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="entity-team" target="desc-entity-team">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-entity-team" value="Table: dbo.TeamMembers&#xa;Columns:&#xa;- int TeamMemberId (PK, Identity)&#xa;- nvarchar(100) Name&#xa;- nvarchar(100) Title&#xa;- nvarchar(500) ImageUrl&#xa;- nvarchar(MAX) Bio" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="2550" y="865" width="250" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Comment Entity -->
+        <mxCell id="edge-data-comment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="data-layer" target="entity-comment">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2300" y="1020" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="entity-comment" value="Comment" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2410" y="1000" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-entity-comment-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="entity-comment" target="desc-entity-comment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-entity-comment" value="Table: dbo.Comments&#xa;Columns:&#xa;- int CommentId (PK, Identity)&#xa;- nvarchar(100) AuthorName&#xa;- nvarchar(100) AuthorEmail&#xa;- nvarchar(MAX) Content&#xa;- DateTime CommentDate&#xa;- bit IsApproved&#xa;- int PostId (FK)&#xa;- int UserId (FK, nullable)" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="2540" y="990" width="270" height="160" as="geometry" />
+        </mxCell>
+        
+        <!-- User Entity -->
+        <mxCell id="edge-data-user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="data-layer" target="entity-user">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2300" y="1190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="entity-user" value="User" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2410" y="1170" width="70" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge-entity-user-desc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="entity-user" target="desc-entity-user">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="desc-entity-user" value="Table: dbo.Users&#xa;Columns:&#xa;- int UserId (PK, Identity)&#xa;- nvarchar(100) FullName&#xa;- nvarchar(100) Email&#xa;- nvarchar(20) PhoneNumber&#xa;- nvarchar(255) Password&#xa;- nvarchar(50) Role&#xa;- nvarchar(MAX) Bio" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="2520" y="1165" width="240" height="150" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+
+

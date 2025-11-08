@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4E5D3674-C686-466D-917F-A7529173D814}</ProjectGuid>
+    <ProjectGuid>{5F6D4674-C686-466D-917F-A7529173D815}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NtpProje.Entities</RootNamespace>
-    <AssemblyName>NtpProje.Entities</AssemblyName>
+    <RootNamespace>NtpProje.DataAccess</RootNamespace>
+    <AssemblyName>NtpProje.DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,17 +42,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\BaseDTO.cs" />
-    <Compile Include="Concrete\CategoryDTO.cs" />
-    <Compile Include="Concrete\PostDTO.cs" />
-    <Compile Include="Concrete\UserDTO.cs" />
-    <Compile Include="Concrete\ProjectDTO.cs" />
-    <Compile Include="Concrete\ServiceDTO.cs" />
-    <Compile Include="Concrete\TeamMemberDTO.cs" />
-    <Compile Include="Concrete\CommentDTO.cs" />
+    <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Concrete\UserRepository.cs" />
+    <Compile Include="Concrete\CategoryRepository.cs" />
+    <Compile Include="Concrete\PostRepository.cs" />
+    <Compile Include="Concrete\ProjectRepository.cs" />
+    <Compile Include="Concrete\ServiceRepository.cs" />
+    <Compile Include="Concrete\TeamMemberRepository.cs" />
+    <Compile Include="Concrete\CommentRepository.cs" />
+    <Compile Include="DataModel\NtpProjeDataContext.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NtpProjeDataContext.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="DataModel\NtpProjeDataContext.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>NtpProjeDataContext.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataModel\NtpProjeDataContext.dbml.layout">
+      <DependentUpon>NtpProjeDataContext.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NtpProje.DTO\NtpProje.DTO.csproj">
+      <Project>{4E5D3674-C686-466D-917F-A7529173D814}</Project>
+      <Name>NtpProje.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
 
