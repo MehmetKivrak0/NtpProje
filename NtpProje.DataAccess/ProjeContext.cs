@@ -1,6 +1,5 @@
-﻿using NtpProje.Entities;   // Adım 6'da yazdığımız User sınıfını bulabilmek için
+using NtpProje.Entities;   // Adım 6'da yazdığımız User sınıfını bulabilmek için
 using System.Data.Entity; // Yüklediğimiz EntityFramework'ü kullan
-using System.Data.Entity.Core.Metadata.Edm;
 
 namespace NtpProje.DataAccess
 {
@@ -11,6 +10,8 @@ namespace NtpProje.DataAccess
         // bir veritabanı bağlantı yolu arayacağını söyler.
         public ProjeContext() : base("name=BaglantiCumlem")
         {
+            // Migration'ları devre dışı bırak, veritabanı yoksa otomatik oluştur
+            Database.SetInitializer(new CreateDatabaseIfNotExists<ProjeContext>());
         }
 
         // Adım 6'da oluşturduğun 'User' sınıfını, veritabanında
