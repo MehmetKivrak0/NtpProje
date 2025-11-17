@@ -42,16 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\BaseDTO.cs" />
-    <Compile Include="Concrete\CategoryDTO.cs" />
-    <Compile Include="Concrete\PostDTO.cs" />
-    <Compile Include="Concrete\UserDTO.cs" />
-    <Compile Include="Concrete\ProjectDTO.cs" />
-    <Compile Include="Concrete\ServiceDTO.cs" />
-    <Compile Include="Concrete\TeamMemberDTO.cs" />
-    <Compile Include="Concrete\CommentDTO.cs" />
+    <Compile Include="Concrete\*.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
-

@@ -4,8 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using NtpProje.Business;
-using NtpProje.Entities;
+
 
 
 namespace NtpProje.pages.Admin
@@ -14,38 +13,12 @@ namespace NtpProje.pages.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // 1. Kullanıcı giriş yapmış mı?
-            if (Session["UserId"] == null)
-            {
-                Response.Redirect("~/Login.aspx");
-                return;
-            }
-            if (Session["UserRole"]?.ToString() != "Admin")
-            {
-                Response.Redirect("~/Login.aspx");
-                return;
-            }
-            if (!IsPostBack)
-            {
-                LoadUserInfo();     // Üst bardaki kullanıcı bilgilerini doldur
-                LoadStatistics();   // İstatistik kutularını doldur
-                LoadBlogYazilari(); // Blog yazı listesini doldur
-                LoadProjeler();     // Proje listesini doldur
-            }
+            
         }
-        PostManager postManager = new PostManager();
         // Topbar'daki (Üst Bar) Admin bilgilerini Session'dan yükler
         private void LoadUserInfo()
         {
-            if (Session["UserFullName"] != null)
-            {
-                ltrUserName.Text = Session["UserFullName"].ToString();
-                ltrUserAvatar.Text = Session["UserFullName"].ToString().Substring(0, 1).ToUpper();
-            }
-            if (Session["UserRole"] != null)
-            {
-                ltrUserRole.Text = Session["UserRole"].ToString();
-            }
+            
         }
         private void LoadStatistics()
         {
@@ -63,7 +36,6 @@ namespace NtpProje.pages.Admin
             try
             {
                 // Business katmanındaki GetPostsForDashboard metodunu çağır
-                rptBlogYazilari.DataSource = postManager.GetPostsForDashboard();
                 rptBlogYazilari.DataBind();
             }
             catch (Exception ex)
@@ -105,37 +77,7 @@ namespace NtpProje.pages.Admin
         protected void rptBlogYazilari_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             // Tıklanan satırın PostId'sini al
-            int postId = Convert.ToInt32(e.CommandArgument);
-
-            // Tıklanan buton "Sil" butonu muydu?
-            if (e.CommandName == "Sil")
-            {
-                try
-                {
-                    // Business katmanındaki DeletePost metodunu çağır
-                    bool sonuc = postManager.DeletePost(postId);
-                    if (sonuc)
-                    {
-                        ShowMessage("Yazı başarıyla silindi.", true);
-                        LoadBlogYazilari(); // Listeyi yenile
-                    }
-                    else
-                    {
-                        ShowMessage("Yazı silinirken bir hata oluştu.", false);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ShowMessage("Silme hatası: " + ex.Message, false);
-                }
-            }
-
-            // Tıklanan buton "Düzenle" butonu muydu?
-            if (e.CommandName == "Duzenle")
-            {
-                // Kullanıcıyı düzenleme sayfasına ID ile yönlendir
-                Response.Redirect($"~/pages/Admin/YaziEkleDuzenle.aspx?PostId={postId}");
-            }
+            
         }
         protected void rptProjeler_ItemCommand(object source, RepeaterCommandEventArgs e)
         {

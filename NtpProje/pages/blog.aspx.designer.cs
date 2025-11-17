@@ -13,5 +13,6 @@ namespace _241613001_Mehmet_Kıvrak_NtpProje.pages
 
     public partial class blog
     {
+        protected global::System.Web.UI.WebControls.Repeater rptBlog;
     }
 }

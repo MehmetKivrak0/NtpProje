@@ -67,3 +67,5 @@ C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje\obj\Debug\NtpProje-Web.cspr
 C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje\obj\Debug\NtpProje.99323C48.Up2Date
 C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje\obj\Debug\NtpProje.dll
 C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje\obj\Debug\NtpProje.pdb
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje\obj\Debug\NtpProje-Web.csproj.AssemblyReference.cache
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje\obj\Debug\NtpProje-Web.csproj.CoreCompileInputs.cache

@@ -14,131 +14,56 @@
 	
 	<!-- Proje Grid -->
 	<div class="proje_grid">
-		<!-- Proje 1: E-Ticaret -->
-		<div class="proje_card">
-			<div class="proje_card_image">
-				<span class="proje_kategori_badge">E-Ticaret</span>
-				<a href="proje_detay.html">
-					<img src="../example/1_s.jpg" alt="E-Ticaret Platformu" />
-				</a>
-			</div>
-			<div class="proje_card_content">
-				<h3 class="proje_card_baslik">E-Ticaret Platformu</h3>
-				<p class="proje_card_aciklama">
-					Modern ve responsive e-ticaret platformu. Ödeme sistemi entegrasyonu, 
-					admin paneli ve gelişmiş stok yönetimi özellikleriyle tam kapsamlı çözüm.
-				</p>
-				<div class="proje_card_footer">
-					<div class="proje_teknolojiler">
-						<span class="teknoloji_tag">ASP.NET</span>
-						<span class="teknoloji_tag">React</span>
-						<span class="teknoloji_tag">SQL</span>
+		<asp:Repeater ID="rptProjeler" runat="server" OnItemDataBound="rptProjeler_ItemDataBound">
+			<ItemTemplate>
+				<div class="proje_card">
+					<div class="proje_card_image">
+						<span class="proje_kategori_badge"><%# Eval("Kategori") %></span>
+						<a href='<%# "proje_detay.aspx?id=" + Eval("Id") %>'>
+							<asp:Image ID="imgProje" runat="server" ImageUrl='<%# Eval("ResimKucuk") %>' 
+								AlternateText='<%# Eval("Baslik") %>' />
+						</a>
 					</div>
-					<a href="proje_detay.html" class="proje_detay_btn">
-						Detaylı İncele <span class="proje_detay_icon">→</span>
-					</a>
-				</div>
-			</div>
-		</div>
-		
-		<!-- Proje 2: Mobil App -->
-		<div class="proje_card">
-			<div class="proje_card_image">
-				<span class="proje_kategori_badge">Mobil Uygulama</span>
-				<a class="grup1" href="../example/2_b.jpg">
-					<img src="../example/2_s.jpg" alt="Mobil Bankacılık App" />
-				</a>
-			</div>
-			<div class="proje_card_content">
-				<h3 class="proje_card_baslik">Mobil Bankacılık Uygulaması</h3>
-				<p class="proje_card_aciklama">
-					iOS ve Android platformları için geliştirilmiş güvenli bankacılık uygulaması. 
-					Biometric authentication ve end-to-end şifreleme.
-				</p>
-				<div class="proje_card_footer">
-					<div class="proje_teknolojiler">
-						<span class="teknoloji_tag">React Native</span>
-						<span class="teknoloji_tag">Node.js</span>
+					<div class="proje_card_content">
+						<h3 class="proje_card_baslik"><%# Eval("Baslik") %></h3>
+						<p class="proje_card_aciklama">
+							<%# Eval("Aciklama") %>
+						</p>
+						<div class="proje_card_footer">
+							<div class="proje_teknolojiler">
+								<asp:Repeater ID="rptTeknolojiler" runat="server">
+									<ItemTemplate>
+										<span class="teknoloji_tag"><%# Container.DataItem %></span>
+									</ItemTemplate>
+								</asp:Repeater>
+							</div>
+							<a href='<%# "proje_detay.aspx?id=" + Eval("Id") %>' class="proje_detay_btn">
+								Detaylı İncele <span class="proje_detay_icon">→</span>
+							</a>
+						</div>
 					</div>
-					<a class="grup1" href="../example/2_b.jpg" class="proje_detay_btn">
-						Görseli Büyüt <span class="proje_detay_icon">🔍</span>
-					</a>
 				</div>
-			</div>
-		</div>
-		
-		<!-- Proje 3: ERP -->
-		<div class="proje_card">
-			<div class="proje_card_image">
-				<span class="proje_kategori_badge">Kurumsal Yazılım</span>
-				<a class="grup1" href="../example/3_b.jpg">
-					<img src="../example/3_s.jpg" alt="ERP Sistemi" />
-				</a>
-			</div>
-			<div class="proje_card_content">
-				<h3 class="proje_card_baslik">Kurumsal ERP Sistemi</h3>
-				<p class="proje_card_aciklama">
-					500+ kullanıcılı entegre ERP sistemi. Finans, İK, stok, 
-					üretim modülleriyle tam kapsamlı işletme yönetim çözümü.
-				</p>
-				<div class="proje_card_footer">
-					<div class="proje_teknolojiler">
-						<span class="teknoloji_tag">.NET Core</span>
-						<span class="teknoloji_tag">Angular</span>
-						<span class="teknoloji_tag">PostgreSQL</span>
-					</div>
-					<a class="grup1" href="../example/3_b.jpg" class="proje_detay_btn">
-						Görseli Büyüt <span class="proje_detay_icon">🔍</span>
-					</a>
-				</div>
-			</div>
-		</div>
-		
-		<!-- Proje 4: Web Portal -->
-		<div class="proje_card">
-			<div class="proje_card_image">
-				<span class="proje_kategori_badge">Web Geliştirme</span>
-				<a class="grup1" href="../example/4_b.jpg">
-					<img src="../example/4_s.jpg" alt="Web Portal" />
-				</a>
-			</div>
-			<div class="proje_card_content">
-				<h3 class="proje_card_baslik">Kurumsal Web Portalı</h3>
-				<p class="proje_card_aciklama">
-					Çok dilli kurumsal web sitesi ve gelişmiş yönetim paneli. 
-					SEO optimizasyonu ve analytics entegrasyonu ile profesyonel çözüm.
-				</p>
-				<div class="proje_card_footer">
-					<div class="proje_teknolojiler">
-						<span class="teknoloji_tag">Vue.js</span>
-						<span class="teknoloji_tag">Laravel</span>
-						<span class="teknoloji_tag">MySQL</span>
-					</div>
-					<a class="grup1" href="../example/4_b.jpg" class="proje_detay_btn">
-						Görseli Büyüt <span class="proje_detay_icon">🔍</span>
-					</a>
-				</div>
-			</div>
-		</div>
+			</ItemTemplate>
+		</asp:Repeater>
 	</div>
 	
 	<!-- İstatistikler -->
 	<div class="projeler_istatistik">
 		<div class="istatistik_grid">
 			<div class="istatistik_item">
-				<span class="istatistik_sayi">150+</span>
+				<asp:Label ID="lblTamamlananProje" runat="server" CssClass="istatistik_sayi" Text="150+"></asp:Label>
 				<span class="istatistik_label">Tamamlanan Proje</span>
 			</div>
 			<div class="istatistik_item">
-				<span class="istatistik_sayi">200+</span>
+				<asp:Label ID="lblMutluMusteri" runat="server" CssClass="istatistik_sayi" Text="200+"></asp:Label>
 				<span class="istatistik_label">Mutlu Müşteri</span>
 			</div>
 			<div class="istatistik_item">
-				<span class="istatistik_sayi">95%</span>
+				<asp:Label ID="lblMusteriMemnuniyeti" runat="server" CssClass="istatistik_sayi" Text="95%"></asp:Label>
 				<span class="istatistik_label">Müşteri Memnuniyeti</span>
 			</div>
 			<div class="istatistik_item">
-				<span class="istatistik_sayi">10+</span>
+				<asp:Label ID="lblYilDeneyim" runat="server" CssClass="istatistik_sayi" Text="10+"></asp:Label>
 				<span class="istatistik_label">Yıl Deneyim</span>
 			</div>
 		</div>
@@ -148,7 +73,7 @@
 	<div class="proje_cta">
 		<h2>Projeniz İçin Teklif Alın</h2>
 		<p>Hayalinizdeki projeyi birlikte gerçeğe dönüştürelim. Ücretsiz danışmanlık ve proje teklifi için bizimle iletişime geçin.</p>
-		<a href="iletisim.html" class="cta_btn">İletişime Geçin</a>
+		<a href="iletisim.aspx" class="cta_btn">İletişime Geçin</a>
 	</div>
 </div>
 

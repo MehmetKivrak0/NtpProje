@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NtpInvt" Class="ınnovateyzlmDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=TUFKIVRAK;Initial Catalog=NtpInvt;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="NtpProje.Data.Properties.Settings" SettingsPropertyName="NtpInvtConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.users" Member="users">
+    <Type Name="user">
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="full_name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="phone_number" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="role" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="bio" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="is_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="created_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="last_login_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="user_comment" Member="comments" ThisKey="user_id" OtherKey="user_id" Type="comment" />
+      <Association Name="user_post" Member="posts" ThisKey="user_id" OtherKey="user_id" Type="post" />
+    </Type>
+  </Table>
+  <Table Name="dbo.categories" Member="categories">
+    <Type Name="category">
+      <Column Name="category_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="category_name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="slug" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="is_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="display_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="category_post_category" Member="post_categories" ThisKey="category_id" OtherKey="category_id" Type="post_category" />
+      <Association Name="category_post" Member="posts" ThisKey="category_id" OtherKey="category_id" Type="post" />
+    </Type>
+  </Table>
+  <Table Name="dbo.comments" Member="comments">
+    <Type Name="comment">
+      <Column Name="comment_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="author_name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="author_email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="content" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="comment_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="is_approved" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="post_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="parent_comment_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="comment_comment" Member="comments" ThisKey="comment_id" OtherKey="parent_comment_id" Type="comment" />
+      <Association Name="comment_comment" Member="comment1" ThisKey="parent_comment_id" OtherKey="comment_id" Type="comment" IsForeignKey="true" />
+      <Association Name="user_comment" Member="user" ThisKey="user_id" OtherKey="user_id" Type="user" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="post_comment" Member="post" ThisKey="post_id" OtherKey="post_id" Type="post" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.contact_messages" Member="contact_messages">
+    <Type Name="contact_message">
+      <Column Name="contact_message_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="full_name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="phone_number" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="subject" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="message" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="is_read" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="is_replied" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="reply_message" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="reply_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="created_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ip_address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.post_categories" Member="post_categories">
+    <Type Name="post_category">
+      <Column Name="post_category_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="post_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="category_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="category_post_category" Member="category" ThisKey="category_id" OtherKey="category_id" Type="category" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="post_post_category" Member="post" ThisKey="post_id" OtherKey="post_id" Type="post" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.posts" Member="posts">
+    <Type Name="post">
+      <Column Name="post_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="slug" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="summary" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="image_url" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="publish_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="created_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="updated_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="view_count" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="reading_time" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="category_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="post_comment" Member="comments" ThisKey="post_id" OtherKey="post_id" Type="comment" />
+      <Association Name="post_post_category" Member="post_categories" ThisKey="post_id" OtherKey="post_id" Type="post_category" />
+      <Association Name="category_post" Member="category" ThisKey="category_id" OtherKey="category_id" Type="category" IsForeignKey="true" />
+      <Association Name="user_post" Member="user" ThisKey="user_id" OtherKey="user_id" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.project_images" Member="project_images">
+    <Type Name="project_image">
+      <Column Name="project_image_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="project_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="image_url" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="thumbnail_url" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="display_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="is_main" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="project_project_image" Member="project" ThisKey="project_id" OtherKey="project_id" Type="project" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.project_requests" Member="project_requests">
+    <Type Name="project_request">
+      <Column Name="project_request_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="company_name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="contact_person" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="phone_number" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="project_details" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="budget" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="estimated_duration" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="is_read" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="quoted_price" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="quoted_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="created_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="updated_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ip_address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.project_technologies" Member="project_technologies">
+    <Type Name="project_technology">
+      <Column Name="project_technology_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="project_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="technology_name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="display_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="project_project_technology" Member="project" ThisKey="project_id" OtherKey="project_id" Type="project" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.projects" Member="projects">
+    <Type Name="project">
+      <Column Name="project_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="project_name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="slug" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="short_description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="image_url" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="thumbnail_url" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="project_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="completion_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="client_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="category" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="is_published" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="display_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="view_count" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="created_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="updated_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="project_project_image" Member="project_images" ThisKey="project_id" OtherKey="project_id" Type="project_image" />
+      <Association Name="project_project_technology" Member="project_technologies" ThisKey="project_id" OtherKey="project_id" Type="project_technology" />
+    </Type>
+  </Table>
+  <Table Name="dbo.service_features" Member="service_features">
+    <Type Name="service_feature">
+      <Column Name="service_feature_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="service_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="feature_name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="display_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="service_service_feature" Member="service" ThisKey="service_id" OtherKey="service_id" Type="service" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.services" Member="services">
+    <Type Name="service">
+      <Column Name="service_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="service_name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="slug" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="short_description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="icon" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="icon_class" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="image_url" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="is_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="display_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="view_count" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="created_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="updated_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="service_service_feature" Member="service_features" ThisKey="service_id" OtherKey="service_id" Type="service_feature" />
+    </Type>
+  </Table>
+  <Table Name="dbo.settings" Member="settings">
+    <Type Name="setting">
+      <Column Name="setting_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="setting_key" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="setting_value" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="setting_type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="updated_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.statistic" Member="statistics">
+    <Type Name="statistic">
+      <Column Name="statistic_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="statistic_key" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="statistic_value" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="statistic_label" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="display_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="is_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="updated_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.team_members" Member="team_members">
+    <Type Name="team_member">
+      <Column Name="team_member_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="position" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="image_url" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="bio" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="phone_number" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="linkedin_url" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="twitter_url" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="github_url" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="is_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="display_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="created_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="updated_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

@@ -52,11 +52,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NtpProje.DTO\NtpProje.DTO.csproj">
+    <ProjectReference Include="..\NtpProje.Entities\NtpProje.Entities.csproj">
       <Project>{4E5D3674-C686-466D-917F-A7529173D814}</Project>
-      <Name>NtpProje.DTO</Name>
+      <Name>NtpProje.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NtpProje.DataAccess\NtpProje.DataAccess.csproj">
+    <ProjectReference Include="..\NtpProje.Data\NtpProje.DataAccess.csproj">
       <Project>{5F6D4674-C686-466D-917F-A7529173D815}</Project>
       <Name>NtpProje.DataAccess</Name>
     </ProjectReference>

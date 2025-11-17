@@ -55,7 +55,7 @@
             </div>
 
             <div style="text-align: center;">
-                <a href="pages/hizmetler.html" class="tumunu_gor_btn">Tüm Hizmetlerimiz →</a>
+                <a href="pages/hizmetler.aspx" class="tumunu_gor_btn">Tüm Hizmetlerimiz →</a>
             </div>
         </div>
 

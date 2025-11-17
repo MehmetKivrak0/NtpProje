@@ -7,11 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace _241613001_Mehmet_Kıvrak_NtpProje
+namespace _241613001_Mehmet_Kıvrak_NtpProje.pages // Kontrol edin!
 {
-
-
-    public partial class ekip
+    public partial class ekip : System.Web.UI.Page // Kontrol edin!
     {
+        protected global::System.Web.UI.WebControls.Repeater rptEkip;
     }
 }

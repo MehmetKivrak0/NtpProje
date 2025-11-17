@@ -13,5 +13,12 @@ namespace _241613001_Mehmet_Kıvrak_NtpProje.pages
 
     public partial class iletisim
     {
+        protected global::System.Web.UI.WebControls.TextBox txtFirmaAdi;
+        protected global::System.Web.UI.WebControls.TextBox txtYetkili;
+        protected global::System.Web.UI.WebControls.TextBox txtTeklifEmail;
+        protected global::System.Web.UI.WebControls.TextBox txtTeklifTelefon; // <-- Eksik olan telefon
+        protected global::System.Web.UI.WebControls.TextBox txtProjeDetay; // <-- Eksik olan detay
+        protected global::System.Web.UI.WebControls.Label lblTeklifMesaj;
+        protected global::System.Web.UI.WebControls.Button btnTeklifIste;
     }
 }

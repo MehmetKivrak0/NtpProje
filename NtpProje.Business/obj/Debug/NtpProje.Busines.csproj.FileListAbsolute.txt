@@ -1,0 +1,12 @@
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Business\bin\Debug\NtpProje.Business.dll
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Business\bin\Debug\NtpProje.Business.pdb
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Business\bin\Debug\NtpProje.Data.dll
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Business\bin\Debug\NtpProje.Entities.dll
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Business\bin\Debug\NtpProje.Data.pdb
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Business\bin\Debug\NtpProje.Data.dll.config
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Business\bin\Debug\NtpProje.Entities.pdb
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Business\obj\Debug\NtpProje.Busines.csproj.AssemblyReference.cache
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Business\obj\Debug\NtpProje.Busines.csproj.CoreCompileInputs.cache
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Business\obj\Debug\NtpProje.B4DF210C.Up2Date
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Business\obj\Debug\NtpProje.Business.dll
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Business\obj\Debug\NtpProje.Business.pdb

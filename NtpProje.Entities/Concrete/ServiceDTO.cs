@@ -5,23 +5,32 @@ namespace NtpProje.Entities.Concrete
 {
     public class ServiceDTO : BaseDTO
     {
-        // BaseDTO'dan Id ve Name gelir (ServiceId, ServiceName)
-        public string Description { get; set; }
-        public string IconClass { get; set; }
+        public int service_id { get; set; }
 
-        public ServiceDTO() { }
+        // DÜZELTME: 'title' yerine 'service_name' kullanýyoruz
+        public string service_name { get; set; }
 
-        public ServiceDTO(int id, string name, string description)
-        {
-            this.Id = id;
-            this.Name = name;
-            this.Description = description;
-        }
+        public string slug { get; set; }
+        public string description { get; set; }
 
-        public override string ToString()
-        {
-            return $"Service: {Name} - {Description}";
-        }
+        // YENÝ ALAN: 'summary' yerine 'short_description' kullanýyoruz
+        public string short_description { get; set; }
+
+        public string icon { get; set; }
+
+        // YENÝ ALAN: 'icon_class'
+        public string icon_class { get; set; }
+
+        // YENÝ ALAN: 'image_url'
+        public string image_url { get; set; }
+
+        public int? display_order { get; set; }
+        public int? view_count { get; set; }
+
+        // is_active, created_date, updated_date BaseDTO'dan gelir.
+        // NOT: UpdatedDate alaný veritabanýnda olduðu için Service katmanýnda kullanýlabilir.
+
+        // Ýliþkili Özellikler
+        // public List<ServiceFeatureDTO> features { get; set; } 
     }
 }
-

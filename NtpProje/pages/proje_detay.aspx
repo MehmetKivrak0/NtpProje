@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper1" style="padding:20px 0px;">
-	<a href="projeler.html" class="geri_buton">← Tüm Projelere Dön</a>
+	<a href="projeler.aspx" class="geri_buton">← Tüm Projelere Dön</a>
 	
 	<div class="proje_detay_wrapper">
 		<div class="proje_baslik">E-Ticaret Platformu - TechMart Online Satış Sitesi</div>
@@ -181,6 +181,6 @@
 		</div>
 	</div>
 	
-	<a href="projeler.html" class="geri_buton">← Tüm Projelere Dön</a>
+	<a href="projeler.aspx" class="geri_buton">← Tüm Projelere Dön</a>
 </div>
 </asp:Content>

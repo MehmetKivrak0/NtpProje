@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper1" style="padding:20px 0px;">
-	<a href="hizmetler.html" class="geri_buton">← Tüm Hizmetlere Dön</a>
+	<a href="hizmetler.aspx" class="geri_buton">← Tüm Hizmetlere Dön</a>
 	
 	<div class="hizmet_detay_wrapper">
 		<!-- Hizmet Başlık -->
@@ -198,8 +198,8 @@
 				<h3>Projenizi Hayata Geçirelim!</h3>
 				<p>Web geliştirme ihtiyaçlarınız için bizimle iletişime geçin. Ücretsiz danışmanlık ve proje teklifi alın.</p>
 				<div class="cta_butonlar">
-					<a href="iletisim.html" class="cta_btn primary">Teklif Alın</a>
-					<a href="projeler.html" class="cta_btn secondary">Projelerimiz</a>
+					<a href="iletisim.aspx" class="cta_btn primary">Teklif Alın</a>
+					<a href="projeler.aspx" class="cta_btn secondary">Projelerimiz</a>
 				</div>
 			</div>
 		</div>
@@ -228,6 +228,6 @@
 		</div>
 	</div>
 	
-	<a href="hizmetler.html" class="geri_buton">← Tüm Hizmetlere Dön</a>
+	<a href="hizmetler.aspx" class="geri_buton">← Tüm Hizmetlere Dön</a>
 </div>
 </asp:Content>

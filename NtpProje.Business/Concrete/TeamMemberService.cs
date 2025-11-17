@@ -1,44 +1,50 @@
+// NtpProje.Business/Concrete/TeamMemberService.cs içinde:
 using NtpProje.Business.Abstract;
 using NtpProje.Data.Concrete;
 using NtpProje.Entities.Concrete;
-using System;
+using NtpProje.Data.DataModel;
 using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace NtpProje.Business.Concrete
 {
     public class TeamMemberService : IBaseService<TeamMemberDTO>
     {
-        private TeamMemberRepository _repository;
+        private readonly TeamMemberRepository _teamRepository = new TeamMemberRepository();
 
-        public TeamMemberService()
+        public List<TeamMemberDTO> GetAll() // <--- CS01061 hatasýný çözer
         {
-            _repository = new TeamMemberRepository();
+            var entities = _teamRepository.GetAll().OrderBy(t => t.display_order);
+            var dtos = new List<TeamMemberDTO>();
+
+            foreach (var entity in entities)
+            {
+                // Entity'den DTO'ya dönüþüm
+                dtos.Add(new TeamMemberDTO
+                {
+                    team_member_id = entity.team_member_id,
+
+                    // DTO (Küçük Harf) = Entity (Küçük Harf)
+                    name = entity.name,
+                    position = entity.position,
+                    image_url = entity.image_url,
+                    linkedin_url = entity.linkedin_url,
+                    github_url = entity.github_url,
+
+                    // Nullable kontrolleri
+                    display_order = entity.display_order ?? 0,
+                    is_active = entity.is_active ?? false
+                    // created_date, updated_date BaseDTO'dan gelir.
+                });
+            }
+            return dtos;
         }
 
-        public List<TeamMemberDTO> GetAll()
-        {
-            return _repository.GetAll();
-        }
-
-        public TeamMemberDTO GetById(int id)
-        {
-            return _repository.GetById(id);
-        }
-
-        public void Add(TeamMemberDTO entity)
-        {
-            _repository.Add(entity);
-        }
-
-        public void Update(TeamMemberDTO entity)
-        {
-            _repository.Update(entity);
-        }
-
-        public void Delete(int id)
-        {
-            _repository.Delete(id);
-        }
+        // Diðer IBaseService metotlarý (Add, Update, Delete, GetById) burada da doldurulmalýdýr.
+        public bool Add(TeamMemberDTO dto) { throw new NotImplementedException(); }
+        public bool Update(TeamMemberDTO dto) { throw new  NotImplementedException(); }
+        public bool Delete(int id) { throw new NotImplementedException(); }
+        public TeamMemberDTO GetById(int id) { throw new  NotImplementedException(); }
     }
 }
-

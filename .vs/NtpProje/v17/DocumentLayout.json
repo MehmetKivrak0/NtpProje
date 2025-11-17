@@ -3,24 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{00000006-0000-0000-0000-000000000000}|NtpProje.Business\\NtpProje.Busines.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje.business\\concrete\\commentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00000006-0000-0000-0000-000000000000}|NtpProje.Business\\NtpProje.Busines.csproj|solutionrelative:ntpproje.business\\concrete\\commentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje\\pages\\projeler.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\projeler.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00000006-0000-0000-0000-000000000000}|NtpProje.Business\\NtpProje.Business-New.csproj|C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\ntpproje.business\\concrete\\commentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00000006-0000-0000-0000-000000000000}|NtpProje.Business\\NtpProje.Business-New.csproj|solutionrelative:ntpproje.business\\concrete\\commentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje\\pages\\hizmetler.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\hizmetler.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\ntpproje\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje\\pages\\hizmetler.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\hizmetler.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
-      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5F6D4674-C686-466D-917F-A7529173D815}|NtpProje.Data\\NtpProje.Data.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje.data\\model\\\u0131nnovateyaz\u0131l\u0131m.dbml||{B465B5AD-8799-4507-B90A-EE29ACF36AF9}|",
-      "RelativeMoniker": "D:0:0:{5F6D4674-C686-466D-917F-A7529173D815}|NtpProje.Data\\NtpProje.Data.csproj|solutionrelative:ntpproje.data\\model\\\u0131nnovateyaz\u0131l\u0131m.dbml||{B465B5AD-8799-4507-B90A-EE29ACF36AF9}|"
+      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje\\pages\\hizmetler.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\hizmetler.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -47,65 +43,54 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CommentService.cs",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Business\\Concrete\\CommentService.cs",
-              "RelativeDocumentMoniker": "NtpProje.Business\\Concrete\\CommentService.cs",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Business\\Concrete\\CommentService.cs",
-              "RelativeToolTip": "NtpProje.Business\\Concrete\\CommentService.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAqwBIAAAAJAAAAAAAAAA==",
+              "Title": "projeler.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\projeler.aspx.cs",
+              "RelativeDocumentMoniker": "NtpProje\\pages\\projeler.aspx.cs",
+              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\projeler.aspx.cs",
+              "RelativeToolTip": "NtpProje\\pages\\projeler.aspx.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAmwC4AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-08T13:38:24.093Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "\u0131nnovateyaz\u0131l\u0131m.dbml",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Data\\Model\\\u0131nnovateyaz\u0131l\u0131m.dbml",
-              "RelativeDocumentMoniker": "NtpProje.Data\\Model\\\u0131nnovateyaz\u0131l\u0131m.dbml",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Data\\Model\\\u0131nnovateyaz\u0131l\u0131m.dbml",
-              "RelativeToolTip": "NtpProje.Data\\Model\\\u0131nnovateyaz\u0131l\u0131m.dbml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001722|",
-              "WhenOpened": "2025-11-08T13:37:29.258Z",
+              "WhenOpened": "2025-11-17T16:59:09.032Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Site.Master",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\Site.Master",
-              "RelativeDocumentMoniker": "NtpProje\\Site.Master",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\Site.Master",
-              "RelativeToolTip": "NtpProje\\Site.Master",
+              "Title": "hizmetler.aspx",
+              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\hizmetler.aspx",
+              "RelativeDocumentMoniker": "NtpProje\\pages\\hizmetler.aspx",
+              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\hizmetler.aspx",
+              "RelativeToolTip": "NtpProje\\pages\\hizmetler.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-08T13:35:55.811Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Login.aspx",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\Login.aspx",
-              "RelativeDocumentMoniker": "NtpProje\\Login.aspx",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\Login.aspx",
-              "RelativeToolTip": "NtpProje\\Login.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-08T13:00:08.23Z",
+              "WhenOpened": "2025-11-17T16:58:48.872Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CommentService.cs",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Business\\Concrete\\CommentService.cs",
-              "RelativeDocumentMoniker": "NtpProje.Business\\Concrete\\CommentService.cs",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Business\\Concrete\\CommentService.cs",
-              "RelativeToolTip": "NtpProje.Business\\Concrete\\CommentService.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAgwDwAAAANAAAAAAAAAA==",
+              "Title": "hizmetler.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\hizmetler.aspx.cs",
+              "RelativeDocumentMoniker": "NtpProje\\pages\\hizmetler.aspx.cs",
+              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\hizmetler.aspx.cs",
+              "RelativeToolTip": "NtpProje\\pages\\hizmetler.aspx.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAcwBUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-08T12:45:18.161Z"
+              "WhenOpened": "2025-11-17T16:56:52.942Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "hizmetler.aspx.designer.cs",
+              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\hizmetler.aspx.designer.cs",
+              "RelativeDocumentMoniker": "NtpProje\\pages\\hizmetler.aspx.designer.cs",
+              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\hizmetler.aspx.designer.cs",
+              "RelativeToolTip": "NtpProje\\pages\\hizmetler.aspx.designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T16:56:30.756Z",
+              "EditorCaption": ""
             }
           ]
         }

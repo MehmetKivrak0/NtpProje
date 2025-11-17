@@ -197,19 +197,19 @@
             <div class="ilgili_yazilar">
                 <h3 class="ilgili_baslik">İlgili Yazılar</h3>
                 <div class="ilgili_yazi_item sol">
-                    <a href="blog_detay.html">
+                    <a href="blog_detay.aspx">
                         <img src="../example/2_s.jpg" alt="Microservices" />
                         <div class="ilgili_yazi_baslik">Microservices Mimarisine Geçiş</div>
                     </a>
                 </div>
                 <div class="ilgili_yazi_item sol">
-                    <a href="blog_detay.html">
+                    <a href="blog_detay.aspx">
                         <img src="../example/3_s.jpg" alt="React" />
                         <div class="ilgili_yazi_baslik">React 18 ile Modern Frontend</div>
                     </a>
                 </div>
                 <div class="ilgili_yazi_item sol">
-                    <a href="blog_detay.html">
+                    <a href="blog_detay.aspx">
                         <img src="../example/4_s.jpg" alt="DevOps" />
                         <div class="ilgili_yazi_baslik">CI/CD Pipeline Kurulumu</div>
                     </a>

@@ -3,56 +3,57 @@ using NtpProje.Data.Concrete;
 using NtpProje.Entities.Concrete;
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
+using NtpProje.Data.DataModel;
 namespace NtpProje.Business.Concrete
 {
     public class PostService : IBaseService<PostDTO>
     {
-        private PostRepository _repository;
+        // TODO: Repository ve Constructor eklenecek.
+        private readonly PostRepository _postRepository;
 
         public PostService()
         {
-            _repository = new PostRepository();
+            _postRepository = new PostRepository();
         }
 
-        public List<PostDTO> GetAll()
+        // Blog Sayfasý Ýçin Özel Metot
+        public List<PostDTO> GetPublishedPosts()
         {
-            return _repository.GetAll();
-        }
-
-        public PostDTO GetById(int id)
-        {
-            return _repository.GetById(id);
-        }
-
-        public List<PostDTO> GetByCategory(int categoryId)
-        {
-            return _repository.GetByCategory(categoryId);
-        }
-
-        public void Add(PostDTO entity)
-        {
-            // Business logic eklenebilir (yayÄ±n tarihi kontrolÃ¼ vb.)
-            if (entity.PublishDate == DateTime.MinValue)
+            try
             {
-                entity.PublishDate = DateTime.Now;
+                // 1. Repository'den yayýnlanmýþ ve aktif olan postlarý çek
+                // Entity adý 'post' olarak varsayýlmýþtýr.
+                var entities = _postRepository.GetAll(p => p.status == "Published") // is_active kontrolü kaldýrýldý
+                                      .OrderByDescending(p => p.publish_date);
+
+                // 2. Entity listesini DTO listesine dönüþtür ve döndür
+                return MapEntitiesToDTOs(entities);
             }
-            if (string.IsNullOrEmpty(entity.Status))
+            catch (Exception)
             {
-                entity.Status = "Taslak";
+                // Geliþtirme/Test aþamasý için hatayý görme
+                // System.Diagnostics.Debug.WriteLine("PostService HATA: " + ex.ToString());
+
+                // Hata oluþtuðunda boþ bir liste döndürerek programýn çökmesini engelle
+                return new List<PostDTO>();
             }
-            _repository.Add(entity);
+
+        }
+        private List<PostDTO> MapEntitiesToDTOs(IEnumerable<Data.DataModel.post> entities)
+        {
+            // MapEntityToDTO metodunun da tanýmlý olmasý gerekir.
+            return entities.Select(MapEntityToDTO).ToList();
         }
 
-        public void Update(PostDTO entity)
+        // DTO'ya Tekil Dönüþüm Metodu (MapEntitiesToDTOs içinde kullanýldýðý için bu da gerekli)
+        private PostDTO MapEntityToDTO(Data.DataModel.post entity)
         {
-            _repository.Update(entity);
+            // Bu metodun içeriði, PostService tam kodunda verilmiþtir.
+            // DTO alanlarýný Entity alanlarýna eþleyen dönüþüm mantýðýný buraya yerleþtirin.
+            throw new NotImplementedException(); // Ya da gerçek dönüþüm mantýðýný doldurun
         }
 
-        public void Delete(int id)
-        {
-            _repository.Delete(id);
-        }
     }
 }
 

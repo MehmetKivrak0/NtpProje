@@ -5,24 +5,19 @@ namespace NtpProje.Entities.Concrete
 {
     public class TeamMemberDTO : BaseDTO
     {
-        // BaseDTO'dan Id ve Name gelir
-        public string Title { get; set; }
-        public string ImageUrl { get; set; }
-        public string Bio { get; set; }
+        public int team_member_id { get; set; }
+        public string name { get; set; } // Küçük harf
+        public string title { get; set; }
+        public string position { get; set; }
+        public string image_url { get; set; }
+        public string bio { get; set; }
+        public string email { get; set; }
+        public string phone_number { get; set; }
+        public string linkedin_url { get; set; }
+        public string twitter_url { get; set; }
+        public string github_url { get; set; }
+        public int? display_order { get; set; } // Nullable olmalý
 
-        public TeamMemberDTO() { }
-
-        public TeamMemberDTO(int id, string name, string title)
-        {
-            this.Id = id;
-            this.Name = name;
-            this.Title = title;
-        }
-
-        public override string ToString()
-        {
-            return $"Team Member: {Name} - {Title}";
-        }
+        // BaseDTO'dan gelenler: created_date, updated_date, is_active
     }
 }
-

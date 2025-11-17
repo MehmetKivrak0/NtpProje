@@ -33,5 +33,16 @@ namespace NtpProje.Data.Properties {
                 return ((string)(this["NtpProjeDBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TUFKIVRAK;Initial Catalog=NtpInvt;Integrated Security=True;Connect Ti" +
+            "meout=30;Encrypt=True;TrustServerCertificate=True")]
+        public string NtpInvtConnectionString {
+            get {
+                return ((string)(this["NtpInvtConnectionString"]));
+            }
+        }
     }
 }

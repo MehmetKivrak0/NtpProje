@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IBaseService.cs" />
+    <Compile Include="Concrete\ContactMessageService.cs" />
+    <Compile Include="Concrete\ProjectRequestService.cs" />
     <Compile Include="Concrete\UserService.cs" />
     <Compile Include="Concrete\CategoryService.cs" />
     <Compile Include="Concrete\PostService.cs" />
@@ -52,13 +54,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NtpProje.Data\NtpProje.Data.csproj">
+      <Project>{5f6d4674-c686-466d-917f-a7529173d815}</Project>
+      <Name>NtpProje.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NtpProje.Entities\NtpProje.Entities.csproj">
       <Project>{4E5D3674-C686-466D-917F-A7529173D814}</Project>
       <Name>NtpProje.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NtpProje.Data\NtpProje.Data.csproj">
-      <Project>{5F6D4674-C686-466D-917F-A7529173D815}</Project>
-      <Name>NtpProje.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
