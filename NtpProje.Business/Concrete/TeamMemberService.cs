@@ -34,7 +34,7 @@ namespace NtpProje.Business.Concrete
 
                     // Nullable kontrolleri
                     display_order = entity.display_order ?? 0,
-                    is_active = entity.is_active ?? false
+                    Is_active = entity.is_active ?? false
                     // created_date, updated_date BaseDTO'dan gelir.
                 });
             }

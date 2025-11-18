@@ -380,10 +380,6 @@
       <Project>{00000006-0000-0000-0000-000000000000}</Project>
       <Name>NtpProje.Busines</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NtpProje.Business\NtpProje.Business.csproj">
-      <Project>{0b524617-84dd-443f-ac04-62b9a8ebb5d7}</Project>
-      <Name>NtpProje.Business</Name>
-    </ProjectReference>
     <ProjectReference Include="..\NtpProje.Entities\NtpProje.Entities.csproj">
       <Project>{9d4d5c0f-4c14-40f1-a7ea-879106d352c9}</Project>
       <Name>NtpProje.Entities</Name>

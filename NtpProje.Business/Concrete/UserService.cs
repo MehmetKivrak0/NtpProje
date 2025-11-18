@@ -5,50 +5,55 @@ using NtpProje.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using NtpProje.Data.DataModel;
-using System.Linq.Expressions;
-using System.Runtime.Remoting.Messaging;
 
 public static class HasPassword
 {
     public static bool VerifyPassword(string enteredPassword, string storedPassword)
     {
-        // Basit bir do��rulama i��lemi (ger&ccedil;ekte daha karma����k olmal��d��r)
+        // Güvenlik: Hashlenmiş şifreler karşılaştırılmalıdır.
         return enteredPassword == storedPassword;
     }
 
     public static string HashPassword(string password)
     {
-        // Basit bir hashleme i��lemi (ger&ccedil;ekte daha karma����k olmal��d��r)
-        return password; // Bu sadece bir yer tutucudur
+        // Gerçek projede SHA256 veya BCrypt kullanılmalıdır.
+        return password;
     }
 }
+
 namespace NtpProje.Business.Concrete
 {
     public class UserService : IBaseService<UserDTO>
     {
         private readonly UserRepository _userRepository;
+
         public UserService()
         {
             _userRepository = new UserRepository();
         }
 
-        //Kayıt İşlemi
+        // ***************************************************************
+        // 1. ÖZEL İŞLEMLER (Register & Login)
+        // ***************************************************************
+
+        // Kayıt İşlemi
         public bool Register(UserDTO userDTO)
         {
-            if (_userRepository.Get(u => u.email == userDTO.email)!= null)
+            if (_userRepository.Get(u => u.email == userDTO.Email) != null)
             {
                 return false; // Eposta Zaten Mevcut
             }
 
-            var hashedPassword = HasPassword.HashPassword(userDTO.password);
+            var hashedPassword = HasPassword.HashPassword(userDTO.Password);
 
-            var newUserEntity = new Data.DataModel.user
+            var newUserEntity = new Data.DataModel.user // Entity tipi küçük harfle 'user'
             {
-                full_name = userDTO.full_name,
-                email = userDTO.email,
+                // DTO (PascalCase) -> Entity (küçük harf)
+                full_name = userDTO.Full_name,
+                email = userDTO.Email,
                 password = hashedPassword,
-                role = "User",
-                is_active = true,
+                role = userDTO.Role ?? "User", // Role yoksa varsayılan "User"
+                is_active = userDTO.Is_active,
                 created_date = DateTime.Now,
             };
 
@@ -56,67 +61,101 @@ namespace NtpProje.Business.Concrete
             return true;
         }
 
-
-
-
-
+        // Giriş İşlemi
         public UserDTO Login(string email, string stringPassword)
         {
             var entity = _userRepository.Get(u => u.email == email);
-            if (entity != null && entity.is_active == true)
+
+            if (entity != null && (entity.is_active ?? false) == true) // Null güvenliği
             {
-               if(HasPassword.VerifyPassword(stringPassword, entity.password))
+                if (HasPassword.VerifyPassword(stringPassword, entity.password))
                 {
                     entity.last_login_date = DateTime.Now;
                     _userRepository.Update(entity);
-                    var userDTO = new UserDTO
-                    {
-                        user_id = entity.user_id,
-                        full_name = entity.full_name,
-                        email = entity.email,
-                        role = entity.role,
-                        is_active = entity.is_active.HasValue ? entity.is_active.Value :false,
-                        last_login_date = entity.last_login_date
-                    };
 
-                    return userDTO;
+                    // Entity'den DTO'ya dönüşüm
+                    return new UserDTO
+                    {
+                        User_id = entity.user_id,
+                        Full_name = entity.full_name,
+                        Email = entity.email,
+                        Role = entity.role,
+                        Is_active = entity.is_active ?? false,
+                        Last_login_date = entity.last_login_date,
+                        Created_date = entity.created_date ?? DateTime.MinValue,
+                    };
                 }
             }
             return null;
         }
 
-        public bool Add(UserDTO dto)
-        {
-            // ... Register metodu zaten bu işi yapıyor, diğer IBaseService metotlarına bakın ...
-            return Register(dto);
-        }
+        // ***************************************************************
+        // 2. IBaseService Metotları (CRUD)
+        // ***************************************************************
+
+        // Add, Register metodunu çağırır.
+        public bool Add(UserDTO dto) { return Register(dto); }
 
         public bool Update(UserDTO dto)
         {
-            // Entity'yi bul, DTO'dan gelen verilerle güncelle (Şifre hariç), Repository.Update() çağır
-            throw new NotImplementedException();
+            var entity = _userRepository.Get(dto.User_id);
+            if (entity == null) return false;
+
+            // Güncellenecek alanlar
+            entity.full_name = dto.Full_name;
+            entity.email = dto.Email;
+            entity.role = dto.Role;
+            entity.is_active = dto.Is_active;
+
+            _userRepository.Update(entity);
+            return true;
         }
 
         public bool Delete(int id)
         {
-            // Kullanıcıyı bul, Repository.Delete() çağır
-            throw new NotImplementedException();
+            var entity = _userRepository.Get(id);
+            if (entity == null) return false;
+
+            _userRepository.Delete(entity);
+            return true;
         }
 
         public UserDTO GetById(int id)
         {
-            // Entity'yi bul, DTO'ya dönüştür ve döndür
-            throw new NotImplementedException();
+            var entity = _userRepository.Get(id);
+            if (entity == null) return null;
+
+            // Entity'den DTO'ya dönüşüm
+            return new UserDTO
+            {
+                User_id = entity.user_id,
+                Full_name = entity.full_name,
+                Email = entity.email,
+                Role = entity.role,
+                Is_active = entity.is_active ?? false,
+                Created_date = entity.created_date ?? DateTime.MinValue,
+                Last_login_date = entity.last_login_date
+            };
         }
 
         public List<UserDTO> GetAll()
         {
-            // Tüm Entity'leri al, List<UserDTO>'ya dönüştür ve döndür
-            throw new NotImplementedException();
+            var entities = _userRepository.GetAll();
+            var dtos = new List<UserDTO>();
+
+            foreach (var entity in entities)
+            {
+                dtos.Add(new UserDTO
+                {
+                    User_id = entity.user_id,
+                    Full_name = entity.full_name,
+                    Email = entity.email,
+                    Role = entity.role,
+                    Is_active = entity.is_active ?? false,
+                    Created_date = entity.created_date ?? DateTime.MinValue,
+                });
+            }
+            return dtos;
         }
-
-
-
     }
 }
-

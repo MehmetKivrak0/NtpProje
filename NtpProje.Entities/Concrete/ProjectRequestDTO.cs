@@ -1,22 +1,22 @@
-﻿using NtpProje.Entities.Abstract;
+﻿// NtpProje.Entities/Concrete/ProjectRequestDTO.cs içinde:
+using NtpProje.Entities.Abstract;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NtpProje.Entities.Concrete
 {
-    public class ProjectRequestDTO :BaseDTO
+    public class ProjectRequestDTO : BaseDTO
     {
-        public int project_request_id { get; set; }
-        public string contact_person { get; set; } // Yetkili Kişi (txtYetkili)
-        public string company_name { get; set; } // Firma Adı (txtFirmaAdi)
-        public string email { get; set; }
-        public string phone_number { get; set; }
-        public string project_details { get; set; } // Proje Detayları (txtProjeDetay)
-        public bool is_read { get; set; } = false; // Admin tarafından okunup okunmadığı
-        public decimal? estimated_duration { get; set; } // Tahmini süre (Admin doldurur, nullable olabilir)
-        public string ip_address { get; set; }
+        // DÜZELTME: Tüm alanlar PascalCase oldu.
+        public int Project_request_id { get; set; } // CS0246 hatasını önlemek için alt çizgi korunabilir
+        public string Contact_person { get; set; }
+        public string Company_name { get; set; }
+        public string Email { get; set; }
+        public string Phone_number { get; set; }
+        public string Project_details { get; set; }
+        public bool Is_read { get; set; } = false;
+        public decimal? Estimated_duration { get; set; }
+        public string Ip_address { get; set; }
+
+        // BaseDTO'dan gelenler: created_date, updated_date, is_active
     }
 }

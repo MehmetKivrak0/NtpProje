@@ -24,23 +24,17 @@ namespace NtpProje.Business.Concrete
                 dtos.Add(new ServiceDTO
                 {
                     service_id = entity.service_id,
-
-                    // DÜZELTME: service_name kullanýldý
                     service_name = entity.service_name,
-
                     slug = entity.slug,
                     description = entity.description,
-
-                    // DÜZELTME: short_description kullanýldý
                     short_description = entity.short_description,
-
                     icon = entity.icon,
                     icon_class = entity.icon_class,
                     image_url = entity.image_url,
                     display_order = entity.display_order,
                     view_count = entity.view_count,
-                    is_active = entity.is_active ?? false // BaseDTO'dan gelen alan
-                    // updated_date BaseDTO'dan geldiði için eklenebilir.
+                    Is_active = entity.is_active ?? false, // DTO'dan gelen alan
+                    Created_date = entity.updated_date ?? DateTime.MinValue
                 });
             }
             return dtos;
@@ -49,14 +43,11 @@ namespace NtpProje.Business.Concrete
         // ADD (Yeni hizmet ekleme)
         public bool Add(ServiceDTO dto)
         {
-            // DÜZELTME: title yerine service_name kontrolü
             if (string.IsNullOrWhiteSpace(dto.service_name)) return false;
 
             var entity = new Data.DataModel.service
             {
-                // DÜZELTME: service_name kullanýldý
                 service_name = dto.service_name,
-
                 slug = dto.slug,
                 description = dto.description,
                 short_description = dto.short_description,
@@ -66,15 +57,46 @@ namespace NtpProje.Business.Concrete
                 display_order = dto.display_order,
                 is_active = true,
                 created_date = DateTime.Now,
-                updated_date = DateTime.Now // Veritabanýnda olduðu için kullanabiliriz
+                updated_date = DateTime.Now
             };
 
             _serviceRepository.Add(entity);
             return true;
         }
 
-        // ... Diðer IBaseService metotlarý (Update, Delete, GetById) da bu alanlarý kullanacak þekilde güncellenmelidir.
-        // Sadece GetById metodu örneði:
+        // UPDATE (Hizmet düzenleme) - TAMAMLANDI
+        public bool Update(ServiceDTO dto)
+        {
+            var entity = _serviceRepository.Get(dto.service_id);
+            if (entity == null) return false;
+
+            // DTO'dan Entity'ye Eþleþtirme
+            entity.service_name = dto.service_name;
+            entity.slug = dto.slug;
+            entity.description = dto.description;
+            entity.short_description = dto.short_description;
+            entity.icon = dto.icon;
+            entity.icon_class = dto.icon_class;
+            entity.image_url = dto.image_url;
+            entity.display_order = dto.display_order;
+            entity.is_active = dto.Is_active; // DTO'dan al
+            entity.updated_date = DateTime.Now;
+
+            _serviceRepository.Update(entity);
+            return true;
+        }
+
+        // DELETE (Hizmet silme) - TAMAMLANDI
+        public bool Delete(int id)
+        {
+            var entity = _serviceRepository.Get(id);
+            if (entity == null) return false;
+
+            _serviceRepository.Delete(entity);
+            return true;
+        }
+
+        // GET BY ID (Detay/Düzenleme için) - TAMAMLANDI
         public ServiceDTO GetById(int id)
         {
             var entity = _serviceRepository.Get(id);
@@ -83,15 +105,18 @@ namespace NtpProje.Business.Concrete
             return new ServiceDTO
             {
                 service_id = entity.service_id,
-                service_name = entity.service_name, // DÜZELTME
-                short_description = entity.short_description, // DÜZELTME
-                // ... tüm alanlar
-                is_active = entity.is_active ?? false
+                service_name = entity.service_name,
+                slug = entity.slug,
+                description = entity.description,
+                short_description = entity.short_description,
+                icon = entity.icon,
+                icon_class = entity.icon_class,
+                image_url = entity.image_url,
+                display_order = entity.display_order,
+                view_count = entity.view_count,
+                Is_active = entity.is_active ?? false,
+                Created_date = entity.created_date ?? DateTime.MinValue
             };
         }
-
-        // ... (Diðer zorunlu IBaseService metotlarý Update ve Delete burada doldurulmalýdýr)
-        public bool Update(ServiceDTO dto) { throw new NotImplementedException(); }
-        public bool Delete(int id) { throw new NotImplementedException(); }
     }
 }

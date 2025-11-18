@@ -10,18 +10,32 @@ using System.Runtime.Remoting.Contexts;
 
 namespace NtpProje.Data.Concrete
 {
-    public class UserRepository : IRepository<UserDTO>
+    public class UserRepository : IRepository<user>
     {
         private readonly ýnnovateyzlmDataContext _context = new ýnnovateyzlmDataContext();
 
 
         public void Add(user entity)
         {
-            _context.users.InsertOnSubmit(entity);
-            _context.SubmitChanges();
+            try
+            {
+                _context.users.InsertOnSubmit(entity);
+                _context.SubmitChanges(); // Hata büyük ihtimalle bu satýrda oluþuyor
+            }
+            catch (Exception ex)
+            {
+                // Output penceresinde hatayý görmek için
+                System.Diagnostics.Debug.WriteLine("VERÝTABANI KAYIT HATASI: " + ex.ToString());
+
+                // Hata durumunda iþlemi geri al (isteðe baðlý ama önerilir)
+                // _context.Transaction.Rollback(); 
+
+                // Hatanýn Business katmanýna sýçramasý için tekrar fýrlat (throw)
+                throw;
+            }
         }
 
-        public void delete(user entity)
+        public void Delete(user entity)
         {
             _context.users.DeleteOnSubmit(entity);
             _context.SubmitChanges();

@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions; // Gerekli olabilir
 using NtpProje.Business.Abstract;
 using NtpProje.Entities.Concrete;
 using NtpProje.Data.Concrete;
 using NtpProje.Data.DataModel;
-
 
 namespace NtpProje.Business.Concrete
 {
@@ -16,18 +14,25 @@ namespace NtpProje.Business.Concrete
     {
         private readonly ProjectRequestRepository _projectRepository;
 
+        // EKLENDİ: Constructor (Yapıcı Metot)
+        public ProjectRequestService()
+        {
+            // CS0649 uyarısını ve Runtime hatalarını çözer.
+            _projectRepository = new ProjectRequestRepository();
+        }
+
         public bool Add(ProjectRequestDTO dto)
         {
-            if (string.IsNullOrWhiteSpace(dto.email)) return false;
+            if (string.IsNullOrWhiteSpace(dto.Email)) return false;
 
             var entity = new Data.DataModel.project_request
             {
-                company_name = dto.company_name,
-                contact_person = dto.contact_person,
-                email = dto.email,
-                phone_number = dto.phone_number,
-                project_details = dto.project_details,
-                ip_address = dto.ip_address,
+                company_name = dto.Company_name,
+                contact_person = dto.Contact_person,
+                email = dto.Email,
+                phone_number = dto.Phone_number,
+                project_details = dto.Project_details,
+                ip_address = dto.Ip_address,
                 is_read = false,
                 created_date = DateTime.Now
             };
@@ -38,14 +43,17 @@ namespace NtpProje.Business.Concrete
 
         public bool Update(ProjectRequestDTO dto)
         {
-            var entity = _projectRepository.Get(dto.project_request_id);
+            var entity = _projectRepository.Get(dto.Project_request_id);
             if (entity == null) return false;
 
             // DTO'dan Entity'ye Eşleştirme (Admin'in güncelleyebileceği alanlar)
-            entity.is_read = dto.is_read;
-            entity.estimated_duration = dto.estimated_duration.HasValue
-                ? dto.estimated_duration.Value.ToString()
+            entity.is_read = dto.Is_read;
+
+            // String/Decimal Dönüşümü Güvenli Yapılır
+            entity.estimated_duration = dto.Estimated_duration.HasValue
+                ? dto.Estimated_duration.Value.ToString()
                 : null;
+
             entity.updated_date = DateTime.Now;
             _projectRepository.Update(entity);
             return true;
@@ -65,17 +73,20 @@ namespace NtpProje.Business.Concrete
             var entity = _projectRepository.Get(id);
             if (entity == null) return null;
 
-            //Entity'den DTO'ya Dönüşüm
+            // Entity'den DTO'ya Dönüşüm (String/Decimal Dönüşümü Güvenli Yapılır)
             return new ProjectRequestDTO
             {
-                project_request_id = entity.project_request_id,
-                company_name = entity.company_name,
-                contact_person = entity.contact_person,
-                email = entity.email,
-                project_details = entity.project_details,
-                is_read = entity.is_read ?? false,
-                estimated_duration = decimal.TryParse(entity.estimated_duration, out decimal duration) ? (decimal?)duration : null,
-                created_date = entity.created_date ?? DateTime.MinValue // Nullable kontrolü
+                Project_request_id = entity.project_request_id,
+                Company_name = entity.company_name,
+                Contact_person = entity.contact_person,
+                Email = entity.email,
+                Project_details = entity.project_details,
+                Is_read = entity.is_read ?? false,
+
+                // String'i decimal'e dönüştürme (TryParse kullanılır)
+                Estimated_duration = decimal.TryParse(entity.estimated_duration, out decimal duration) ? (decimal?)duration : null,
+
+                Created_date = entity.created_date ?? DateTime.MinValue // Nullable kontrolü
             };
         }
 
@@ -85,19 +96,18 @@ namespace NtpProje.Business.Concrete
             var dtos = new List<ProjectRequestDTO>();
 
             // Listeyi dönderken Entity'den DTO'ya Dönüşüm
-
-            foreach(var entity in entities)
+            foreach (var entity in entities)
             {
                 dtos.Add(new ProjectRequestDTO
                 {
-                    project_request_id = entity.project_request_id,
-                    company_name = entity.company_name,
-                    contact_person = entity.contact_person,
-                    email = entity.email,
-                    project_details = entity.project_details,
-                    is_read = entity.is_read ?? false,
-                    estimated_duration = decimal.TryParse(entity.estimated_duration, out decimal duration) ? (decimal?)duration : null,
-                    created_date = entity.created_date ?? DateTime.MinValue // Nullable kontrolü
+                    Project_request_id = entity.project_request_id,
+                    Company_name = entity.company_name,
+                    Contact_person = entity.contact_person,
+                    Email = entity.email,
+                    Project_details = entity.project_details,
+                    Is_read = entity.is_read ?? false,
+                    Estimated_duration = decimal.TryParse(entity.estimated_duration, out decimal duration) ? (decimal?)duration : null,
+                    Created_date = entity.created_date ?? DateTime.MinValue // Nullable kontrolü
                 });
             }
             return dtos;

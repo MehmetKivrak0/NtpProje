@@ -35,7 +35,7 @@ namespace NtpProje.Business.Concrete
                 message = dto.message,
                 ip_address = dto.ip_address,
                 is_read = false, // Yeni mesaj okunmamış kabul edilir
-                created_date = dto.created_date
+                created_date = dto.Created_date
             };
 
             _contactRepository.Add(entity);
@@ -58,7 +58,7 @@ namespace NtpProje.Business.Concrete
                     email = entity.email,
                     subject = entity.subject,
                     is_read = entity.is_read ?? false, // Nullable kontrolü
-                    created_date = entity.created_date ?? DateTime.MinValue
+                    Created_date = entity.created_date ?? DateTime.MinValue
                 });
             }
             return dtos;
@@ -82,7 +82,7 @@ namespace NtpProje.Business.Concrete
                 message = entity.message,
                 subject = entity.subject,
                 is_read = entity.is_read ?? true,
-                created_date = entity.created_date ?? DateTime.MinValue
+                Created_date = entity.created_date ?? DateTime.MinValue
             };
         }
 
