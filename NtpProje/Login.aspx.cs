@@ -33,16 +33,12 @@ namespace NtpProje
                     Session["Role"] = loggedInUser.Role; // Yetkilendirme için kritik
 
                     // 2. Rol Bazlı Yönlendirme
-                    if (loggedInUser.Role == "Admin")
+                    if (loggedInUser.Role == "User")
                     {
                         // Yönetici Paneline yönlendir (Örn: Admin/blog.aspx)
                         Response.Redirect("~/pages/Admin/admin_dashboard.aspx");
                     }
-                    else
-                    {
-                        // Standart kullanıcı ana sayfasına yönlendir
-                        Response.Redirect("~/pages/Admin/UyePaneli.aspx");
-                    }
+                   
 
                 }
                 else
