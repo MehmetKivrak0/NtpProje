@@ -1,4 +1,5 @@
 ﻿using NtpProje.Business.Concrete;
+using NtpProje.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,46 +7,78 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace NtpProje
+namespace NtpProje_Web // Namespace'in NtpProje_Web olduğuna dikkat et
 {
     public partial class Login : System.Web.UI.Page
     {
+        // -------------------------------------------------------------------
+        // 1. EKSİK OLAN KONTROL TANIMLAMALARI (CS0103 Hatasını çözer)
+        // -------------------------------------------------------------------
+       // Varsayım: HTML'de vardı
+
+        // 2. SERVİS TANIMI
         private readonly UserService _userService = new UserService();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // Kullanıcı zaten giriş yapmışsa yönlendir
+            if (Session["AdminUser"] != null)
+            {
+                Response.Redirect("~/pages/Admin/admin_dashboard.aspx");
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            if(Page.IsValid)
+            // Kontrollerin C# tarafında görünür olması için (hata vermesin diye)
+            if (Page.IsValid)
             {
-                string email = txtEmail.Text;
-                string password = txtPassword.Text;
+                string email = txtEmail.Text.Trim();
+                string password = txtPassword.Text.Trim();
 
-                var loggedInUser = _userService.Login(email, password);
+                // lblMessage kontrolünü ekranda göstermeden önce sıfırla
+                if (lblMessage != null) lblMessage.Visible = false;
 
-                if (loggedInUser != null)
+                try
                 {
-                    // Giriş başarılı: Session oluşturma
-                    Session["UserID"] = loggedInUser.User_id;
-                    Session["FullName"] = loggedInUser.Full_name;
-                    Session["Role"] = loggedInUser.Role; // Yetkilendirme için kritik
+                    // Stored Procedure ile kullanıcıyı kontrol et
+                    var loggedInUser = _userService.Login(email, password);
 
-                    // 2. Rol Bazlı Yönlendirme
-                    if (loggedInUser.Role == "User")
+                    if (loggedInUser != null)
                     {
-                        // Yönetici Paneline yönlendir (Örn: Admin/blog.aspx)
-                        Response.Redirect("~/pages/Admin/admin_dashboard.aspx");
-                    }
-                   
+                        // 1. Başarılı Giriş: Session oluşturma (DTO standartlarına uygun)
+                        Session["AdminUser"] = loggedInUser;
+                        Session["UserID"] = loggedInUser.User_id;
+                        Session["FullName"] = loggedInUser.Full_name;
+                        Session["Role"] = loggedInUser.Role;
 
+                        // 2. Rol Bazlı Yönlendirme
+                        if (loggedInUser.Role == "User") // Rol Admin ise yönlendir
+                        {
+                            Response.Redirect("~/pages/Admin/admin_dashboard.aspx");
+                        }
+                       
+                    }
+                    else
+                    {
+                        // Giriş başarısız: Hata mesajı göster
+                        if (lblMessage != null)
+                        {
+                            lblMessage.Text = "Geçersiz e-posta veya şifre.";
+                            lblMessage.Visible = true;
+                        }
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    // Giriş başarısız: Hata mesajı göster
-                    lblMessage.Text = "Geçersiz e-posta veya şifre.";
-                    lblMessage.Visible = true;
+                    // Sistem hatası oluşursa programın durmasını engelle
+                    if (lblMessage != null)
+                    {
+                        lblMessage.Text = "Sistem Hatası oluştu. Lütfen tekrar deneyin.";
+                        lblMessage.Visible = true;
+                    }
+                    // DEBUGGING: Hatayı Visual Studio'nun Output penceresinde görebilirsin
+                    System.Diagnostics.Debug.WriteLine("KRİTİK LOGIN HATA: " + ex.Message + " | Stack: " + ex.StackTrace);
                 }
             }
         }

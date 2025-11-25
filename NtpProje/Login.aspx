@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="NtpProje.Login" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="NtpProje_Web.Login" %>
 
 <!DOCTYPE html>
 <html lang="tr">
@@ -17,44 +16,36 @@
 <body>
     <form id="form1" runat="server">
         <div class="auth-container">
-            <%-- Beyaz Kutu Başlıyor --%>
             <div class="auth-box">
 
-                <%-- Başlık Alanı --%>
                 <div class="auth-header">
                     <div class="auth-logo">GB</div>
                     <h1>Admin Paneli</h1>
                     <p>Hesabınıza Giriş Yapın</p>
                 </div>
 
-                <%-- Hata Mesajı Alanı (auth-box İÇİNDE) --%>
-                <asp:Literal ID="ltrMesaj" runat="server"></asp:Literal>
-
-                <%-- Form Elemanları (auth-box İÇİNDE) --%>
+                <%-- Hata Mesajı Alanı (Label olarak düzenlendi) --%>
+                <asp:Label ID="lblMessage" runat="server" Visible="false" CssClass="alert alert-danger"></asp:Label>
+                
                 <div class="form-group">
-                    <label for="<%= txtEmail.ClientID %>">E-posta Adresi</label>
+                    <asp:Label ID="lblEmail" runat="server" AssociatedControlID="txtEmail">E-posta Adresi</asp:Label>
                     <asp:TextBox ID="txtEmail" runat="server" placeholder="ornek@email.com" CssClass="form-control" TextMode="Email" autocomplete="email"></asp:TextBox>
                 </div>
 
                 <div class="form-group">
-                    <label for="<%= txtPassword.ClientID %>">Şifre</label>
+                    <asp:Label ID="lblPassword" runat="server" AssociatedControlID="txtPassword">Şifre</asp:Label>
                     <div class="password-field">
                         <asp:TextBox ID="txtPassword" runat="server" placeholder="••••••••" CssClass="form-control" TextMode="Password" autocomplete="current-password"></asp:TextBox>
-                        <%-- JS Fonksiyonu düzeltildi --%>
+                        
                         <span class="password-toggle" onclick="togglePassword('<%= txtPassword.ClientID %>')">👁️</span>
                     </div>
                 </div>
 
-                <div class="checkbox-group">
-                    <asp:CheckBox ID="chkRememberMe" runat="server" />
-                    <label for="<%= chkRememberMe.ClientID %>">Beni Hatırla</label>
-                </div>
+              
 
                 <asp:Button ID="btnLogin" runat="server" Text="Giriş Yap" CssClass="btn btn-primary" OnClick="btnLogin_Click" />
 
-                <div class="auth-links">
-                    <a href="#" id="forgotPassword">Şifrenizi mi unuttunuz?</a> <%-- Bu linkin işlevselliği ayrı yapılmalı --%>
-                </div>
+                
 
                 <div class="divider">
                     <span>Veya</span>
@@ -67,22 +58,22 @@
                     </p>
                 </div>
 
-            </div> <%-- auth-box BURADA KAPANIR --%>
-
-            <%-- Ana Sayfaya Dön Linki (auth-box DIŞINDA, auth-container İÇİNDE) --%>
+            </div>
+            
+            <%-- Ana Sayfaya Dön Linki --%>
             <div class="auth-links" style="margin-top: 20px; text-align: center;">
                  <a href="/index.aspx" style="color: #ffffff; text-decoration: none;">← Ana Sayfaya Dön</a>
              </div>
 
-        </div> <%-- auth-container BURADA KAPANIR --%>
+        </div> 
     </form>
 
     <script>
-        // Şifre görünürlük toggle (Düzeltildi: fieldId kullanılacak)
+        // JS Fonksiyonu: togglePassword
         function togglePassword(fieldId) {
-            const passwordInput = document.getElementById(fieldId); // 'password' yerine fieldId kullanıldı
+            const passwordInput = document.getElementById(fieldId);
             const toggleIcon = document.querySelector('.password-toggle');
-            if (!passwordInput || !toggleIcon) return; // Null kontrolü eklendi
+            if (!passwordInput || !toggleIcon) return;
 
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
