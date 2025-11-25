@@ -1,34 +1,33 @@
-using NtpProje.Entities.Abstract;
 using System;
+using NtpProje.Entities.Abstract;
 
 namespace NtpProje.Entities.Concrete
 {
     public class PostDTO : BaseDTO
     {
-        // HATA GÝDERÝLDÝ: PostService.cs (28. satýr) ve blog.aspx.cs (63. satýr) için post_id
-        public int post_id { get; set; }
+        // SQL: post_id --> C#: Id (veya PostId) olmalýdýr
+        public int Id { get; set; }
 
-        // HATA GÝDERÝLDÝ: PostService.cs (29. satýr) ve blog.aspx.cs (60. satýr) için title
-        public string title { get; set; }
+        // SQL: title --> C#: Title olmalýdýr
+        public string Title { get; set; }
 
-        // HATA GÝDERÝLDÝ: blog.aspx.cs (63. satýr) için slug
-        public string slug { get; set; }
+        public string Slug { get; set; }
+        public string Content { get; set; }
+        public string Summary { get; set; }
 
-        public string content { get; set; }
-        public string summary { get; set; }
-        public string image_url { get; set; }
-        public int category_id { get; set; }
-        public int user_id { get; set; }
-        public string status { get; set; }
-        public DateTime publish_date { get; set; }
+        // SQL: image_url --> C#: ImageUrl olmalýdýr
+        public string ImageUrl { get; set; }
 
-        // HATA GÝDERÝLDÝ: blog.aspx.cs (77. satýr) için View_count -> C# kuralýna göre 'ViewCount' veya küçük harfle
-        public int? view_count { get; set; } // Hata resminde 'View_count' geçtiði için bu þekilde varsayýyorum.
+        public int CategoryId { get; set; }
+        public int UserId { get; set; }
+        public string Status { get; set; }
+        public DateTime? PublishDate { get; set; } // Nullable yapýldý
 
-        // HATA GÝDERÝLDÝ: blog.aspx.cs (68. satýr) için CategoryName
+        public int ViewCount { get; set; }
+        public int ReadingTime { get; set; }
+
+        // UI için ekstra alanlar
         public string CategoryName { get; set; }
         public string AuthorFullName { get; set; }
-
-        // created_date, updated_date, is_active BaseDTO'dan gelir.
     }
 }

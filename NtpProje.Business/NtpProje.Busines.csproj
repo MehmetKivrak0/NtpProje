@@ -44,6 +44,8 @@
     <Compile Include="Abstract\IBaseService.cs" />
     <Compile Include="Concrete\ContactMessageService.cs" />
     <Compile Include="Concrete\ProjectRequestService.cs" />
+    <Compile Include="Concrete\SettingService.cs" />
+    <Compile Include="Concrete\StatisticService.cs" />
     <Compile Include="Concrete\UserService.cs" />
     <Compile Include="Concrete\CategoryService.cs" />
     <Compile Include="Concrete\PostService.cs" />

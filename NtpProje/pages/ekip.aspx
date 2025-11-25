@@ -1,54 +1,58 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ekip.aspx.cs" Inherits="_241613001_Mehmet_Kıvrak_NtpProje.ekip" %>
+﻿<%@ Page Title="Ekibimiz" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ekip.aspx.cs" Inherits="NtpProje_Web.Ekip" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-	<link href="../css/genc_birey_stil.css" rel="stylesheet" type="text/css" />
-<link href="../css/ekip.css" rel="stylesheet" type="text/css" />
-</asp:Content>
+    <link href="../css/genc_birey_stil.css" rel="stylesheet" type="text/css" />
+    </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper1 ekip_container">
-	<!-- Hero Bölümü -->
-	<div class="ekip_hero">
-		<h1>Ekibimiz</h1>
-		<p>Deneyimli ve tutkulu yazılım profesyonellerinden oluşan ekibimizle, projelerinizi başarıyla hayata geçiriyoruz. Her biri alanında uzman ekip üyelerimiz ile çözüm ortağınızız.</p>
-	</div>
-	
-	<!-- Ekip Grid -->
-	<div class="ekip_grid">
-		<asp:Repeater ID="rptEkip" runat="server">
-			<ItemTemplate>
-				<div class="ekip_item">
-					<div class="ekip_foto">
-						<asp:Image ID="imgEkip" runat="server" ImageUrl='<%# Eval("Foto") %>' 
-							AlternateText='<%# Eval("Isim") %>' />
-					</div>
-					<div class="ekip_isim"><%# Eval("Isim") %></div>
-					<div class="ekip_pozisyon"><%# Eval("Pozisyon") %></div>
-					<div class="ekip_aciklama"><%# Eval("Aciklama") %></div>
-				</div>
-			</ItemTemplate>
-		</asp:Repeater>
-	</div>
-	
-	<!-- İstatistikler -->
-	<div class="ekip_istatistik">
-		<h2 class="ekip_istatistik_baslik">Ekip İstatistiklerimiz</h2>
-		<div class="ekip_istatistik_grid">
-			<div class="ekip_istatistik_item">
-				<asp:Label ID="lblEkipUyesi" runat="server" CssClass="ekip_istatistik_sayi" Text="50+"></asp:Label>
-				<span class="ekip_istatistik_label">Ekip Üyesi</span>
-			</div>
-			<div class="ekip_istatistik_item">
-				<asp:Label ID="lblSeniorDeveloper" runat="server" CssClass="ekip_istatistik_sayi" Text="15+"></asp:Label>
-				<span class="ekip_istatistik_label">Senior Developer</span>
-			</div>
-			<div class="ekip_istatistik_item">
-				<asp:Label ID="lblSertifikasyon" runat="server" CssClass="ekip_istatistik_sayi" Text="20+"></asp:Label>
-				<span class="ekip_istatistik_label">Sertifikasyon</span>
-			</div>
-			<div class="ekip_istatistik_item">
-				<asp:Label ID="lblMotivasyon" runat="server" CssClass="ekip_istatistik_sayi" Text="100%"></asp:Label>
-				<span class="ekip_istatistik_label">Motivasyon</span>
-			</div>
-		</div>
-	</div>
-</div>
+        
+        <div class="ekip_hero">
+            <h1>Uzman Kadromuz</h1>
+            <p>Projelerinizi hayata geçiren deneyimli ve tutkulu ekibimizle tanışın.</p>
+        </div>
+        
+        <div class="ekip_grid">
+            <asp:Repeater ID="rptEkip" runat="server">    
+                
+                <ItemTemplate>
+                    <div class="ekip_card">
+                        
+                        <div class="ekip_img">
+                            <img src='<%# Eval("Image") %>' alt='<%# Eval("Name") %>' />
+                        </div>
+                        
+                        <div class="ekip_content">
+                            <h3 class="ekip_ad"><%# Eval("Name") %> <%# Eval("Surname") %></h3>
+                            
+                            <span class="ekip_unvan"><%# Eval("Title") %></span>
+                            
+                            <p class="ekip_bio">
+                                <%# Eval("Description") %>    
+                            </p>
+                            
+                            <div class="ekip_social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </ItemTemplate>
+
+                </asp:Repeater>
+
+            <asp:PlaceHolder ID="phEmptyEkip" runat="server" Visible="false">
+                <div style="text-align: center; padding: 50px; width: 100%;">
+                    <p>Henüz ekip üyesi eklenmemiştir.</p>
+                </div>
+            </asp:PlaceHolder>
+        </div>
+        
+        <div class="ekip_cta">
+            <h2>Bizimle Çalışmak İster misiniz?</h2>
+            <div class="cta_buttons">
+                <a href="iletisim.aspx" class="cta_button primary">İletişime Geçin</a>
+            </div>
+        </div>
+    </div>
 </asp:Content>

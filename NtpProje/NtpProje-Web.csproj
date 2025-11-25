@@ -169,7 +169,6 @@
     <Content Include="pages\Admin\IletisimMesajlari.aspx" />
     <Content Include="pages\Admin\KategoriYonetimi.aspx" />
     <Content Include="pages\Admin\Raporlar.aspx" />
-    <Content Include="pages\Admin\UyePaneli.aspx" />
     <Content Include="pages\Admin\admin_dashboard.aspx" />
     <Content Include="pages\Admin\YaziEkleDuzenle.aspx" />
     <Content Include="pages\Admin\YaziYonetimi.aspx" />
@@ -256,13 +255,6 @@
     </Compile>
     <Compile Include="pages\Admin\Raporlar.aspx.designer.cs">
       <DependentUpon>Raporlar.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\Admin\UyePaneli.aspx.cs">
-      <DependentUpon>UyePaneli.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\Admin\UyePaneli.aspx.designer.cs">
-      <DependentUpon>UyePaneli.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\Admin\admin_dashboard.aspx.cs">
       <DependentUpon>admin_dashboard.aspx</DependentUpon>

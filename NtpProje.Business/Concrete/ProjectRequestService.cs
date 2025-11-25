@@ -1,116 +1,147 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions; // Gerekli olabilir
 using NtpProje.Business.Abstract;
-using NtpProje.Entities.Concrete;
-using NtpProje.Data.Concrete;
-using NtpProje.Data.DataModel;
+using NtpProje.Entities.Concrete; // DTO
+using NtpProje.Data.Concrete;     // Repository
+using NtpProje.Data.DataModel;    // Entity (project_request)
 
 namespace NtpProje.Business.Concrete
 {
-    // IBaseService sözleşmesini ProjectRequestDTO ile uyguluyoruz
     public class ProjectRequestService : IBaseService<ProjectRequestDTO>
     {
         private readonly ProjectRequestRepository _projectRepository;
 
-        // EKLENDİ: Constructor (Yapıcı Metot)
         public ProjectRequestService()
         {
-            // CS0649 uyarısını ve Runtime hatalarını çözer.
             _projectRepository = new ProjectRequestRepository();
         }
 
-        public bool Add(ProjectRequestDTO dto)
-        {
-            if (string.IsNullOrWhiteSpace(dto.Email)) return false;
-
-            var entity = new Data.DataModel.project_request
-            {
-                company_name = dto.Company_name,
-                contact_person = dto.Contact_person,
-                email = dto.Email,
-                phone_number = dto.Phone_number,
-                project_details = dto.Project_details,
-                ip_address = dto.Ip_address,
-                is_read = false,
-                created_date = DateTime.Now
-            };
-
-            _projectRepository.Add(entity);
-            return true;
-        }
-
-        public bool Update(ProjectRequestDTO dto)
-        {
-            var entity = _projectRepository.Get(dto.Project_request_id);
-            if (entity == null) return false;
-
-            // DTO'dan Entity'ye Eşleştirme (Admin'in güncelleyebileceği alanlar)
-            entity.is_read = dto.Is_read;
-
-            // String/Decimal Dönüşümü Güvenli Yapılır
-            entity.estimated_duration = dto.Estimated_duration.HasValue
-                ? dto.Estimated_duration.Value.ToString()
-                : null;
-
-            entity.updated_date = DateTime.Now;
-            _projectRepository.Update(entity);
-            return true;
-        }
-
-        public bool Delete(int id)
-        {
-            var entity = _projectRepository.Get(id);
-            if (entity == null) return false;
-
-            _projectRepository.Delete(entity);
-            return true;
-        }
-
-        public ProjectRequestDTO GetById(int id)
-        {
-            var entity = _projectRepository.Get(id);
-            if (entity == null) return null;
-
-            // Entity'den DTO'ya Dönüşüm (String/Decimal Dönüşümü Güvenli Yapılır)
-            return new ProjectRequestDTO
-            {
-                Project_request_id = entity.project_request_id,
-                Company_name = entity.company_name,
-                Contact_person = entity.contact_person,
-                Email = entity.email,
-                Project_details = entity.project_details,
-                Is_read = entity.is_read ?? false,
-
-                // String'i decimal'e dönüştürme (TryParse kullanılır)
-                Estimated_duration = decimal.TryParse(entity.estimated_duration, out decimal duration) ? (decimal?)duration : null,
-
-                Created_date = entity.created_date ?? DateTime.MinValue // Nullable kontrolü
-            };
-        }
-
+        // 1. GET ALL
         public List<ProjectRequestDTO> GetAll()
         {
             var entities = _projectRepository.GetAll();
             var dtos = new List<ProjectRequestDTO>();
 
-            // Listeyi dönderken Entity'den DTO'ya Dönüşüm
             foreach (var entity in entities)
             {
-                dtos.Add(new ProjectRequestDTO
-                {
-                    Project_request_id = entity.project_request_id,
-                    Company_name = entity.company_name,
-                    Contact_person = entity.contact_person,
-                    Email = entity.email,
-                    Project_details = entity.project_details,
-                    Is_read = entity.is_read ?? false,
-                    Estimated_duration = decimal.TryParse(entity.estimated_duration, out decimal duration) ? (decimal?)duration : null,
-                    Created_date = entity.created_date ?? DateTime.MinValue // Nullable kontrolü
-                });
+                dtos.Add(MapEntityToDTO(entity));
             }
             return dtos;
+        }
+
+        // 2. GET BY ID
+        public ProjectRequestDTO GetById(int id)
+        {
+            var entity = _projectRepository.GetAll().FirstOrDefault(p => p.project_request_id == id);
+            return entity != null ? MapEntityToDTO(entity) : null;
+        }
+
+        // 3. ADD
+        public bool Add(ProjectRequestDTO dto)
+        {
+            try
+            {
+                var entity = new project_request
+                {
+                    company_name = dto.CompanyName,
+                    contact_person = dto.AuthorizedPerson,
+                    email = dto.Email,
+                    phone_number = dto.Phone,
+                    project_details = dto.ProjectDetails,
+                    status = dto.Status ?? "Pending",
+                    created_date = DateTime.Now,
+                    is_read = false,
+                    ip_address = dto.IpAddress,
+
+                    // DÜZELTME: Artık ikisi de decimal olduğu için direkt atıyoruz.
+                    // Çevirme işlemine gerek yok.
+                    budget = dto.Budget,
+                    quoted_price = dto.QuotedPrice,
+
+                    // Duration string olduğu için direkt atanır
+                    estimated_duration = dto.EstimatedDuration,
+                    notes = dto.Notes
+                };
+
+                _projectRepository.Add(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        // 4. UPDATE
+        public bool Update(ProjectRequestDTO dto)
+        {
+            try
+            {
+                var entity = _projectRepository.GetAll().FirstOrDefault(p => p.project_request_id == dto.Id);
+                if (entity == null) return false;
+
+                entity.is_read = dto.IsRead;
+                entity.status = dto.Status;
+                entity.notes = dto.Notes;
+
+                // DÜZELTME: Direkt atama (Sayı -> Sayı)
+                entity.quoted_price = dto.QuotedPrice;
+
+                entity.quoted_date = dto.QuotedDate;
+                entity.updated_date = DateTime.Now;
+
+                _projectRepository.Update(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        // 5. DELETE
+        public bool Delete(int id)
+        {
+            try
+            {
+                var entity = _projectRepository.GetAll().FirstOrDefault(p => p.project_request_id == id);
+                if (entity == null) return false;
+
+                _projectRepository.Delete(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        // --- MAPPING YARDIMCISI ---
+        private ProjectRequestDTO MapEntityToDTO(project_request entity)
+        {
+            return new ProjectRequestDTO
+            {
+                Id = entity.project_request_id,
+                CompanyName = entity.company_name,
+                AuthorizedPerson = entity.contact_person,
+                Email = entity.email,
+                Phone = entity.phone_number,
+                ProjectDetails = entity.project_details,
+                Status = entity.status,
+
+                // DÜZELTME: Direkt atama (Sayı -> Sayı)
+                Budget = entity.budget,
+                QuotedPrice = entity.quoted_price,
+
+                EstimatedDuration = entity.estimated_duration,
+                IsRead = entity.is_read ?? false,
+                Notes = entity.notes,
+
+                QuotedDate = entity.quoted_date,
+                IpAddress = entity.ip_address,
+                RequestDate = entity.created_date ?? DateTime.MinValue
+            };
         }
     }
 }

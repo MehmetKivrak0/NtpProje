@@ -5,14 +5,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace _241613001_Mehmet_Kıvrak_NtpProje
+namespace NtpProje_Web
 {
     public partial class Site : System.Web.UI.MasterPage
     {
-        public string AktifSayfaAdi { get; private set; } = "";
+        // HTML tarafında kullandığın <%= AktifSayfaAdi %> değişkeni
+        public string AktifSayfaAdi { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            AktifSayfaAdi = System.IO.Path.GetFileName(Request.Path).ToLower();
+            // Sayfa her yüklendiğinde, şu an hangi sayfadayız onu buluyoruz
+            // Örn: "iletisim.aspx"
+            string path = Request.AppRelativeCurrentExecutionFilePath;
+            AktifSayfaAdi = System.IO.Path.GetFileName(path);
         }
     }
 }

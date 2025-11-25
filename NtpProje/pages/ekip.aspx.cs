@@ -1,41 +1,58 @@
-﻿using NtpProje.Business.Concrete;
-using NtpProje.Entities.Concrete;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.UI;
+using System.Web.UI.WebControls;
+using NtpProje.Business.Concrete;
+using NtpProje.Entities.Concrete;
 
-namespace _241613001_Mehmet_Kıvrak_NtpProje.pages
+namespace NtpProje_Web
 {
-    // Inherits kısmındaki sınıf adınızın 'ekip' olduğunu varsayıyoruz.
-    public partial class ekip : System.Web.UI.Page
+    // HATA BURADAYDI: ": System.Web.UI.Page" eklendi.
+    public partial class Ekip : System.Web.UI.Page
     {
-        private readonly TeamMemberService _teamMemberService = new TeamMemberService();
+        // Designer dosyası çalışmazsa diye elle tanımlıyoruz (Garanti Çözüm)
+        
+        // TeamMemberService servisini çağırıyoruz (Senin proje yapına göre ismini yazdım)
+        private TeamMemberService _teamService = new TeamMemberService();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                BindTeamMembers();
+                EkipListele();
             }
         }
 
-        private void BindTeamMembers()
+        private void EkipListele()
         {
             try
             {
-                // 1. Ekip üyelerini Service katmanından al
-                // TeamMemberService.GetAll() metodu, List<TeamMemberDTO> döndürmelidir.
-                List<TeamMemberDTO> ekipUyeleri = _teamMemberService.GetAll();
+                // Veritabanından üyeleri çek
+                var ekipUyeleri = _teamService.GetAll();
 
-                // 2. Repeater'a bağla
+                // Repeater'a bağla
+                // Not: HTML tarafında ID="rptEkip" olmalı
                 rptEkip.DataSource = ekipUyeleri;
                 rptEkip.DataBind();
+
+                // Veri yoksa "Üye bulunamadı" mesajını göster
+                if (ekipUyeleri == null || ekipUyeleri.Count == 0)
+                {
+                    phEmptyEkip.Visible = true;
+                    rptEkip.Visible = false;
+                }
+                else
+                {
+                    phEmptyEkip.Visible = false;
+                    rptEkip.Visible = true;
+                }
             }
             catch (Exception ex)
             {
-                // Hata oluşursa Response.Write ile gösterin veya loglayın
-                System.Diagnostics.Debug.WriteLine("EKİP ÜYELERİ YÜKLEME HATASI: " + ex.ToString());
+                // Hata durumunda ekrana yazdır (Geliştirme aşaması için)
+                Response.Write("Hata: " + ex.Message);
             }
         }
     }

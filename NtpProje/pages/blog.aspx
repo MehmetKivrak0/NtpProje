@@ -1,18 +1,17 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="blog.aspx.cs" Inherits="_241613001_Mehmet_Kıvrak_NtpProje.pages.blog" %>
+﻿<%@ Page Title="Blog" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="blog.aspx.cs" Inherits="NtpProje_Web.Blog" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../css/genc_birey_stil.css" rel="stylesheet" type="text/css" />
     <link href="../css/blog.css" rel="stylesheet" type="text/css" />
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper1 blog_container">
-        <!-- Hero Bölümü -->
         <div class="blog_hero">
             <h1>Teknoloji & Yazılım Blogu</h1>
             <p>Yazılım dünyasındaki son gelişmeler, en iyi uygulamalar ve teknik makalelerle sizleri bilgilendiriyoruz. Ekibimizin deneyimlerinden faydalanın.</p>
         </div>
 
-        <!-- Blog Grid -->
         <div class="blog_grid">
             <asp:Repeater ID="rptBlog" runat="server" OnItemDataBound="rptBlog_ItemDataBound">
                 <ItemTemplate>
@@ -23,6 +22,7 @@
                         </div>
                         <div class="blog_content">
                             <h2 class="blog_baslik"><%# Eval("Baslik") %></h2>
+                            
                             <div class="blog_meta">
                                 <div>
                                     <asp:Repeater ID="rptKategoriler" runat="server">
@@ -33,9 +33,11 @@
                                 </div>
                                 <span>📅 <%# Eval("Tarih", "{0:dd MMMM yyyy}") %></span>
                             </div>
+                            
                             <p class="blog_ozet">
                                 <%# Eval("Ozet") %>
                             </p>
+                            
                             <div class="blog_footer">
                                 <div class="blog_yazar">✍️ <%# Eval("Yazar") %></div>
                                 <a href='<%# "blog_detay.aspx?id=" + Eval("Id") %>' class="blog_devami">Devamını Oku</a>
@@ -44,6 +46,12 @@
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
+
+            <asp:PlaceHolder ID="phEmptyBlog" runat="server" Visible="false">
+                <div style="text-align: center; padding: 50px; grid-column: 1 / -1;">
+                    <p>Henüz yayınlanmış bir blog yazısı bulunmamaktadır.</p>
+                </div>
+            </asp:PlaceHolder>
         </div>
     </div>
 

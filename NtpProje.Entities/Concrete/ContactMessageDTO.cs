@@ -1,23 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NtpProje.Entities.Abstract;
-using NtpProje.Entities.Concrete;
 
 namespace NtpProje.Entities.Concrete
 {
-    public class ContactMessageDTO :BaseDTO
+    public class ContactMessageDTO : BaseDTO
     {
-        public int contact_message_id { get; set; }
-        public string full_name { get; set; }
-        public string email { get; set; }
-        public string phone_number { get; set; }
-        public string subject { get; set; } // Konu
-        public string message { get; set; }
-        public bool is_read { get; set; } = false; // Admin tarafından okunup okunmadığı
-        public DateTime? reply_date { get; set; } // Cevap tarihi (nullable olmalı)
-        public string ip_address { get; set; }
+        // SQL: contact_message_id
+        public int Id { get; set; }
+
+        // SQL: full_name
+        public string NameSurname { get; set; }
+
+        // SQL: email
+        public string Email { get; set; }
+
+        // SQL: phone_number
+        public string Phone { get; set; }
+
+        // SQL: subject
+        public string Subject { get; set; }
+
+        // SQL: message
+        public string Message { get; set; }
+
+        // SQL: is_read
+        public bool IsRead { get; set; }
+
+        // SQL: created_date
+        public DateTime CreatedDate { get; set; }
+
+        // SQL: ip_address
+        public string IpAddress { get; set; }
+
+        // --- EKSİK OLANLAR EKLENDİ ---
+        // SQL: is_replied
+        public bool IsReplied { get; set; }
+
+        // SQL: reply_message
+        public string ReplyMessage { get; set; }
+
+        // SQL: reply_date
+        public DateTime? ReplyDate { get; set; }
     }
 }

@@ -797,3 +797,11 @@ table tr:hover {
     }
 }
 
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #7f8c8d;
+    font-size: 14px;
+}
+

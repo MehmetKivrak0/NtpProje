@@ -1,253 +1,191 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="_241613001_Mehmet_Kıvrak_NtpProje.Site" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="NtpProje_Web.Site" %>
 
 <!DOCTYPE html>
-
 <html>
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Ana Sayfa - Yazılım Şirketi</title>
-    <link href="css/genc_birey_stil.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/index.css" />
+    <title>Genç Birey Yazılım</title>
 
-    <!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
+    <link href="<%= ResolveUrl("~/css/genc_birey_stil.css") %>" rel="stylesheet" type="text/css" />
+    <link href="<%= ResolveUrl("~/css/base.css") %>" rel="stylesheet" />
+    <link href="<%= ResolveUrl("~/css/index.css") %>" rel="stylesheet" />
 
-    <script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="scripts/frontend/contentslider.js"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/scripts/jquery-1.7.2.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/scripts/frontend/contentslider.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/scripts/jquery.flow.1.2.js") %>"></script>
 
     <script>
         $(function () {
             var ajaximages = [
-                'uploads/12-1000x406.jpg',
-                'uploads/11-1000x406.jpg',
+                '<%= ResolveUrl("~/uploads/12-1000x406.jpg") %>',
+                '<%= ResolveUrl("~/uploads/11-1000x406.jpg") %>',
             ];
             var imagestext = ['', ''];
             var caption_text = ['Bottom', 'Top'];
             var sudoSlider = $("#sudoslider1").sudoSlider({
-                fade: true,
-                auto: true,
-                speed: 500,
-                pause: 3000,
-                prevNext: true,
-                numeric: false,
-                continuous: true,
-                crossFade: false,
-                responsive: true,
+                fade: true, auto: true, speed: 500, pause: 3000, prevNext: true,
+                numeric: false, continuous: true, crossFade: false, responsive: true,
                 ajax: ajaximages,
                 ajaxLoadFunction: function (t) {
-                    $(this)
-                        .css("position", "relative")
-                        .append('<div class="caption ' + caption_text[t - 1] + '"><div class="capt-in">' + imagestext[t - 1] + '</div></div>');
+                    $(this).css("position", "relative").append('<div class="caption ' + caption_text[t - 1] + '"><div class="capt-in">' + imagestext[t - 1] + '</div></div>');
                 },
-                beforeAniFunc: function (t) {
-                    $(this).children('.caption').hide();
-                },
-                afterAniFunc: function (t) {
-                    $(this).children('.caption').slideDown(400);
-                }
+                beforeAniFunc: function (t) { $(this).children('.caption').hide(); },
+                afterAniFunc: function (t) { $(this).children('.caption').slideDown(400); }
+            });
+        });
+
+        $(document).ready(function () {
+            $("#myController").jFlow({
+                slides: "#slides",
+                controller: ".jFlowControl",
+                slideWrapper: "#jFlowSlide",
+                selectedWrapper: "jFlowSelected",
+                auto: true,
+                width: "262px",
+                height: "324px",
+                duration: 400,
+                prev: ".jFlowPrev",
+                next: ".jFlowNext"
             });
         });
     </script>
 
-    <script language="javascript" type="text/javascript" src="jquery.flow.1.2.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#myController").jFlow({
-                slides: "#slides",
-                controller: ".jFlowControl", // must be class, use . sign
-                slideWrapper: "#jFlowSlide", // must be id, use # sign
-                selectedWrapper: "jFlowSelected",  // just pure text, no sign
-                auto: true,		//auto change slide, default true
-                width: "262px",
-                height: "324px",
-                duration: 400,
-                prev: ".jFlowPrev", // must be class, use . sign
-                next: ".jFlowNext" // must be class, use . sign
-            });
-        });
-    </script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <div class="wrapper">
-        <div id="ust_alan">
-            <div class="sol">
-                <a href='<%= ResolveUrl("~/index.aspx") %>' class="genc_birey_logo">
-                    <img src='<%= ResolveUrl("~/images/logo/logo.png") %>' alt="Genç Birey Logo"></a>
-            </div>
-            <div class="sag" style="padding-top: 15px;">
-                <div class="ust_navigation_bar">
-                    <ul class="ust_navigation_menu">
+    <form id="form1" runat="server">
 
-                        <li class='<%= (AktifSayfaAdi == "index.aspx" || AktifSayfaAdi == "index.aspx") ? "active" : "" %>'>
-                            <a href="/index.aspx">Anasayfa</a>
-                        </li>
-
-                        <li class='<%= (AktifSayfaAdi == "hakkimizda.aspx") ? "active" : "" %>'>
-                            <a href="/pages/hakkimizda.aspx">Hakkımızda</a>
-                        </li>
-
-                        <li class='<%= (AktifSayfaAdi == "projeler.aspx" || AktifSayfaAdi == "proje_detay.aspx") ? "active" : "" %>'>
-                            <a href="/pages/projeler.aspx">Projeler</a>
-                        </li>
-
-                        <li class='<%= (AktifSayfaAdi == "iletisim.aspx") ? "active" : "" %>'>
-                            <a href="/pages/iletisim.aspx">İletişim</a>
-                        </li>
-
-                        <li class='<%= (AktifSayfaAdi == "login.aspx" || AktifSayfaAdi == "register.aspx") ? "active" : "" %>'>
-                            <a href='<%= ResolveUrl("~/Login.aspx") %>' style="color: #87257b; font-weight: bold;">🔐 Admin</a>                        </li>
-
-                        <li class="social"><a href="#" class="social_facebook" title="Facebook'tan takip edin.."></a></li>
-                        <li class="social"><a href="#" class="social_twitter" title="Twitter'dan takip edin.."></a></li>
-                        <li class="social"><a href="#" class="social_google_plus" title="Google+'dan takip edin.."></a></li>
-                    </ul>
-                    <div class="clear"></div>
-                </div>
-                <div class="ust_alan_adres">
-                    Kıbrıs Şehitleri Cd. No:48 K:6 - 601 / Alsancak - İzmir<br />
-                    Telefon : +90 232 464 1 184 / +90 232 464 1 183
-                </div>
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
-    <div class="menu_golgelik">
         <div class="wrapper">
-            <ul class="navigation_menu">
-
-                <li class='<%= (AktifSayfaAdi == "index.aspx") ? "active" : "" %>'>
-                    <a href="/index.aspx">ANA SAYFA</a>
-                </li>
-                <li class="menu_break"></li>
-
-
-                <li class='<%= (AktifSayfaAdi == "hizmetler.aspx" || AktifSayfaAdi == "hizmet_detay.aspx") ? "active" : "" %>'>
-                    <a href="/pages/hizmetler.aspx">HİZMETLERİMİZ</a>
-                </li>
-                <li class="menu_break"></li>
-
-
-                <li class='<%= (AktifSayfaAdi == "projeler.aspx" || AktifSayfaAdi == "proje_detay.aspx") ? "active" : "" %>'>
-                    <a href="/pages/projeler.aspx">PROJELER</a>
-                </li>
-                <li class="menu_break"></li>
-
-
-                <li class='<%= (AktifSayfaAdi == "ekip.aspx") ? "active" : "" %>'>
-                    <a href="/pages/ekip.aspx">EKİBİMİZ</a>
-                </li>
-                <li class="menu_break"></li>
-
-
-                <li class='<%= (AktifSayfaAdi == "blog.aspx" || AktifSayfaAdi == "blog_detay.aspx") ? "active" : "" %>'>
-                    <a href="/pages/blog.aspx">BLOG</a>
-                </li>
-                <li class="menu_break"></li>
-
-
-                <li class='<%= (AktifSayfaAdi == "iletisim.aspx") ? "active" : "" %>'>
-                    <a href="/pages/iletisim.aspx">İLETİŞİM</a>
-                </li>
-            </ul>
+            <div id="ust_alan">
+                <div class="sol">
+                    <a href='<%= ResolveUrl("~/index.aspx") %>' class="genc_birey_logo">
+                        <img src='<%= ResolveUrl("~/images/logo/logo.png") %>' alt="Genç Birey Logo">
+                    </a>
+                </div>
+                <div class="sag" style="padding-top: 15px;">
+                    <div class="ust_navigation_bar">
+                        <ul class="ust_navigation_menu">
+                            <li class='<%= (AktifSayfaAdi == "index.aspx") ? "active" : "" %>'>
+                                <a href='<%= ResolveUrl("~/index.aspx") %>'>Anasayfa</a>
+                            </li>
+                            <li class='<%= (AktifSayfaAdi == "hakkimizda.aspx") ? "active" : "" %>'>
+                                <a href='<%= ResolveUrl("~/pages/hakkimizda.aspx") %>'>Hakkımızda</a>
+                            </li>
+                            <li class='<%= (AktifSayfaAdi == "projeler.aspx") ? "active" : "" %>'>
+                                <a href='<%= ResolveUrl("~/pages/projeler.aspx") %>'>Projeler</a>
+                            </li>
+                            <li class='<%= (AktifSayfaAdi == "iletisim.aspx") ? "active" : "" %>'>
+                                <a href='<%= ResolveUrl("~/pages/iletisim.aspx") %>'>İletişim</a>
+                            </li>
+                            <li class='<%= (AktifSayfaAdi == "login.aspx") ? "active" : "" %>'>
+                                <a href='<%= ResolveUrl("~/Login.aspx") %>' style="color: #87257b; font-weight: bold;">🔐 Admin</a>
+                            </li>
+                            
+                            <li class="social"><a href="#" class="social_facebook" title="Facebook"></a></li>
+                            <li class="social"><a href="#" class="social_twitter" title="Twitter"></a></li>
+                            <li class="social"><a href="#" class="social_google_plus" title="Google+"></a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ust_alan_adres">
+                        Kıbrıs Şehitleri Cd. No:48 K:6 - 601 / Alsancak - İzmir<br />
+                        Telefon : +90 232 464 1 184 / +90 232 464 1 183
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
         </div>
-    </div>
 
+        <div class="menu_golgelik">
+            <div class="wrapper">
+                <ul class="navigation_menu">
+                    <li class='<%= (AktifSayfaAdi == "index.aspx") ? "active" : "" %>'>
+                        <a href='<%= ResolveUrl("~/index.aspx") %>'>ANA SAYFA</a>
+                    </li>
+                    <li class="menu_break"></li>
 
+                    <li class='<%= (AktifSayfaAdi == "hizmetler.aspx") ? "active" : "" %>'>
+                        <a href='<%= ResolveUrl("~/pages/hizmetler.aspx") %>'>HİZMETLERİMİZ</a>
+                    </li>
+                    <li class="menu_break"></li>
 
-    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-    </asp:ContentPlaceHolder>
+                    <li class='<%= (AktifSayfaAdi == "projeler.aspx") ? "active" : "" %>'>
+                        <a href='<%= ResolveUrl("~/pages/projeler.aspx") %>'>PROJELER</a>
+                    </li>
+                    <li class="menu_break"></li>
 
-    <div>
+                    <li class='<%= (AktifSayfaAdi == "ekip.aspx") ? "active" : "" %>'>
+                        <a href='<%= ResolveUrl("~/pages/ekip.aspx") %>'>EKİBİMİZ</a>
+                    </li>
+                    <li class="menu_break"></li>
+
+                    <li class='<%= (AktifSayfaAdi == "blog.aspx") ? "active" : "" %>'>
+                        <a href='<%= ResolveUrl("~/pages/blog.aspx") %>'>BLOG</a>
+                    </li>
+                    <li class="menu_break"></li>
+
+                    <li class='<%= (AktifSayfaAdi == "iletisim.aspx") ? "active" : "" %>'>
+                        <a href='<%= ResolveUrl("~/pages/iletisim.aspx") %>'>İLETİŞİM</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
         <div class="footer">
             <div class="wrapper">
                 <div class="footer_content">
-                    <!-- Hakkımızda -->
+                    
                     <div class="footer_kolon footer_hakkinda">
                         <h3>Genç Birey Yazılım</h3>
-                        <p>
-                            Yazılım sektöründe 10 yılı aşkın deneyimimizle, modern teknolojiler kullanarak işletmelerin dijital dönüşüm süreçlerinde yanlarında oluyoruz.
-                        </p>
-                        <p>
-                            Web, mobil, kurumsal yazılım ve e-ticaret platformları geliştirme konusunda uzmanız.
-                        </p>
+                        <p>Yazılım sektöründe 10 yılı aşkın deneyimimizle yanınızdayız.</p>
                         <div class="footer_sosyal">
                             <div class="footer_sosyal_butonlar">
-                                <a href="#" class="footer_sosyal_btn" title="Facebook">
-                                    <img src="images/social_facebook.png" alt="Facebook" />
-                                </a>
-                                <a href="#" class="footer_sosyal_btn" title="Twitter">
-                                    <img src="images/social_twitter.png" alt="Twitter" />
-                                </a>
-                                <a href="#" class="footer_sosyal_btn" title="Google Plus">
-                                    <img src="images/social_google_plus.png" alt="Google Plus" />
-                                </a>
+                                <a href="#" class="footer_sosyal_btn"><img src='<%= ResolveUrl("~/images/social_facebook.png") %>' /></a>
+                                <a href="#" class="footer_sosyal_btn"><img src='<%= ResolveUrl("~/images/social_twitter.png") %>' /></a>
+                                <a href="#" class="footer_sosyal_btn"><img src='<%= ResolveUrl("~/images/social_google_plus.png") %>' /></a>
                             </div>
                         </div>
                     </div>
-                    <!-- Hızlı Linkler -->
+
                     <div class="footer_kolon footer_linkler">
                         <h3>Hızlı Linkler</h3>
                         <ul>
                             <li><a href='<%= ResolveUrl("~/index.aspx") %>'>Anasayfa</a></li>
-                            <li><a href='<%= ResolveUrl("~/pages/hakkimizda.aspx") %>'>Hakkımızda</a></li>
                             <li><a href='<%= ResolveUrl("~/pages/hizmetler.aspx") %>'>Hizmetlerimiz</a></li>
                             <li><a href='<%= ResolveUrl("~/pages/projeler.aspx") %>'>Projeler</a></li>
                             <li><a href='<%= ResolveUrl("~/pages/ekip.aspx") %>'>Ekibimiz</a></li>
-                            <li><a href='<%= ResolveUrl("~/pages/blog.aspx") %>'>Blog</a></li>
                             <li><a href='<%= ResolveUrl("~/pages/iletisim.aspx") %>'>İletişim</a></li>
                         </ul>
                     </div>
 
-                    <!-- Hizmetler -->
-                    <div class="footer_kolon footer_linkler">
-                        <h3>Hizmetlerimiz</h3>
-                        <ul>
-                            <li><a href="pages/hizmetler.html#web">Web Geliştirme</a></li>
-                            <li><a href="pages/hizmetler.html#mobil">Mobil Uygulama</a></li>
-                            <li><a href="pages/hizmetler.html#erp">ERP Yazılımları</a></li>
-                            <li><a href="pages/hizmetler.html#eticaret">E-Ticaret</a></li>
-                            <li><a href="pages/hizmetler.html#cloud">Cloud Çözümleri</a></li>
-                            <li><a href="pages/hizmetler.html#ai">Yapay Zeka</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- İletişim -->
                     <div class="footer_kolon footer_iletisim">
                         <h3>İletişim</h3>
                         <div class="footer_iletisim_item">
-                            <span class="footer_iletisim_icon">📍</span>
-                            <span>Kıbrıs Şehitleri Cd. No:48 K:6 - 601 / Alsancak - İzmir</span>
+                            <span>📍 Kıbrıs Şehitleri Cd. No:48 K:6 - 601 / İzmir</span>
                         </div>
                         <div class="footer_iletisim_item">
-                            <span class="footer_iletisim_icon">📞</span>
-                            <span>+90 232 464 1 184<br />
-                                +90 232 464 1 183</span>
+                            <span>📞 +90 232 464 1 184</span>
                         </div>
                         <div class="footer_iletisim_item">
-                            <span class="footer_iletisim_icon">📧</span>
-                            <span>info@gencbirey.com</span>
-                        </div>
-                        <div class="footer_iletisim_item">
-                            <span class="footer_iletisim_icon">🕐</span>
-                            <span>Pzt-Cuma: 09:00 - 18:00</span>
+                            <span>📧 info@gencbirey.com</span>
                         </div>
                     </div>
+
                 </div>
 
                 <div class="footer_alt">
                     <div class="footer_copyright">
                         © 2025 Genç Birey Yazılım. Tüm hakları saklıdır.
                     </div>
-                    <div class="footer_admin">
-                        <a href="pages/Admin/login.html" class="footer_admin_link">🔐 Admin Girişi</a>
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+
+    </form> </body>
 </html>
