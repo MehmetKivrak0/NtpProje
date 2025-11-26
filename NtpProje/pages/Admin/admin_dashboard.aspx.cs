@@ -23,12 +23,12 @@ namespace NtpProje.pages.Admin
         private void LoadStatistics()
         {
             // Bu veriler normalde Business katmanından çekilir
-            // Örnek: ltrBlogYazisi.Text = postManager.GetTotalPostCount().ToString();
+            // Örnek: ltrBlogSayisi.Text = postManager.GetTotalPostCount().ToString();
             // Şimdilik sabit (statik) verilerle dolduruyoruz:
-            ltrToplamSayfa.Text = "15"; // Örnek
-            ltrBlogYazisi.Text = "48"; // Örnek
-            ltrToplamZiyaretci.Text = "2543"; // Örnek
-            ltrYeniMesaj.Text = "12"; // Örnek
+            ltrBlogSayisi.Text = "48"; // Örnek
+            ltrYeniMesajSayisi.Text = "12"; // Örnek
+            ltrHizmetSayisi.Text = "8"; // Örnek
+            ltrProjeSayisi.Text = "27"; // Örnek
         }
 
         private void LoadBlogYazilari()

@@ -42,40 +42,6 @@
             </div>
         </div>
 
-        <div class="degerler_section">
-            <h2 class="degerler_baslik">Değerlerimiz</h2>
-            <div class="degerler_grid">
-                <div class="deger_item">
-                    <span class="deger_icon">💎</span>
-                    <h3>Kalite</h3>
-                    <p>Her projede en yüksek kalite standartlarını uygularız</p>
-                </div>
-                <div class="deger_item">
-                    <span class="deger_icon">🤝</span>
-                    <h3>Güvenilirlik</h3>
-                    <p>Sözleştiğimiz teslim tarihlerine ve kaliteye sadık kalırız</p>
-                </div>
-                <div class="deger_item">
-                    <span class="deger_icon">🚀</span>
-                    <h3>İnovasyon</h3>
-                    <p>Sürekli yeni teknolojiler ve yöntemler araştırırız</p>
-                </div>
-                <div class="deger_item">
-                    <span class="deger_icon">🎨</span>
-                    <h3>Yaratıcılık</h3>
-                    <p>Her projeye özgün ve yaratıcı çözümler üretiriz</p>
-                </div>
-                <div class="deger_item">
-                    <span class="deger_icon">📈</span>
-                    <h3>Büyüme</h3>
-                    <p>Müşterilerimizin büyümesine katkı sağlarız</p>
-                </div>
-                <div class="deger_item">
-                    <span class="deger_icon">🌟</span>
-                    <h3>Mükemmellik</h3>
-                    <p>Her detayda mükemmelliği hedefleriz</p>
-                </div>
-            </div>
-        </div>
+       
     </div>
 </asp:Content>

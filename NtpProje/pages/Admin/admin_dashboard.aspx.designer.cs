@@ -195,40 +195,40 @@ namespace NtpProje.pages.Admin
         protected global::System.Web.UI.WebControls.Literal ltrUserRole;
 
         /// <summary>
-        /// ltrToplamSayfa control.
+        /// ltrBlogSayisi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrToplamSayfa;
+        protected global::System.Web.UI.WebControls.Literal ltrBlogSayisi;
 
         /// <summary>
-        /// ltrBlogYazisi control.
+        /// ltrYeniMesajSayisi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrBlogYazisi;
+        protected global::System.Web.UI.WebControls.Literal ltrYeniMesajSayisi;
 
         /// <summary>
-        /// ltrToplamZiyaretci control.
+        /// ltrHizmetSayisi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrToplamZiyaretci;
+        protected global::System.Web.UI.WebControls.Literal ltrHizmetSayisi;
 
         /// <summary>
-        /// ltrYeniMesaj control.
+        /// ltrProjeSayisi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrYeniMesaj;
+        protected global::System.Web.UI.WebControls.Literal ltrProjeSayisi;
 
         /// <summary>
         /// btnYeniYaziEkle control.
