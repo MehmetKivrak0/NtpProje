@@ -17,22 +17,14 @@ namespace NtpProje_Web
         protected global::System.Web.UI.WebControls.Repeater rptProjeler;
         protected global::System.Web.UI.WebControls.PlaceHolder phEmptyProject; // HTML'e eklediğimiz placeholder
 
-        // İstatistik Labelları
-        protected global::System.Web.UI.WebControls.Label lblTamamlananProje;
-        protected global::System.Web.UI.WebControls.Label lblMutluMusteri;
-        protected global::System.Web.UI.WebControls.Label lblMusteriMemnuniyeti;
-        protected global::System.Web.UI.WebControls.Label lblYilDeneyim;
-
         // Servisi çağırıyoruz
         private readonly ProjectService _projectService = new ProjectService();
-        private readonly StatisticService _statisticService = new StatisticService();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 LoadProjeler();
-                LoadIstatistikler();
             }
         }
 
@@ -63,43 +55,6 @@ namespace NtpProje_Web
             }
         }
 
-        private void LoadIstatistikler()
-        {
-            // 1. ADIM: Önce hepsini varsayılan olarak "0" yapalım.
-            // Böylece veritabanında veri yoksa ekranda sahte "150+" yazısı kalmaz.
-            if (lblTamamlananProje != null) lblTamamlananProje.Text = "0";
-            if (lblMutluMusteri != null) lblMutluMusteri.Text = "0";
-            if (lblMusteriMemnuniyeti != null) lblMusteriMemnuniyeti.Text = "%0";
-            if (lblYilDeneyim != null) lblYilDeneyim.Text = "0";
-
-            try
-            {
-                // 2. ADIM: Veritabanından verileri çekmeye çalış
-                var stats = _statisticService.GetAll();
-
-                if (stats != null && stats.Count > 0)
-                {
-                    // Veri varsa üzerine yaz (Yoksa yukarıdaki "0"lar kalır)
-
-                    var stat1 = stats.FirstOrDefault(s => s.Key == "project_count");
-                    if (stat1 != null && lblTamamlananProje != null) lblTamamlananProje.Text = stat1.Value;
-
-                    var stat2 = stats.FirstOrDefault(s => s.Key == "happy_clients");
-                    if (stat2 != null && lblMutluMusteri != null) lblMutluMusteri.Text = stat2.Value;
-
-                    var stat3 = stats.FirstOrDefault(s => s.Key == "satisfaction_rate");
-                    if (stat3 != null && lblMusteriMemnuniyeti != null) lblMusteriMemnuniyeti.Text = stat3.Value;
-
-                    var stat4 = stats.FirstOrDefault(s => s.Key == "years_experience");
-                    if (stat4 != null && lblYilDeneyim != null) lblYilDeneyim.Text = stat4.Value;
-                }
-            }
-            catch
-            {
-                // Hata olursa hiçbir şey yapma, ekranda "0" görünmeye devam etsin.
-            }
-        }
-
         protected void rptProjeler_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
@@ -123,6 +78,29 @@ namespace NtpProje_Web
                     rptTeknolojiler.DataBind();
                 }
             }
+        }
+
+        // Resim URL'sini düzenle (sadece dosya adıysa /images/ prefix'i ekle)
+        protected string GetImageUrl(object imageUrl)
+        {
+            if (imageUrl == null || string.IsNullOrEmpty(imageUrl.ToString()))
+                return ResolveUrl("~/images/default-project.jpg");
+
+            string url = imageUrl.ToString();
+            
+            // Eğer zaten tam URL ise (http:// veya / ile başlıyorsa) olduğu gibi döndür
+            if (url.StartsWith("http://") || url.StartsWith("https://") || url.StartsWith("/"))
+            {
+                // Eğer /images/ ile başlamıyorsa ve sadece dosya adı gibi görünüyorsa
+                if (!url.Contains("/") && !url.StartsWith("http"))
+                {
+                    return ResolveUrl("~/images/" + url);
+                }
+                return url;
+            }
+            
+            // Sadece dosya adı ise /images/ prefix'i ekle
+            return ResolveUrl("~/images/" + url);
         }
     }
 }

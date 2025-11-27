@@ -17,11 +17,12 @@
                 <ItemTemplate>
                     <div class="blog_item">
                         <div class="blog_resim">
-                            <asp:Image ID="imgBlog" runat="server" ImageUrl='<%# Eval("Resim") %>' 
-                                AlternateText='<%# Eval("Baslik") %>' />
+                            <asp:Image ID="imgBlog" runat="server" 
+                                ImageUrl='<%# GetImageUrl(Eval("ImageUrl")) %>' 
+                                AlternateText='<%# Eval("Title") %>' />
                         </div>
                         <div class="blog_content">
-                            <h2 class="blog_baslik"><%# Eval("Baslik") %></h2>
+                            <h2 class="blog_baslik"><%# Eval("Title") %></h2>
                             
                             <div class="blog_meta">
                                 <div>
@@ -31,15 +32,15 @@
                                         </ItemTemplate>
                                     </asp:Repeater>
                                 </div>
-                                <span>📅 <%# Eval("Tarih", "{0:dd MMMM yyyy}") %></span>
+                                <span>📅 <%# Eval("PublishDate", "{0:dd MMMM yyyy}") %></span>
                             </div>
                             
                             <p class="blog_ozet">
-                                <%# Eval("Ozet") %>
+                                <%# Eval("Summary") %>
                             </p>
                             
                             <div class="blog_footer">
-                                <div class="blog_yazar">✍️ <%# Eval("Yazar") %></div>
+                                <div class="blog_yazar">✍️ <%# Eval("AuthorFullName") %></div>
                                 <a href='<%# "blog_detay.aspx?id=" + Eval("Id") %>' class="blog_devami">Devamını Oku</a>
                             </div>
                         </div>

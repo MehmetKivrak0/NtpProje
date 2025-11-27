@@ -4,110 +4,227 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NtpProje.Business.Concrete; // Servisler
+using NtpProje.Entities.Concrete; // DTO'lar
 
-
-
-namespace NtpProje.pages.Admin
+namespace NtpProje_Web.Admin // DİKKAT: HTML'deki Inherits ile aynı olmalı
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class admin_dashboard : System.Web.UI.Page
     {
+        // ---------------------------------------------------------
+        // MANUEL TANIMLAMALAR (Designer hatasına karşı)
+        // ---------------------------------------------------------
+        protected global::System.Web.UI.WebControls.Repeater rptRecentActivities;
+        protected global::System.Web.UI.WebControls.PlaceHolder phEmptyActivities;
+        protected global::System.Web.UI.WebControls.Label lblProjectCount;
+        protected global::System.Web.UI.WebControls.Label lblUserName;
+        protected global::System.Web.UI.WebControls.Label lblUserRole;
+        protected global::System.Web.UI.WebControls.Label lblUserInitials;
+
+        // Servisleri Çağırıyoruz
+        private readonly PostService _postService = new PostService();
+        private readonly CommentService _commentService = new CommentService();
+        private readonly ProjectRequestService _projectRequestService = new ProjectRequestService();
+        private readonly UserService _userService = new UserService();
+        private readonly ProjectService _projectService = new ProjectService();
+
+        // Label tanımlamaları (Designer hatası için)
+       
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            // Güvenlik kontrolü (Master Page'de olsa bile burada da durabilir)
+            if (Session["AdminUser"] == null)
+            {
+                Response.Redirect("~/Login.aspx");
+                return;
+            }
+
+            if (!IsPostBack)
+            {
+                LoadUserInfo();
+                LoadDashboardStats();
+                LoadRecentActivities();
+            }
         }
-        // Topbar'daki (Üst Bar) Admin bilgilerini Session'dan yükler
+
         private void LoadUserInfo()
         {
-            
-        }
-        private void LoadStatistics()
-        {
-            // Bu veriler normalde Business katmanından çekilir
-            // Örnek: ltrBlogSayisi.Text = postManager.GetTotalPostCount().ToString();
-            // Şimdilik sabit (statik) verilerle dolduruyoruz:
-            ltrBlogSayisi.Text = "48"; // Örnek
-            ltrYeniMesajSayisi.Text = "12"; // Örnek
-            ltrHizmetSayisi.Text = "8"; // Örnek
-            ltrProjeSayisi.Text = "27"; // Örnek
-        }
-
-        private void LoadBlogYazilari()
-        {
             try
             {
-                // Business katmanındaki GetPostsForDashboard metodunu çağır
-                rptBlogYazilari.DataBind();
+                // Session'dan kullanıcı bilgilerini al
+                var adminUser = Session["AdminUser"] as UserDTO;
+                
+                if (adminUser != null)
+                {
+                    // Kullanıcı adı ve soyadı
+                    string fullName = adminUser.Full_name ?? "Kullanıcı";
+                    if (lblUserName != null)
+                        lblUserName.Text = fullName;
+
+                    // Kullanıcı rolü
+                    string role = adminUser.Role ?? "Yönetici";
+                    if (lblUserRole != null)
+                        lblUserRole.Text = role;
+
+                    // Kullanıcı baş harfleri (Avatar için)
+                    string initials = GetInitials(fullName);
+                    if (lblUserInitials != null)
+                        lblUserInitials.Text = initials;
+                }
+                else
+                {
+                    // Session'da kullanıcı yoksa varsayılan değerler
+                    if (lblUserName != null)
+                        lblUserName.Text = "Kullanıcı";
+                    if (lblUserRole != null)
+                        lblUserRole.Text = "Yönetici";
+                    if (lblUserInitials != null)
+                        lblUserInitials.Text = "K";
+                }
             }
             catch (Exception ex)
             {
-                ShowMessage("Blog yazıları yüklenirken hata oluştu: " + ex.Message, false);
+                System.Diagnostics.Debug.WriteLine("LoadUserInfo Hata: " + ex.Message);
             }
         }
-        private void LoadProjeler()
+
+        private string GetInitials(string fullName)
+        {
+            if (string.IsNullOrWhiteSpace(fullName))
+                return "K";
+
+            string[] parts = fullName.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            
+            if (parts.Length == 0)
+                return "K";
+            
+            if (parts.Length == 1)
+                return parts[0].Substring(0, 1).ToUpper();
+            
+            // İlk ve son kelimenin baş harfleri
+            return (parts[0].Substring(0, 1) + parts[parts.Length - 1].Substring(0, 1)).ToUpper();
+        }
+
+        private void LoadDashboardStats()
         {
             try
             {
-                // (Gelecekte ProjectManager sınıfı yazılınca burası doldurulacak)
-                // var projeler = projectManager.GetProjectsForDashboard();
-                // rptProjeler.DataSource = projeler;
-                rptProjeler.DataSource = null; // Şimdilik boş
-                rptProjeler.DataBind();
+                // 1. Toplam Blog Yazısı
+                // Eğer null dönerse hata vermemesi için ? operatörü kullanıyoruz
+                var posts = _postService.GetAll();
+                int totalPosts = posts != null ? posts.Count : 0;
+                lblTotalPosts.Text = totalPosts.ToString();
+
+                // Proje sayısını da hesapla (pasta grafiği için)
+                var projects = _projectService.GetAll();
+                int totalProjects = projects != null ? projects.Count : 0;
+                if (lblProjectCount != null)
+                    lblProjectCount.Text = totalProjects.ToString();
+
+                // 2. Onay Bekleyen Yorumlar
+                var comments = _commentService.GetAll();
+                // IsApproved alanı false olanları say
+                int pendingComments = comments != null ? comments.Count(c => !c.IsApproved) : 0;
+                lblNewComments.Text = pendingComments.ToString();
+
+                // 3. Okunmamış Proje Teklifleri
+                var requests = _projectRequestService.GetAll();
+                // IsRead alanı false olanları say
+                int unreadRequests = requests != null ? requests.Count(r => !r.IsRead) : 0;
+                lblProjectRequests.Text = unreadRequests.ToString();
+
+                // 4. Toplam Kullanıcı Sayısı
+                var users = _userService.GetAll();
+                lblTotalUsers.Text = users != null ? users.Count.ToString() : "0";
             }
             catch (Exception ex)
             {
-                ShowMessage("Projeler yüklenirken hata oluştu: " + ex.Message, false);
+                // Hata olursa "-" yazsın
+                lblTotalPosts.Text = "-";
+                lblNewComments.Text = "-";
+                lblProjectRequests.Text = "-";
+                lblTotalUsers.Text = "-";
+
+                System.Diagnostics.Debug.WriteLine("Dashboard Hata: " + ex.Message);
             }
         }
-        protected void lnkCikisYap_Click(object sender, EventArgs e)
-        {
-            // 1. Sunucudaki hafızayı (Session) temizle
-            Session.Clear();    // Tüm Session verilerini sil
-            Session.Abandon();  // Oturumu tamamen sonlandır
 
-            // 2. Kullanıcıyı Login sayfasına yönlendir
-            // Login.aspx'in ana dizinde olduğunu varsayıyorum.
-            Response.Redirect("~/Login.aspx");
+        private void LoadRecentActivities()
+        {
+            try
+            {
+                var activities = new List<ActivityItem>();
+
+                // Son eklenen blog yazıları (Son 5)
+                var recentPosts = _postService.GetAll()
+                    .OrderByDescending(p => p.PublishDate ?? DateTime.MinValue)
+                    .Take(5)
+                    .ToList();
+
+                foreach (var post in recentPosts)
+                {
+                    activities.Add(new ActivityItem
+                    {
+                        Icon = "📝",
+                        IconColor = "#63207c",
+                        Title = "Yeni Blog Yazısı: " + post.Title,
+                        Meta = "Kategori: " + (post.CategoryName ?? "Belirtilmemiş"),
+                        Date = post.PublishDate?.ToString("dd MMMM yyyy HH:mm") ?? "Tarih belirtilmemiş"
+                    });
+                }
+
+                // Son eklenen projeler (Son 5) - ID'ye göre sırala (en yeni üstte)
+                var recentProjects = _projectService.GetAll()
+                    .OrderByDescending(p => p.Id)
+                    .Take(5)
+                    .ToList();
+
+                foreach (var project in recentProjects)
+                {
+                    string projectDate = project.CompletionDate.HasValue 
+                        ? project.CompletionDate.Value.ToString("dd MMMM yyyy")
+                        : "Tarih belirtilmemiş";
+                    
+                    activities.Add(new ActivityItem
+                    {
+                        Icon = "💼",
+                        IconColor = "#28a745",
+                        Title = "Yeni Proje: " + project.Title,
+                        Meta = "Kategori: " + (project.Category ?? "Belirtilmemiş") + (string.IsNullOrEmpty(project.ClientName) ? "" : " | Müşteri: " + project.ClientName),
+                        Date = projectDate
+                    });
+                }
+
+                // Tarihe göre sırala (en yeni üstte)
+                activities = activities.OrderByDescending(a => a.Date).Take(10).ToList();
+
+                if (rptRecentActivities != null)
+                {
+                    rptRecentActivities.DataSource = activities;
+                    rptRecentActivities.DataBind();
+                }
+
+                if (phEmptyActivities != null)
+                {
+                    phEmptyActivities.Visible = (activities == null || activities.Count == 0);
+                    if (rptRecentActivities != null)
+                        rptRecentActivities.Visible = !(activities == null || activities.Count == 0);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Recent Activities Hata: " + ex.Message);
+            }
         }
 
-        protected void btnYeniYaziEkle_Click (object sender ,EventArgs e)
+        // Activity Item için yardımcı sınıf
+        public class ActivityItem
         {
-            Response.Redirect("~/pages/Admin/YaziEkleDuzenle.aspx");
+            public string Icon { get; set; }
+            public string IconColor { get; set; }
+            public string Title { get; set; }
+            public string Meta { get; set; }
+            public string Date { get; set; }
         }
-
-        protected void rptBlogYazilari_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            // Tıklanan satırın PostId'sini al
-            
-        }
-        protected void rptProjeler_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            int projeId = Convert.ToInt32(e.CommandArgument);
-
-            // (Gelecekte ProjectManager sınıfı yazılınca burası doldurulacak)
-
-            ShowMessage($"Proje ID {projeId} için işlem (ProjectManager henüz yazılmadı).", false);
-        }
-
-        // Sayfanın üstünde mesaj göstermek için
-        private void ShowMessage(string message, bool isSuccess)
-        {
-            string cssClass = isSuccess ? "alert alert-success" : "alert alert-danger";
-            string styles = "padding: 10px; border: 1px solid; margin-bottom: 10px; border-radius: 4px;";
-            string borderColor = isSuccess ? "green" : "red";
-
-            // HATA ÇÖZÜMÜ (CS0103): 'ltrMesaj' hatası için
-            // .aspx dosyasına <asp:Literal ID="ltrMesaj"...> eklediğinden
-            // ve Adım 3'ü (Convert to Web Application) yaptığından emin ol.
-            ltrMesaj.Text = $"<div class='{cssClass}' style='{styles} border-color:{borderColor}; color:{borderColor};'> {Server.HtmlEncode(message)} </div>";
-            ltrMesaj.Visible = true;
-        }
-        protected void btnYeniProjeEkle_Click(object sender, EventArgs e)
-        {
-            // TODO: Gelecekte proje ekleme sayfası oluşturulunca burası düzeltilecek.
-            // Örnek: Response.Redirect("~/pages/Admin/ProjeEkleDuzenle.aspx"); 
-
-            // Şimdilik sadece bir mesaj gösterelim
-            ShowMessage("Proje Ekleme sayfası henüz oluşturulmadı.", false);
-        }
-    } 
+    }
 }

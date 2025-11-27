@@ -14,14 +14,17 @@ namespace NtpProje.Entities.Concrete
         // SQL: description
         public string Description { get; set; }
 
-        // SQL: short_description (Sitede Teknolojiler olarak görünecek)
+        // SQL: short_description (Sitede Teknolojiler olarak gï¿½rï¿½necek)
         public string Technologies { get; set; }
 
         // SQL: image_url
         public string ImageUrl { get; set; }
 
-        // SQL: category
+        // SQL: category (String olarak saklanÄ±yor, ama artÄ±k category_id kullanÄ±lacak)
         public string Category { get; set; }
+        
+        // SQL: category_id (categories tablosuna foreign key)
+        public int CategoryId { get; set; }
 
         // SQL: client_name
         public string ClientName { get; set; }
@@ -31,5 +34,8 @@ namespace NtpProje.Entities.Concrete
 
         // SQL: completion_date
         public DateTime? CompletionDate { get; set; }
+
+        // SQL: status
+        public string Status { get; set; }
     }
 }

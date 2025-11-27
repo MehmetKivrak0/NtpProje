@@ -21,7 +21,7 @@
                             
                             <a href='<%# "proje_detay.aspx?id=" + Eval("Id") %>'>
                                 <asp:Image ID="imgProje" runat="server" 
-                                    ImageUrl='<%# Eval("ImageUrl") %>' 
+                                    ImageUrl='<%# GetImageUrl(Eval("ImageUrl")) %>' 
                                     AlternateText='<%# Eval("Title") %>' />
                             </a>
                         </div>
@@ -54,30 +54,6 @@
                     <p>Henüz listelenecek proje bulunmamaktadır.</p>
                 </div>
             </asp:PlaceHolder>
-        </div>
-        
-        <div class="projeler_istatistik">
-            <div class="istatistik_grid">
-                <div class="istatistik_item">
-                    <asp:Label ID="lblTamamlananProje" runat="server" CssClass="istatistik_sayi" Text="0"></asp:Label>
-                    <span class="istatistik_label">Tamamlanan Proje</span>
-                </div>
-                
-                <div class="istatistik_item">
-                    <asp:Label ID="lblMutluMusteri" runat="server" CssClass="istatistik_sayi" Text="0"></asp:Label>
-                    <span class="istatistik_label">Mutlu Müşteri</span>
-                </div>
-                
-                <div class="istatistik_item">
-                    <asp:Label ID="lblMusteriMemnuniyeti" runat="server" CssClass="istatistik_sayi" Text="0"></asp:Label>
-                    <span class="istatistik_label">Müşteri Memnuniyeti</span>
-                </div>
-                
-                <div class="istatistik_item">
-                    <asp:Label ID="lblYilDeneyim" runat="server" CssClass="istatistik_sayi" Text="0"></asp:Label>
-                    <span class="istatistik_label">Yıl Deneyim</span>
-                </div>
-            </div>
         </div>
         
         <div class="proje_cta">

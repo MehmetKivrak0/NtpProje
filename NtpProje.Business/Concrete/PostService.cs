@@ -12,14 +12,16 @@ namespace NtpProje.Business.Concrete
     {
         private readonly PostRepository _postRepository;
         private readonly CategoryRepository _categoryRepository;
+        private readonly UserRepository _userRepository;
 
         public PostService()
         {
             _postRepository = new PostRepository();
             _categoryRepository = new CategoryRepository();
+            _userRepository = new UserRepository();
         }
 
-        // --- ÖZEL METOTLAR ---
+        // --- Ã–ZEL METOTLAR ---
 
         public List<PostDTO> GetPublishedPosts()
         {
@@ -64,14 +66,19 @@ namespace NtpProje.Business.Concrete
                     summary = dto.Summary,
                     image_url = dto.ImageUrl,
 
-                    // DÜZELTME: int olduðu için direkt atýyoruz
+                    // Kategori ID
                     category_id = dto.CategoryId,
 
-                    user_id = 1,
+                    // User ID - DTO'dan alÄ±nÄ±yor, yoksa varsayÄ±lan 1
+                    user_id = dto.UserId > 0 ? dto.UserId : 1,
+                    
                     status = dto.Status ?? "Draft",
                     created_date = DateTime.Now,
+                    
+                    // publish_date NOT NULL olduÄŸu iÃ§in mutlaka set edilmeli
+                    publish_date = dto.PublishDate ?? DateTime.Now,
 
-                    // DÜZELTME: int olduðu için direkt atýyoruz
+                    // VarsayÄ±lan deÄŸerler
                     view_count = 0,
                     reading_time = dto.ReadingTime
                 };
@@ -90,16 +97,23 @@ namespace NtpProje.Business.Concrete
                 if (entity == null) return false;
 
                 entity.title = dto.Title;
+                entity.slug = dto.Slug ?? dto.Title.ToLower().Replace(" ", "-");
                 entity.content = dto.Content;
                 entity.summary = dto.Summary;
                 entity.image_url = dto.ImageUrl;
                 entity.category_id = dto.CategoryId;
                 entity.status = dto.Status;
 
-                // DÜZELTME: Tarih nullable ise kontrol et, deðilse direkt ata
+                // publish_date NOT NULL olduÄŸu iÃ§in mutlaka set edilmeli
                 if (dto.PublishDate.HasValue)
                 {
                     entity.publish_date = dto.PublishDate.Value;
+                }
+                else
+                {
+                    // EÄŸer tarih verilmemiÅŸse mevcut tarihi koru veya ÅŸimdiki zamanÄ± kullan
+                    if (entity.publish_date == default(DateTime))
+                        entity.publish_date = DateTime.Now;
                 }
 
                 entity.updated_date = DateTime.Now;
@@ -133,14 +147,20 @@ namespace NtpProje.Business.Concrete
         private PostDTO MapEntityToDTO(Data.DataModel.post entity)
         {
             string categoryName = "";
+            string authorFullName = "";
 
-            // DÜZELTME 1 (CS1061 Çözümü): 
-            // category_id 'int' olduðu için .HasValue ve .Value SÝLÝNDÝ.
-            // Sadece 0'dan büyük mü diye bakýyoruz.
+            // Kategori adÄ±nÄ± getir
             if (entity.category_id > 0)
             {
                 var categoryEntity = _categoryRepository.Get(entity.category_id);
                 categoryName = categoryEntity?.category_name ?? "";
+            }
+
+            // Yazar adÄ±nÄ± getir
+            if (entity.user_id > 0)
+            {
+                var userEntity = _userRepository.Get(entity.user_id);
+                authorFullName = userEntity?.full_name ?? "";
             }
 
             return new PostDTO
@@ -152,17 +172,17 @@ namespace NtpProje.Business.Concrete
                 Summary = entity.summary,
                 ImageUrl = entity.image_url,
 
-                // --- DÜZELTÝLEN KISIM ---
-                // "?? 0" ekledik. Anlamý: Eðer null gelirse 0 yap.
+                // Nullable deÄŸerler iÃ§in varsayÄ±lan deÄŸerler
                 ViewCount = entity.view_count ?? 0,
                 ReadingTime = entity.reading_time ?? 0,
-                CategoryId = entity.category_id,                // ------------------------
+                CategoryId = entity.category_id,
+                UserId = entity.user_id,
 
                 PublishDate = entity.publish_date,
                 Status = entity.status,
 
                 CategoryName = categoryName,
-                AuthorFullName = ""
+                AuthorFullName = authorFullName
             };
         }
     }

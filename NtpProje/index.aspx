@@ -52,7 +52,7 @@
                         <div class="blog_ozet_card">
                             <a href='pages/blog_detay.aspx?id=<%# Eval("Id") %>'>
                                 <div class="blog_ozet_gorsel">
-                                    <img src='<%# Eval("ImageUrl") %>' alt='<%# Eval("Title") %>' />
+                                    <img src='<%# GetImageUrl(Eval("ImageUrl")) %>' alt='<%# Eval("Title") %>' />
                                 </div>
                                 <div class="blog_ozet_icerik">
                                     <h3 class="blog_ozet_baslik"><%# Eval("Title") %></h3>

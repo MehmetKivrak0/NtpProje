@@ -1,223 +1,186 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="admin_dashboard.aspx.cs" Inherits="NtpProje.pages.Admin.WebForm1" %>
+﻿<%@ Page Title="Admin Dashboard" Language="C#" MasterPageFile="~/pages/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="admin_dashboard.aspx.cs" Inherits="NtpProje_Web.Admin.admin_dashboard" %>
 
-<!DOCTYPE html>
-<html lang="tr">
-<head runat="server">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="<%= ResolveUrl("~/css/admin.css") %>" />
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-</head>
-<body class="dashboard">
-    <form id="form1" runat="server">
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <div class="sidebar-logo">GB</div>
-                <h2>Genç Birey</h2>
-            </div>
+    <style>
+        /* Dashboard'a Özel Ufak CSS Ayarları */
+        .dashboard-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .charts-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .info-card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-left: 4px solid #63207c; }
+        .card-label { display: block; color: #666; font-size: 14px; margin-bottom: 5px; }
+        .card-value { font-size: 28px; font-weight: bold; color: #333; }
+        .chart-card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .chart-body { height: 300px; position: relative; }
+    </style>
+</asp:Content>
 
-            <nav class="sidebar-menu">
-                <div class="menu-section">
-                    <div class="menu-section-title">ANA MENÜ</div>
-                    <asp:HyperLink ID="lnkDashboard" runat="server" NavigateUrl="~/pages/Admin/admin_dashboard.aspx" CssClass="menu-item active"><i>📊</i> <span>Dashboard</span></asp:HyperLink>
-                    <asp:HyperLink ID="lnkBlogYazilari" runat="server" NavigateUrl="~/pages/Admin/YaziYonetimi.aspx" CssClass="menu-item"><i>📝</i> <span>Blog Yazıları</span></asp:HyperLink>
-                    <asp:HyperLink ID="lnkProjeler" runat="server" NavigateUrl="~/pages/Admin/ProjeYonetimi.aspx" CssClass="menu-item"><i>🖼️</i> <span>Projeler</span></asp:HyperLink>
-                    <asp:HyperLink ID="lnkHizmetler" runat="server" NavigateUrl="#" CssClass="menu-item"><i>⚙️</i> <span>Hizmetler</span></asp:HyperLink>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
+    <div class="topbar">
+        <div class="topbar-left">
+            <div class="logo-container" style="display: flex; align-items: center; gap: 15px;">
+                <div class="logo-circle" style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #63207c 0%, #4f1a63 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px; box-shadow: 0 2px 10px rgba(99, 32, 124, 0.3);">
+                    IY
                 </div>
-
-                <div class="menu-section">
-                    <div class="menu-section-title">RAPORLAMA</div>
-                    <asp:HyperLink ID="lnkRaporlar" runat="server" NavigateUrl="~/pages/Admin/Raporlar.aspx" CssClass="menu-item"><i>📈</i> <span>Raporlar</span></asp:HyperLink>
-                </div>
-
-                <div class="menu-section">
-                    <div class="menu-section-title">AYARLAR</div>
-                   
-                    <asp:LinkButton ID="lnkCikisYap" runat="server" CssClass="menu-item" OnClick="lnkCikisYap_Click"><i>🚪</i> <span>Çıkış Yap</span></asp:LinkButton>
-                </div>
-            </nav>
-        </aside>     
-        <main class="main-content">
-            <asp:Literal ID="ltrMesaj" runat="server" Visible="false"></asp:Literal>
-            <div class="topbar">
-                <div class="topbar-left">
-                    <h1>Dashboard</h1>
-                </div>
-                <div class="topbar-right">
-                    <div class="search-container">
-                        <input type="text" class="search-input" placeholder="Search for..." />
-                        <button class="search-btn" type="button">🔍</button>
-                    </div>
-                    <div class="user-icon">
-                        <asp:Literal ID="ltrUserAvatar" runat="server">👤</asp:Literal>
-                    </div>
+                <div>
+                    <h1 style="margin: 0; color: white; font-size: 24px; font-weight: 600;">Innovate Yazılım</h1>
                 </div>
             </div>
-
-            <div class="dashboard-content">
-                <div class="page-header">
-                    <h2>Dashboard</h2>
-                    <nav class="breadcrumb">Dashboard</nav>
+        </div>
+        <div class="topbar-right" style="display: flex; align-items: center; gap: 15px;">
+            <div class="user-info" style="text-align: right;">
+                <div class="user-name" style="font-weight: 600; color: white; font-size: 14px;">
+                    <asp:Label ID="lblUserName" runat="server"></asp:Label>
                 </div>
-
-                <div class="dashboard-cards">
-                    <div class="info-card card-primary">
-                        <div class="card-content">
-                            <span class="card-label">Blog Sayısı</span>
-                            <span class="card-value">
-                                <asp:Literal ID="ltrBlogSayisi" runat="server">0</asp:Literal>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="info-card card-warning">
-                        <div class="card-content">
-                            <span class="card-label">Yeni Mesaj</span>
-                            <span class="card-value">
-                                <asp:Literal ID="ltrYeniMesajSayisi" runat="server">0</asp:Literal>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="info-card card-success">
-                        <div class="card-content">
-                            <span class="card-label">Hizmet Sayısı</span>
-                            <span class="card-value">
-                                <asp:Literal ID="ltrHizmetSayisi" runat="server">0</asp:Literal>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="info-card card-danger">
-                        <div class="card-content">
-                            <span class="card-label">Proje Sayısı</span>
-                            <span class="card-value">
-                                <asp:Literal ID="ltrProjeSayisi" runat="server">0</asp:Literal>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="charts-container">
-                    <div class="chart-card">
-                        <div class="chart-header">
-                            <h3>📊 Area Chart Example</h3>
-                        </div>
-                        <div class="chart-body">
-                            <canvas id="areaChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="chart-card">
-                        <div class="chart-header">
-                            <h3>📊 Bar Chart Example</h3>
-                        </div>
-                        <div class="chart-body">
-                            <canvas id="barChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="datatable-container">
-                    <div class="datatable-header">
-                        <h3>📋 DataTable Example</h3>
-                        <div class="datatable-controls">
-                            <label>
-                                Show 
-                                <select class="entries-select">
-                                    <option>10</option>
-                                    <option>25</option>
-                                    <option>50</option>
-                                    <option>100</option>
-                                </select>
-                                entries
-                            </label>
-                            <input type="text" class="datatable-search" placeholder="Search:" />
-                        </div>
-                    </div>
-                    <div class="datatable-wrapper">
-                        <table class="datatable">
-                            <thead>
-                                <tr>
-                                    <th>Name <span class="sort-icon">⇅</span></th>
-                                    <th>Position <span class="sort-icon">⇅</span></th>
-                                    <th>Office <span class="sort-icon">⇅</span></th>
-                                    <th>Age <span class="sort-icon">⇅</span></th>
-                                    <th>Start date <span class="sort-icon">⇅</span></th>
-                                    <th>Salary <span class="sort-icon">⇅</span></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Airi Satou</td>
-                                    <td>Accountant</td>
-                                    <td>Tokyo</td>
-                                    <td>33</td>
-                                    <td>2008/11/28</td>
-                                    <td>$162,700</td>
-                                </tr>
-                                <tr>
-                                    <td>Angelica Ramos</td>
-                                    <td>Chief Executive Officer (CEO)</td>
-                                    <td>London</td>
-                                    <td>47</td>
-                                    <td>2009/10/09</td>
-                                    <td>$1,200,000</td>
-                                </tr>
-                                <tr>
-                                    <td>Ashton Cox</td>
-                                    <td>Junior Technical Author</td>
-                                    <td>San Francisco</td>
-                                    <td>66</td>
-                                    <td>2009/01/12</td>
-                                    <td>$86,000</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="user-role" style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">
+                    <asp:Label ID="lblUserRole" runat="server" Text="Yönetici"></asp:Label>
                 </div>
             </div>
+            <div class="user-avatar" style="width: 45px; height: 45px; border-radius: 50%; background: linear-gradient(135deg, #63207c 0%, #4f1a63 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px; box-shadow: 0 2px 10px rgba(99, 32, 124, 0.3);">
+                <asp:Label ID="lblUserInitials" runat="server"></asp:Label>
+            </div>
+        </div>
+    </div>
 
-        </main>
-    </form>
+    <div class="dashboard-content">
+        <div class="page-header">
+            <h2>Genel Bakış</h2>
+        </div>
+
+        <div class="dashboard-cards">
+            <div class="info-card">
+                <div class="card-content">
+                    <span class="card-label">Blog Yazıları</span>
+                    <span class="card-value">
+                        <asp:Label ID="lblTotalPosts" runat="server" Text="0"></asp:Label>
+                    </span>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="card-content">
+                    <span class="card-label">Yeni Mesajlar</span>
+                    <span class="card-value">
+                         <asp:Label ID="lblNewComments" runat="server" Text="0"></asp:Label>
+                    </span>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="card-content">
+                    <span class="card-label">Proje Teklifleri</span>
+                    <span class="card-value">
+                        <asp:Label ID="lblProjectRequests" runat="server" Text="0"></asp:Label>
+                    </span>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="card-content">
+                    <span class="card-label">Toplam Kullanıcı</span>
+                    <span class="card-value">
+                        <asp:Label ID="lblTotalUsers" runat="server" Text="0"></asp:Label>
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Gizli label - Pasta grafiği için proje sayısı -->
+        <asp:Label ID="lblProjectCount" runat="server" Text="0" style="display:none;"></asp:Label>
+
+        <div class="charts-container">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>📊 Blog ve Proje Dağılımı</h3>
+                </div>
+                <div class="chart-body">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>📊 Satış / Gelir Grafiği</h3>
+                </div>
+                <div class="chart-body">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="datatable-container">
+            <div class="datatable-header">
+                <h3>📋 Son İşlemler</h3>
+            </div>
+            <div class="datatable-wrapper" style="background:white; padding:20px; border-radius:8px;">
+                <asp:Repeater ID="rptRecentActivities" runat="server">
+                    <ItemTemplate>
+                        <div class="activity-item" style="display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #eee; transition: background 0.2s;">
+                            <div class="activity-icon" style="width: 40px; height: 40px; border-radius: 50%; background: <%# Eval("IconColor") %>; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">
+                                <%# Eval("Icon") %>
+                            </div>
+                            <div class="activity-content" style="flex: 1;">
+                                <div class="activity-title" style="font-weight: 600; color: #333; margin-bottom: 4px;">
+                                    <%# Eval("Title") %>
+                                </div>
+                                <div class="activity-meta" style="font-size: 12px; color: #999;">
+                                    <%# Eval("Meta") %>
+                                </div>
+                            </div>
+                            <div class="activity-date" style="font-size: 12px; color: #999; margin-left: 15px;">
+                                <%# Eval("Date") %>
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                    <AlternatingItemTemplate>
+                        <div class="activity-item" style="display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #eee; background: #f9f9f9; transition: background 0.2s;">
+                            <div class="activity-icon" style="width: 40px; height: 40px; border-radius: 50%; background: <%# Eval("IconColor") %>; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">
+                                <%# Eval("Icon") %>
+                            </div>
+                            <div class="activity-content" style="flex: 1;">
+                                <div class="activity-title" style="font-weight: 600; color: #333; margin-bottom: 4px;">
+                                    <%# Eval("Title") %>
+                                </div>
+                                <div class="activity-meta" style="font-size: 12px; color: #999;">
+                                    <%# Eval("Meta") %>
+                                </div>
+                            </div>
+                            <div class="activity-date" style="font-size: 12px; color: #999; margin-left: 15px;">
+                                <%# Eval("Date") %>
+                            </div>
+                        </div>
+                    </AlternatingItemTemplate>
+                </asp:Repeater>
+                <asp:PlaceHolder ID="phEmptyActivities" runat="server" Visible="false">
+                    <div style="text-align: center; padding: 40px; color: #999;">
+                        <p>Henüz işlem kaydı bulunmamaktadır.</p>
+                    </div>
+                </asp:PlaceHolder>
+            </div>
+        </div>
+
+    </div>
 
     <script>
-        // Bildirim göster (C# tarafından çağrılabilir)
-        function showNotification(message, type) {
-            const notification = document.createElement('div');
-            notification.className = 'alert alert-' + type;
-            notification.textContent = message;
-            notification.style.position = 'fixed';
-            notification.style.top = '20px';
-            notification.style.right = '20px';
-            notification.style.zIndex = '10000';
-            notification.style.padding = '15px 20px';
-            notification.style.borderRadius = '8px';
-            notification.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
-            document.body.appendChild(notification);
-
-            setTimeout(function () {
-                notification.style.opacity = '0';
-                notification.style.transition = 'opacity 0.3s';
-                setTimeout(function () {
-                    notification.remove();
-                }, 300);
-            }, 3000);
-        }
-
-        // Area Chart
-        const areaCtx = document.getElementById('areaChart');
-        if (areaCtx) {
-            new Chart(areaCtx, {
-                type: 'line',
+        // Pie Chart - Blog ve Proje Dağılımı
+        const pieCtx = document.getElementById('pieChart');
+        if (pieCtx) {
+            // Server-side'dan gelen verileri kullan
+            const blogCount = parseInt(document.getElementById('<%= lblTotalPosts.ClientID %>').textContent) || 0;
+            const projectCount = parseInt(document.getElementById('<%= lblProjectCount.ClientID %>').textContent) || 0;
+            
+            new Chart(pieCtx, {
+                type: 'pie',
                 data: {
-                    labels: ['Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13'],
+                    labels: ['Blog Yazıları', 'Projeler'],
                     datasets: [{
-                        label: 'Area Chart',
-                        data: [10000, 15000, 20000, 25000, 30000, 28000, 22000, 18000, 20000, 25000, 30000, 32000, 35000],
-                        borderColor: 'rgb(75, 192, 192)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        fill: true,
-                        tension: 0.4
+                        label: 'İçerik Dağılımı',
+                        data: [blogCount, projectCount],
+                        backgroundColor: [
+                            'rgba(99, 32, 124, 0.8)',  // Mor - Blog
+                            'rgba(40, 167, 69, 0.8)'   // Yeşil - Proje
+                        ],
+                        borderColor: [
+                            'rgba(99, 32, 124, 1)',
+                            'rgba(40, 167, 69, 1)'
+                        ],
+                        borderWidth: 2
                     }]
                 },
                 options: {
@@ -225,15 +188,26 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 40000,
-                            ticks: {
-                                stepSize: 10000
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((context.parsed / total) * 100).toFixed(1);
+                                    label += context.parsed + ' (' + percentage + '%)';
+                                    return label;
+                                }
                             }
                         }
                     }
@@ -247,35 +221,16 @@
             new Chart(barCtx, {
                 type: 'bar',
                 data: {
-                    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                    labels: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran'],
                     datasets: [{
-                        label: 'Bar Chart',
+                        label: 'Gelir (TL)',
                         data: [5000, 7000, 9000, 11000, 13000, 15000],
-                        backgroundColor: 'rgba(54, 162, 235, 0.8)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
+                        backgroundColor: 'rgba(99, 32, 124, 0.6)'
                     }]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 15000,
-                            ticks: {
-                                stepSize: 5000
-                            }
-                        }
-                    }
-                }
+                options: { responsive: true, maintainAspectRatio: false }
             });
         }
     </script>
-</body>
-</html>
+
+</asp:Content>

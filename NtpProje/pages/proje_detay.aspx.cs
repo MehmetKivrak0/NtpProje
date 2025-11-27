@@ -65,7 +65,7 @@ namespace NtpProje_Web
                     lblGoruntulenme.Text = proje.ViewCount.ToString();
 
                     // Resim ve Açıklama
-                    imgProje.ImageUrl = proje.ImageUrl;
+                    imgProje.ImageUrl = GetImageUrl(proje.ImageUrl);
                     imgProje.AlternateText = proje.Title;
                     ltrAciklama.Text = proje.Description; // HTML içerik olabilir
 
@@ -98,6 +98,41 @@ namespace NtpProje_Web
         {
             pnlContent.Visible = false;
             pnlNotFound.Visible = true;
+        }
+
+        /// <summary>
+        /// Resim URL'sini düzgün şekilde çözümler.
+        /// Eğer sadece dosya adı ise (~/images/) ekler, zaten tam URL ise olduğu gibi döner.
+        /// </summary>
+        protected string GetImageUrl(object imageUrl)
+        {
+            if (imageUrl == null || string.IsNullOrWhiteSpace(imageUrl.ToString()))
+                return ResolveUrl("~/images/no-image.jpg"); // Varsayılan resim
+
+            string url = imageUrl.ToString().Trim();
+
+            // Zaten tam URL ise (http:// veya https:// ile başlıyorsa) olduğu gibi döndür
+            if (url.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+                url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            {
+                return url;
+            }
+
+            // Sadece dosya adı ise (~/images/) ekle
+            // Örn: "post-gorseli.jpg" -> "~/images/post-gorseli.jpg"
+            if (!url.Contains("/") && !url.Contains("\\"))
+            {
+                return ResolveUrl("~/images/" + url);
+            }
+
+            // Göreceli yol ise (~/ ile başlıyorsa) ResolveUrl ile çözümle
+            if (url.StartsWith("~/"))
+            {
+                return ResolveUrl(url);
+            }
+
+            // Diğer durumlarda olduğu gibi döndür
+            return url;
         }
     }
 }

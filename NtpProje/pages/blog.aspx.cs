@@ -62,9 +62,44 @@ namespace NtpProje_Web
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                // Kategori listeleme işlemleri buraya gelecek
-                // Şimdilik boş bırakıyorum hata vermesin diye
+                // PostDTO nesnesini yakala
+                var post = e.Item.DataItem as PostDTO;
+
+                // İçerideki "rptKategoriler" repeater'ını bul
+                Repeater rptKategoriler = e.Item.FindControl("rptKategoriler") as Repeater;
+
+                // Eğer post ve kategori alanı doluysa
+                if (rptKategoriler != null && post != null && !string.IsNullOrEmpty(post.CategoryName))
+                {
+                    // Kategori adını liste olarak ver (tek kategori olduğu için)
+                    var kategoriListesi = new List<string> { post.CategoryName };
+                    rptKategoriler.DataSource = kategoriListesi;
+                    rptKategoriler.DataBind();
+                }
             }
+        }
+
+        // Resim URL'sini düzenle (sadece dosya adıysa /images/ prefix'i ekle)
+        protected string GetImageUrl(object imageUrl)
+        {
+            if (imageUrl == null || string.IsNullOrEmpty(imageUrl.ToString()))
+                return ResolveUrl("~/images/default-blog.jpg");
+
+            string url = imageUrl.ToString();
+            
+            // Eğer zaten tam URL ise (http:// veya / ile başlıyorsa) olduğu gibi döndür
+            if (url.StartsWith("http://") || url.StartsWith("https://") || url.StartsWith("/"))
+            {
+                // Eğer /images/ ile başlamıyorsa ve sadece dosya adı gibi görünüyorsa
+                if (!url.Contains("/") && !url.StartsWith("http"))
+                {
+                    return ResolveUrl("~/images/" + url);
+                }
+                return url;
+            }
+            
+            // Sadece dosya adı ise /images/ prefix'i ekle
+            return ResolveUrl("~/images/" + url);
         }
     }
 }

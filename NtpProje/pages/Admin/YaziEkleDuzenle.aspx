@@ -1,555 +1,354 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="YaziEkleDuzenle.aspx.cs" Inherits="NtpProje.pages.Admin.YaziEkleDuzenle" %>
+﻿<%@ Page Title="Yazı Ekle/Düzenle" Language="C#" MasterPageFile="~/pages/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="YaziEkleDuzenle.aspx.cs" Inherits="NtpProje_Web.Admin.YaziEkleDuzenle" ValidateRequest="false" %>
 
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Yazı Ekle/Düzenle - Admin Panel</title>
-    <link rel="stylesheet" href="../../css/admin.css">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- TinyMCE CDN -->
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-</head>
-<body class="dashboard">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <div class="sidebar-logo">GB</div>
-            <h2>Genç Birey</h2>
-        </div>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="https://cdn.tiny.cloud/1/9gxedwrxprvwnxucm3y2ror96j6c1d5jet6mt1izz6hdx7m7/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+</asp:Content>
 
-        <nav class="sidebar-menu">
-            <div class="menu-section">
-                <div class="menu-section-title">Ana Menü</div>
-                <a href="admin_dashboard.html" class="menu-item">
-                    <i>📊</i> <span>Dashboard</span>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
+    <div class="editor-wrapper">
+        <div class="editor-header">
+            <div class="editor-header-left">
+                <a href="YaziYonetimi.aspx" class="back-link">
+                    <span>←</span> Geri Dön
                 </a>
-                <a href="#" class="menu-item">
-                    <i>📄</i> <span>Sayfalar</span>
-                </a>
-                <a href="YaziYonetimi.html" class="menu-item active">
-                    <i>📝</i> <span>Blog Yazıları</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i>🖼️</i> <span>Projeler</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i>⚙️</i> <span>Hizmetler</span>
-                </a>
+                <h1><asp:Literal ID="ltrPageTitle" runat="server" /> Ekle/Düzenle</h1>
+                <p class="editor-subtitle">İçeriğinizi oluşturun ve yönetin</p>
             </div>
-
-            <div class="menu-section">
-                <div class="menu-section-title">İçerik Yönetimi</div>
-                <a href="#" class="menu-item">
-                    <i>🎨</i> <span>Medya</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i>👥</i> <span>Ekip</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i>💬</i> <span>Yorumlar</span>
-                </a>
-                <a href="IletisimMesajlari.html" class="menu-item">
-                    <i>📧</i> <span>Mesajlar</span>
-                </a>
-            </div>
-
-            <div class="menu-section">
-                <div class="menu-section-title">Ayarlar</div>
-                <a href="KategoriYonetimi.html" class="menu-item">
-                    <i>🏷️</i> <span>Kategoriler</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i>👤</i> <span>Kullanıcılar</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i>🔧</i> <span>Site Ayarları</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i>🔐</i> <span>Güvenlik</span>
-                </a>
-                <a href="#" class="menu-item" onclick="logout()">
-                    <i>🚪</i> <span>Çıkış Yap</span>
-                </a>
-            </div>
-        </nav>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Topbar -->
-        <div class="topbar">
-            <div class="topbar-left">
-                <h1 id="pageTitle">Yeni Yazı Ekle</h1>
-                <p id="pageSubtitle">Blog yazısı veya proje bilgilerini girin</p>
-            </div>
-            <div class="topbar-right">
-                <div class="topbar-user">
-                    <div class="user-avatar" id="userAvatar">A</div>
-                    <div class="user-info">
-                        <div class="user-name" id="userName">Admin User</div>
-                        <div class="user-role" id="userRole">Yönetici</div>
-                    </div>
-                </div>
+            <div class="editor-header-actions">
+                <asp:Button ID="btnTaslakKaydet" runat="server" Text="📝 Taslak Kaydet" CssClass="btn btn-outline" OnClick="btnKaydet_Click" CommandName="draft" ValidationGroup="MainForm" />
+                <asp:Button ID="btnKaydet" runat="server" Text="🚀 Yayınla" CssClass="btn btn-primary" OnClick="btnKaydet_Click" CommandName="publish" ValidationGroup="MainForm" />
             </div>
         </div>
 
-        <!-- Form Container -->
-        <div class="form-container">
-            <form id="contentForm" class="content-form">
-                <!-- Basic Information -->
-                <div class="form-section">
-                    <h3>Genel Bilgiler</h3>
-                    
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label for="title">Başlık *</label>
-                            <input type="text" id="title" name="title" placeholder="Yazı veya proje başlığını girin" required>
-                        </div>
-                    </div>
+        <asp:Label ID="lblDurumMesaj" runat="server" CssClass="alert-message" Visible="false"></asp:Label>
+        
+        <asp:HiddenField ID="hfItemId" runat="server" />
 
-                    <div class="form-row">
+        <div class="editor-content">
+            <div class="editor-main">
+                <!-- Genel Bilgiler -->
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <h2>📋 Genel Bilgiler</h2>
+                        <span class="form-card-badge">Zorunlu</span>
+                    </div>
+                    <div class="form-card-body">
                         <div class="form-group">
-                            <label for="category">Kategori *</label>
-                            <select id="category" name="category" required>
-                                <option value="">Kategori seçin</option>
-                                <option value="mimarlik">Mimarlık</option>
-                                <option value="insaat">İnşaat</option>
-                                <option value="teknoloji">Teknoloji</option>
-                                <option value="ic-mimarlik">İç Mimarlık</option>
-                                <option value="cevre">Çevre</option>
-                            </select>
+                            <label class="form-label">
+                                Başlık <span class="required">*</span>
+                                <span class="form-hint">Maksimum 150 karakter</span>
+                            </label>
+                            <asp:TextBox ID="txtBaslik" runat="server" CssClass="form-input" placeholder="Yazı veya proje başlığını girin" MaxLength="150"></asp:TextBox>
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtBaslik" ErrorMessage="Başlık alanı zorunludur" Display="Dynamic" CssClass="form-error" ValidationGroup="MainForm" />
                         </div>
 
-                        <div class="form-group">
-                            <label for="status">Durum</label>
-                            <select id="status" name="status">
-                                <option value="draft">Taslak</option>
-                                <option value="published">Yayında</option>
-                                <option value="archived">Arşiv</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="author">Yazar</label>
-                            <input type="text" id="author" name="author" placeholder="Yazar adı" value="Admin">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="publishDate">Yayın Tarihi</label>
-                            <input type="datetime-local" id="publishDate" name="publishDate">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Content Section -->
-                <div class="form-section">
-                    <h3>İçerik</h3>
-                    
-                    <div class="form-group full-width">
-                        <label for="excerpt">Özet</label>
-                        <textarea id="excerpt" name="excerpt" rows="3" placeholder="Kısa özet (opsiyonel)"></textarea>
-                    </div>
-
-                    <div class="form-group full-width">
-                        <label for="content">İçerik *</label>
-                        <textarea id="content" name="content" rows="15" placeholder="Ana içerik buraya yazılacak"></textarea>
-                    </div>
-                </div>
-
-                <!-- Media Section -->
-                <div class="form-section">
-                    <h3>Medya</h3>
-                    
-                    <div class="form-group full-width">
-                        <label for="featuredImage">Öne Çıkan Görsel</label>
-                        <div class="image-upload-area" id="imageUploadArea">
-                            <div class="upload-placeholder">
-                                <i>📷</i>
-                                <p>Görsel yüklemek için tıklayın veya sürükleyip bırakın</p>
-                                <input type="file" id="featuredImage" name="featuredImage" accept="image/*" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">
+                                    Kategori <span class="required">*</span>
+                                </label>
+                                <div class="category-select-wrapper">
+                                    <asp:DropDownList ID="ddlKategori" runat="server" CssClass="form-select"></asp:DropDownList>
+                                    <button type="button" class="btn-quick-add" onclick="openQuickCategoryModal(event); return false;" title="Hızlı Kategori Ekle">
+                                        <span>➕</span>
+                                    </button>
+                                </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Durum</label>
+                                <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-select">
+                                    <asp:ListItem Value="Draft" Text="📄 Taslak"></asp:ListItem>
+                                    <asp:ListItem Value="Published" Text="✅ Yayında"></asp:ListItem>
+                                    <asp:ListItem Value="Archived" Text="📦 Arşiv"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Yazar</label>
+                                <asp:TextBox ID="txtAuthor" runat="server" CssClass="form-input" Enabled="false"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Yayın Tarihi</label>
+                                <asp:TextBox ID="txtPublishDate" runat="server" CssClass="form-input" TextMode="Date"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- İçerik -->
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <h2>✍️ İçerik</h2>
+                        <span class="form-card-badge">Zorunlu</span>
+                    </div>
+                    <div class="form-card-body">
+                        <div class="form-group">
+                            <label class="form-label">
+                                Özet
+                                <span class="form-hint">Kısa bir açıklama (opsiyonel)</span>
+                            </label>
+                            <asp:TextBox ID="txtOzet" runat="server" CssClass="form-textarea" TextMode="MultiLine" Rows="3" placeholder="Yazınızın kısa bir özetini girin..."></asp:TextBox>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                İçerik <span class="required">*</span>
+                            </label>
+                            <asp:TextBox ID="txtIcerik" runat="server" CssClass="form-textarea" TextMode="MultiLine" Rows="15" ClientIDMode="Static"></asp:TextBox>
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtIcerik" ErrorMessage="İçerik alanı zorunludur" Display="Dynamic" CssClass="form-error" ValidationGroup="MainForm" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Medya -->
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <h2>🖼️ Medya</h2>
+                    </div>
+                    <div class="form-card-body">
+                        <div class="form-group">
+                            <label class="form-label">
+                                Resim Yükle
+                                <span class="form-hint">JPG, PNG veya GIF formatında (Max: 5MB)</span>
+                            </label>
+                            <div class="upload-wrapper">
+                                <asp:FileUpload ID="fileImageUpload" runat="server" CssClass="file-upload-input" accept="image/*" />
+                                <asp:Button ID="btnUploadImage" runat="server" Text="📤 Resmi Yükle" CssClass="btn btn-secondary" OnClick="btnUploadImage_Click" ValidationGroup="ImageUpload" />
+                                <asp:Label ID="lblUploadError" runat="server" CssClass="form-error" Visible="false"></asp:Label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label class="form-label">
+                                Öne Çıkan Görsel URL
+                                <span class="form-hint">Veya görselin tam URL'sini girin</span>
+                            </label>
+                            <asp:TextBox ID="txtImageUrl" runat="server" CssClass="form-input" placeholder="Örn: post-gorseli.jpg (sadece dosya adı)"></asp:TextBox>
                             <div class="image-preview" id="imagePreview" style="display: none;">
-                                <img id="previewImg" src="" alt="Önizleme">
-                                <button type="button" class="remove-image" onclick="removeImage()">×</button>
+                                <img id="previewImg" src="" alt="Önizleme" />
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-group full-width">
-                        <label for="gallery">Galeri (Çoklu Seçim)</label>
-                        <div class="gallery-upload-area" id="galleryUploadArea">
-                            <div class="upload-placeholder">
-                                <i>🖼️</i>
-                                <p>Galeri görselleri yüklemek için tıklayın</p>
-                                <input type="file" id="gallery" name="gallery" accept="image/*" multiple style="display: none;">
+                <!-- SEO Ayarları -->
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <h2>🔍 SEO Ayarları</h2>
+                        <span class="form-card-badge">Opsiyonel</span>
+                    </div>
+                    <div class="form-card-body">
+                        <div class="form-group">
+                            <label class="form-label">Meta Başlık</label>
+                            <asp:TextBox ID="txtMetaTitle" runat="server" CssClass="form-input" placeholder="SEO için başlık"></asp:TextBox>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Meta Açıklama</label>
+                            <asp:TextBox ID="txtMetaDescription" runat="server" CssClass="form-textarea" TextMode="MultiLine" Rows="3" placeholder="SEO için açıklama"></asp:TextBox>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">URL Slug</label>
+                            <asp:TextBox ID="txtSlug" runat="server" CssClass="form-input" placeholder="url-slug"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proje Bilgileri -->
+                <asp:Panel ID="pnlProjectFields" runat="server" Visible="false">
+                    <div class="form-card">
+                        <div class="form-card-header">
+                            <h2>💼 Proje Bilgileri</h2>
+                        </div>
+                        <div class="form-card-body">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Müşteri Adı</label>
+                                    <asp:TextBox ID="txtClientName" runat="server" CssClass="form-input" placeholder="Müşteri adı"></asp:TextBox>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Teknolojiler</label>
+                                    <asp:TextBox ID="txtTechnologies" runat="server" CssClass="form-input" placeholder="Örn: ASP.NET, C#, SQL"></asp:TextBox>
+                                    <span class="form-hint">Virgülle ayırın</span>
+                                </div>
                             </div>
-                            <div class="gallery-preview" id="galleryPreview"></div>
+                        </div>
+                    </div>
+                </asp:Panel>
+            </div>
+
+            <div class="editor-sidebar">
+                <div class="sidebar-card">
+                    <h3>💡 İpuçları</h3>
+                    <ul class="tips-list">
+                        <li>Başlık kısa ve açıklayıcı olmalı</li>
+                        <li>Özet, içeriğinizi özetleyen 2-3 cümle olmalı</li>
+                        <li>SEO ayarları arama motorları için önemli</li>
+                        <li>Taslak olarak kaydedip sonra yayınlayabilirsiniz</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3>📊 Hızlı İstatistikler</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Karakter</span>
+                            <span class="stat-value" id="charCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Kelime</span>
+                            <span class="stat-value" id="wordCount">0</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- SEO Section -->
-                <div class="form-section">
-                    <h3>SEO Ayarları</h3>
-                    
-                    <div class="form-group full-width">
-                        <label for="metaTitle">Meta Başlık</label>
-                        <input type="text" id="metaTitle" name="metaTitle" placeholder="SEO için başlık">
-                    </div>
-
-                    <div class="form-group full-width">
-                        <label for="metaDescription">Meta Açıklama</label>
-                        <textarea id="metaDescription" name="metaDescription" rows="3" placeholder="SEO için açıklama"></textarea>
-                    </div>
-
-                    <div class="form-group full-width">
-                        <label for="slug">URL Slug</label>
-                        <input type="text" id="slug" name="slug" placeholder="url-slug">
-                    </div>
-                </div>
-
-                <!-- Project Specific Fields -->
-                <div class="form-section" id="projectFields" style="display: none;">
-                    <h3>Proje Bilgileri</h3>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="client">Müşteri</label>
-                            <input type="text" id="client" name="client" placeholder="Müşteri adı">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="projectType">Proje Tipi</label>
-                            <select id="projectType" name="projectType">
-                                <option value="">Proje tipi seçin</option>
-                                <option value="residential">Konut</option>
-                                <option value="commercial">Ticari</option>
-                                <option value="industrial">Endüstriyel</option>
-                                <option value="public">Kamu</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="startDate">Başlangıç Tarihi</label>
-                            <input type="date" id="startDate" name="startDate">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="endDate">Bitiş Tarihi</label>
-                            <input type="date" id="endDate" name="endDate">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="budget">Bütçe</label>
-                            <input type="text" id="budget" name="budget" placeholder="₺ 0.000">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="area">Alan (m²)</label>
-                            <input type="number" id="area" name="area" placeholder="0">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Form Actions -->
-                <div class="form-actions">
-                    <button type="button" class="btn btn-secondary" onclick="goBack()">Geri Dön</button>
-                    <button type="button" class="btn btn-warning" onclick="saveDraft()">Taslak Kaydet</button>
-                    <button type="submit" class="btn btn-primary">Kaydet ve Yayınla</button>
-                </div>
-            </form>
+            </div>
         </div>
-    </main>
+    </div>
+
+    <!-- Hızlı Kategori Ekleme Modal -->
+    <asp:Panel ID="quickCategoryModal" runat="server" CssClass="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>➕ Hızlı Kategori Ekle</h3>
+                <button type="button" class="modal-close" onclick="closeQuickCategoryModal(); return false;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <asp:Label ID="lblQuickCategoryError" runat="server" CssClass="form-error" Visible="false"></asp:Label>
+                <div class="form-group">
+                    <label class="form-label">Kategori Adı <span class="required">*</span></label>
+                    <asp:TextBox ID="txtQuickCategoryName" runat="server" CssClass="form-input" placeholder="Örn: Teknoloji, Web Tasarım" MaxLength="100"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvQuickCategoryName" runat="server" 
+                        ControlToValidate="txtQuickCategoryName" 
+                        ErrorMessage="Kategori adı zorunludur!" 
+                        Display="Dynamic" 
+                        CssClass="form-error"
+                        ValidationGroup="QuickCategory"></asp:RequiredFieldValidator>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Açıklama</label>
+                    <asp:TextBox ID="txtQuickCategoryDesc" runat="server" CssClass="form-textarea" TextMode="MultiLine" Rows="2" placeholder="Kategori hakkında kısa açıklama (opsiyonel)"></asp:TextBox>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" onclick="closeQuickCategoryModal(); return false;">İptal</button>
+                <asp:Button ID="btnSaveQuickCategory" runat="server" Text="Kaydet" CssClass="btn btn-primary" OnClick="btnSaveQuickCategory_Click" ValidationGroup="QuickCategory" CausesValidation="true" />
+            </div>
+        </div>
+    </asp:Panel>
 
     <script>
-        let currentType = 'post';
-        let currentAction = 'add';
-        let currentId = null;
-
-        // Sayfa yüklendiğinde
+        // TinyMCE Başlatma
         window.addEventListener('load', function() {
-            checkAuth();
-            loadUserInfo();
-            initializePage();
-            initializeTinyMCE();
-        });
-
-        // Kullanıcı girişi kontrolü
-        function checkAuth() {
-            const adminUser = localStorage.getItem('adminUser');
-            if (!adminUser) {
-                window.location.href = 'login.html';
-                return;
-            }
-        }
-
-        // Kullanıcı bilgilerini yükle
-        function loadUserInfo() {
-            const adminUser = localStorage.getItem('adminUser');
-            if (adminUser) {
-                const user = JSON.parse(adminUser);
-                const initial = user.name ? user.name.charAt(0).toUpperCase() : 'A';
-                document.getElementById('userAvatar').textContent = initial;
-                document.getElementById('userName').textContent = user.name || 'Admin';
-                document.getElementById('userRole').textContent = user.role || 'Yönetici';
-            }
-        }
-
-        // Sayfa başlatma
-        function initializePage() {
-            const urlParams = new URLSearchParams(window.location.search);
-            currentType = urlParams.get('type') || 'post';
-            currentAction = urlParams.get('action') || 'add';
-            currentId = urlParams.get('id');
-
-            updatePageTitle();
-            toggleProjectFields();
-            setDefaultPublishDate();
-
-            if (currentAction === 'edit' && currentId) {
-                loadContentData();
-            }
-        }
-
-        // Sayfa başlığını güncelle
-        function updatePageTitle() {
-            const titleElement = document.getElementById('pageTitle');
-            const subtitleElement = document.getElementById('pageSubtitle');
-            
-            if (currentAction === 'edit') {
-                titleElement.textContent = currentType === 'post' ? 'Yazı Düzenle' : 'Proje Düzenle';
-                subtitleElement.textContent = currentType === 'post' ? 'Blog yazısını düzenleyin' : 'Proje bilgilerini düzenleyin';
-            } else {
-                titleElement.textContent = currentType === 'post' ? 'Yeni Yazı Ekle' : 'Yeni Proje Ekle';
-                subtitleElement.textContent = currentType === 'post' ? 'Blog yazısı bilgilerini girin' : 'Proje bilgilerini girin';
-            }
-        }
-
-        // Proje alanlarını göster/gizle
-        function toggleProjectFields() {
-            const projectFields = document.getElementById('projectFields');
-            if (currentType === 'project') {
-                projectFields.style.display = 'block';
-            } else {
-                projectFields.style.display = 'none';
-            }
-        }
-
-        // Varsayılan yayın tarihini ayarla
-        function setDefaultPublishDate() {
-            const now = new Date();
-            const publishDate = document.getElementById('publishDate');
-            publishDate.value = now.toISOString().slice(0, 16);
-        }
-
-        // TinyMCE editörü başlat
-        function initializeTinyMCE() {
             tinymce.init({
-                selector: '#content',
-                height: 400,
+                selector: '#txtIcerik',
+                height: 450,
                 menubar: false,
-                plugins: [
-                    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
-                    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-                    'insertdatetime', 'media', 'table', 'help', 'wordcount'
-                ],
-                toolbar: 'undo redo | blocks | ' +
-                    'bold italic forecolor | alignleft aligncenter ' +
-                    'alignright alignjustify | bullist numlist outdent indent | ' +
-                    'removeformat | help',
-                content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif; font-size: 14px; }'
+                plugins: ['lists', 'link', 'image', 'code', 'table'],
+                toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | code | removeformat',
+                branding: false,
+                content_style: 'body { font-family: "Source Sans Pro", sans-serif; font-size: 14px; }'
             });
-        }
-
-        // İçerik verilerini yükle (düzenleme için)
-        function loadContentData() {
-            // Demo veri - gerçek uygulamada API'den gelecek
-            const sampleData = {
-                title: 'Yeni Nesil Mimari Tasarım Trendleri',
-                category: 'mimarlik',
-                status: 'published',
-                author: 'Ahmet Yılmaz',
-                excerpt: 'Modern mimarlıkta öne çıkan yenilikçi yaklaşımlar ve tasarım trendleri.',
-                content: '<p>Modern mimarlık, sürekli gelişen teknoloji ve değişen yaşam tarzları ile birlikte yeni trendler ortaya çıkarıyor...</p>',
-                client: 'ABC İnşaat A.Ş.',
-                projectType: 'residential',
-                startDate: '2025-01-01',
-                endDate: '2025-12-31',
-                budget: '₺ 2.500.000',
-                area: '1500'
-            };
-
-            // Form alanlarını doldur
-            document.getElementById('title').value = sampleData.title;
-            document.getElementById('category').value = sampleData.category;
-            document.getElementById('status').value = sampleData.status;
-            document.getElementById('author').value = sampleData.author;
-            document.getElementById('excerpt').value = sampleData.excerpt;
-            
-            if (currentType === 'project') {
-                document.getElementById('client').value = sampleData.client;
-                document.getElementById('projectType').value = sampleData.projectType;
-                document.getElementById('startDate').value = sampleData.startDate;
-                document.getElementById('endDate').value = sampleData.endDate;
-                document.getElementById('budget').value = sampleData.budget;
-                document.getElementById('area').value = sampleData.area;
-            }
-
-            // TinyMCE içeriğini ayarla
-            setTimeout(() => {
-                tinymce.get('content').setContent(sampleData.content);
-            }, 1000);
-        }
-
-        // Görsel yükleme
-        document.getElementById('imageUploadArea').addEventListener('click', function() {
-            document.getElementById('featuredImage').click();
         });
 
-        document.getElementById('featuredImage').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const preview = document.getElementById('imagePreview');
-                    const img = document.getElementById('previewImg');
-                    const placeholder = document.querySelector('.upload-placeholder');
+        // Görsel önizleme
+        document.addEventListener('DOMContentLoaded', function() {
+            var imageUrlInput = document.getElementById('<%= txtImageUrl.ClientID %>');
+            var preview = document.getElementById('imagePreview');
+            var previewImg = document.getElementById('previewImg');
+
+            if (imageUrlInput) {
+                imageUrlInput.addEventListener('input', function() {
+                    var url = this.value.trim();
+                    if (url) {
+                        // Eğer sadece dosya adı ise /images/ prefix'i ekle
+                        if (!url.startsWith('http://') && !url.startsWith('https://') && !url.startsWith('/')) {
+                            url = '/images/' + url;
+                        }
+                        previewImg.src = url;
+                        preview.style.display = 'block';
+                    } else {
+                        preview.style.display = 'none';
+                    }
+                });
+            }
+
+            // Karakter ve kelime sayacı
+            var icerikInput = document.getElementById('txtIcerik');
+            if (icerikInput) {
+                icerikInput.addEventListener('input', function() {
+                    var text = this.value;
+                    var charCount = text.length;
+                    var wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
                     
-                    img.src = e.target.result;
-                    preview.style.display = 'block';
-                    placeholder.style.display = 'none';
-                };
-                reader.readAsDataURL(file);
+                    document.getElementById('charCount').textContent = charCount;
+                    document.getElementById('wordCount').textContent = wordCount;
+                });
             }
         });
 
-        // Galeri yükleme
-        document.getElementById('galleryUploadArea').addEventListener('click', function() {
-            document.getElementById('gallery').click();
-        });
+        // Hızlı Kategori Ekleme Modal Fonksiyonları
+        function openQuickCategoryModal(e) {
+            // Form submit'i engelle
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            try {
+                var modal = document.getElementById('<%= quickCategoryModal.ClientID %>');
+                if (modal) {
+                    modal.style.display = 'flex';
+                    var txtName = document.getElementById('<%= txtQuickCategoryName.ClientID %>');
+                    if (txtName) {
+                        setTimeout(function() { 
+                            try { txtName.focus(); } catch(err) { console.log('Focus error (ignored):', err); }
+                        }, 100);
+                    }
+                }
+            } catch(err) {
+                console.error('Modal açma hatası:', err);
+            }
+            
+            return false;
+        }
 
-        document.getElementById('gallery').addEventListener('change', function(e) {
-            const files = e.target.files;
-            const preview = document.getElementById('galleryPreview');
-            
-            preview.innerHTML = '';
-            
-            Array.from(files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.className = 'gallery-item';
-                    preview.appendChild(img);
-                };
-                reader.readAsDataURL(file);
+        function closeQuickCategoryModal() {
+            try {
+                var modal = document.getElementById('<%= quickCategoryModal.ClientID %>');
+                if (modal) modal.style.display = 'none';
+            } catch(e) {
+                console.error('Modal kapatma hatası:', e);
+            }
+        }
+
+        // Modal dışına tıklanınca kapat
+        if (document.addEventListener) {
+            document.addEventListener('click', function(e) {
+                try {
+                    var modal = document.getElementById('<%= quickCategoryModal.ClientID %>');
+                    if (modal && e.target === modal) {
+                        closeQuickCategoryModal();
+                    }
+                } catch(e) {
+                    // Hata yakalama - zararsız
+                }
             });
-        });
-
-        // Görsel kaldır
-        function removeImage() {
-            const preview = document.getElementById('imagePreview');
-            const placeholder = document.querySelector('.upload-placeholder');
-            const input = document.getElementById('featuredImage');
-            
-            preview.style.display = 'none';
-            placeholder.style.display = 'block';
-            input.value = '';
         }
 
-        // Form gönderimi
-        document.getElementById('contentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const content = tinymce.get('content').getContent();
-            formData.set('content', content);
-            
-            // Validasyon
-            if (!formData.get('title')) {
-                showNotification('Başlık alanı zorunludur!', 'error');
-                return;
-            }
-            
-            if (!formData.get('category')) {
-                showNotification('Kategori seçimi zorunludur!', 'error');
-                return;
-            }
-            
-            if (!content.trim()) {
-                showNotification('İçerik alanı zorunludur!', 'error');
-                return;
-            }
-
-            // Demo kaydetme
-            showNotification('İçerik başarıyla kaydedildi!', 'success');
-            
-            setTimeout(() => {
-                window.location.href = 'YaziYonetimi.html';
-            }, 1500);
-        });
-
-        // Taslak kaydet
-        function saveDraft() {
-            document.getElementById('status').value = 'draft';
-            document.getElementById('contentForm').dispatchEvent(new Event('submit'));
-        }
-
-        // Geri dön
-        function goBack() {
-            window.location.href = 'YaziYonetimi.html';
-        }
-
-        // Çıkış yap
-        function logout() {
-            if (confirm('Çıkış yapmak istediğinize emin misiniz?')) {
-                localStorage.removeItem('adminUser');
-                window.location.href = 'login.html';
+        // Runtime hatalarını yakala (browser extension hataları için)
+        if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.lastError) {
+            // Chrome extension hatalarını sessizce yakala
+            try {
+                chrome.runtime.lastError;
+            } catch(e) {
+                // Zararsız hata - görmezden gel
             }
         }
-
-        // Bildirim göster
-        function showNotification(message, type) {
-            const notification = document.createElement('div');
-            notification.className = 'alert alert-' + type;
-            notification.textContent = message;
-            notification.style.position = 'fixed';
-            notification.style.top = '20px';
-            notification.style.right = '20px';
-            notification.style.zIndex = '10000';
-            notification.style.minWidth = '300px';
-            notification.style.animation = 'fadeIn 0.3s ease-in';
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(function() {
-                notification.style.animation = 'fadeOut 0.3s ease-out';
-                setTimeout(function() {
-                    notification.remove();
-                }, 300);
-            }, 3000);
-        }
-
-        // Başlık değiştiğinde slug oluştur
-        document.getElementById('title').addEventListener('input', function(e) {
-            const slug = e.target.value
-                .toLowerCase()
-                .replace(/[^a-z0-9\s-]/g, '')
-                .replace(/\s+/g, '-')
-                .replace(/-+/g, '-')
-                .trim('-');
-            
-            document.getElementById('slug').value = slug;
-        });
     </script>
-</body>
-</html>
+
+</asp:Content>

@@ -166,9 +166,10 @@
     <Content Include="jquery-1.4.3.min.js" />
     <Content Include="jquery.flow.1.2.js" />
     <Content Include="Login.aspx" />
-    <Content Include="pages\Admin\IletisimMesajlari.aspx" />
-    <Content Include="pages\Admin\KategoriYonetimi.aspx" />
-    <Content Include="pages\Admin\Raporlar.aspx" />
+    <Content Include="adminsite\IletisimMesajlari.aspx" />
+    <Content Include="adminsite\KategoriYonetimi.aspx" />
+    <Content Include="adminsite\Raporlar.aspx" />
+    <Content Include="adminsite\dd.aspx" />
     <Content Include="pages\Admin\admin_dashboard.aspx" />
     <Content Include="pages\Admin\YaziEkleDuzenle.aspx" />
     <Content Include="pages\Admin\YaziYonetimi.aspx" />
@@ -235,26 +236,40 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\Admin\IletisimMesajlari.aspx.cs">
+    <Compile Include="pages\Admin\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Admin\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="adminsite\IletisimMesajlari.aspx.cs">
       <DependentUpon>IletisimMesajlari.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\Admin\IletisimMesajlari.aspx.designer.cs">
+    <Compile Include="adminsite\IletisimMesajlari.aspx.designer.cs">
       <DependentUpon>IletisimMesajlari.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\Admin\KategoriYonetimi.aspx.cs">
+    <Compile Include="adminsite\KategoriYonetimi.aspx.cs">
       <DependentUpon>KategoriYonetimi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\Admin\KategoriYonetimi.aspx.designer.cs">
+    <Compile Include="adminsite\KategoriYonetimi.aspx.designer.cs">
       <DependentUpon>KategoriYonetimi.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\Admin\Raporlar.aspx.cs">
+    <Compile Include="adminsite\Raporlar.aspx.cs">
       <DependentUpon>Raporlar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\Admin\Raporlar.aspx.designer.cs">
+    <Compile Include="adminsite\Raporlar.aspx.designer.cs">
       <DependentUpon>Raporlar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminsite\dd.aspx.cs">
+      <DependentUpon>dd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminsite\dd.aspx.designer.cs">
+      <DependentUpon>dd.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\Admin\admin_dashboard.aspx.cs">
       <DependentUpon>admin_dashboard.aspx</DependentUpon>
@@ -359,6 +374,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Site.Master" />
+    <Content Include="pages\Admin\Admin.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

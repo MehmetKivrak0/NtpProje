@@ -137,36 +137,93 @@
 	margin-left: 5px;
 }
 
-/* İstatistik Bölümü */
+/* İstatistik Bölümü - Daha Belirgin ve Modern */
 .projeler_istatistik {
 	background: linear-gradient(135deg, #63207c 0%, #4f1a63 100%);
-	padding: 50px 30px;
-	border-radius: 10px;
-	margin: 50px 0;
+	padding: 70px 40px;
+	border-radius: 15px;
+	margin: 60px 0;
+	box-shadow: 0 10px 40px rgba(99, 32, 124, 0.3);
+	position: relative;
+	overflow: hidden;
+}
+
+.projeler_istatistik::before {
+	content: '';
+	position: absolute;
+	top: -50%;
+	right: -50%;
+	width: 200%;
+	height: 200%;
+	background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+	animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+	0%, 100% { transform: scale(1); opacity: 0.3; }
+	50% { transform: scale(1.1); opacity: 0.5; }
 }
 
 .istatistik_grid {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	gap: 30px;
+	gap: 40px;
+	position: relative;
+	z-index: 1;
 }
 
 .istatistik_item {
 	text-align: center;
 	color: #fff;
+	padding: 20px;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 12px;
+	backdrop-filter: blur(10px);
+	transition: all 0.3s ease;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.istatistik_item:hover {
+	background: rgba(255, 255, 255, 0.15);
+	transform: translateY(-5px);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .istatistik_sayi {
-	font-size: 48px;
-	font-weight: bold;
+	font-size: 64px;
+	font-weight: 900;
 	display: block;
-	margin-bottom: 10px;
-	text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+	margin-bottom: 15px;
+	text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+	color: #fff;
+	line-height: 1;
+	letter-spacing: -2px;
+	background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	animation: countUp 1s ease-out;
+}
+
+@keyframes countUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 .istatistik_label {
-	font-size: 14px;
-	opacity: 0.9;
+	font-size: 16px;
+	font-weight: 600;
+	opacity: 0.95;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: rgba(255, 255, 255, 0.95);
+	text-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
 /* CTA Bölümü */
@@ -218,9 +275,21 @@
 		grid-template-columns: 1fr;
 	}
 	
+	.projeler_istatistik {
+		padding: 50px 20px;
+	}
+	
 	.istatistik_grid {
 		grid-template-columns: repeat(2, 1fr);
 		gap: 20px;
+	}
+	
+	.istatistik_sayi {
+		font-size: 48px;
+	}
+	
+	.istatistik_label {
+		font-size: 14px;
 	}
 	
 	.proje_card_image {
@@ -229,6 +298,21 @@
 	
 	.projeler_baslik h1 {
 		font-size: 28px;
+	}
+}
+
+@media (max-width: 480px) {
+	.istatistik_grid {
+		grid-template-columns: 1fr;
+		gap: 15px;
+	}
+	
+	.istatistik_sayi {
+		font-size: 42px;
+	}
+	
+	.projeler_istatistik {
+		padding: 40px 15px;
 	}
 }
 

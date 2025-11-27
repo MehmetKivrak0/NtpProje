@@ -1,280 +1,60 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="_241613001_Mehmet_Kıvrak_NtpProje.pages.Admin.Admin" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="NtpProje_Web.Admin.Admin" %>
 
 <!DOCTYPE html>
 <html lang="tr">
 <head runat="server">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin Dashboard - Genç Birey</title>
-    <link rel="stylesheet" href="<%= ResolveUrl("~/css/admin.css") %>" />
+    <title>Admin Paneli</title>
+    
+    <link rel="stylesheet" href="<%= ResolveUrl("~/css/admin.css") %>">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
 </head>
 <body class="dashboard">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <div class="sidebar-logo">GB</div>
-            <h2>Genç Birey</h2>
-        </div>
-
-        <nav class="sidebar-menu">
-            <div class="menu-section">
-                <div class="menu-section-title">Ana Menü</div>
-                <a href="admin_dashboard.html" class="menu-item active">
-                    <i>📊</i> <span>Dashboard</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i>📄</i> <span>Sayfalar</span>
-                </a>
-                <a href="YaziYonetimi.html" class="menu-item">
-                    <i>📝</i> <span>Blog Yazıları</span>
-                </a>
-                <a href="YaziYonetimi.html" class="menu-item">
-                    <i>🖼️</i> <span>Projeler</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i>⚙️</i> <span>Hizmetler</span>
-                </a>
-            </div>
-
-            <div class="menu-section">
-                <div class="menu-section-title">İçerik Yönetimi</div>
-                <a href="#" class="menu-item">
-                    <i>🎨</i> <span>Medya</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i>👥</i> <span>Ekip</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i>💬</i> <span>Yorumlar</span>
-                </a>
-                <a href="IletisimMesajlari.html" class="menu-item">
-                    <i>📧</i> <span>Mesajlar</span>
-                </a>
-            </div>
-
-            <div class="menu-section">
-                <div class="menu-section-title">Raporlama</div>
-                <a href="Raporlar.html" class="menu-item">
-                    <i>📈</i> <span>Raporlar</span>
-                </a>
-            </div>
-
-            <div class="menu-section">
-                <div class="menu-section-title">Ayarlar</div>
-                <a href="KategoriYonetimi.html" class="menu-item">
-                    <i>🏷️</i> <span>Kategoriler</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i>👤</i> <span>Kullanıcılar</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i>🔧</i> <span>Site Ayarları</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <i>🔐</i> <span>Güvenlik</span>
-                </a>
-                <a href="#" class="menu-item" onclick="logout()">
-                    <i>🚪</i> <span>Çıkış Yap</span>
-                </a>
-            </div>
-        </nav>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Topbar -->
-        <div class="topbar">
-            <div class="topbar-left">
-                <h1>Dashboard</h1>
-            </div>
-            <div class="topbar-right">
-                <div class="topbar-user">
-                    <div class="user-avatar" id="userAvatar">A</div>
-                    <div class="user-info">
-                        <div class="user-name" id="userName">Admin User</div>
-                        <div class="user-role" id="userRole">Yönetici</div>
-                    </div>
+    <form id="form1" runat="server" enctype="multipart/form-data">
+        
+        <aside class="sidebar">
+            <nav class="sidebar-menu">
+                <div class="menu-section">
+                    <div class="menu-section-title">Ana Menü</div>
+                    
+                    <a href='<%= ResolveUrl("~/pages/Admin/admin_dashboard.aspx") %>' class="menu-item">
+                        <i>📊</i> <span>Dashboard</span>
+                    </a>
+                    <a href='<%= ResolveUrl("~/pages/Admin/YaziYonetimi.aspx") %>' class="menu-item">
+                        <i>📝</i> <span>Blog ve Proje</span>
+                    </a>
+                    <a href='<%= ResolveUrl("~/pages/Admin/KategoriYonetimi.aspx") %>' class="menu-item">
+                        <i>🏷️</i> <span>Kategoriler</span>
+                    </a>
                 </div>
-            </div>
-        </div>
-
-        <!-- Dashboard Stats -->
-        <div class="dashboard-stats">
-            <div class="stat-card">
-                <div class="stat-icon blue">📄</div>
-                <div class="stat-content">
-                    <h3>156</h3>
-                    <p>Toplam Sayfa</p>
+                
+                <div class="menu-section">
+                    <div class="menu-section-title">İçerik Yönetimi</div>
+                    <a href='<%= ResolveUrl("~/pages/Admin/IletisimMesajlari.aspx") %>' class="menu-item">
+                        <i>📧</i> <span>Mesajlar</span>
+                    </a>
                 </div>
-            </div>
 
-            <div class="stat-card">
-                <div class="stat-icon green">📝</div>
-                <div class="stat-content">
-                    <h3>48</h3>
-                    <p>Blog Yazısı</p>
+                <div class="menu-section">
+                     <div class="menu-section-title">Ayarlar</div>
+                     <asp:LinkButton ID="btnLogout" runat="server" CssClass="menu-item" OnClick="btnLogout_Click">
+                        <i>🚪</i> <span>Çıkış Yap</span>
+                     </asp:LinkButton>
                 </div>
-            </div>
+            </nav>
+        </aside>
 
-            <div class="stat-card">
-                <div class="stat-icon orange">👥</div>
-                <div class="stat-content">
-                    <h3>2,543</h3>
-                    <p>Toplam Ziyaretçi</p>
-                </div>
-            </div>
+        <main class="main-content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </main>
 
-            <div class="stat-card">
-                <div class="stat-icon red">💬</div>
-                <div class="stat-content">
-                    <h3>12</h3>
-                    <p>Yeni Mesaj</p>
-                </div>
-            </div>
-
-    </main>
-
-    <script>
-        // Sayfa yüklendiğinde kullanıcı kontrolü
-        window.addEventListener('load', function () {
-            checkAuth();
-            loadUserInfo();
-        });
-
-        // Kullanıcı girişi kontrolü
-        function checkAuth() {
-            const adminUser = localStorage.getItem('adminUser');
-            if (!adminUser) {
-                // Kullanıcı giriş yapmamışsa login sayfasına yönlendir
-                window.location.href = 'login.html';
-                return;
-            }
-        }
-
-        // Kullanıcı bilgilerini yükle
-        function loadUserInfo() {
-            const adminUser = localStorage.getItem('adminUser');
-            if (adminUser) {
-                const user = JSON.parse(adminUser);
-
-                // Kullanıcı adının baş harfini al
-                const initial = user.name ? user.name.charAt(0).toUpperCase() : 'A';
-                document.getElementById('userAvatar').textContent = initial;
-                document.getElementById('userName').textContent = user.name || 'Admin';
-                document.getElementById('userRole').textContent = user.role || 'Yönetici';
-            }
-        }
-
-        // Çıkış yap
-        function logout() {
-            if (confirm('Çıkış yapmak istediğinize emin misiniz?')) {
-                localStorage.removeItem('adminUser');
-                window.location.href = 'login.html';
-            }
-        }
-
-        // Tablo işlemleri
-        document.addEventListener('DOMContentLoaded', function () {
-            // Edit butonları
-            const editButtons = document.querySelectorAll('.btn-edit');
-            editButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const row = this.closest('tr');
-                    const title = row.querySelector('td:first-child').textContent;
-                    alert('Düzenleniyor: ' + title);
-                    // Gerçek uygulamada düzenleme sayfasına yönlendirilir
-                });
-            });
-
-            // Delete butonları
-            const deleteButtons = document.querySelectorAll('.btn-delete');
-            deleteButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const row = this.closest('tr');
-                    const title = row.querySelector('td:first-child').textContent;
-
-                    if (confirm('"' + title + '" silinecek. Emin misiniz?')) {
-                        row.remove();
-                        showNotification('Silindi: ' + title, 'success');
-                    }
-                });
-            });
-
-            // Yeni ekle butonları
-            const addButtons = document.querySelectorAll('.btn-add');
-            addButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const tableTitle = this.closest('.dashboard-table').querySelector('.table-header h2').textContent;
-                    alert('Yeni ' + tableTitle + ' ekleniyor...');
-                    // Gerçek uygulamada ekleme sayfasına yönlendirilir
-                });
-            });
-
-            // Menü öğeleri
-            const menuItems = document.querySelectorAll('.menu-item');
-            menuItems.forEach(item => {
-                item.addEventListener('click', function (e) {
-                    if (this.getAttribute('onclick') !== 'logout()') {
-                        e.preventDefault();
-                        const text = this.querySelector('span').textContent;
-                        if (text !== 'Dashboard') {
-                            showNotification(text + ' sayfası yükleniyor...', 'info');
-                        }
-                    }
-                });
-            });
-        });
-
-        // Bildirim göster
-        function showNotification(message, type) {
-            const notification = document.createElement('div');
-            notification.className = 'alert alert-' + type;
-            notification.textContent = message;
-            notification.style.position = 'fixed';
-            notification.style.top = '20px';
-            notification.style.right = '20px';
-            notification.style.zIndex = '10000';
-            notification.style.minWidth = '300px';
-            notification.style.animation = 'fadeIn 0.3s ease-in';
-
-            document.body.appendChild(notification);
-
-            setTimeout(function () {
-                notification.style.animation = 'fadeOut 0.3s ease-out';
-                setTimeout(function () {
-                    notification.remove();
-                }, 300);
-            }, 3000);
-        }
-
-        // Responsive sidebar toggle (mobil için)
-        let sidebarOpen = true;
-        function toggleSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            const mainContent = document.querySelector('.main-content');
-
-            if (sidebarOpen) {
-                sidebar.style.transform = 'translateX(-100%)';
-                mainContent.style.marginLeft = '0';
-            } else {
-                sidebar.style.transform = 'translateX(0)';
-                mainContent.style.marginLeft = '260px';
-            }
-
-            sidebarOpen = !sidebarOpen;
-        }
-
-        // Hoş geldin mesajı
-        setTimeout(function () {
-            const adminUser = localStorage.getItem('adminUser');
-            if (adminUser) {
-                const user = JSON.parse(adminUser);
-                showNotification('Hoş geldiniz, ' + (user.name || 'Admin') + '!', 'success');
-            }
-        }, 500);
-    </script>
+    </form>
 </body>
 </html>
-

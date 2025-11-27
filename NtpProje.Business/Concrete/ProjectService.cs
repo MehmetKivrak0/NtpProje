@@ -4,7 +4,8 @@ using System.Linq;
 using NtpProje.Business.Abstract;
 using NtpProje.Entities.Concrete; // DTO burada (ProjectDTO)
 using NtpProje.Data.Concrete;     // Repository burada
-using NtpProje.Data.DataModel;    // Veritaban� tablosu burada (project - k���k p)
+using NtpProje.Data.DataModel;    // Veritabanı tablosu burada (project - küçük p)
+using NtpProje.Business.Concrete; // CategoryService için
 
 namespace NtpProje.Business.Concrete
 {
@@ -25,15 +26,31 @@ namespace NtpProje.Business.Concrete
 
             foreach (var entity in entities)
             {
+                // Kategori adından kategori ID'sini bul
+                int categoryId = 0;
+                if (!string.IsNullOrEmpty(entity.category))
+                {
+                    var categoryService = new CategoryService();
+                    var allCategories = categoryService.GetAll();
+                    var matchedCategory = allCategories.FirstOrDefault(c => c.Name == entity.category);
+                    if (matchedCategory != null)
+                        categoryId = matchedCategory.Id;
+                }
+
                 dtos.Add(new ProjectDTO
                 {
-                    // Sol Taraf: DTO (PascalCase) = Sa� Taraf: Veritaban� (snake_case)
+                    // Sol Taraf: DTO (PascalCase) = Sağ Taraf: Veritabanı (snake_case)
                     Id = entity.project_id,
                     Title = entity.project_name,
                     Description = entity.description,
-                    Category = entity.category,
+                    Category = entity.category, // Eski yapı için korunuyor
+                    CategoryId = categoryId, // categories tablosundan bulunan ID
                     ImageUrl = entity.image_url,
-                    Technologies = entity.short_description // technologies yoktu, bunu kulland�k
+                    Technologies = entity.short_description, // technologies yoktu, bunu kullandık
+                    ClientName = entity.client_name,
+                    CompletionDate = entity.completion_date,
+                    Status = entity.status,
+                    ViewCount = entity.view_count ?? 0
                 });
             }
             return dtos;
@@ -42,19 +59,35 @@ namespace NtpProje.Business.Concrete
         // 2. GET BY ID
         public ProjectDTO GetById(int id)
         {
-            // K���k harf 'project_id' kullan�yoruz
+            // Küçük harf 'project_id' kullanıyoruz
             var entity = _projectRepository.GetAll().FirstOrDefault(p => p.project_id == id);
 
             if (entity == null) return null;
+
+            // Kategori adından kategori ID'sini bul
+            int categoryId = 0;
+            if (!string.IsNullOrEmpty(entity.category))
+            {
+                var categoryService = new CategoryService();
+                var allCategories = categoryService.GetAll();
+                var matchedCategory = allCategories.FirstOrDefault(c => c.Name == entity.category);
+                if (matchedCategory != null)
+                    categoryId = matchedCategory.Id;
+            }
 
             return new ProjectDTO
             {
                 Id = entity.project_id,
                 Title = entity.project_name,
                 Description = entity.description,
-                Category = entity.category,
+                Category = entity.category, // Eski yapı için korunuyor
+                CategoryId = categoryId, // categories tablosundan bulunan ID
                 ImageUrl = entity.image_url,
-                Technologies = entity.short_description
+                Technologies = entity.short_description,
+                ClientName = entity.client_name,
+                CompletionDate = entity.completion_date,
+                Status = entity.status,
+                ViewCount = entity.view_count ?? 0
             };
         }
 
@@ -63,16 +96,38 @@ namespace NtpProje.Business.Concrete
         {
             try
             {
-                // 'project' s�n�f�ndan (k���k p) nesne �retiyoruz
+                // 'project' sınıfından (küçük p) nesne üretiyoruz
+                // CategoryId'den kategori adını bul
+                string categoryName = dto.Category;
+                if (dto.CategoryId > 0 && string.IsNullOrEmpty(categoryName))
+                {
+                    var categoryService = new CategoryService();
+                    var category = categoryService.GetById(dto.CategoryId);
+                    if (category != null)
+                        categoryName = category.Name;
+                }
+
                 var entity = new project
                 {
                     project_name = dto.Title,
                     description = dto.Description,
-                    category = dto.Category,
+                    category = categoryName ?? dto.Category, // categories tablosundan gelen kategori adı
                     image_url = dto.ImageUrl,
                     short_description = dto.Technologies,
+                    
+                    // client_name eklendi
+                    client_name = dto.ClientName,
+                    
+                    // completion_date eklendi
+                    completion_date = dto.CompletionDate,
+                    
+                    // status eklendi
+                    status = dto.Status ?? "Devam Ediyor",
+                    
+                    // project_date NOT NULL olduğu için mutlaka set edilmeli
+                    project_date = DateTime.Now,
 
-                    // Zorunlu di�er alanlar (Tablo yap�na g�re)
+                    // Zorunlu diğer alanlar (Tablo yapısına göre)
                     created_date = DateTime.Now,
                     is_published = true,
                     view_count = 0,
@@ -96,11 +151,35 @@ namespace NtpProje.Business.Concrete
                 var entity = _projectRepository.GetAll().FirstOrDefault(p => p.project_id == dto.Id);
                 if (entity == null) return false;
 
+                // CategoryId'den kategori adını bul
+                string categoryName = dto.Category;
+                if (dto.CategoryId > 0 && string.IsNullOrEmpty(categoryName))
+                {
+                    var categoryService = new CategoryService();
+                    var category = categoryService.GetById(dto.CategoryId);
+                    if (category != null)
+                        categoryName = category.Name;
+                }
+
                 entity.project_name = dto.Title;
                 entity.description = dto.Description;
-                entity.category = dto.Category;
+                entity.category = categoryName ?? dto.Category; // categories tablosundan gelen kategori adı
                 entity.image_url = dto.ImageUrl;
                 entity.short_description = dto.Technologies;
+                
+                // client_name eklendi
+                entity.client_name = dto.ClientName;
+                
+                // completion_date eklendi
+                entity.completion_date = dto.CompletionDate;
+                
+                // status eklendi
+                if (!string.IsNullOrEmpty(dto.Status))
+                    entity.status = dto.Status;
+                
+                // project_date güncellenmesi (opsiyonel, genelde değiştirilmez)
+                // Eğer DTO'da project_date varsa güncellenebilir, yoksa mevcut değer korunur
+                
                 entity.updated_date = DateTime.Now;
 
                 _projectRepository.Update(entity);

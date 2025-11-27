@@ -7,11 +7,51 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NtpProje.pages.Admin
+namespace NtpProje_Web.Admin
 {
 
 
     public partial class YaziYonetimi
     {
+
+        /// <summary>
+        /// ltrTotalPosts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrTotalPosts;
+
+        /// <summary>
+        /// rptPosts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptPosts;
+
+        /// <summary>
+        /// ltrTotalProjects control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrTotalProjects;
+
+        /// <summary>
+        /// rptProjects control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptProjects;
+
+        protected global::System.Web.UI.WebControls.Literal ltrTotalPostsSidebar;
+
+        protected global::System.Web.UI.WebControls.Literal ltrTotalProjectsSidebar;
     }
 }
