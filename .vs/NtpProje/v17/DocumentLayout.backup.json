@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje\\pages\\admin\\admin_dashboard.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\admin\\admin_dashboard.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje\\pages\\admin\\iletisimmesajlari.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\admin\\iletisimmesajlari.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje\\pages\\admin\\admin_dashboard.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\admin\\admin_dashboard.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje\\pages\\admin\\iletisimmesajlari.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\admin\\iletisimmesajlari.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje\\pages\\iletisim.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\iletisim.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,28 +42,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "admin_dashboard.aspx.designer.cs",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\admin_dashboard.aspx.designer.cs",
-              "RelativeDocumentMoniker": "NtpProje\\pages\\Admin\\admin_dashboard.aspx.designer.cs",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\admin_dashboard.aspx.designer.cs",
-              "RelativeToolTip": "NtpProje\\pages\\Admin\\admin_dashboard.aspx.designer.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAqwA8AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "IletisimMesajlari.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\IletisimMesajlari.aspx.cs",
+              "RelativeDocumentMoniker": "NtpProje\\pages\\Admin\\IletisimMesajlari.aspx.cs",
+              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\IletisimMesajlari.aspx.cs",
+              "RelativeToolTip": "NtpProje\\pages\\Admin\\IletisimMesajlari.aspx.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAowGkAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T21:13:54.83Z",
+              "WhenOpened": "2025-11-28T14:23:14.764Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "admin_dashboard.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\admin_dashboard.aspx.cs",
-              "RelativeDocumentMoniker": "NtpProje\\pages\\Admin\\admin_dashboard.aspx.cs",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\admin_dashboard.aspx.cs",
-              "RelativeToolTip": "NtpProje\\pages\\Admin\\admin_dashboard.aspx.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAUwB8AAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T21:13:47.585Z",
+              "DocumentIndex": 1,
+              "Title": "IletisimMesajlari.aspx",
+              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\IletisimMesajlari.aspx",
+              "RelativeDocumentMoniker": "NtpProje\\pages\\Admin\\IletisimMesajlari.aspx",
+              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\IletisimMesajlari.aspx",
+              "RelativeToolTip": "NtpProje\\pages\\Admin\\IletisimMesajlari.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-28T14:21:19.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "iletisim.aspx",
+              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\iletisim.aspx",
+              "RelativeDocumentMoniker": "NtpProje\\pages\\iletisim.aspx",
+              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\iletisim.aspx",
+              "RelativeToolTip": "NtpProje\\pages\\iletisim.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-28T14:08:42.971Z",
               "EditorCaption": ""
             }
           ]

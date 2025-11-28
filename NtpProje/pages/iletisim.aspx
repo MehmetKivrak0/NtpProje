@@ -54,17 +54,17 @@
                         <asp:Label ID="lblAdSoyad" runat="server" AssociatedControlID="txtAdSoyad" CssClass="form_label" Text="Ad Soyad *"></asp:Label>
                         <asp:TextBox ID="txtAdSoyad" runat="server" CssClass="form_input"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvAdSoyad" runat="server" ControlToValidate="txtAdSoyad"
-                            ErrorMessage="Ad Soyad gereklidir" CssClass="validation_error" Display="Dynamic"></asp:RequiredFieldValidator>
+                            ErrorMessage="Ad Soyad gereklidir" CssClass="validation_error" Display="Dynamic" ValidationGroup="IletisimForm"></asp:RequiredFieldValidator>
                     </div>
 
                     <div class="form_grup">
                         <asp:Label ID="lblEmail" runat="server" AssociatedControlID="txtEmail" CssClass="form_label" Text="E-posta *"></asp:Label>
                         <asp:TextBox ID="txtEmail" runat="server" CssClass="form_input" TextMode="Email"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail"
-                            ErrorMessage="E-posta gereklidir" CssClass="validation_error" Display="Dynamic"></asp:RequiredFieldValidator>
+                            ErrorMessage="E-posta gereklidir" CssClass="validation_error" Display="Dynamic" ValidationGroup="IletisimForm"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail"
                             ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-                            ErrorMessage="Geçerli bir e-posta giriniz" CssClass="validation_error" Display="Dynamic"></asp:RegularExpressionValidator>
+                            ErrorMessage="Geçerli bir e-posta giriniz" CssClass="validation_error" Display="Dynamic" ValidationGroup="IletisimForm"></asp:RegularExpressionValidator>
                     </div>
 
                     <div class="form_grup">
@@ -85,11 +85,11 @@
                         <asp:Label ID="lblMesaj" runat="server" AssociatedControlID="txtMesaj" CssClass="form_label" Text="Mesajınız *"></asp:Label>
                         <asp:TextBox ID="txtMesaj" runat="server" CssClass="form_textarea" TextMode="MultiLine" Rows="5"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvMesaj" runat="server" ControlToValidate="txtMesaj"
-                            ErrorMessage="Mesaj gereklidir" CssClass="validation_error" Display="Dynamic"></asp:RequiredFieldValidator>
+                            ErrorMessage="Mesaj gereklidir" CssClass="validation_error" Display="Dynamic" ValidationGroup="IletisimForm"></asp:RequiredFieldValidator>
                     </div>
 
                     <div class="form_grup">
-                        <asp:Button ID="btnGonder" runat="server" Text="Gönder" CssClass="form_button" OnClick="btnGonder_Click" />
+                        <asp:Button ID="btnGonder" runat="server" Text="Gönder" CssClass="form_button" OnClick="btnGonder_Click" ValidationGroup="IletisimForm" />
                     </div>
                 </asp:Panel>
             </div>
@@ -100,57 +100,59 @@
 
                 <asp:Panel ID="pnlTeklifForm" runat="server">
                     <div class="form_grup">
-                        <asp:Label ID="lblFirmaAdi" runat="server" AssociatedControlID="txtFirmaAdi" CssClass="form_label" Text="Firma Adı"></asp:Label>
+                        <asp:Label ID="lblFirmaAdi" runat="server" AssociatedControlID="txtFirmaAdi" CssClass="form_label" Text="Firma Adı *"></asp:Label>
                         <asp:TextBox ID="txtFirmaAdi" runat="server" CssClass="form_input"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvFirmaAdi" runat="server" ControlToValidate="txtFirmaAdi"
-                            ErrorMessage="Firma Adı gereklidir" CssClass="validation_error" Display="Dynamic"></asp:RequiredFieldValidator>
+                            ErrorMessage="Firma Adı gereklidir" CssClass="validation_error" Display="Dynamic" ValidationGroup="ProjeTeklifiForm"></asp:RequiredFieldValidator>
                     </div>
 
                     <div class="form_grup">
-                        <asp:Label ID="lblYetkili" runat="server" AssociatedControlID="txtYetkili" CssClass="form_label" Text="Yetkili Kişi"></asp:Label>
+                        <asp:Label ID="lblYetkili" runat="server" AssociatedControlID="txtYetkili" CssClass="form_label" Text="Yetkili Kişi *"></asp:Label>
                         <asp:TextBox ID="txtYetkili" runat="server" CssClass="form_input"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvYetkili" runat="server" ControlToValidate="txtYetkili"
-                            ErrorMessage="Yetkili Kişi gereklidir" CssClass="validation_error" Display="Dynamic"></asp:RequiredFieldValidator>
+                            ErrorMessage="Yetkili Kişi gereklidir" CssClass="validation_error" Display="Dynamic" ValidationGroup="ProjeTeklifiForm"></asp:RequiredFieldValidator>
                     </div>
 
                     <div class="form_grup">
-                        <asp:Label ID="lblTeklifEmail" runat="server" AssociatedControlID="txtTeklifEmail" CssClass="form_label" Text="E-posta"></asp:Label>
+                        <asp:Label ID="lblTeklifEmail" runat="server" AssociatedControlID="txtTeklifEmail" CssClass="form_label" Text="E-posta *"></asp:Label>
                         <asp:TextBox ID="txtTeklifEmail" runat="server" CssClass="form_input" TextMode="Email"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvTeklifEmail" runat="server" ControlToValidate="txtTeklifEmail"
-                            ErrorMessage="E-posta gereklidir" CssClass="validation_error" Display="Dynamic"></asp:RequiredFieldValidator>
+                            ErrorMessage="E-posta gereklidir" CssClass="validation_error" Display="Dynamic" ValidationGroup="ProjeTeklifiForm"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="revTeklifEmail" runat="server" ControlToValidate="txtTeklifEmail"
                             ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-                            ErrorMessage="Geçerli bir e-posta giriniz" CssClass="validation_error" Display="Dynamic"></asp:RegularExpressionValidator>
+                            ErrorMessage="Geçerli bir e-posta giriniz" CssClass="validation_error" Display="Dynamic" ValidationGroup="ProjeTeklifiForm"></asp:RegularExpressionValidator>
                     </div>
 
                     <div class="form_grup">
-                        <asp:Label ID="lblTeklifTelefon" runat="server" AssociatedControlID="txtTeklifTelefon" CssClass="form_label" Text="Telefon"></asp:Label>
+                        <asp:Label ID="lblTeklifTelefon" runat="server" AssociatedControlID="txtTeklifTelefon" CssClass="form_label" Text="Telefon *"></asp:Label>
                         <asp:TextBox ID="txtTeklifTelefon" runat="server" CssClass="form_input" TextMode="Phone"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvTeklifTelefon" runat="server" ControlToValidate="txtTeklifTelefon"
-                            ErrorMessage="Telefon gereklidir" CssClass="validation_error" Display="Dynamic"></asp:RequiredFieldValidator>
+                            ErrorMessage="Telefon gereklidir" CssClass="validation_error" Display="Dynamic" ValidationGroup="ProjeTeklifiForm"></asp:RequiredFieldValidator>
                     </div>
 
                     <div class="form_grup">
-                        <asp:Label ID="lblProjeDetay" runat="server" AssociatedControlID="txtProjeDetay" CssClass="form_label" Text="Proje Detayları"></asp:Label>
+                        <asp:Label ID="lblProjeDetay" runat="server" AssociatedControlID="txtProjeDetay" CssClass="form_label" Text="Proje Detayları *"></asp:Label>
                         <asp:TextBox ID="txtProjeDetay" runat="server" CssClass="form_textarea" TextMode="MultiLine" Rows="5"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvProjeDetay" runat="server" ControlToValidate="txtProjeDetay"
-                            ErrorMessage="Proje Detayları gereklidir" CssClass="validation_error" Display="Dynamic"></asp:RequiredFieldValidator>
+                            ErrorMessage="Proje Detayları gereklidir" CssClass="validation_error" Display="Dynamic" ValidationGroup="ProjeTeklifiForm"></asp:RequiredFieldValidator>
                     </div>
 
                     <div class="form_grup">
-                        <asp:Button ID="btnTeklifIste" runat="server" Text="Teklif İste" CssClass="form_button" OnClick="btnTeklifIste_Click" />
+                        <asp:Button ID="btnTeklifIste" runat="server" Text="Teklif İste" CssClass="form_button" OnClick="btnTeklifIste_Click" ValidationGroup="ProjeTeklifiForm" />
                     </div>
                 </asp:Panel>
             </div>
         </div>
 
-        <div class="harita_wrapper">
+        <asp:Panel ID="pnlHaritaWrapper" runat="server" CssClass="harita_wrapper" Visible="false">
+            <h2 style="font-size: 24px; color: #63207c; font-weight: bold; margin-bottom: 20px; text-align: center;">🗺️ Konumumuz</h2>
             <iframe
                 id="ifHarita"
                 runat="server"
-                style="border: 0; width: 100%; height: 400px;"
+                style="border: 0; width: 100%; height: 450px; border-radius: 10px;"
                 allowfullscreen=""
-                loading="lazy"></iframe>
-        </div>
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </asp:Panel>
     </div>
 </asp:Content>

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using NtpProje.Data.Concrete;
+using NtpProje.Data.DataModel;
 
 namespace NtpProje.Business.Concrete
 {
@@ -26,6 +27,39 @@ namespace NtpProje.Business.Concrete
             catch
             {
                 return "Veri Çekilemedi";
+            }
+        }
+
+        // Ayarları güncellemek için metot
+        public bool SetValueByKey(string key, string value)
+        {
+            try
+            {
+                // Önce mevcut ayarı bul
+                var setting = _repository.GetByKey(key);
+
+                if (setting != null)
+                {
+                    // Mevcut ayar varsa güncelle
+                    setting.setting_value = value;
+                    _repository.Update(setting);
+                    return true;
+                }
+                else
+                {
+                    // Yoksa yeni oluştur
+                    var newSetting = new setting
+                    {
+                        setting_key = key,
+                        setting_value = value
+                    };
+                    _repository.Add(newSetting);
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
             }
         }
     }

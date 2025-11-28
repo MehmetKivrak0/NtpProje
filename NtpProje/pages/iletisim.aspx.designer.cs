@@ -51,6 +51,15 @@ namespace NtpProje_Web
         protected global::System.Web.UI.WebControls.Literal litSaatler;
 
         /// <summary>
+        /// lblIletisimMesaj control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblIletisimMesaj;
+
+        /// <summary>
         /// pnlIletisimForm control.
         /// </summary>
         /// <remarks>
@@ -69,6 +78,15 @@ namespace NtpProje_Web
         protected global::System.Web.UI.WebControls.Label lblAdSoyad;
 
         /// <summary>
+        /// txtAdSoyad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAdSoyad;
+
+        /// <summary>
         /// rfvAdSoyad control.
         /// </summary>
         /// <remarks>
@@ -85,6 +103,15 @@ namespace NtpProje_Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEmail;
+
+        /// <summary>
+        /// txtEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
         /// rfvEmail control.
@@ -114,6 +141,15 @@ namespace NtpProje_Web
         protected global::System.Web.UI.WebControls.Label lblTelefon;
 
         /// <summary>
+        /// txtTelefon control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTelefon;
+
+        /// <summary>
         /// lblKonu control.
         /// </summary>
         /// <remarks>
@@ -123,6 +159,15 @@ namespace NtpProje_Web
         protected global::System.Web.UI.WebControls.Label lblKonu;
 
         /// <summary>
+        /// ddlKonu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlKonu;
+
+        /// <summary>
         /// lblMesaj control.
         /// </summary>
         /// <remarks>
@@ -130,6 +175,15 @@ namespace NtpProje_Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMesaj;
+
+        /// <summary>
+        /// txtMesaj control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMesaj;
 
         /// <summary>
         /// rfvMesaj control.
@@ -150,6 +204,15 @@ namespace NtpProje_Web
         protected global::System.Web.UI.WebControls.Button btnGonder;
 
         /// <summary>
+        /// lblTeklifMesaj control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTeklifMesaj;
+
+        /// <summary>
         /// pnlTeklifForm control.
         /// </summary>
         /// <remarks>
@@ -166,6 +229,15 @@ namespace NtpProje_Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblFirmaAdi;
+
+        /// <summary>
+        /// txtFirmaAdi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFirmaAdi;
 
         /// <summary>
         /// rfvFirmaAdi control.
@@ -186,6 +258,15 @@ namespace NtpProje_Web
         protected global::System.Web.UI.WebControls.Label lblYetkili;
 
         /// <summary>
+        /// txtYetkili control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtYetkili;
+
+        /// <summary>
         /// rfvYetkili control.
         /// </summary>
         /// <remarks>
@@ -202,6 +283,15 @@ namespace NtpProje_Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTeklifEmail;
+
+        /// <summary>
+        /// txtTeklifEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTeklifEmail;
 
         /// <summary>
         /// rfvTeklifEmail control.
@@ -231,6 +321,15 @@ namespace NtpProje_Web
         protected global::System.Web.UI.WebControls.Label lblTeklifTelefon;
 
         /// <summary>
+        /// txtTeklifTelefon control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTeklifTelefon;
+
+        /// <summary>
         /// rfvTeklifTelefon control.
         /// </summary>
         /// <remarks>
@@ -249,6 +348,15 @@ namespace NtpProje_Web
         protected global::System.Web.UI.WebControls.Label lblProjeDetay;
 
         /// <summary>
+        /// txtProjeDetay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtProjeDetay;
+
+        /// <summary>
         /// rfvProjeDetay control.
         /// </summary>
         /// <remarks>
@@ -265,5 +373,14 @@ namespace NtpProje_Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnTeklifIste;
+
+        /// <summary>
+        /// ifHarita control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlIframe ifHarita;
     }
 }

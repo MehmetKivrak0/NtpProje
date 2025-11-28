@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NtpProje.pages.Admin
+namespace NtpProje_Web.Admin
 {
 
 

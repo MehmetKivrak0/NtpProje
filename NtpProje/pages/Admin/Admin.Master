@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Paneli</title>
-    
+
     <link rel="stylesheet" href="<%= ResolveUrl("~/css/admin.css") %>">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
-    
+
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -17,23 +17,26 @@
 </head>
 <body class="dashboard">
     <form id="form1" runat="server" enctype="multipart/form-data">
-        
+
         <aside class="sidebar">
             <nav class="sidebar-menu">
                 <div class="menu-section">
                     <div class="menu-section-title">Ana Menü</div>
-                    
+
                     <a href='<%= ResolveUrl("~/pages/Admin/admin_dashboard.aspx") %>' class="menu-item">
                         <i>📊</i> <span>Dashboard</span>
                     </a>
                     <a href='<%= ResolveUrl("~/pages/Admin/YaziYonetimi.aspx") %>' class="menu-item">
                         <i>📝</i> <span>Blog ve Proje</span>
                     </a>
-                    <a href='<%= ResolveUrl("~/pages/Admin/KategoriYonetimi.aspx") %>' class="menu-item">
-                        <i>🏷️</i> <span>Kategoriler</span>
+                    <a href='<%= ResolveUrl("~/pages/Admin/IletisimMesajlari.aspx") %>' class="menu-item">
+                        <i>📞</i> <span>İletişim Sayfası</span>
+                    </a>
+                    <a href='<%= ResolveUrl("~/pages/Admin/IletisimMesajlari.aspx") %>' class="menu-item">
+                        <i>🏷️</i> <span>İletişim Alanı</span>
                     </a>
                 </div>
-                
+
                 <div class="menu-section">
                     <div class="menu-section-title">İçerik Yönetimi</div>
                     <a href='<%= ResolveUrl("~/pages/Admin/IletisimMesajlari.aspx") %>' class="menu-item">
@@ -42,8 +45,8 @@
                 </div>
 
                 <div class="menu-section">
-                     <div class="menu-section-title">Ayarlar</div>
-                     <asp:LinkButton ID="btnLogout" runat="server" CssClass="menu-item" OnClick="btnLogout_Click">
+                    <div class="menu-section-title">Ayarlar</div>
+                    <asp:LinkButton ID="btnLogout" runat="server" CssClass="menu-item" OnClick="btnLogout_Click">
                         <i>🚪</i> <span>Çıkış Yap</span>
                      </asp:LinkButton>
                 </div>

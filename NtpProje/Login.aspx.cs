@@ -52,12 +52,8 @@ namespace NtpProje_Web // Namespace'in NtpProje_Web olduğuna dikkat et
                         Session["FullName"] = loggedInUser.Full_name;
                         Session["Role"] = loggedInUser.Role;
 
-                        // 2. Rol Bazlı Yönlendirme
-                        if (loggedInUser.Role == "User") // Rol Admin ise yönlendir
-                        {
-                            Response.Redirect("~/pages/Admin/admin_dashboard.aspx");
-                        }
-                       
+                        // 2. Başarılı girişten sonra admin dashboard'a yönlendir
+                        Response.Redirect("~/pages/Admin/admin_dashboard.aspx");
                     }
                     else
                     {

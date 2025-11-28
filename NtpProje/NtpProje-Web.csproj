@@ -166,11 +166,11 @@
     <Content Include="jquery-1.4.3.min.js" />
     <Content Include="jquery.flow.1.2.js" />
     <Content Include="Login.aspx" />
-    <Content Include="adminsite\IletisimMesajlari.aspx" />
     <Content Include="adminsite\KategoriYonetimi.aspx" />
     <Content Include="adminsite\Raporlar.aspx" />
     <Content Include="adminsite\dd.aspx" />
     <Content Include="pages\Admin\admin_dashboard.aspx" />
+    <Content Include="pages\Admin\IletisimMesajlari.aspx" />
     <Content Include="pages\Admin\YaziEkleDuzenle.aspx" />
     <Content Include="pages\Admin\YaziYonetimi.aspx" />
     <Content Include="pages\blog.aspx" />
@@ -243,13 +243,6 @@
     <Compile Include="pages\Admin\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
-    <Compile Include="adminsite\IletisimMesajlari.aspx.cs">
-      <DependentUpon>IletisimMesajlari.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="adminsite\IletisimMesajlari.aspx.designer.cs">
-      <DependentUpon>IletisimMesajlari.aspx</DependentUpon>
-    </Compile>
     <Compile Include="adminsite\KategoriYonetimi.aspx.cs">
       <DependentUpon>KategoriYonetimi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -277,6 +270,13 @@
     </Compile>
     <Compile Include="pages\Admin\admin_dashboard.aspx.designer.cs">
       <DependentUpon>admin_dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Admin\IletisimMesajlari.aspx.cs">
+      <DependentUpon>IletisimMesajlari.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Admin\IletisimMesajlari.aspx.designer.cs">
+      <DependentUpon>IletisimMesajlari.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\Admin\YaziEkleDuzenle.aspx.cs">
       <DependentUpon>YaziEkleDuzenle.aspx</DependentUpon>

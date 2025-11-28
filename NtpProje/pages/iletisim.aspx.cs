@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using NtpProje.Business.Concrete; // Servisler
 using NtpProje.Entities.Concrete; // DTO'lar
 
@@ -12,31 +8,12 @@ namespace NtpProje_Web
     public partial class Iletisim : System.Web.UI.Page
     {
         // ---------------------------------------------------------
-        // 1. MANUEL TANIMLAMALAR (Designer hatasına karşı sigorta)
+        // MANUEL TANIMLAMALAR (Designer hatasına karşı)
         // ---------------------------------------------------------
-
-        // Ayarlar (Settings) için
-       
-        protected global::System.Web.UI.HtmlControls.HtmlIframe ifHarita; // Harita
-
-        // İletişim Formu
-        protected global::System.Web.UI.WebControls.TextBox txtAdSoyad;
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
-        protected global::System.Web.UI.WebControls.TextBox txtTelefon;
-        protected global::System.Web.UI.WebControls.DropDownList ddlKonu;
-        protected global::System.Web.UI.WebControls.TextBox txtMesaj;
-        protected global::System.Web.UI.WebControls.Label lblIletisimMesaj;
-
-        // Teklif Formu
-        protected global::System.Web.UI.WebControls.TextBox txtFirmaAdi;
-        protected global::System.Web.UI.WebControls.TextBox txtYetkili;
-        protected global::System.Web.UI.WebControls.TextBox txtTeklifEmail;
-        protected global::System.Web.UI.WebControls.TextBox txtTeklifTelefon;
-        protected global::System.Web.UI.WebControls.TextBox txtProjeDetay;
-        protected global::System.Web.UI.WebControls.Label lblTeklifMesaj;
+        protected global::System.Web.UI.WebControls.Panel pnlHaritaWrapper;
 
         // ---------------------------------------------------------
-        // 2. SERVİSLERİ ÇAĞIRIYORUZ
+        // SERVİSLERİ ÇAĞIRIYORUZ
         // ---------------------------------------------------------
         private readonly SettingService _settingService = new SettingService();
         private readonly ContactMessageService _contactService = new ContactMessageService();
@@ -58,26 +35,91 @@ namespace NtpProje_Web
         {
             try
             {
-                // Text verileri
-                litAdres.Text = _settingService.GetValueByKey("site_address");
-                litTelefon.Text = _settingService.GetValueByKey("site_phone");
-                litEmail.Text = _settingService.GetValueByKey("site_email");
-                litSaatler.Text = _settingService.GetValueByKey("site_working_hours");
+                // Veritabanından verileri çekip Literal'lere yazıyoruz.
+                // (litAdres vb. kontrolleri Designer dosyasından otomatik tanır)
+
+                litAdres.Text = _settingService.GetValueByKey("site_address") ?? "Adres bilgisi girilmedi.";
+                litTelefon.Text = _settingService.GetValueByKey("site_phone") ?? "Telefon bilgisi girilmedi.";
+                litEmail.Text = _settingService.GetValueByKey("site_email") ?? "E-posta bilgisi girilmedi.";
+                litSaatler.Text = _settingService.GetValueByKey("site_working_hours") ?? "Çalışma saatleri girilmedi.";
 
                 // Harita Linki
                 string mapLink = _settingService.GetValueByKey("site_map_embed");
-                if (!string.IsNullOrEmpty(mapLink))
+                
+                // Debug: Harita linkini kontrol et
+                System.Diagnostics.Debug.WriteLine("=== HARITA LINKI KONTROL ===");
+                System.Diagnostics.Debug.WriteLine("DB'den gelen link: " + (mapLink ?? "NULL/BOŞ"));
+                System.Diagnostics.Debug.WriteLine("Link uzunluğu: " + (mapLink?.Length ?? 0));
+
+                if (!string.IsNullOrEmpty(mapLink) && !string.IsNullOrWhiteSpace(mapLink))
                 {
-                    ifHarita.Src = mapLink;
+                    string haritaUrl = mapLink.Trim();
+                    
+                    // Eğer iframe kodu içeriyorsa, sadece src URL'sini çıkar
+                    if (haritaUrl.Contains("src="))
+                    {
+                        // src="..." formatını bul
+                        int srcPos = haritaUrl.IndexOf("src=\"");
+                        if (srcPos < 0) srcPos = haritaUrl.IndexOf("src='");
+                        
+                        if (srcPos >= 0)
+                        {
+                            // Tırnak işaretinden sonrasını al
+                            int startQuote = haritaUrl.IndexOf("\"", srcPos);
+                            if (startQuote < 0) startQuote = haritaUrl.IndexOf("'", srcPos);
+                            
+                            if (startQuote >= 0)
+                            {
+                                startQuote += 1; // Tırnak işaretini atla
+                                int endQuote = haritaUrl.IndexOf("\"", startQuote);
+                                if (endQuote < 0) endQuote = haritaUrl.IndexOf("'", startQuote);
+                                
+                                if (endQuote > startQuote)
+                                {
+                                    haritaUrl = haritaUrl.Substring(startQuote, endQuote - startQuote);
+                                }
+                            }
+                        }
+                    }
+                    
+                    // URL'yi temizle
+                    haritaUrl = haritaUrl.Trim().Trim('"', '\'', ' ');
+                    
+                    // URL geçerli mi kontrol et ve göster
+                    System.Diagnostics.Debug.WriteLine("İşlenmiş URL: " + haritaUrl);
+                    
+                    if (!string.IsNullOrEmpty(haritaUrl) && (haritaUrl.StartsWith("http://") || haritaUrl.StartsWith("https://")))
+                    {
+                        if (ifHarita != null)
+                        {
+                            ifHarita.Src = haritaUrl;
+                            System.Diagnostics.Debug.WriteLine("✅ Harita URL atandı: " + haritaUrl);
+                        }
+                        
+                        if (pnlHaritaWrapper != null)
+                        {
+                            pnlHaritaWrapper.Visible = true;
+                            System.Diagnostics.Debug.WriteLine("✅ Harita wrapper görünür yapıldı");
+                        }
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("❌ Geçersiz URL: " + haritaUrl);
+                        if (pnlHaritaWrapper != null)
+                            pnlHaritaWrapper.Visible = false;
+                    }
                 }
                 else
                 {
-                    ifHarita.Visible = false;
+                    if (pnlHaritaWrapper != null)
+                        pnlHaritaWrapper.Visible = false;
                 }
             }
             catch
             {
-                // Hata olursa boş kalsın
+                // Hata olursa haritayı gizle
+                if (pnlHaritaWrapper != null)
+                    pnlHaritaWrapper.Visible = false;
             }
         }
 
@@ -86,25 +128,27 @@ namespace NtpProje_Web
         // ---------------------------------------------------------
         protected void btnGonder_Click(object sender, EventArgs e)
         {
+            // ValidationGroup sayesinde sadece bu formun validasyonları kontrol edilecek
+            Page.Validate("IletisimForm");
             if (Page.IsValid)
             {
                 try
                 {
-                    // DTO Oluştur ve Doldur
                     ContactMessageDTO yeniMesaj = new ContactMessageDTO();
-                    yeniMesaj.NameSurname = txtAdSoyad.Text;
-                    yeniMesaj.Email = txtEmail.Text;
-                    yeniMesaj.Phone = txtTelefon.Text;
+                    yeniMesaj.NameSurname = txtAdSoyad.Text.Trim();
+                    yeniMesaj.Email = txtEmail.Text.Trim();
+                    yeniMesaj.Phone = txtTelefon.Text.Trim();
                     yeniMesaj.Subject = ddlKonu.SelectedValue;
-                    yeniMesaj.Message = txtMesaj.Text;
-                    yeniMesaj.IpAddress = Request.UserHostAddress; // IP Adresini al
+                    yeniMesaj.Message = txtMesaj.Text.Trim();
+                    yeniMesaj.IpAddress = Request.UserHostAddress;
                     yeniMesaj.CreatedDate = DateTime.Now;
 
-                    // Servise gönder (Veritabanına kayıt)
+                    // Varsayılan değerler (DTO'da eksikse serviste atanır ama buraya da yazabiliriz)
+                    yeniMesaj.IsRead = false;
+
                     _contactService.Add(yeniMesaj);
 
-                    // Başarılı mesajı
-                    lblIletisimMesaj.Text = "Mesajınız başarıyla gönderildi. En kısa sürede döneceğiz.";
+                    lblIletisimMesaj.Text = "✅ Mesajınız başarıyla gönderildi. En kısa sürede döneceğiz.";
                     lblIletisimMesaj.CssClass = "form_mesaj success";
                     lblIletisimMesaj.Visible = true;
 
@@ -112,7 +156,7 @@ namespace NtpProje_Web
                 }
                 catch (Exception ex)
                 {
-                    lblIletisimMesaj.Text = "Hata oluştu: " + ex.Message;
+                    lblIletisimMesaj.Text = "❌ Hata oluştu: " + ex.Message;
                     lblIletisimMesaj.CssClass = "form_mesaj error";
                     lblIletisimMesaj.Visible = true;
                 }
@@ -124,26 +168,26 @@ namespace NtpProje_Web
         // ---------------------------------------------------------
         protected void btnTeklifIste_Click(object sender, EventArgs e)
         {
+            // ValidationGroup sayesinde sadece bu formun validasyonları kontrol edilecek
+            Page.Validate("ProjeTeklifiForm");
             if (Page.IsValid)
             {
                 try
                 {
-                    // DTO Oluştur ve Doldur
                     ProjectRequestDTO yeniTeklif = new ProjectRequestDTO();
-                    yeniTeklif.CompanyName = txtFirmaAdi.Text;
-                    yeniTeklif.AuthorizedPerson = txtYetkili.Text;
-                    yeniTeklif.Email = txtTeklifEmail.Text;
-                    yeniTeklif.Phone = txtTeklifTelefon.Text;
-                    yeniTeklif.ProjectDetails = txtProjeDetay.Text;
+                    yeniTeklif.CompanyName = txtFirmaAdi.Text.Trim();
+                    yeniTeklif.AuthorizedPerson = txtYetkili.Text.Trim();
+                    yeniTeklif.Email = txtTeklifEmail.Text.Trim();
+                    yeniTeklif.Phone = txtTeklifTelefon.Text.Trim();
+                    yeniTeklif.ProjectDetails = txtProjeDetay.Text.Trim();
                     yeniTeklif.IpAddress = Request.UserHostAddress;
                     yeniTeklif.RequestDate = DateTime.Now;
-                    yeniTeklif.Status = "Pending"; // Beklemede
+                    yeniTeklif.Status = "Pending";
+                    yeniTeklif.IsRead = false;
 
-                    // Servise gönder
                     _projectService.Add(yeniTeklif);
 
-                    // Başarılı mesajı
-                    lblTeklifMesaj.Text = "Teklif talebiniz alındı. Projenizi inceleyip dönüş yapacağız.";
+                    lblTeklifMesaj.Text = "✅ Teklif talebiniz alındı. Projenizi inceleyip dönüş yapacağız.";
                     lblTeklifMesaj.CssClass = "form_mesaj success";
                     lblTeklifMesaj.Visible = true;
 
@@ -151,7 +195,7 @@ namespace NtpProje_Web
                 }
                 catch (Exception ex)
                 {
-                    lblTeklifMesaj.Text = "Hata oluştu: " + ex.Message;
+                    lblTeklifMesaj.Text = "❌ Hata oluştu: " + ex.Message;
                     lblTeklifMesaj.CssClass = "form_mesaj error";
                     lblTeklifMesaj.Visible = true;
                 }
