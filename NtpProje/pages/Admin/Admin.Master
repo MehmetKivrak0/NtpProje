@@ -32,8 +32,8 @@
                     <a href='<%= ResolveUrl("~/pages/Admin/IletisimMesajlari.aspx") %>' class="menu-item">
                         <i>📞</i> <span>İletişim Sayfası</span>
                     </a>
-                    <a href='<%= ResolveUrl("~/pages/Admin/IletisimMesajlari.aspx") %>' class="menu-item">
-                        <i>🏷️</i> <span>İletişim Alanı</span>
+                    <a href='<%= ResolveUrl("~/pages/Admin/uzmanekp.aspx") %>' class="menu-item">
+                        <i>👥</i> <span>Uzman Ekip</span>
                     </a>
                 </div>
 

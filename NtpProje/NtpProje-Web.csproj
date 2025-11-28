@@ -171,6 +171,8 @@
     <Content Include="adminsite\dd.aspx" />
     <Content Include="pages\Admin\admin_dashboard.aspx" />
     <Content Include="pages\Admin\IletisimMesajlari.aspx" />
+    <Content Include="pages\Admin\UzmanEkipEkleDzl.aspx" />
+    <Content Include="pages\Admin\uzmanekp.aspx" />
     <Content Include="pages\Admin\YaziEkleDuzenle.aspx" />
     <Content Include="pages\Admin\YaziYonetimi.aspx" />
     <Content Include="pages\blog.aspx" />
@@ -277,6 +279,20 @@
     </Compile>
     <Compile Include="pages\Admin\IletisimMesajlari.aspx.designer.cs">
       <DependentUpon>IletisimMesajlari.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Admin\UzmanEkipEkleDzl.aspx.cs">
+      <DependentUpon>UzmanEkipEkleDzl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Admin\UzmanEkipEkleDzl.aspx.designer.cs">
+      <DependentUpon>UzmanEkipEkleDzl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Admin\uzmanekp.aspx.cs">
+      <DependentUpon>uzmanekp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Admin\uzmanekp.aspx.designer.cs">
+      <DependentUpon>uzmanekp.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\Admin\YaziEkleDuzenle.aspx.cs">
       <DependentUpon>YaziEkleDuzenle.aspx</DependentUpon>
