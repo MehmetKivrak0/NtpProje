@@ -12,10 +12,17 @@ ul.ust_navigation_menu li{float:left; margin:0px 10px;}
 ul.ust_navigation_menu li a, ul.ust_navigation_menu li a:visited{font-family:Arial; font-size:12px; color:#333; }
 ul.ust_navigation_menu li a:hover{text-decoration: underline;}
 ul.ust_navigation_menu li.social{margin:0px 3px;}
-ul.ust_navigation_menu li.social a.social_facebook, ul.ust_navigation_menu li.social a.social_twitter, ul.ust_navigation_menu li.social a.social_google_plus{width: 21px; height: 20px; display: block;}
-ul.ust_navigation_menu li.social a.social_facebook{background-image:url(../images/social_facebook.png);}
-ul.ust_navigation_menu li.social a.social_twitter{background-image:url(../images/social_twitter.png);}
-ul.ust_navigation_menu li.social a.social_google_plus{background-image: url(../images/social_google_plus.png);}
+ul.ust_navigation_menu li.social a.social_youtube, ul.ust_navigation_menu li.social a.social_instagram, ul.ust_navigation_menu li.social a.social_linkedin{width: 21px; height: 20px; display: flex; align-items: center; justify-content: center;}
+ul.ust_navigation_menu li.social a.social_youtube i,
+ul.ust_navigation_menu li.social a.social_instagram i,
+ul.ust_navigation_menu li.social a.social_linkedin i{
+    font-size: 18px;
+    color: #333;
+    transition: all 0.3s ease;
+}
+ul.ust_navigation_menu li.social a.social_youtube:hover i{color: #FF0000;}
+ul.ust_navigation_menu li.social a.social_instagram:hover i{color: #E4405F;}
+ul.ust_navigation_menu li.social a.social_linkedin:hover i{color: #0077B5;}
 .ust_alan_adres{font-family:Arial; font-size:12px; color:#333; text-align: right; padding-top:10px;}
 .menu_golgelik{background-image:url(../images/menu_golgelik.png); width: 1046px; height: 47px; margin:0px auto;}
 ul.navigation_menu, ul.navigation_menu li {margin:0; padding: 0; list-style: none;}
@@ -543,6 +550,16 @@ ul.navigation_menu li ul.submenu li ul.subsubmenu li {float:none;}
     width: 20px;
     height: 20px;
     filter: brightness(0) invert(1);
+}
+
+.footer_sosyal_btn i {
+    font-size: 20px;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.footer_sosyal_btn:hover i {
+    color: #63207c;
 }
 
 .footer_alt {

@@ -52,6 +52,7 @@ namespace NtpProje.Business.Concrete
                 full_name = userDTO.Full_name,
                 email = userDTO.Email,
                 password = hashedPassword,
+                phone_number = userDTO.PhoneNumber, // Telefon numarası
                 role = userDTO.Role ?? "User", // Role yoksa varsayılan "User"
                 is_active = userDTO.Is_active,
                 created_date = DateTime.Now,
@@ -79,6 +80,7 @@ namespace NtpProje.Business.Concrete
                         User_id = entity.user_id,
                         Full_name = entity.full_name,
                         Email = entity.email,
+                        PhoneNumber = entity.phone_number, // Telefon numarası
                         Role = entity.role,
                         Is_active = entity.is_active ?? false,
                         Last_login_date = entity.last_login_date,
@@ -104,6 +106,7 @@ namespace NtpProje.Business.Concrete
             // Güncellenecek alanlar
             entity.full_name = dto.Full_name;
             entity.email = dto.Email;
+            entity.phone_number = dto.PhoneNumber; // Telefon numarası
             entity.role = dto.Role;
             entity.is_active = dto.Is_active;
 
@@ -131,6 +134,7 @@ namespace NtpProje.Business.Concrete
                 User_id = entity.user_id,
                 Full_name = entity.full_name,
                 Email = entity.email,
+                PhoneNumber = entity.phone_number, // Telefon numarası
                 Role = entity.role,
                 Is_active = entity.is_active ?? false,
                 Created_date = entity.created_date ?? DateTime.MinValue,
@@ -150,6 +154,7 @@ namespace NtpProje.Business.Concrete
                     User_id = entity.user_id,
                     Full_name = entity.full_name,
                     Email = entity.email,
+                    PhoneNumber = entity.phone_number, // Telefon numarası
                     Role = entity.role,
                     Is_active = entity.is_active ?? false,
                     Created_date = entity.created_date ?? DateTime.MinValue,

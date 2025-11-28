@@ -163,12 +163,41 @@
 	font-size: 18px;
 }
 
-.ekip_social a:hover {
-	background: linear-gradient(135deg, #63207c, #9b59b6);
-	color: #fff;
-	transform: translateY(-3px);
-	box-shadow: 0 5px 15px rgba(99, 32, 124, 0.3);
+/* Sosyal medya ikon renkleri ve hover efektleri */
+.ekip_social a[href*="linkedin"] {
+	color: #0077b5;
 }
+
+.ekip_social a[href*="linkedin"]:hover {
+	background: #0077b5;
+	color: white;
+	transform: translateY(-3px);
+	box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3);
+}
+
+.ekip_social a[href*="twitter"] {
+	color: #000000;
+}
+
+.ekip_social a[href*="twitter"]:hover {
+	background: #000000;
+	color: white;
+	transform: translateY(-3px);
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.ekip_social a[href*="github"] {
+	color: #333333;
+}
+
+.ekip_social a[href*="github"]:hover {
+	background: #333333;
+	color: white;
+	transform: translateY(-3px);
+	box-shadow: 0 5px 15px rgba(51, 51, 51, 0.3);
+}
+
+/* Hover efekti her ikon için özel renklerle tanımlanacak */
 
 /* Eski class'lar için uyumluluk (opsiyonel) */
 .ekip_item {

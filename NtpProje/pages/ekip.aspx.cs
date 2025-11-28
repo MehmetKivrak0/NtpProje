@@ -24,7 +24,8 @@ namespace NtpProje_Web
             
             if (string.IsNullOrEmpty(imageUrl))
             {
-                return ResolveUrl("~/images/default-team-member.jpg");
+                // Varsayılan resim yoksa logo'yu kullan veya placeholder göster
+                return ResolveUrl("~/images/logo/logo.png");
             }
             
             // Eğer tam URL ise (http:// veya https:// ile başlıyorsa) olduğu gibi kullan

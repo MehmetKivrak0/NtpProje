@@ -403,7 +403,7 @@
                         </label>
                         <asp:TextBox ID="txtImageUrl" runat="server" CssClass="form-input" placeholder="uploads/team/mehmet-yilmaz.jpg" MaxLength="500"></asp:TextBox>
                         <div class="image-preview" id="imagePreview" style="display: none; margin-top: 15px;">
-                            <img id="previewImg" src="" alt="Önizleme" />
+                            <img id="previewImg" src="#" alt="Önizleme" />
                             <div style="margin-top: 10px;">
                                 <button type="button" class="btn btn-outline" onclick="removeImage(); return false;" style="background: #e74a3b; color: white; border-color: #e74a3b;">🗑️ Resmi Kaldır</button>
                             </div>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -312,30 +313,40 @@ namespace NtpProje_Web.Admin
                         return;
                     }
 
-                    // Uploads/team klasörü yolu
-                    string teamFolder = Server.MapPath("~/uploads/team/");
+                    // Resmi direkt images/logo klasörüne kaydet
+                    string saveFolder = Server.MapPath("~/images/logo/");
+                    string relativePath = "images/logo/";
 
                     // Klasör yoksa oluştur
-                    if (!Directory.Exists(teamFolder))
+                    if (!Directory.Exists(saveFolder))
                     {
-                        Directory.CreateDirectory(teamFolder);
+                        Directory.CreateDirectory(saveFolder);
                     }
 
                     // Benzersiz dosya adı oluştur (tarih + rastgele sayı + orijinal dosya adı)
                     string originalFileName = Path.GetFileNameWithoutExtension(fileImageUpload.FileName);
                     string safeFileName = originalFileName.Replace(" ", "-").Replace("_", "-");
+                    // Türkçe karakterleri temizle
+                    safeFileName = Regex.Replace(safeFileName, @"[^a-zA-Z0-9\-]", "");
                     string fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + "_" + safeFileName + fileExtension;
 
                     // Dosya yolunu oluştur
-                    string filePath = Path.Combine(teamFolder, fileName);
+                    string filePath = Path.Combine(saveFolder, fileName);
 
                     // Dosyayı kaydet
                     fileImageUpload.SaveAs(filePath);
 
-                    // Veritabanında saklanacak yol (uploads/team/ dosyaadı.jpg)
-                    string dbPath = "uploads/team/" + fileName;
+                    // Mutlak URL oluştur (tam URL)
+                    string scheme = Request.Url.Scheme; // http veya https
+                    string authority = Request.Url.Authority; // localhost:44329
+                    string relativeUrl = ResolveUrl("~/" + relativePath + fileName);
+                    // ResolveUrl zaten "/" ile başlayan bir yol döndürür
+                    string absoluteUrl = scheme + "://" + authority + relativeUrl;
 
-                    // TextBox'a yaz
+                    // Veritabanında mutlak URL saklanacak
+                    string dbPath = absoluteUrl;
+
+                    // TextBox'a mutlak URL yaz
                     if (txtImageUrl != null)
                     {
                         txtImageUrl.Text = dbPath;
@@ -344,13 +355,13 @@ namespace NtpProje_Web.Admin
                     // Başarı mesajı
                     if (lblUploadError != null)
                     {
-                        lblUploadError.Text = "✅ Resim başarıyla yüklendi: " + fileName;
+                        lblUploadError.Text = "✅ Resim başarıyla logo klasörüne yüklendi: " + fileName;
                         lblUploadError.CssClass = "form-error success-message";
                         lblUploadError.Visible = true;
                     }
 
-                    // Önizleme için tam URL oluştur
-                    string previewUrl = ResolveUrl("~/" + dbPath);
+                    // Önizleme için tam URL kullan
+                    string previewUrl = absoluteUrl;
 
                     // JavaScript ile önizlemeyi göster
                     ClientScript.RegisterStartupScript(this.GetType(), "ShowPreview",

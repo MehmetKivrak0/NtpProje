@@ -170,6 +170,7 @@
     <Content Include="adminsite\Raporlar.aspx" />
     <Content Include="adminsite\dd.aspx" />
     <Content Include="pages\Admin\admin_dashboard.aspx" />
+    <Content Include="pages\Admin\hakkimizd.aspx" />
     <Content Include="pages\Admin\IletisimMesajlari.aspx" />
     <Content Include="pages\Admin\UzmanEkipEkleDzl.aspx" />
     <Content Include="pages\Admin\uzmanekp.aspx" />
@@ -272,6 +273,13 @@
     </Compile>
     <Compile Include="pages\Admin\admin_dashboard.aspx.designer.cs">
       <DependentUpon>admin_dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Admin\hakkimizd.aspx.cs">
+      <DependentUpon>hakkimizd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Admin\hakkimizd.aspx.designer.cs">
+      <DependentUpon>hakkimizd.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\Admin\IletisimMesajlari.aspx.cs">
       <DependentUpon>IletisimMesajlari.aspx</DependentUpon>

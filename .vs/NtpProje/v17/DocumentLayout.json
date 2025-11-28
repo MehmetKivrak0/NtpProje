@@ -3,24 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje\\pages\\admin\\uzmanekipekledzl.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\admin\\uzmanekipekledzl.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\ntpproje\\pages\\admin\\uzmanekp.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\admin\\uzmanekp.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\ntpproje\\pages\\admin\\iletisimmesajlari.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\admin\\iletisimmesajlari.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\ntpproje\\pages\\admin\\iletisimmesajlari.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\admin\\iletisimmesajlari.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\ntpproje\\pages\\iletisim.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\iletisim.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -51,63 +35,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UzmanEkipEkleDzl.aspx",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\UzmanEkipEkleDzl.aspx",
-              "RelativeDocumentMoniker": "NtpProje\\pages\\Admin\\UzmanEkipEkleDzl.aspx",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\UzmanEkipEkleDzl.aspx",
-              "RelativeToolTip": "NtpProje\\pages\\Admin\\UzmanEkipEkleDzl.aspx",
+              "Title": "Register.aspx",
+              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\Register.aspx",
+              "RelativeDocumentMoniker": "NtpProje\\Register.aspx",
+              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\Register.aspx",
+              "RelativeToolTip": "NtpProje\\Register.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-28T16:52:07.386Z",
+              "WhenOpened": "2025-11-28T20:15:04.662Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "uzmanekp.aspx",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\uzmanekp.aspx",
-              "RelativeDocumentMoniker": "NtpProje\\pages\\Admin\\uzmanekp.aspx",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\uzmanekp.aspx",
-              "RelativeToolTip": "NtpProje\\pages\\Admin\\uzmanekp.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-28T16:37:53.188Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IletisimMesajlari.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\IletisimMesajlari.aspx.cs",
-              "RelativeDocumentMoniker": "NtpProje\\pages\\Admin\\IletisimMesajlari.aspx.cs",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\IletisimMesajlari.aspx.cs",
-              "RelativeToolTip": "NtpProje\\pages\\Admin\\IletisimMesajlari.aspx.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAowGkAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-28T14:23:14.764Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IletisimMesajlari.aspx",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\IletisimMesajlari.aspx",
-              "RelativeDocumentMoniker": "NtpProje\\pages\\Admin\\IletisimMesajlari.aspx",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\IletisimMesajlari.aspx",
-              "RelativeToolTip": "NtpProje\\pages\\Admin\\IletisimMesajlari.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-28T14:21:19.184Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "iletisim.aspx",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\iletisim.aspx",
-              "RelativeDocumentMoniker": "NtpProje\\pages\\iletisim.aspx",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\iletisim.aspx",
-              "RelativeToolTip": "NtpProje\\pages\\iletisim.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-28T14:08:42.971Z"
             }
           ]
         }

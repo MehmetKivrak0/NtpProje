@@ -384,3 +384,4 @@ namespace NtpProje_Web
         protected global::System.Web.UI.HtmlControls.HtmlIframe ifHarita;
     }
 }
+
