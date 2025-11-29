@@ -44,47 +44,34 @@ sqlcmd -S localhost -d NtpProjeDB -i NtpProjeDB_CreateTables.sql
 - Blog içerikleri
 - Users ve Categories ile ilişkili
 
-### 4. **PostCategories** - Blog Kategorileri (Çoklu)
-- Bir blog yazısı birden fazla kategoriye ait olabilir
-
-### 5. **Comments** - Yorumlar
+### 4. **Comments** - Yorumlar
 - Blog yazılarına yorumlar
 - Yanıt (reply) desteği var (ParentCommentId)
 
-### 6. **Projects** - Projeler
+### 5. **Projects** - Projeler
 - Tamamlanan projeler
 - Kategori, durum, yayın durumu bilgileri
 
-### 7. **ProjectTechnologies** - Proje Teknolojileri
-- Her projeye ait teknolojiler (ASP.NET, React, vb.)
-
-### 8. **ProjectImages** - Proje Görselleri
-- Proje galeri görselleri
-- Ana görsel işaretleme (IsMain)
-
-### 9. **Services** - Hizmetler
+### 6. **Services** - Hizmetler
 - Sunulan hizmetler (Web Geliştirme, Mobil, vb.)
 - Icon ve açıklama bilgileri
 
-### 10. **ServiceFeatures** - Hizmet Özellikleri
-- Her hizmete ait özellikler
-
-### 11. **TeamMembers** - Ekip Üyeleri
+### 7. **TeamMembers** - Ekip Üyeleri
 - Ekip bilgileri
 - Sosyal medya linkleri
 
-### 12. **ContactMessages** - İletişim Mesajları
+### 8. **ContactMessages** - İletişim Mesajları
 - İletişim formundan gelen mesajlar
 - Okundu/yanıtlandı durumu
 
-### 13. **ProjectRequests** - Proje Teklifleri
+### 9. **ProjectRequests** - Proje Teklifleri
 - Proje teklif formundan gelen talepler
 - Durum takibi (New, InReview, Quoted, vb.)
 
-### 14. **Statistics** - İstatistikler
+### 10. **Statistics** - İstatistikler
 - Site istatistikleri (150+ Proje, 200+ Müşteri, vb.)
 
-### 15. **Settings** - Ayarlar
+### 11. **Settings** - Ayarlar
 - Site ayarları (Site adı, e-posta, telefon, vb.)
 
 ---
@@ -162,11 +149,6 @@ Web.config dosyasında connection string'i kontrol edin:
 - Posts → Categories (CategoryId)
 - Comments → Posts (PostId)
 - Comments → Users (UserId) - NULL olabilir
-- ProjectTechnologies → Projects (ProjectId)
-- ProjectImages → Projects (ProjectId)
-- ServiceFeatures → Services (ServiceId)
-- PostCategories → Posts (PostId)
-- PostCategories → Categories (CategoryId)
 
 ### 4. Index'ler
 Performans için önemli alanlarda index'ler oluşturuldu:
@@ -177,10 +159,7 @@ Performans için önemli alanlarda index'ler oluşturuldu:
 
 ### 5. Cascade Delete
 Bazı ilişkilerde CASCADE DELETE aktif:
-- PostCategories → Posts silinince kategoriler de silinir
-- ProjectTechnologies → Project silinince teknolojiler de silinir
-- ProjectImages → Project silinince görseller de silinir
-- ServiceFeatures → Service silinince özellikler de silinir
+- Comments → Posts silinince yorumlar da silinir
 
 ---
 

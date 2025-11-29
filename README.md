@@ -173,15 +173,12 @@ public interface IBaseService<T> where T : class
 3. **posts** - Blog yazıları
 4. **comments** - Yorumlar
 5. **projects** - Projeler
-6. **project_technologies** - Proje teknolojileri
-7. **project_images** - Proje görselleri
-8. **services** - Hizmetler
-9. **service_features** - Hizmet özellikleri
-10. **team_members** - Ekip üyeleri
-11. **contact_messages** - İletişim mesajları
-12. **project_requests** - Proje teklifleri
-13. **statistics** - İstatistikler
-14. **settings** - Site ayarları
+6. **services** - Hizmetler
+7. **team_members** - Ekip üyeleri
+8. **contact_messages** - İletişim mesajları
+9. **project_requests** - Proje teklifleri
+10. **statistics** - İstatistikler
+11. **settings** - Site ayarları
 
 ### Stored Procedures
 

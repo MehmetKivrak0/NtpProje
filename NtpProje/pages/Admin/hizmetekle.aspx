@@ -19,7 +19,6 @@
             flex-wrap: wrap;
             gap: 20px;
         }
-
         .editor-header-left {
             flex: 1;
         }

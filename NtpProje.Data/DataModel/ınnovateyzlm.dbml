@@ -24,7 +24,6 @@
       <Column Name="description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="is_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="display_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="category_post_category" Member="post_categories" ThisKey="category_id" OtherKey="category_id" Type="post_category" />
       <Association Name="category_post" Member="posts" ThisKey="category_id" OtherKey="category_id" Type="post" />
     </Type>
   </Table>
@@ -61,15 +60,6 @@
       <Column Name="ip_address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.post_categories" Member="post_categories">
-    <Type Name="post_category">
-      <Column Name="post_category_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="post_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="category_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="category_post_category" Member="category" ThisKey="category_id" OtherKey="category_id" Type="category" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="post_post_category" Member="post" ThisKey="post_id" OtherKey="post_id" Type="post" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.posts" Member="posts">
     <Type Name="post">
       <Column Name="post_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -87,21 +77,8 @@
       <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="category_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="post_comment" Member="comments" ThisKey="post_id" OtherKey="post_id" Type="comment" />
-      <Association Name="post_post_category" Member="post_categories" ThisKey="post_id" OtherKey="post_id" Type="post_category" />
       <Association Name="category_post" Member="category" ThisKey="category_id" OtherKey="category_id" Type="category" IsForeignKey="true" />
       <Association Name="user_post" Member="user" ThisKey="user_id" OtherKey="user_id" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.project_images" Member="project_images">
-    <Type Name="project_image">
-      <Column Name="project_image_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="project_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="image_url" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="thumbnail_url" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="display_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="is_main" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="project_project_image" Member="project" ThisKey="project_id" OtherKey="project_id" Type="project" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.project_requests" Member="project_requests">
@@ -124,15 +101,6 @@
       <Column Name="ip_address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.project_technologies" Member="project_technologies">
-    <Type Name="project_technology">
-      <Column Name="project_technology_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="project_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="technology_name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="display_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="project_project_technology" Member="project" ThisKey="project_id" OtherKey="project_id" Type="project" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.projects" Member="projects">
     <Type Name="project">
       <Column Name="project_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -152,17 +120,6 @@
       <Column Name="view_count" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="created_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="updated_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="project_project_image" Member="project_images" ThisKey="project_id" OtherKey="project_id" Type="project_image" />
-      <Association Name="project_project_technology" Member="project_technologies" ThisKey="project_id" OtherKey="project_id" Type="project_technology" />
-    </Type>
-  </Table>
-  <Table Name="dbo.service_features" Member="service_features">
-    <Type Name="service_feature">
-      <Column Name="service_feature_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="service_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="feature_name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
-      <Column Name="display_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="service_service_feature" Member="service" ThisKey="service_id" OtherKey="service_id" Type="service" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.services" Member="services">
@@ -180,7 +137,6 @@
       <Column Name="view_count" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="created_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="updated_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="service_service_feature" Member="service_features" ThisKey="service_id" OtherKey="service_id" Type="service_feature" />
     </Type>
   </Table>
   <Table Name="dbo.settings" Member="settings">
