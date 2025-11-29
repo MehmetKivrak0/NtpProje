@@ -1,0 +1,386 @@
+// ============================================================
+// HİZMET YÖNETİMİ SAYFASI - VERİTABANI BAĞLANTI ŞABLONU
+// ============================================================
+// Bu dosya, hizmetynt.aspx.cs dosyasına veritabanı bağlantısı
+// yapmak için hazırlanmış bir şablondur.
+// 
+// KULLANIM:
+// 1. Bu dosyadaki kodları kopyalayın
+// 2. hizmetynt.aspx.cs dosyasına yapıştırın
+// 3. TODO yazan yerleri kendi kodunuzla doldurun
+// 4. HTML tarafındaki kontrollerin ID'lerini buraya ekleyin
+// ============================================================
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using NtpProje.Business.Concrete; // ServiceService için
+using NtpProje.Entities.Concrete; // ServiceDTO için
+
+namespace NtpProje.pages.Admin
+{
+    public partial class hizmetynt : System.Web.UI.Page
+    {
+        // ============================================================
+        // 1. MANUEL TANIMLAMALAR (Designer Hatasına Karşı)
+        // ============================================================
+        // HTML tarafında kullandığınız kontrollerin ID'lerini buraya ekleyin
+        // Örnek: Repeater, Literal, Label, PlaceHolder, Button vb.
+        
+        // TODO: HTML'deki Repeater ID'sini buraya yazın (örn: rptServices)
+        protected global::System.Web.UI.WebControls.Repeater rptServices;
+        
+        // TODO: HTML'deki toplam sayı için Literal ID'sini yazın (örn: ltrTotalServices)
+        protected global::System.Web.UI.WebControls.Literal ltrTotalServices;
+        
+        // TODO: HTML'deki mesaj gösterimi için Label ID'sini yazın (örn: lblMessage)
+        protected global::System.Web.UI.WebControls.Label lblMessage;
+        
+        // TODO: HTML'deki boş durum için PlaceHolder ID'sini yazın (örn: phEmpty)
+        protected global::System.Web.UI.WebControls.PlaceHolder phEmpty;
+        
+        // TODO: Diğer kontrollerinizi buraya ekleyin (TextBox, Button, DropDownList vb.)
+        // protected global::System.Web.UI.WebControls.TextBox txtArama;
+        // protected global::System.Web.UI.WebControls.Button btnAra;
+        // protected global::System.Web.UI.WebControls.DropDownList ddlFiltre;
+
+
+        // ============================================================
+        // 2. SERVİS BAĞLANTISI
+        // ============================================================
+        // ServiceService, veritabanı işlemlerini yönetir
+        private readonly ServiceService _serviceService = new ServiceService();
+
+
+        // ============================================================
+        // 3. PAGE_LOAD (Sayfa Yüklendiğinde)
+        // ============================================================
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            // Güvenlik Kontrolü (Admin.Master'da olsa bile burada da durabilir)
+            if (Session["AdminUser"] == null)
+            {
+                Response.Redirect("~/Login.aspx");
+                return;
+            }
+
+            // Sadece ilk yüklemede verileri çek (PostBack'te tekrar çekme)
+            if (!IsPostBack)
+            {
+                // TODO: Query string'den başarı mesajını kontrol edebilirsiniz
+                // if (Request.QueryString["success"] == "1")
+                // {
+                //     ShowMessage("İşlem başarıyla tamamlandı.", "success");
+                // }
+
+                // Verileri yükle
+                LoadServices();
+            }
+        }
+
+
+        // ============================================================
+        // 4. VERİ YÜKLEME METODU
+        // ============================================================
+        private void LoadServices()
+        {
+            try
+            {
+                // ServiceService'den tüm hizmetleri çek
+                var services = _serviceService.GetAll();
+
+                // TODO: İsterseniz filtreleme yapabilirsiniz
+                // Örnek: Sadece aktif olanları getir
+                // services = services.Where(s => s.IsActive == true).ToList();
+
+                // TODO: İsterseniz sıralama yapabilirsiniz
+                // Örnek: DisplayOrder'a göre sırala
+                // services = services.OrderBy(s => s.DisplayOrder).ToList();
+                // Örnek: İsme göre sırala
+                // services = services.OrderBy(s => s.Name).ToList();
+                // Örnek: En son eklenenler önce
+                // services = services.OrderByDescending(s => s.Id).ToList();
+
+                // Repeater'a verileri bağla
+                if (rptServices != null)
+                {
+                    rptServices.DataSource = services;
+                    rptServices.DataBind();
+                }
+
+                // Toplam sayıyı göster
+                int totalCount = services != null ? services.Count : 0;
+                if (ltrTotalServices != null)
+                {
+                    ltrTotalServices.Text = totalCount.ToString();
+                }
+
+                // Boş durum kontrolü
+                if (phEmpty != null)
+                {
+                    phEmpty.Visible = (services == null || services.Count == 0);
+                }
+
+                if (rptServices != null)
+                {
+                    rptServices.Visible = (services != null && services.Count > 0);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Hata durumunda mesaj göster
+                ShowMessage("Hata: " + ex.Message, "error");
+                System.Diagnostics.Debug.WriteLine("Hizmet Yükleme Hatası: " + ex.Message);
+            }
+        }
+
+
+        // ============================================================
+        // 5. REPEATER ITEM COMMAND (Silme, Düzenleme vb. İşlemler)
+        // ============================================================
+        // HTML tarafında Repeater'da OnItemCommand="rptServices_ItemCommand" ekleyin
+        protected void rptServices_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            try
+            {
+                // CommandArgument'ten ID'yi al
+                if (!int.TryParse(e.CommandArgument.ToString(), out int serviceId))
+                {
+                    ShowMessage("Geçersiz hizmet ID'si.", "error");
+                    return;
+                }
+
+                string commandName = e.CommandName;
+
+                // TODO: Silme işlemi
+                if (commandName == "Delete")
+                {
+                    // Onay mesajı göster (isteğe bağlı)
+                    // bool confirmed = // JavaScript confirm kullanabilirsiniz
+
+                    bool deleted = _serviceService.Delete(serviceId);
+                    if (deleted)
+                    {
+                        ShowMessage("Hizmet başarıyla silindi.", "success");
+                        LoadServices(); // Listeyi yenile
+                    }
+                    else
+                    {
+                        ShowMessage("Hizmet silinirken bir hata oluştu.", "error");
+                    }
+                }
+                // TODO: Aktif/Pasif yapma işlemi
+                else if (commandName == "ToggleActive")
+                {
+                    var service = _serviceService.GetById(serviceId);
+                    if (service != null)
+                    {
+                        service.IsActive = !service.IsActive;
+                        bool updated = _serviceService.Update(service);
+                        if (updated)
+                        {
+                            ShowMessage("Hizmet durumu güncellendi.", "success");
+                            LoadServices(); // Listeyi yenile
+                        }
+                        else
+                        {
+                            ShowMessage("Durum güncellenirken bir hata oluştu.", "error");
+                        }
+                    }
+                }
+                // TODO: Diğer işlemler (Edit, View vb.)
+                // else if (commandName == "Edit")
+                // {
+                //     Response.Redirect("HizmetEkleDuzenle.aspx?id=" + serviceId);
+                // }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Hata: " + ex.Message, "error");
+                System.Diagnostics.Debug.WriteLine("Hizmet İşlem Hatası: " + ex.Message);
+            }
+        }
+
+
+        // ============================================================
+        // 6. REPEATER ITEM DATA BOUND (Veri Bağlandığında)
+        // ============================================================
+        // HTML tarafında Repeater'da OnItemDataBound="rptServices_ItemDataBound" ekleyin
+        // İç içe Repeater kullanıyorsanız bu metodu kullanabilirsiniz
+        protected void rptServices_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            // Sadece Item ve AlternatingItem için işlem yap
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                // DataItem'dan ServiceDTO'yu al
+                var service = e.Item.DataItem as ServiceDTO;
+
+                // TODO: İçerideki kontrolleri bulup işlem yapabilirsiniz
+                // Örnek: İçerideki bir Label'ı bulup değer atama
+                // Label lblName = e.Item.FindControl("lblName") as Label;
+                // if (lblName != null && service != null)
+                // {
+                //     lblName.Text = service.Name;
+                // }
+
+                // Örnek: İçerideki bir Button'ı bulup CommandArgument atama
+                // Button btnDelete = e.Item.FindControl("btnDelete") as Button;
+                // if (btnDelete != null && service != null)
+                // {
+                //     btnDelete.CommandArgument = service.Id.ToString();
+                // }
+            }
+        }
+
+
+        // ============================================================
+        // 7. ARAMA/FİLTRELEME METODLARI (İsteğe Bağlı)
+        // ============================================================
+        // TODO: HTML'de arama TextBox'ı ve Button'ı varsa
+        // protected void btnAra_Click(object sender, EventArgs e)
+        // {
+        //     string aramaMetni = txtArama.Text.Trim();
+        //     
+        //     try
+        //     {
+        //         var services = _serviceService.GetAll();
+        //         
+        //         // Arama metnine göre filtrele
+        //         if (!string.IsNullOrEmpty(aramaMetni))
+        //         {
+        //             services = services.Where(s => 
+        //                 s.Name.Contains(aramaMetni) || 
+        //                 s.Description.Contains(aramaMetni)
+        //             ).ToList();
+        //         }
+        //         
+        //         // Repeater'a bağla
+        //         if (rptServices != null)
+        //         {
+        //             rptServices.DataSource = services;
+        //             rptServices.DataBind();
+        //         }
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         ShowMessage("Arama sırasında hata: " + ex.Message, "error");
+        //     }
+        // }
+
+
+        // ============================================================
+        // 8. YARDIMCI METODLAR
+        // ============================================================
+        
+        // Mesaj gösterme metodu
+        private void ShowMessage(string message, string type)
+        {
+            // type: "success", "error", "warning", "info"
+            if (lblMessage != null)
+            {
+                lblMessage.Text = message;
+                lblMessage.CssClass = "message-alert " + type + " visible";
+                lblMessage.Visible = true;
+            }
+        }
+
+        // Resim URL'sini düzenleme metodu (HTML'de kullanmak için)
+        protected string GetImageUrl(object imageUrl)
+        {
+            if (imageUrl == null || string.IsNullOrEmpty(imageUrl.ToString()))
+                return ResolveUrl("~/images/default-service.jpg"); // Varsayılan resim
+
+            string url = imageUrl.ToString();
+
+            // Eğer zaten tam URL ise (http:// veya / ile başlıyorsa) olduğu gibi döndür
+            if (url.StartsWith("http://") || url.StartsWith("https://") || url.StartsWith("/"))
+            {
+                return url;
+            }
+
+            // Sadece dosya adı ise /images/ prefix'i ekle
+            return ResolveUrl("~/images/" + url);
+        }
+
+        // Kısa açıklamayı formatla (HTML'de kullanmak için)
+        protected string FormatShortDescription(object shortDesc)
+        {
+            if (shortDesc == null || string.IsNullOrEmpty(shortDesc.ToString()))
+                return "";
+
+            string desc = shortDesc.ToString();
+            
+            // TODO: İsterseniz maksimum karakter sayısı ekleyebilirsiniz
+            // if (desc.Length > 100)
+            // {
+            //     desc = desc.Substring(0, 100) + "...";
+            // }
+
+            return desc;
+        }
+    }
+}
+
+// ============================================================
+// HTML TARAFINDA YAPILMASI GEREKENLER:
+// ============================================================
+//
+// 1. Repeater Kontrolü:
+//    <asp:Repeater ID="rptServices" runat="server" 
+//                  OnItemCommand="rptServices_ItemCommand"
+//                  OnItemDataBound="rptServices_ItemDataBound">
+//        <ItemTemplate>
+//            <!-- Hizmet bilgilerini buraya ekleyin -->
+//            <!-- Örnek: <%# Eval("Name") %>, <%# Eval("Description") %> -->
+//            
+//            <!-- Silme butonu örneği: -->
+//            <asp:Button ID="btnDelete" runat="server" 
+//                       Text="Sil" 
+//                       CommandName="Delete" 
+//                       CommandArgument='<%# Eval("Id") %>'
+//                       OnClientClick="return confirm('Silmek istediğinize emin misiniz?');" />
+//        </ItemTemplate>
+//    </asp:Repeater>
+//
+// 2. Toplam Sayı Gösterimi:
+//    <asp:Literal ID="ltrTotalServices" runat="server"></asp:Literal>
+//
+// 3. Mesaj Gösterimi:
+//    <asp:Label ID="lblMessage" runat="server" Visible="false"></asp:Label>
+//
+// 4. Boş Durum Mesajı:
+//    <asp:PlaceHolder ID="phEmpty" runat="server" Visible="false">
+//        <p>Gösterilecek hizmet bulunmamaktadır.</p>
+//    </asp:PlaceHolder>
+//
+// ============================================================
+// SERVİS METODLARI ÖZET:
+// ============================================================
+//
+// _serviceService.GetAll()              -> Tüm hizmetleri getirir (List<ServiceDTO>)
+// _serviceService.GetById(int id)       -> ID'ye göre hizmet getirir (ServiceDTO)
+// _serviceService.Add(ServiceDTO dto)    -> Yeni hizmet ekler (bool)
+// _serviceService.Update(ServiceDTO dto)-> Hizmet günceller (bool)
+// _serviceService.Delete(int id)        -> Hizmet siler (bool)
+//
+// ============================================================
+// ServiceDTO ÖZELLİKLERİ:
+// ============================================================
+//
+// - Id (int)                    -> Hizmet ID'si
+// - Name (string)               -> Hizmet adı
+// - Slug (string)               -> URL slug
+// - Description (string)         -> Uzun açıklama
+// - ShortDescription (string)   -> Kısa açıklama
+// - Icon (string)               -> İkon
+// - IconClass (string)          -> İkon CSS class'ı
+// - ImageUrl (string)           -> Resim URL'si
+// - IsActive (bool)             -> Aktif/Pasif durumu
+// - DisplayOrder (int)          -> Sıralama
+// - ViewCount (int)             -> Görüntülenme sayısı
+//
+// ============================================================
+

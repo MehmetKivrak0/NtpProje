@@ -39,6 +39,9 @@
 
                 <div class="menu-section">
                     <div class="menu-section-title">İçerik Yönetimi</div>
+                    <a href='<%= ResolveUrl("~/pages/Admin/hizmetynt.aspx") %>' class="menu-item">
+                        <i>⚙️</i> <span>Hizmet Yönetimi</span>
+                    </a>
                     <a href='<%= ResolveUrl("~/pages/Admin/hakkimizd.aspx") %>' class="menu-item">
                         <i>📄</i> <span>Hakkımızda Sayfası</span>
                     </a>

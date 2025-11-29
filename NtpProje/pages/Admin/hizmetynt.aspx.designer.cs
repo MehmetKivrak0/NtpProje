@@ -7,83 +7,92 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NtpProje_Web
+namespace NtpProje.pages.Admin
 {
 
 
-    public partial class Register
+    public partial class hizmetynt
     {
 
         /// <summary>
-        /// form1 control.
+        /// lblMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label lblMessage;
 
         /// <summary>
-        /// ltrMesaj control.
+        /// ltrTotalServices control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrMesaj;
+        protected global::System.Web.UI.WebControls.Literal ltrTotalServices;
 
         /// <summary>
-        /// txtFullName control.
+        /// ltrActiveServices control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFullName;
+        protected global::System.Web.UI.WebControls.Literal ltrActiveServices;
 
         /// <summary>
-        /// txtEmail control.
+        /// ltrInactiveServices control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.Literal ltrInactiveServices;
 
         /// <summary>
-        /// txtPhoneNumber control.
+        /// ltrTotalServicesSidebar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPhoneNumber;
+        protected global::System.Web.UI.WebControls.Literal ltrTotalServicesSidebar;
 
         /// <summary>
-        /// txtPassword control.
+        /// txtArama control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.TextBox txtArama;
 
         /// <summary>
-        /// cvPassword control.
+        /// btnAra control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvPassword;
+        protected global::System.Web.UI.WebControls.Button btnAra;
 
         /// <summary>
-        /// btnRegister control.
+        /// phEmpty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegister;
+        protected global::System.Web.UI.WebControls.PlaceHolder phEmpty;
+
+        /// <summary>
+        /// rptServices control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptServices;
     }
 }

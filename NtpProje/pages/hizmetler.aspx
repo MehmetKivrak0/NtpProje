@@ -18,13 +18,13 @@
                 <ItemTemplate>
                     <div class="hizmet_item">
                         <div class="hizmet_img">
-                            <img src='<%# Eval("Image") %>' alt='<%# Eval("Name") %>' />
+                            <%# GetServiceImage(Eval("ImageUrl"), Eval("Icon")) %>
                         </div>
 
                         <div class="hizmet_content">
                             <h3><%# Eval("Name") %></h3>
                             
-                            <p><%# Eval("Description") %></p>
+                            <p><%# Eval("ShortDescription") %></p>
 
                             <div class="hizmet_ozellikleri">
                                 <ul>

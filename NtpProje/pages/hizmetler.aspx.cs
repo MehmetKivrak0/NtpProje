@@ -68,5 +68,47 @@ namespace NtpProje_Web
                 }
             }
         }
+
+        // ============================================================
+        // YARDIMCI METODLAR (ASPX'te kullanmak için)
+        // ============================================================
+
+        // Resim URL'sini düzenleme metodu
+        public string GetImageUrl(object imageUrl)
+        {
+            if (imageUrl == null || string.IsNullOrEmpty(imageUrl.ToString()))
+                return ResolveUrl("~/images/default-service.jpg"); // Varsayılan resim
+
+            string url = imageUrl.ToString();
+
+            // Eğer zaten tam URL ise (http:// veya / ile başlıyorsa) olduğu gibi döndür
+            if (url.StartsWith("http://") || url.StartsWith("https://") || url.StartsWith("/"))
+            {
+                return url;
+            }
+
+            // Sadece dosya adı ise /images/ prefix'i ekle
+            return ResolveUrl("~/images/" + url);
+        }
+
+        // Service Image HTML'i oluştur (resim yoksa ikon göster)
+        public string GetServiceImage(object imageUrl, object icon)
+        {
+            string imageUrlStr = imageUrl != null ? imageUrl.ToString() : "";
+            string iconStr = icon != null ? icon.ToString() : "";
+
+            if (string.IsNullOrEmpty(imageUrlStr))
+            {
+                // Resim yoksa ikon göster
+                string displayIcon = string.IsNullOrEmpty(iconStr) ? "📦" : iconStr;
+                return "<div style='width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 48px; background: #f3f4f6; border-radius: 8px;'>" + displayIcon + "</div>";
+            }
+            else
+            {
+                // Resim varsa img tag'i oluştur
+                string imgUrl = GetImageUrl(imageUrl);
+                return "<img src='" + imgUrl + "' alt='Hizmet' style='width: 100%; height: 100%; object-fit: cover; border-radius: 8px;' />";
+            }
+        }
     }
 }

@@ -37,5 +37,21 @@ namespace NtpProje.Entities.Concrete
 
         // SQL: view_count
         public int ViewCount { get; set; }
+
+        // Ek bilgiler (JSON formatında saklanacak)
+        // Features: Özellikler listesi (Icon, Title, Description)
+        public string Features { get; set; }
+
+        // Technologies: Teknolojiler (Category, Items[])
+        public string Technologies { get; set; }
+
+        // ProcessSteps: Süreç adımları (Title, Description)
+        public string ProcessSteps { get; set; }
+
+        // HighlightFeatures: Öne çıkan özellikler (Title, Description)
+        public string HighlightFeatures { get; set; }
+
+        // WhyChooseUs: Neden bizi tercih etmelisiniz (Title, Description)
+        public string WhyChooseUs { get; set; }
     }
 }

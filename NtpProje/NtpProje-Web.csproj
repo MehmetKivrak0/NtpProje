@@ -171,6 +171,8 @@
     <Content Include="adminsite\dd.aspx" />
     <Content Include="pages\Admin\admin_dashboard.aspx" />
     <Content Include="pages\Admin\hakkimizd.aspx" />
+    <Content Include="pages\Admin\hizmetekle.aspx" />
+    <Content Include="pages\Admin\hizmetynt.aspx" />
     <Content Include="pages\Admin\IletisimMesajlari.aspx" />
     <Content Include="pages\Admin\UzmanEkipEkleDzl.aspx" />
     <Content Include="pages\Admin\uzmanekp.aspx" />
@@ -274,12 +276,29 @@
     <Compile Include="pages\Admin\admin_dashboard.aspx.designer.cs">
       <DependentUpon>admin_dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\Admin\BaseAdminPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="pages\Admin\hakkimizd.aspx.cs">
       <DependentUpon>hakkimizd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\Admin\hakkimizd.aspx.designer.cs">
       <DependentUpon>hakkimizd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Admin\hizmetekle.aspx.cs">
+      <DependentUpon>hizmetekle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Admin\hizmetekle.aspx.designer.cs">
+      <DependentUpon>hizmetekle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Admin\hizmetynt.aspx.cs">
+      <DependentUpon>hizmetynt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Admin\hizmetynt.aspx.designer.cs">
+      <DependentUpon>hizmetynt.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\Admin\IletisimMesajlari.aspx.cs">
       <DependentUpon>IletisimMesajlari.aspx</DependentUpon>

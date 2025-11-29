@@ -3,7 +3,27 @@
   "WorkspaceRootPath": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje\\pages\\admin\\hizmetekle.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\admin\\hizmetekle.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\ntpproje\\pages\\admin\\hizmetynt.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\admin\\hizmetynt.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\ntpproje\\pages\\admin\\baseadminpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\admin\\baseadminpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\ntpproje\\pages\\admin\\hizmetynt.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\admin\\hizmetynt.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\ntpproje\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\ntpproje\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
@@ -35,6 +55,71 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "hizmetekle.aspx",
+              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\hizmetekle.aspx",
+              "RelativeDocumentMoniker": "NtpProje\\pages\\Admin\\hizmetekle.aspx",
+              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\hizmetekle.aspx",
+              "RelativeToolTip": "NtpProje\\pages\\Admin\\hizmetekle.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-29T07:51:53.583Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BaseAdminPage.cs",
+              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\BaseAdminPage.cs",
+              "RelativeDocumentMoniker": "NtpProje\\pages\\Admin\\BaseAdminPage.cs",
+              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\BaseAdminPage.cs",
+              "RelativeToolTip": "NtpProje\\pages\\Admin\\BaseAdminPage.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAowFUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T07:29:34.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "hizmetynt.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\hizmetynt.aspx.cs",
+              "RelativeDocumentMoniker": "NtpProje\\pages\\Admin\\hizmetynt.aspx.cs",
+              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\hizmetynt.aspx.cs",
+              "RelativeToolTip": "NtpProje\\pages\\Admin\\hizmetynt.aspx.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAAwCQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T07:20:04.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "hizmetynt.aspx",
+              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\hizmetynt.aspx",
+              "RelativeDocumentMoniker": "NtpProje\\pages\\Admin\\hizmetynt.aspx",
+              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\hizmetynt.aspx",
+              "RelativeToolTip": "NtpProje\\pages\\Admin\\hizmetynt.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-29T07:08:26.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Site.Master",
+              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\Site.Master",
+              "RelativeDocumentMoniker": "NtpProje\\Site.Master",
+              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\Site.Master",
+              "RelativeToolTip": "NtpProje\\Site.Master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-29T07:02:20.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Register.aspx",
               "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\Register.aspx",
               "RelativeDocumentMoniker": "NtpProje\\Register.aspx",

@@ -179,7 +179,7 @@
                 <div class="footer_content">
                     
                     <div class="footer_kolon footer_hakkinda">
-                        <h3>Genç Birey Yazılım</h3>
+                        <h3>Innovate Yazılım</h3>
                         <p>Yazılım sektöründe 10 yılı aşkın deneyimimizle yanınızdayız.</p>
                         <div class="footer_sosyal">
                             <div class="footer_sosyal_butonlar">
@@ -210,13 +210,13 @@
                     <div class="footer_kolon footer_iletisim">
                         <h3>İletişim</h3>
                         <div class="footer_iletisim_item">
-                            <span>📍 Kıbrıs Şehitleri Cd. No:48 K:6 - 601 / İzmir</span>
+                            <span>📍 <%= FooterAdres %></span>
                         </div>
                         <div class="footer_iletisim_item">
-                            <span>📞 +90 232 464 1 184</span>
+                            <span>📞 <%= FooterTelefon %></span>
                         </div>
                         <div class="footer_iletisim_item">
-                            <span>📧 info@gencbirey.com</span>
+                            <span>📧 <%= FooterEmail %></span>
                         </div>
                     </div>
 
@@ -224,7 +224,7 @@
 
                 <div class="footer_alt">
                     <div class="footer_copyright">
-                        © 2025 Genç Birey Yazılım. Tüm hakları saklıdır.
+                        © 2025 Innovate Yazılım. Tüm hakları saklıdır.
                     </div>
                 </div>
             </div>

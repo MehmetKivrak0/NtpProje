@@ -20,7 +20,7 @@ namespace NtpProje.Business.Concrete
         // 1. GET ALL (Listeleme)
         public List<ServiceDTO> GetAll()
         {
-            // Sadece aktif olanlar˝ getirmek istersen: .Where(x => x.is_active == true) ekleyebilirsin.
+            // Sadece aktif olanlarƒ± getirmek istersen: .Where(x => x.is_active == true) ekleyebilirsin.
             var entities = _serviceRepository.GetAll();
             var dtos = new List<ServiceDTO>();
 
@@ -46,7 +46,7 @@ namespace NtpProje.Business.Concrete
             {
                 var entity = new service
                 {
-                    // DTO -> Entity E˛le˛mesi
+                    // DTO -> Entity E≈üle≈ümesi
                     service_name = dto.Name,
                     description = dto.Description,
                     short_description = dto.ShortDescription,
@@ -54,17 +54,24 @@ namespace NtpProje.Business.Concrete
                     icon_class = dto.IconClass,
                     image_url = dto.ImageUrl,
 
-                    // Otomatik ve Varsay˝lan Deerler
+                    // Otomatik ve Varsayƒ±lan Deƒüerler
                     is_active = true,
                     display_order = dto.DisplayOrder > 0 ? dto.DisplayOrder : 0,
                     view_count = 0,
                     created_date = DateTime.Now,
 
-                    // Slug Olu˛turma
+                    // Slug Olu≈üturma
                     slug = dto.Name.ToLower()
-                            .Replace(" ", "-").Replace("˝", "i").Replace("", "g")
-                            .Replace("¸", "u").Replace("˛", "s").Replace("ˆ", "o").Replace("Á", "c")
+                            .Replace(" ", "-").Replace("ƒ±", "i").Replace("ƒü", "g")
+                            .Replace("√º", "u").Replace("≈ü", "s").Replace("√∂", "o").Replace("√ß", "c")
                 };
+
+                // Yeni eklenen kolonlar (Reflection ile)
+                SetPropertyIfExists(entity, "features", dto.Features);
+                SetPropertyIfExists(entity, "technologies", dto.Technologies);
+                SetPropertyIfExists(entity, "process_steps", dto.ProcessSteps);
+                SetPropertyIfExists(entity, "highlight_features", dto.HighlightFeatures);
+                SetPropertyIfExists(entity, "why_choose_us", dto.WhyChooseUs);
 
                 _serviceRepository.Add(entity);
                 return true;
@@ -75,7 +82,7 @@ namespace NtpProje.Business.Concrete
             }
         }
 
-        // 4. UPDATE (G¸ncelleme)
+        // 4. UPDATE (G√ºncelleme)
         public bool Update(ServiceDTO dto)
         {
             try
@@ -93,8 +100,15 @@ namespace NtpProje.Business.Concrete
                 entity.display_order = dto.DisplayOrder;
                 entity.updated_date = DateTime.Now;
 
-                // ›sim dei˛tiyse slug yenile
-                entity.slug = dto.Name.ToLower().Replace(" ", "-").Replace("˝", "i");
+                // ƒ∞sim deƒüi≈ütiyse slug yenile
+                entity.slug = dto.Name.ToLower().Replace(" ", "-").Replace("ƒ±", "i");
+
+                // Yeni eklenen kolonlar (Reflection ile)
+                SetPropertyIfExists(entity, "features", dto.Features);
+                SetPropertyIfExists(entity, "technologies", dto.Technologies);
+                SetPropertyIfExists(entity, "process_steps", dto.ProcessSteps);
+                SetPropertyIfExists(entity, "highlight_features", dto.HighlightFeatures);
+                SetPropertyIfExists(entity, "why_choose_us", dto.WhyChooseUs);
 
                 _serviceRepository.Update(entity);
                 return true;
@@ -125,7 +139,7 @@ namespace NtpProje.Business.Concrete
         // --- MAPPING YARDIMCISI ---
         private ServiceDTO MapEntityToDTO(service entity)
         {
-            return new ServiceDTO
+            var dto = new ServiceDTO
             {
                 Id = entity.service_id,
                 Name = entity.service_name,
@@ -136,13 +150,56 @@ namespace NtpProje.Business.Concrete
                 IconClass = entity.icon_class,
                 ImageUrl = entity.image_url,
 
-                // Nullable (bool?) -> bool dˆn¸˛¸m¸
+                // Nullable (bool?) -> bool d√∂n√º≈ü√ºm√º
                 IsActive = entity.is_active ?? true,
 
-                // Nullable (int?) -> int dˆn¸˛¸m¸
+                // Nullable (int?) -> int d√∂n√º≈ü√ºm√º
                 DisplayOrder = entity.display_order ?? 0,
                 ViewCount = entity.view_count ?? 0
             };
+
+            // Yeni eklenen kolonlar (Reflection ile)
+            dto.Features = GetPropertyIfExists(entity, "features") ?? "";
+            dto.Technologies = GetPropertyIfExists(entity, "technologies") ?? "";
+            dto.ProcessSteps = GetPropertyIfExists(entity, "process_steps") ?? "";
+            dto.HighlightFeatures = GetPropertyIfExists(entity, "highlight_features") ?? "";
+            dto.WhyChooseUs = GetPropertyIfExists(entity, "why_choose_us") ?? "";
+
+            return dto;
+        }
+
+        // Reflection yardƒ±mcƒ± metodlarƒ±
+        private void SetPropertyIfExists(object obj, string propertyName, object value)
+        {
+            try
+            {
+                var prop = obj.GetType().GetProperty(propertyName);
+                if (prop != null && prop.CanWrite)
+                {
+                    prop.SetValue(obj, value, null);
+                }
+            }
+            catch
+            {
+                // Property yoksa sessizce devam et
+            }
+        }
+
+        private string GetPropertyIfExists(object obj, string propertyName)
+        {
+            try
+            {
+                var prop = obj.GetType().GetProperty(propertyName);
+                if (prop != null && prop.CanRead)
+                {
+                    return prop.GetValue(obj, null) as string;
+                }
+            }
+            catch
+            {
+                // Property yoksa null d√∂nd√ºr
+            }
+            return null;
         }
     }
 }

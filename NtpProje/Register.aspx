@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin Kayıt - Genç Birey</title>
+    <title>Admin Kayıt - Innovate Yazılım</title>
 
   
     <link rel="stylesheet" href="/css/admin.css" />
