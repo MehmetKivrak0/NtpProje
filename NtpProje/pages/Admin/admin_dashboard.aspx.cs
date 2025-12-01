@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete; // Servisler
 using NtpProje.Entities.Concrete; // DTO'lar
 
@@ -29,13 +30,13 @@ namespace NtpProje_Web.Admin
         protected global::System.Web.UI.WebControls.Button btnExportCSV;
 
         // Servisleri Çağırıyoruz
-        private readonly PostService _postService = new PostService();
-        private readonly CommentService _commentService = new CommentService();
-        private readonly ProjectRequestService _projectRequestService = new ProjectRequestService();
-        private readonly UserService _userService = new UserService();
-        private readonly ProjectService _projectService = new ProjectService();
-        private readonly TeamMemberService _teamMemberService = new TeamMemberService();
-        private readonly ContactMessageService _contactMessageService = new ContactMessageService();
+        private readonly PostService _postService = new PostService(); // GetPublishedPosts() metodu için concrete kalıyor
+        private readonly IBaseService<CommentDTO> _commentService = new CommentService();
+        private readonly IBaseService<ProjectRequestDTO> _projectRequestService = new ProjectRequestService();
+        private readonly UserService _userService = new UserService(); // Login/Register metodları için concrete kalıyor
+        private readonly IBaseService<ProjectDTO> _projectService = new ProjectService();
+        private readonly IBaseService<TeamMemberDTO> _teamMemberService = new TeamMemberService();
+        private readonly IBaseService<ContactMessageDTO> _contactMessageService = new ContactMessageService();
 
         protected void Page_Load(object sender, EventArgs e)
         {

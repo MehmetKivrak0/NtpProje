@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete; // ServiceService için
 using NtpProje.Entities.Concrete; // ServiceDTO için
 
@@ -24,7 +25,7 @@ namespace NtpProje.pages.Admin
         // 2. SERVİS BAĞLANTISI
         // ============================================================
         // ServiceService, veritabanı işlemlerini yönetir
-        private readonly ServiceService _serviceService = new ServiceService();
+        private readonly IBaseService<ServiceDTO> _serviceService = new ServiceService();
 
 
         // ============================================================

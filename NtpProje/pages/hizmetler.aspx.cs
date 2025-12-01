@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete;
 using NtpProje.Entities.Concrete;
 
@@ -16,7 +17,7 @@ namespace NtpProje_Web
       
 
         // Servis Bağlantısı
-        private ServiceService _serviceService = new ServiceService();
+        private IBaseService<ServiceDTO> _serviceService = new ServiceService();
 
         protected void Page_Load(object sender, EventArgs e)
         {

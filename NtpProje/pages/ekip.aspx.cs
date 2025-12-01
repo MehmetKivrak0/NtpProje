@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete;
 using NtpProje.Entities.Concrete;
 
@@ -15,7 +16,7 @@ namespace NtpProje_Web
         // Designer dosyası çalışmazsa diye elle tanımlıyoruz (Garanti Çözüm)
         
         // TeamMemberService servisini çağırıyoruz (Senin proje yapına göre ismini yazdım)
-        private TeamMemberService _teamService = new TeamMemberService();
+        private IBaseService<TeamMemberDTO> _teamService = new TeamMemberService();
 
         // ImageUrl'i düzgün şekilde çözümlemek için yardımcı metod
         protected string GetResolvedImageUrl(object imageUrlObj)

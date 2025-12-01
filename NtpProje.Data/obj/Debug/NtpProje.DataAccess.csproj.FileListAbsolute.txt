@@ -13,3 +13,7 @@ C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\obj\Debug\NtpPro
 C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\obj\Debug\NtpProje.DataAccess.pdb
 C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\obj\Debug\NtpProje.DataAccess.Migrations.AddCommentTable.resources
 C:\Users\Mehmet\Desktop\Dönem-Projeler\Ntp\NtpProje.DataAccess\obj\Debug\NtpProje.DataAccess.csproj.GenerateResource.cache
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\obj\Debug\NtpProje.DataAccess.csproj.AssemblyReference.cache
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\obj\Debug\NtpProje.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\obj\Debug\NtpProje.DataAccess.dll
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\obj\Debug\NtpProje.DataAccess.pdb

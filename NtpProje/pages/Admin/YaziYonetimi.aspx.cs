@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete; // Business Katmanı
 using NtpProje.Entities.Concrete; // Entities Katmanı
 
@@ -17,8 +18,8 @@ namespace NtpProje_Web.Admin // Namespace: Projenizdekiyle aynı olmalı
        
 
         // Servisleri Çağırıyoruz
-        private readonly PostService _postService = new PostService();
-        private readonly ProjectService _projectService = new ProjectService();
+        private readonly PostService _postService = new PostService(); // GetPublishedPosts() metodu için concrete kalıyor
+        private readonly IBaseService<ProjectDTO> _projectService = new ProjectService();
 
         protected void Page_Load(object sender, EventArgs e)
         {

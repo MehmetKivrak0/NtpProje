@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete;
 using NtpProje.Entities.Concrete;
 
@@ -11,7 +12,7 @@ namespace _241613001_Mehmet_Kıvrak_NtpProje.pages
 {
     public partial class hizmet_detay : System.Web.UI.Page
     {
-        private readonly ServiceService _serviceService = new ServiceService();
+        private readonly IBaseService<ServiceDTO> _serviceService = new ServiceService();
         private ServiceDTO _currentService;
 
         protected void Page_Load(object sender, EventArgs e)

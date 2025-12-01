@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
+using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete; // Servisler
 using NtpProje.Entities.Concrete; // DTO'lar
 
@@ -27,9 +28,9 @@ namespace NtpProje_Web.Admin
         // ---------------------------------------------------------
         // 2. SERVİSLERİ ÇAĞIRIYORUZ
         // ---------------------------------------------------------
-        private readonly PostService _postService = new PostService();
-        private readonly ProjectService _projectService = new ProjectService();
-        private readonly CategoryService _categoryService = new CategoryService();
+        private readonly PostService _postService = new PostService(); // GetPublishedPosts() metodu için concrete kalıyor
+        private readonly IBaseService<ProjectDTO> _projectService = new ProjectService();
+        private readonly IBaseService<CategoryDTO> _categoryService = new CategoryService();
 
         protected void Page_Load(object sender, EventArgs e)
         {

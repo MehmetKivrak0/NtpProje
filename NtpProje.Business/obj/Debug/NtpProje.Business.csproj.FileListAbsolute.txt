@@ -1,0 +1,2 @@
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Business\obj\Debug\NtpProje.Business.dll
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Business\obj\Debug\NtpProje.Business.pdb

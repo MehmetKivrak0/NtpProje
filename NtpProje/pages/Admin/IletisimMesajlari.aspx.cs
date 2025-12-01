@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete;
 using NtpProje.Entities.Concrete;
 
@@ -33,10 +34,10 @@ namespace NtpProje_Web.Admin
         protected global::System.Web.UI.WebControls.Label lblContactInfoMessage;
         protected global::System.Web.UI.WebControls.Panel pnlContactInfoForm;
         protected global::System.Web.UI.WebControls.Button btnKaydet;
-
-        private readonly ContactMessageService _messageService = new ContactMessageService();
+ 
+        private readonly IBaseService<ContactMessageDTO> _messageService = new ContactMessageService();
         private readonly SettingService _settingService = new SettingService();
-        private readonly ProjectRequestService _projectRequestService = new ProjectRequestService();
+        private readonly IBaseService<ProjectRequestDTO> _projectRequestService = new ProjectRequestService();
 
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -2,6 +2,7 @@
 
 using System;
 using System.Web.UI;
+using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete; // UserService için doğru namespace
 using NtpProje.Entities.Concrete;  // UserDTO için doğru namespace
 using System.Web.UI.WebControls; // Repeater/Label gibi kontroller için

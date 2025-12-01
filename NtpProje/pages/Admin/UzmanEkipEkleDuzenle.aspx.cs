@@ -2,6 +2,7 @@ using System;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete;
 using NtpProje.Entities.Concrete;
 
@@ -25,8 +26,8 @@ namespace NtpProje_Web.Admin
         protected global::System.Web.UI.WebControls.HiddenField hfMemberId;
         protected global::System.Web.UI.WebControls.Label lblMessage;
         protected global::System.Web.UI.WebControls.Literal ltrPageTitle;
-
-        private readonly TeamMemberService _teamService = new TeamMemberService();
+ 
+        private readonly IBaseService<TeamMemberDTO> _teamService = new TeamMemberService();
         private bool _isEditMode = false;
         private int _memberId = 0;
 

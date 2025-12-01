@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete;
 using NtpProje.Entities.Concrete;
 
@@ -16,8 +17,8 @@ namespace NtpProje_Web.Admin
         protected global::System.Web.UI.WebControls.Literal ltrTotalMembers;
         protected global::System.Web.UI.WebControls.Label lblMessage;
         protected global::System.Web.UI.WebControls.PlaceHolder phEmpty;
-
-        private readonly TeamMemberService _teamService = new TeamMemberService();
+ 
+        private readonly IBaseService<TeamMemberDTO> _teamService = new TeamMemberService();
 
         protected void Page_Load(object sender, EventArgs e)
         {

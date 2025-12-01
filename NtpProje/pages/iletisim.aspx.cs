@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.UI;
+using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete; // Servisler
 using NtpProje.Entities.Concrete; // DTO'lar
 
@@ -15,9 +16,9 @@ namespace NtpProje_Web
         // ---------------------------------------------------------
         // SERVİSLERİ ÇAĞIRIYORUZ
         // ---------------------------------------------------------
-        private readonly SettingService _settingService = new SettingService();
-        private readonly ContactMessageService _contactService = new ContactMessageService();
-        private readonly ProjectRequestService _projectService = new ProjectRequestService();
+        private readonly SettingService _settingService = new SettingService(); // SettingService kontrol edilmeli
+        private readonly IBaseService<ContactMessageDTO> _contactService = new ContactMessageService();
+        private readonly IBaseService<ProjectRequestDTO> _projectService = new ProjectRequestService();
 
         protected void Page_Load(object sender, EventArgs e)
         {

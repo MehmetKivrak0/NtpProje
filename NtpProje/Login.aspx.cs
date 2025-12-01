@@ -1,4 +1,5 @@
-﻿using NtpProje.Business.Concrete;
+﻿using NtpProje.Business.Abstract;
+using NtpProje.Business.Concrete;
 using NtpProje.Entities.Concrete;
 using System;
 using System.Collections.Generic;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete; // Servis için
 using NtpProje.Entities.Concrete; // DTO için
 
@@ -18,7 +19,7 @@ namespace NtpProje_Web
         protected global::System.Web.UI.WebControls.PlaceHolder phEmptyProject; // HTML'e eklediğimiz placeholder
 
         // Servisi çağırıyoruz
-        private readonly ProjectService _projectService = new ProjectService();
+        private readonly IBaseService<ProjectDTO> _projectService = new ProjectService();
 
         protected void Page_Load(object sender, EventArgs e)
         {

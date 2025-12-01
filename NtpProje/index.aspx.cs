@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete;
 using NtpProje.Entities.Concrete;
 
@@ -25,10 +26,10 @@ namespace NtpProje_Web
         protected global::System.Web.UI.WebControls.Label lblHomeSatisfaction;
 
         // Servisleri Çağırıyoruz
-        private readonly ServiceService _serviceService = new ServiceService();
-        private readonly ProjectService _projectService = new ProjectService();
-        private readonly PostService _postService = new PostService();
-        private readonly StatisticService _statisticService = new StatisticService();
+        private readonly IBaseService<ServiceDTO> _serviceService = new ServiceService();
+        private readonly IBaseService<ProjectDTO> _projectService = new ProjectService();
+        private readonly PostService _postService = new PostService(); // GetPublishedPosts() metodu için concrete kalıyor
+        private readonly IBaseService<StatisticDTO> _statisticService = new StatisticService();
 
         protected void Page_Load(object sender, EventArgs e)
         {
