@@ -28,6 +28,15 @@
                 <div class="form-group">
                     <label for="<%= txtFullName.ClientID %>">Ad Soyad</label>
                     <asp:TextBox ID="txtFullName" runat="server" placeholder="Ahmet Yılmaz" CssClass="form-control" minlength="3"></asp:TextBox>
+                    <asp:CustomValidator ID="cvFullName" runat="server" 
+                        ControlToValidate="txtFullName" 
+                        ErrorMessage="Ad soyad alanına sadece harf, boşluk ve Türkçe karakterler girebilirsiniz. Rakam giremezsiniz." 
+                        ForeColor="Red" 
+                        Display="Dynamic"
+                        ClientValidationFunction="validateFullName"
+                        OnServerValidate="cvFullName_ServerValidate"
+                        ValidationGroup="RegisterForm">
+                    </asp:CustomValidator>
                 </div>
 
                 <div class="form-group">
@@ -116,6 +125,28 @@
             }
         }
 
+        // Ad Soyad validasyon fonksiyonu (Client-side) - Rakam engelleme
+        function validateFullName(source, arguments) {
+            const fullName = arguments.Value;
+            
+            // Sadece harf, boşluk ve Türkçe karakterlere izin ver (rakam yok)
+            // Türkçe karakterler: çğıöşüÇĞİÖŞÜ
+            const namePattern = /^[a-zA-ZçğıöşüÇĞİÖŞÜ\s]+$/;
+            
+            // Rakam kontrolü
+            const hasNumber = /\d/.test(fullName);
+            
+            if (hasNumber) {
+                arguments.IsValid = false;
+            } else if (fullName.length >= 3 && namePattern.test(fullName)) {
+                arguments.IsValid = true;
+            } else if (fullName.length === 0) {
+                arguments.IsValid = true; // Boş bırakılabilir (RequiredFieldValidator ile kontrol edilir)
+            } else {
+                arguments.IsValid = false;
+            }
+        }
+
         // Şifre validasyon fonksiyonu (Client-side)
         function validatePassword(source, arguments) {
             const password = arguments.Value;
@@ -151,8 +182,43 @@
             }
         }
 
-        // Şifre alanı değiştiğinde gerçek zamanlı validasyon
+        // Ad Soyad alanına rakam girilmesini engelle (Gerçek zamanlı)
         document.addEventListener('DOMContentLoaded', function() {
+            const fullNameInput = document.getElementById('<%= txtFullName.ClientID %>');
+            if (fullNameInput) {
+                // Sadece harf, boşluk ve Türkçe karakterlere izin ver (rakamları engelle)
+                fullNameInput.addEventListener('input', function(e) {
+                    let value = this.value;
+                    // Rakamları ve özel karakterleri kaldır (sadece harf, boşluk ve Türkçe karakterler)
+                    value = value.replace(/[^a-zA-ZçğıöşüÇĞİÖŞÜ\s]/g, '');
+                    this.value = value;
+                    
+                    // Validasyonu tetikle
+                    if (typeof Page_ClientValidate === 'function') {
+                        Page_ClientValidate('RegisterForm');
+                    }
+                });
+                
+                // Klavye tuşları ile de kontrol et (kopyala-yapıştır durumları için)
+                fullNameInput.addEventListener('keypress', function(e) {
+                    const char = String.fromCharCode(e.which || e.keyCode);
+                    // Eğer rakam veya izin verilmeyen karakter ise engelle
+                    if (/\d/.test(char) || !/[a-zA-ZçğıöşüÇĞİÖŞÜ\s]/.test(char)) {
+                        e.preventDefault();
+                    }
+                });
+                
+                // Yapıştırma (paste) olayını kontrol et
+                fullNameInput.addEventListener('paste', function(e) {
+                    setTimeout(function() {
+                        let value = fullNameInput.value;
+                        value = value.replace(/[^a-zA-ZçğıöşüÇĞİÖŞÜ\s]/g, '');
+                        fullNameInput.value = value;
+                    }, 10);
+                });
+            }
+
+            // Şifre alanı değiştiğinde gerçek zamanlı validasyon
             const passwordInput = document.getElementById('<%= txtPassword.ClientID %>');
             if (passwordInput) {
                 passwordInput.addEventListener('input', function() {

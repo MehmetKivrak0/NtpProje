@@ -21,6 +21,36 @@ namespace NtpProje.Business.Concrete
         // 1. GET ALL
         public List<ProjectDTO> GetAll()
         {
+            // ÖNCE VIEW KULLANIMINI DENİYORUZ (Performanslı ve teknoloji sayısı gibi ek bilgileri de içerir)
+            try
+            {
+                var viewResults = _projectRepository.GetProjectDetailsFromView();
+                if (viewResults != null && viewResults.Count > 0)
+                {
+                    // View'dan gelen teknolojileri kullanmak için kategori ID'lerini de bulalım
+                    foreach (var dto in viewResults)
+                    {
+                        int categoryId = 0;
+                        if (!string.IsNullOrEmpty(dto.Category))
+                        {
+                            var categoryService = new CategoryService();
+                            var allCategories = categoryService.GetAll();
+                            var matchedCategory = allCategories.FirstOrDefault(c => c.Name == dto.Category);
+                            if (matchedCategory != null)
+                                categoryId = matchedCategory.Id;
+                        }
+                        dto.CategoryId = categoryId;
+                    }
+                    return viewResults;
+                }
+            }
+            catch (Exception ex)
+            {
+                // View kullanılamazsa normal yönteme geç (Güvenli Fallback)
+                System.Diagnostics.Debug.WriteLine("View kullanımı başarısız, normal yönteme geçiliyor: " + ex.Message);
+            }
+
+            // VIEW KULLANILAMAZSA NORMAL YÖNTEM (Mevcut Kod - Geriye Uyumluluk)
             var entities = _projectRepository.GetAll();
             var dtos = new List<ProjectDTO>();
 

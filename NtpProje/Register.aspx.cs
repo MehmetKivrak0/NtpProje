@@ -18,6 +18,48 @@ namespace NtpProje_Web // Namespace adınızı kontrol edin
             // Sayfa ilk kez yükleniyorsa yapılacak bir şey varsa buraya yazılır.
         }
 
+        // Ad Soyad validasyon metodu (Server-side) - Rakam engelleme
+        protected void cvFullName_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            string fullName = args.Value?.Trim() ?? "";
+
+            // Boş mu kontrol et (RequiredFieldValidator varsa bu kontrol gerekli değil)
+            if (string.IsNullOrEmpty(fullName))
+            {
+                args.IsValid = false;
+                ((CustomValidator)source).ErrorMessage = "Ad soyad alanı boş bırakılamaz.";
+                return;
+            }
+
+            // Minimum uzunluk kontrolü
+            if (fullName.Length < 3)
+            {
+                args.IsValid = false;
+                ((CustomValidator)source).ErrorMessage = "Ad soyad en az 3 karakter olmalıdır.";
+                return;
+            }
+
+            // Rakam kontrolü - Ad soyad alanına rakam giremez
+            if (System.Text.RegularExpressions.Regex.IsMatch(fullName, @"\d"))
+            {
+                args.IsValid = false;
+                ((CustomValidator)source).ErrorMessage = "Ad soyad alanına rakam giremezsiniz. Sadece harf, boşluk ve Türkçe karakterler kullanılabilir.";
+                return;
+            }
+
+            // Sadece harf, boşluk ve Türkçe karakterlere izin ver
+            // Türkçe karakterler: çğıöşüÇĞİÖŞÜ
+            if (!System.Text.RegularExpressions.Regex.IsMatch(fullName, @"^[a-zA-ZçğıöşüÇĞİÖŞÜ\s]+$"))
+            {
+                args.IsValid = false;
+                ((CustomValidator)source).ErrorMessage = "Ad soyad alanına sadece harf, boşluk ve Türkçe karakterler girebilirsiniz.";
+                return;
+            }
+
+            // Tüm kontroller geçti
+            args.IsValid = true;
+        }
+
         // Şifre validasyon metodu (Server-side)
         protected void cvPassword_ServerValidate(object source, ServerValidateEventArgs args)
         {
