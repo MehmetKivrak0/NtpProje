@@ -3,8 +3,6 @@ using System.Web;
 using System.Web.Script.Serialization;
 using NtpProje.Business.Concrete;
 using NtpProje.Entities.Concrete;
-using NtpProje.Data.Concrete;
-using NtpProje.Data.DataModel;
 
 namespace NtpProje_Web.Admin
 {
@@ -27,25 +25,24 @@ namespace NtpProje_Web.Admin
                     return;
                 }
 
-                // Doğrudan repository kullanarak kategori ekle
-                var categoryRepository = new CategoryRepository();
-                var categoryEntity = new category
+                // ✅ DOĞRU: Business katmanı üzerinden işlem yapılıyor
+                var categoryService = new CategoryService();
+                var categoryDTO = new CategoryDTO
                 {
-                    category_name = name,
-                    description = description ?? string.Empty,
-                    slug = name.ToLower()
-                        .Replace(" ", "-")
-                        .Replace("ı", "i").Replace("ğ", "g").Replace("ü", "u")
-                        .Replace("ş", "s").Replace("ö", "o").Replace("ç", "c")
-                        .Replace("İ", "i").Replace("Ğ", "g").Replace("Ü", "u")
-                        .Replace("Ş", "s").Replace("Ö", "o").Replace("Ç", "c"),
-                    is_active = true,
-                    display_order = 0
+                    Name = name,
+                    Description = description ?? string.Empty
                 };
 
-                categoryRepository.Add(categoryEntity);
+                bool result = categoryService.Add(categoryDTO);
                 
-                context.Response.Write(new JavaScriptSerializer().Serialize(new { success = true, message = "Kategori başarıyla eklendi!" }));
+                if (result)
+                {
+                    context.Response.Write(new JavaScriptSerializer().Serialize(new { success = true, message = "Kategori başarıyla eklendi!" }));
+                }
+                else
+                {
+                    context.Response.Write(new JavaScriptSerializer().Serialize(new { success = false, message = "Kategori eklenirken bir hata oluştu!" }));
+                }
             }
             catch (Exception ex)
             {

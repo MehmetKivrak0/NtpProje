@@ -11,9 +11,7 @@ namespace NtpProje.pages.Admin
     /// </summary>
     public abstract class BaseAdminPage : System.Web.UI.Page
     {
-        // ============================================================
-        // VIRTUAL METODLAR (Override edilebilir)
-        // ============================================================
+        
 
         /// <summary>
         /// Sayfa yüklendiğinde çalışır. Override edilebilir.
@@ -80,10 +78,7 @@ namespace NtpProje.pages.Admin
             }
         }
 
-        // ============================================================
-        // YARDIMCI METODLAR (Override edilebilir)
-        // ============================================================
-
+       
         /// <summary>
         /// Query string'den başarı mesajını kontrol eder. Override edilebilir.
         /// </summary>

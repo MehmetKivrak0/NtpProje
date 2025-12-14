@@ -3,32 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5F6D4674-C686-466D-917F-A7529173D815}|NtpProje.Data\\NtpProje.Data.csproj|C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\ntpproje.data\\abstract\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5F6D4674-C686-466D-917F-A7529173D815}|NtpProje.Data\\NtpProje.Data.csproj|solutionrelative:ntpproje.data\\abstract\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5F6D4674-C686-466D-917F-A7529173D815}|NtpProje.Data\\NtpProje.Data.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje.data\\concrete\\projectrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5F6D4674-C686-466D-917F-A7529173D815}|NtpProje.Data\\NtpProje.Data.csproj|solutionrelative:ntpproje.data\\concrete\\projectrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5F6D4674-C686-466D-917F-A7529173D815}|NtpProje.Data\\NtpProje.Data.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje.data\\concrete\\commentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5F6D4674-C686-466D-917F-A7529173D815}|NtpProje.Data\\NtpProje.Data.csproj|solutionrelative:ntpproje.data\\concrete\\commentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5F6D4674-C686-466D-917F-A7529173D815}|NtpProje.Data\\NtpProje.Data.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje.data\\concrete\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5F6D4674-C686-466D-917F-A7529173D815}|NtpProje.Data\\NtpProje.Data.csproj|solutionrelative:ntpproje.data\\concrete\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5F6D4674-C686-466D-917F-A7529173D815}|NtpProje.Data\\NtpProje.Data.csproj|c:\\users\\mehmet\\documents\\github\\ntpproje\\ntpproje.data\\concrete\\contactmessagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5F6D4674-C686-466D-917F-A7529173D815}|NtpProje.Data\\NtpProje.Data.csproj|solutionrelative:ntpproje.data\\concrete\\contactmessagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\ntpproje\\pages\\admin\\baseadminpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\pages\\admin\\baseadminpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\ntpproje\\index.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EE2B221-1D40-472D-B18E-083B39C512DE}|NtpProje\\NtpProje-Web.csproj|solutionrelative:ntpproje\\index.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00000006-0000-0000-0000-000000000000}|NtpProje.Business\\NtpProje.Busines.csproj|C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\ntpproje.business\\abstract\\ibaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00000006-0000-0000-0000-000000000000}|NtpProje.Business\\NtpProje.Busines.csproj|solutionrelative:ntpproje.business\\abstract\\ibaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 16,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -90,92 +66,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CommentRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Data\\Concrete\\CommentRepository.cs",
-              "RelativeDocumentMoniker": "NtpProje.Data\\Concrete\\CommentRepository.cs",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Data\\Concrete\\CommentRepository.cs",
-              "RelativeToolTip": "NtpProje.Data\\Concrete\\CommentRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T18:56:10.275Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CategoryRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Data\\Concrete\\CategoryRepository.cs",
-              "RelativeDocumentMoniker": "NtpProje.Data\\Concrete\\CategoryRepository.cs",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Data\\Concrete\\CategoryRepository.cs",
-              "RelativeToolTip": "NtpProje.Data\\Concrete\\CategoryRepository.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T18:56:07.368Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProjectRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Data\\Concrete\\ProjectRepository.cs",
-              "RelativeDocumentMoniker": "NtpProje.Data\\Concrete\\ProjectRepository.cs",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Data\\Concrete\\ProjectRepository.cs*",
-              "RelativeToolTip": "NtpProje.Data\\Concrete\\ProjectRepository.cs*",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T18:55:47.521Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ContactMessageRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Data\\Concrete\\ContactMessageRepository.cs",
-              "RelativeDocumentMoniker": "NtpProje.Data\\Concrete\\ContactMessageRepository.cs",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Data\\Concrete\\ContactMessageRepository.cs",
-              "RelativeToolTip": "NtpProje.Data\\Concrete\\ContactMessageRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T09:15:11.295Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "IRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Data\\Abstract\\IRepository.cs",
-              "RelativeDocumentMoniker": "NtpProje.Data\\Abstract\\IRepository.cs",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Data\\Abstract\\IRepository.cs",
-              "RelativeToolTip": "NtpProje.Data\\Abstract\\IRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAeAAAAAAAAAA==",
+              "Title": "IBaseService.cs",
+              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Business\\Abstract\\IBaseService.cs",
+              "RelativeDocumentMoniker": "NtpProje.Business\\Abstract\\IBaseService.cs",
+              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje.Business\\Abstract\\IBaseService.cs",
+              "RelativeToolTip": "NtpProje.Business\\Abstract\\IBaseService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T09:15:08.455Z",
+              "WhenOpened": "2025-12-11T19:37:34.64Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "BaseAdminPage.cs",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\BaseAdminPage.cs",
-              "RelativeDocumentMoniker": "NtpProje\\pages\\Admin\\BaseAdminPage.cs",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\pages\\Admin\\BaseAdminPage.cs",
-              "RelativeToolTip": "NtpProje\\pages\\Admin\\BaseAdminPage.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T09:13:36.152Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "index.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\index.aspx.cs",
-              "RelativeDocumentMoniker": "NtpProje\\index.aspx.cs",
-              "ToolTip": "C:\\Users\\Mehmet\\Documents\\GitHub\\NtpProje\\NtpProje\\index.aspx.cs",
-              "RelativeToolTip": "NtpProje\\index.aspx.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T06:54:59.285Z"
             }
           ]
         }

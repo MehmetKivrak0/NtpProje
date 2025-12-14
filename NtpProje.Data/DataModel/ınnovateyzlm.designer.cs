@@ -42,27 +42,15 @@ namespace NtpProje.Data.DataModel
     partial void Insertcontact_message(contact_message instance);
     partial void Updatecontact_message(contact_message instance);
     partial void Deletecontact_message(contact_message instance);
-    partial void Insertpost_category(post_category instance);
-    partial void Updatepost_category(post_category instance);
-    partial void Deletepost_category(post_category instance);
     partial void Insertpost(post instance);
     partial void Updatepost(post instance);
     partial void Deletepost(post instance);
-    partial void Insertproject_image(project_image instance);
-    partial void Updateproject_image(project_image instance);
-    partial void Deleteproject_image(project_image instance);
     partial void Insertproject_request(project_request instance);
     partial void Updateproject_request(project_request instance);
     partial void Deleteproject_request(project_request instance);
-    partial void Insertproject_technology(project_technology instance);
-    partial void Updateproject_technology(project_technology instance);
-    partial void Deleteproject_technology(project_technology instance);
     partial void Insertproject(project instance);
     partial void Updateproject(project instance);
     partial void Deleteproject(project instance);
-    partial void Insertservice_feature(service_feature instance);
-    partial void Updateservice_feature(service_feature instance);
-    partial void Deleteservice_feature(service_feature instance);
     partial void Insertservice(service instance);
     partial void Updateservice(service instance);
     partial void Deleteservice(service instance);
@@ -139,27 +127,11 @@ namespace NtpProje.Data.DataModel
 			}
 		}
 		
-		public System.Data.Linq.Table<post_category> post_categories
-		{
-			get
-			{
-				return this.GetTable<post_category>();
-			}
-		}
-		
 		public System.Data.Linq.Table<post> posts
 		{
 			get
 			{
 				return this.GetTable<post>();
-			}
-		}
-		
-		public System.Data.Linq.Table<project_image> project_images
-		{
-			get
-			{
-				return this.GetTable<project_image>();
 			}
 		}
 		
@@ -171,27 +143,11 @@ namespace NtpProje.Data.DataModel
 			}
 		}
 		
-		public System.Data.Linq.Table<project_technology> project_technologies
-		{
-			get
-			{
-				return this.GetTable<project_technology>();
-			}
-		}
-		
 		public System.Data.Linq.Table<project> projects
 		{
 			get
 			{
 				return this.GetTable<project>();
-			}
-		}
-		
-		public System.Data.Linq.Table<service_feature> service_features
-		{
-			get
-			{
-				return this.GetTable<service_feature>();
 			}
 		}
 		
@@ -580,8 +536,6 @@ namespace NtpProje.Data.DataModel
 		
 		private System.Nullable<int> _display_order;
 		
-		private EntitySet<post_category> _post_categories;
-		
 		private EntitySet<post> _posts;
 		
     #region Extensibility Method Definitions
@@ -604,7 +558,6 @@ namespace NtpProje.Data.DataModel
 		
 		public category()
 		{
-			this._post_categories = new EntitySet<post_category>(new Action<post_category>(this.attach_post_categories), new Action<post_category>(this.detach_post_categories));
 			this._posts = new EntitySet<post>(new Action<post>(this.attach_posts), new Action<post>(this.detach_posts));
 			OnCreated();
 		}
@@ -729,19 +682,6 @@ namespace NtpProje.Data.DataModel
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_post_category", Storage="_post_categories", ThisKey="category_id", OtherKey="category_id")]
-		public EntitySet<post_category> post_categories
-		{
-			get
-			{
-				return this._post_categories;
-			}
-			set
-			{
-				this._post_categories.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_post", Storage="_posts", ThisKey="category_id", OtherKey="category_id")]
 		public EntitySet<post> posts
 		{
@@ -773,18 +713,6 @@ namespace NtpProje.Data.DataModel
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_post_categories(post_category entity)
-		{
-			this.SendPropertyChanging();
-			entity.category = this;
-		}
-		
-		private void detach_post_categories(post_category entity)
-		{
-			this.SendPropertyChanging();
-			entity.category = null;
 		}
 		
 		private void attach_posts(post entity)
@@ -1531,198 +1459,6 @@ namespace NtpProje.Data.DataModel
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.post_categories")]
-	public partial class post_category : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _post_category_id;
-		
-		private int _post_id;
-		
-		private int _category_id;
-		
-		private EntityRef<category> _category;
-		
-		private EntityRef<post> _post;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onpost_category_idChanging(int value);
-    partial void Onpost_category_idChanged();
-    partial void Onpost_idChanging(int value);
-    partial void Onpost_idChanged();
-    partial void Oncategory_idChanging(int value);
-    partial void Oncategory_idChanged();
-    #endregion
-		
-		public post_category()
-		{
-			this._category = default(EntityRef<category>);
-			this._post = default(EntityRef<post>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_post_category_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int post_category_id
-		{
-			get
-			{
-				return this._post_category_id;
-			}
-			set
-			{
-				if ((this._post_category_id != value))
-				{
-					this.Onpost_category_idChanging(value);
-					this.SendPropertyChanging();
-					this._post_category_id = value;
-					this.SendPropertyChanged("post_category_id");
-					this.Onpost_category_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_post_id", DbType="Int NOT NULL")]
-		public int post_id
-		{
-			get
-			{
-				return this._post_id;
-			}
-			set
-			{
-				if ((this._post_id != value))
-				{
-					if (this._post.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onpost_idChanging(value);
-					this.SendPropertyChanging();
-					this._post_id = value;
-					this.SendPropertyChanged("post_id");
-					this.Onpost_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_category_id", DbType="Int NOT NULL")]
-		public int category_id
-		{
-			get
-			{
-				return this._category_id;
-			}
-			set
-			{
-				if ((this._category_id != value))
-				{
-					if (this._category.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Oncategory_idChanging(value);
-					this.SendPropertyChanging();
-					this._category_id = value;
-					this.SendPropertyChanged("category_id");
-					this.Oncategory_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_post_category", Storage="_category", ThisKey="category_id", OtherKey="category_id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public category category
-		{
-			get
-			{
-				return this._category.Entity;
-			}
-			set
-			{
-				category previousValue = this._category.Entity;
-				if (((previousValue != value) 
-							|| (this._category.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._category.Entity = null;
-						previousValue.post_categories.Remove(this);
-					}
-					this._category.Entity = value;
-					if ((value != null))
-					{
-						value.post_categories.Add(this);
-						this._category_id = value.category_id;
-					}
-					else
-					{
-						this._category_id = default(int);
-					}
-					this.SendPropertyChanged("category");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="post_post_category", Storage="_post", ThisKey="post_id", OtherKey="post_id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public post post
-		{
-			get
-			{
-				return this._post.Entity;
-			}
-			set
-			{
-				post previousValue = this._post.Entity;
-				if (((previousValue != value) 
-							|| (this._post.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._post.Entity = null;
-						previousValue.post_categories.Remove(this);
-					}
-					this._post.Entity = value;
-					if ((value != null))
-					{
-						value.post_categories.Add(this);
-						this._post_id = value.post_id;
-					}
-					else
-					{
-						this._post_id = default(int);
-					}
-					this.SendPropertyChanged("post");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.posts")]
 	public partial class post : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1758,8 +1494,6 @@ namespace NtpProje.Data.DataModel
 		private int _category_id;
 		
 		private EntitySet<comment> _comments;
-		
-		private EntitySet<post_category> _post_categories;
 		
 		private EntityRef<category> _category;
 		
@@ -1802,7 +1536,6 @@ namespace NtpProje.Data.DataModel
 		public post()
 		{
 			this._comments = new EntitySet<comment>(new Action<comment>(this.attach_comments), new Action<comment>(this.detach_comments));
-			this._post_categories = new EntitySet<post_category>(new Action<post_category>(this.attach_post_categories), new Action<post_category>(this.detach_post_categories));
 			this._category = default(EntityRef<category>);
 			this._user = default(EntityRef<user>);
 			OnCreated();
@@ -2109,19 +1842,6 @@ namespace NtpProje.Data.DataModel
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="post_post_category", Storage="_post_categories", ThisKey="post_id", OtherKey="post_id")]
-		public EntitySet<post_category> post_categories
-		{
-			get
-			{
-				return this._post_categories;
-			}
-			set
-			{
-				this._post_categories.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_post", Storage="_category", ThisKey="category_id", OtherKey="category_id", IsForeignKey=true)]
 		public category category
 		{
@@ -2220,265 +1940,6 @@ namespace NtpProje.Data.DataModel
 		{
 			this.SendPropertyChanging();
 			entity.post = null;
-		}
-		
-		private void attach_post_categories(post_category entity)
-		{
-			this.SendPropertyChanging();
-			entity.post = this;
-		}
-		
-		private void detach_post_categories(post_category entity)
-		{
-			this.SendPropertyChanging();
-			entity.post = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.project_images")]
-	public partial class project_image : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _project_image_id;
-		
-		private int _project_id;
-		
-		private string _image_url;
-		
-		private string _thumbnail_url;
-		
-		private string _title;
-		
-		private System.Nullable<int> _display_order;
-		
-		private System.Nullable<bool> _is_main;
-		
-		private EntityRef<project> _project;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onproject_image_idChanging(int value);
-    partial void Onproject_image_idChanged();
-    partial void Onproject_idChanging(int value);
-    partial void Onproject_idChanged();
-    partial void Onimage_urlChanging(string value);
-    partial void Onimage_urlChanged();
-    partial void Onthumbnail_urlChanging(string value);
-    partial void Onthumbnail_urlChanged();
-    partial void OntitleChanging(string value);
-    partial void OntitleChanged();
-    partial void Ondisplay_orderChanging(System.Nullable<int> value);
-    partial void Ondisplay_orderChanged();
-    partial void Onis_mainChanging(System.Nullable<bool> value);
-    partial void Onis_mainChanged();
-    #endregion
-		
-		public project_image()
-		{
-			this._project = default(EntityRef<project>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_project_image_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int project_image_id
-		{
-			get
-			{
-				return this._project_image_id;
-			}
-			set
-			{
-				if ((this._project_image_id != value))
-				{
-					this.Onproject_image_idChanging(value);
-					this.SendPropertyChanging();
-					this._project_image_id = value;
-					this.SendPropertyChanged("project_image_id");
-					this.Onproject_image_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_project_id", DbType="Int NOT NULL")]
-		public int project_id
-		{
-			get
-			{
-				return this._project_id;
-			}
-			set
-			{
-				if ((this._project_id != value))
-				{
-					if (this._project.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onproject_idChanging(value);
-					this.SendPropertyChanging();
-					this._project_id = value;
-					this.SendPropertyChanged("project_id");
-					this.Onproject_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_image_url", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
-		public string image_url
-		{
-			get
-			{
-				return this._image_url;
-			}
-			set
-			{
-				if ((this._image_url != value))
-				{
-					this.Onimage_urlChanging(value);
-					this.SendPropertyChanging();
-					this._image_url = value;
-					this.SendPropertyChanged("image_url");
-					this.Onimage_urlChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_thumbnail_url", DbType="NVarChar(500)")]
-		public string thumbnail_url
-		{
-			get
-			{
-				return this._thumbnail_url;
-			}
-			set
-			{
-				if ((this._thumbnail_url != value))
-				{
-					this.Onthumbnail_urlChanging(value);
-					this.SendPropertyChanging();
-					this._thumbnail_url = value;
-					this.SendPropertyChanged("thumbnail_url");
-					this.Onthumbnail_urlChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_title", DbType="NVarChar(200)")]
-		public string title
-		{
-			get
-			{
-				return this._title;
-			}
-			set
-			{
-				if ((this._title != value))
-				{
-					this.OntitleChanging(value);
-					this.SendPropertyChanging();
-					this._title = value;
-					this.SendPropertyChanged("title");
-					this.OntitleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_display_order", DbType="Int")]
-		public System.Nullable<int> display_order
-		{
-			get
-			{
-				return this._display_order;
-			}
-			set
-			{
-				if ((this._display_order != value))
-				{
-					this.Ondisplay_orderChanging(value);
-					this.SendPropertyChanging();
-					this._display_order = value;
-					this.SendPropertyChanged("display_order");
-					this.Ondisplay_orderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_is_main", DbType="Bit")]
-		public System.Nullable<bool> is_main
-		{
-			get
-			{
-				return this._is_main;
-			}
-			set
-			{
-				if ((this._is_main != value))
-				{
-					this.Onis_mainChanging(value);
-					this.SendPropertyChanging();
-					this._is_main = value;
-					this.SendPropertyChanged("is_main");
-					this.Onis_mainChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="project_project_image", Storage="_project", ThisKey="project_id", OtherKey="project_id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public project project
-		{
-			get
-			{
-				return this._project.Entity;
-			}
-			set
-			{
-				project previousValue = this._project.Entity;
-				if (((previousValue != value) 
-							|| (this._project.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._project.Entity = null;
-						previousValue.project_images.Remove(this);
-					}
-					this._project.Entity = value;
-					if ((value != null))
-					{
-						value.project_images.Add(this);
-						this._project_id = value.project_id;
-					}
-					else
-					{
-						this._project_id = default(int);
-					}
-					this.SendPropertyChanged("project");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -2904,181 +2365,6 @@ namespace NtpProje.Data.DataModel
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.project_technologies")]
-	public partial class project_technology : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _project_technology_id;
-		
-		private int _project_id;
-		
-		private string _technology_name;
-		
-		private System.Nullable<int> _display_order;
-		
-		private EntityRef<project> _project;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onproject_technology_idChanging(int value);
-    partial void Onproject_technology_idChanged();
-    partial void Onproject_idChanging(int value);
-    partial void Onproject_idChanged();
-    partial void Ontechnology_nameChanging(string value);
-    partial void Ontechnology_nameChanged();
-    partial void Ondisplay_orderChanging(System.Nullable<int> value);
-    partial void Ondisplay_orderChanged();
-    #endregion
-		
-		public project_technology()
-		{
-			this._project = default(EntityRef<project>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_project_technology_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int project_technology_id
-		{
-			get
-			{
-				return this._project_technology_id;
-			}
-			set
-			{
-				if ((this._project_technology_id != value))
-				{
-					this.Onproject_technology_idChanging(value);
-					this.SendPropertyChanging();
-					this._project_technology_id = value;
-					this.SendPropertyChanged("project_technology_id");
-					this.Onproject_technology_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_project_id", DbType="Int NOT NULL")]
-		public int project_id
-		{
-			get
-			{
-				return this._project_id;
-			}
-			set
-			{
-				if ((this._project_id != value))
-				{
-					if (this._project.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onproject_idChanging(value);
-					this.SendPropertyChanging();
-					this._project_id = value;
-					this.SendPropertyChanged("project_id");
-					this.Onproject_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_technology_name", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string technology_name
-		{
-			get
-			{
-				return this._technology_name;
-			}
-			set
-			{
-				if ((this._technology_name != value))
-				{
-					this.Ontechnology_nameChanging(value);
-					this.SendPropertyChanging();
-					this._technology_name = value;
-					this.SendPropertyChanged("technology_name");
-					this.Ontechnology_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_display_order", DbType="Int")]
-		public System.Nullable<int> display_order
-		{
-			get
-			{
-				return this._display_order;
-			}
-			set
-			{
-				if ((this._display_order != value))
-				{
-					this.Ondisplay_orderChanging(value);
-					this.SendPropertyChanging();
-					this._display_order = value;
-					this.SendPropertyChanged("display_order");
-					this.Ondisplay_orderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="project_project_technology", Storage="_project", ThisKey="project_id", OtherKey="project_id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public project project
-		{
-			get
-			{
-				return this._project.Entity;
-			}
-			set
-			{
-				project previousValue = this._project.Entity;
-				if (((previousValue != value) 
-							|| (this._project.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._project.Entity = null;
-						previousValue.project_technologies.Remove(this);
-					}
-					this._project.Entity = value;
-					if ((value != null))
-					{
-						value.project_technologies.Add(this);
-						this._project_id = value.project_id;
-					}
-					else
-					{
-						this._project_id = default(int);
-					}
-					this.SendPropertyChanged("project");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.projects")]
 	public partial class project : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3118,10 +2404,6 @@ namespace NtpProje.Data.DataModel
 		private System.Nullable<System.DateTime> _created_date;
 		
 		private System.Nullable<System.DateTime> _updated_date;
-		
-		private EntitySet<project_image> _project_images;
-		
-		private EntitySet<project_technology> _project_technologies;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3165,8 +2447,6 @@ namespace NtpProje.Data.DataModel
 		
 		public project()
 		{
-			this._project_images = new EntitySet<project_image>(new Action<project_image>(this.attach_project_images), new Action<project_image>(this.detach_project_images));
-			this._project_technologies = new EntitySet<project_technology>(new Action<project_technology>(this.attach_project_technologies), new Action<project_technology>(this.detach_project_technologies));
 			OnCreated();
 		}
 		
@@ -3510,231 +2790,6 @@ namespace NtpProje.Data.DataModel
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="project_project_image", Storage="_project_images", ThisKey="project_id", OtherKey="project_id")]
-		public EntitySet<project_image> project_images
-		{
-			get
-			{
-				return this._project_images;
-			}
-			set
-			{
-				this._project_images.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="project_project_technology", Storage="_project_technologies", ThisKey="project_id", OtherKey="project_id")]
-		public EntitySet<project_technology> project_technologies
-		{
-			get
-			{
-				return this._project_technologies;
-			}
-			set
-			{
-				this._project_technologies.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_project_images(project_image entity)
-		{
-			this.SendPropertyChanging();
-			entity.project = this;
-		}
-		
-		private void detach_project_images(project_image entity)
-		{
-			this.SendPropertyChanging();
-			entity.project = null;
-		}
-		
-		private void attach_project_technologies(project_technology entity)
-		{
-			this.SendPropertyChanging();
-			entity.project = this;
-		}
-		
-		private void detach_project_technologies(project_technology entity)
-		{
-			this.SendPropertyChanging();
-			entity.project = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.service_features")]
-	public partial class service_feature : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _service_feature_id;
-		
-		private int _service_id;
-		
-		private string _feature_name;
-		
-		private System.Nullable<int> _display_order;
-		
-		private EntityRef<service> _service;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onservice_feature_idChanging(int value);
-    partial void Onservice_feature_idChanged();
-    partial void Onservice_idChanging(int value);
-    partial void Onservice_idChanged();
-    partial void Onfeature_nameChanging(string value);
-    partial void Onfeature_nameChanged();
-    partial void Ondisplay_orderChanging(System.Nullable<int> value);
-    partial void Ondisplay_orderChanged();
-    #endregion
-		
-		public service_feature()
-		{
-			this._service = default(EntityRef<service>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_service_feature_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int service_feature_id
-		{
-			get
-			{
-				return this._service_feature_id;
-			}
-			set
-			{
-				if ((this._service_feature_id != value))
-				{
-					this.Onservice_feature_idChanging(value);
-					this.SendPropertyChanging();
-					this._service_feature_id = value;
-					this.SendPropertyChanged("service_feature_id");
-					this.Onservice_feature_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_service_id", DbType="Int NOT NULL")]
-		public int service_id
-		{
-			get
-			{
-				return this._service_id;
-			}
-			set
-			{
-				if ((this._service_id != value))
-				{
-					if (this._service.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onservice_idChanging(value);
-					this.SendPropertyChanging();
-					this._service_id = value;
-					this.SendPropertyChanged("service_id");
-					this.Onservice_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_feature_name", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
-		public string feature_name
-		{
-			get
-			{
-				return this._feature_name;
-			}
-			set
-			{
-				if ((this._feature_name != value))
-				{
-					this.Onfeature_nameChanging(value);
-					this.SendPropertyChanging();
-					this._feature_name = value;
-					this.SendPropertyChanged("feature_name");
-					this.Onfeature_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_display_order", DbType="Int")]
-		public System.Nullable<int> display_order
-		{
-			get
-			{
-				return this._display_order;
-			}
-			set
-			{
-				if ((this._display_order != value))
-				{
-					this.Ondisplay_orderChanging(value);
-					this.SendPropertyChanging();
-					this._display_order = value;
-					this.SendPropertyChanged("display_order");
-					this.Ondisplay_orderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="service_service_feature", Storage="_service", ThisKey="service_id", OtherKey="service_id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public service service
-		{
-			get
-			{
-				return this._service.Entity;
-			}
-			set
-			{
-				service previousValue = this._service.Entity;
-				if (((previousValue != value) 
-							|| (this._service.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._service.Entity = null;
-						previousValue.service_features.Remove(this);
-					}
-					this._service.Entity = value;
-					if ((value != null))
-					{
-						value.service_features.Add(this);
-						this._service_id = value.service_id;
-					}
-					else
-					{
-						this._service_id = default(int);
-					}
-					this.SendPropertyChanged("service");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -3788,8 +2843,6 @@ namespace NtpProje.Data.DataModel
 		
 		private System.Nullable<System.DateTime> _updated_date;
 		
-		private EntitySet<service_feature> _service_features;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3824,7 +2877,6 @@ namespace NtpProje.Data.DataModel
 		
 		public service()
 		{
-			this._service_features = new EntitySet<service_feature>(new Action<service_feature>(this.attach_service_features), new Action<service_feature>(this.detach_service_features));
 			OnCreated();
 		}
 		
@@ -4088,19 +3140,6 @@ namespace NtpProje.Data.DataModel
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="service_service_feature", Storage="_service_features", ThisKey="service_id", OtherKey="service_id")]
-		public EntitySet<service_feature> service_features
-		{
-			get
-			{
-				return this._service_features;
-			}
-			set
-			{
-				this._service_features.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -4119,18 +3158,6 @@ namespace NtpProje.Data.DataModel
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_service_features(service_feature entity)
-		{
-			this.SendPropertyChanging();
-			entity.service = this;
-		}
-		
-		private void detach_service_features(service_feature entity)
-		{
-			this.SendPropertyChanging();
-			entity.service = null;
 		}
 	}
 	

@@ -20,7 +20,7 @@ namespace NtpProje.Data.Concrete
             try
             {
                 _context.users.InsertOnSubmit(entity);
-                _context.SubmitChanges(); // Hata büyük ihtimalle bu satýrda oluþuyor
+                _context.SubmitChanges(); 
             }
             catch (Exception ex)
             {

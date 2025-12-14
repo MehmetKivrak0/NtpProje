@@ -12,7 +12,6 @@ namespace NtpProje.Data.Concrete
         // Veritabaný Baðlantýsý
         private readonly ýnnovateyzlmDataContext _context = new ýnnovateyzlmDataContext();
 
-        // --- EKSÝK OLAN METOTLAR (Hatalarý Çözen Kýsým) ---
 
         // 1. ADD (Ekleme)
         public void Add(post entity)
@@ -51,18 +50,6 @@ namespace NtpProje.Data.Concrete
             return _context.posts.ToList();
         }
 
-        // NOT: Eðer IRepository arayüzünde "Expression" alan metotlar yoksa,
-        // aþaðýdaki metotlarý silmen gerekebilir. Varsa kalabilirler.
-        /*
-        public post Get(Expression<Func<post, bool>> filter)
-        {
-            return _context.posts.FirstOrDefault(filter);
-        }
-
-        public List<post> GetAll(Expression<Func<post, bool>> filter)
-        {
-            return _context.posts.Where(filter).ToList();
-        }
-        */
+       
     }
 }

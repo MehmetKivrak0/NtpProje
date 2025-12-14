@@ -19,7 +19,6 @@ namespace NtpProje.Data.Concrete
             _context.SubmitChanges();
         }
 
-        // DÜZELTME: Metot adı IRepository'ye uygun olarak büyük harfle başladı
         public void Delete(project_request entity)
         {
             _context.project_requests.DeleteOnSubmit(entity);
@@ -32,7 +31,6 @@ namespace NtpProje.Data.Concrete
             _context.SubmitChanges();
         }
 
-        // DÜZELTME: Birincil anahtar alanı eklendi
         public project_request Get(int id)
         {
             return _context.project_requests.FirstOrDefault(pr => pr.project_request_id == id);
@@ -43,13 +41,11 @@ namespace NtpProje.Data.Concrete
             return _context.project_requests.FirstOrDefault(filter);
         }
 
-        // DÜZELTME: Entity tipi 'project_request' olarak düzeltildi
         public List<project_request> GetAll()
         {
             return _context.project_requests.ToList();
         }
 
-        // DÜZELTME: Entity tipi 'project_request' olarak düzeltildi
         public List<project_request> GetAll(Expression<Func<project_request, bool>> filter)
         {
             return _context.project_requests.Where(filter).ToList();

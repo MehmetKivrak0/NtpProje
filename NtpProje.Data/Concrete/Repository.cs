@@ -9,13 +9,11 @@ namespace NtpProje.Data.Concrete
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        // Context ismini senin mevcut yapına göre ayarladık
         protected readonly ınnovateyzlmDataContext _context;
         protected readonly Table<T> _table; // DbSet yerine Table kullanılır
 
         public Repository()
         {
-            // Senin DataContext ismin
             _context = new ınnovateyzlmDataContext();
             _table = _context.GetTable<T>(); // Set<T> yerine GetTable<T> kullanılır
         }
@@ -27,15 +25,7 @@ namespace NtpProje.Data.Concrete
 
         public T Get(int id)
         {
-            // LINQ to SQL'de generic "Find" metodu yoktur.
-            // Bu yüzden burayı biraz farklı halletmemiz lazım.
-            // En güvenli yöntem, Service katmanında "GetAll().FirstOrDefault(...)" yapmaktır.
-            // Ancak şimdilik hata vermemesi için null döndürüyorum veya
-            // basitçe tablodaki ilk kaydı çekmeyi deneyebilirsin.
-
-            // ÖNEMLİ: Generic yapıda ID kolonunun adını bilemeyiz.
-            // Bu yüzden Get(int id) metodunu burada pas geçip, Service katmanında
-            // _repository.GetAll().FirstOrDefault(x => x.Id == id) şeklinde kullanman daha doğru olur.
+            
 
             throw new NotImplementedException("LINQ to SQL Generic yapıda ID ile çekme işlemi Service katmanında yapılmalıdır.");
         }
