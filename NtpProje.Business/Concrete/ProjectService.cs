@@ -261,5 +261,11 @@ namespace NtpProje.Business.Concrete
         {
             return _projectRepository.GetDashboardCountsFromSp();
         }
+
+        // 8. Aktif projeleri TVF üzerinden getir (fn_GetActiveProjects)
+        public List<ProjectDTO> GetActiveProjectsFromFunction()
+        {
+            return _projectRepository.GetActiveProjectsFromFunction();
+        }
     }
 }

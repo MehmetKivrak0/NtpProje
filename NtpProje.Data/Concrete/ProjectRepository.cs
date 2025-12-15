@@ -97,6 +97,32 @@ namespace NtpProje.Data.Concrete
                 return new DashboardCountsDTO();
             }
         }
+
+        /// <summary>
+        /// Aktif projeleri döndüren TVF çağrısı (fn_GetActiveProjects)
+        /// </summary>
+        public List<ProjectDTO> GetActiveProjectsFromFunction()
+        {
+            try
+            {
+                // dbml importu sonrası tipli metot: _context.fn_GetActiveProjects()
+                var results = _context.fn_GetActiveProjects().ToList();
+
+                return results.Select(r => new ProjectDTO
+                {
+                    Id = r.project_id,
+                    Title = r.project_name ?? "",
+                    Status = r.status ?? "",
+                    ViewCount = r.view_count ?? 0,
+                    CompletionDate = r.completion_date
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("TVF fn_GetActiveProjects hata: " + ex.Message);
+                return new List<ProjectDTO>();
+            }
+        }
     }
 }
 

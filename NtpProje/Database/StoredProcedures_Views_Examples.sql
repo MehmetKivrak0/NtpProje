@@ -104,6 +104,29 @@ ORDER BY p.publish_date DESC;
 
 -- Kullanım: SELECT * FROM vw_PublishedBlogPosts;
 
+-- =============================================
+-- FUNCTION ÖRNEĞİ (TABLE-VALUED)
+-- =============================================
+        IF OBJECT_ID('dbo.fn_GetActiveProjects', 'IF') IS NOT NULL
+            DROP FUNCTION dbo.fn_GetActiveProjects;
+        GO
+
+        CREATE FUNCTION dbo.fn_GetActiveProjects()
+        RETURNS TABLE
+        AS
+        RETURN
+        (
+            SELECT 
+                project_id,
+                project_name,
+                status,
+                view_count,
+                completion_date
+            FROM projects
+            WHERE is_published = 1
+        );
+        GO
+
 
 -- =============================================
 -- STORED PROCEDURE ÖRNEKLERİ

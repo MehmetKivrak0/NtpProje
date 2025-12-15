@@ -189,6 +189,12 @@ namespace NtpProje.Data.DataModel
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<sp_GetDashboardCountsResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.fn_GetActiveProjects", IsComposable=true)]
+		public IQueryable<fn_GetActiveProjectsResult> fn_GetActiveProjects()
+		{
+			return this.CreateMethodCallQuery<fn_GetActiveProjectsResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.users")]
@@ -4011,6 +4017,104 @@ namespace NtpProje.Data.DataModel
 				if ((this._UnreadRequests != value))
 				{
 					this._UnreadRequests = value;
+				}
+			}
+		}
+	}
+	
+	public partial class fn_GetActiveProjectsResult
+	{
+		
+		private int _project_id;
+		
+		private string _project_name;
+		
+		private string _status;
+		
+		private System.Nullable<int> _view_count;
+		
+		private System.Nullable<System.DateTime> _completion_date;
+		
+		public fn_GetActiveProjectsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_project_id", DbType="Int NOT NULL")]
+		public int project_id
+		{
+			get
+			{
+				return this._project_id;
+			}
+			set
+			{
+				if ((this._project_id != value))
+				{
+					this._project_id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_project_name", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
+		public string project_name
+		{
+			get
+			{
+				return this._project_name;
+			}
+			set
+			{
+				if ((this._project_name != value))
+				{
+					this._project_name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="NVarChar(50)")]
+		public string status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this._status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_view_count", DbType="Int")]
+		public System.Nullable<int> view_count
+		{
+			get
+			{
+				return this._view_count;
+			}
+			set
+			{
+				if ((this._view_count != value))
+				{
+					this._view_count = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_completion_date", DbType="DateTime")]
+		public System.Nullable<System.DateTime> completion_date
+		{
+			get
+			{
+				return this._completion_date;
+			}
+			set
+			{
+				if ((this._completion_date != value))
+				{
+					this._completion_date = value;
 				}
 			}
 		}
