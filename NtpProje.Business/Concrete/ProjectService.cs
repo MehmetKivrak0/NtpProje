@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 using NtpProje.Business.Abstract;
 using NtpProje.Entities.Concrete; // DTO burada (ProjectDTO)
 using NtpProje.Data.Concrete;     // Repository burada
@@ -164,8 +165,12 @@ namespace NtpProje.Business.Concrete
                     slug = dto.Title != null ? dto.Title.ToLower().Replace(" ", "-") : "project"
                 };
 
-                _projectRepository.Add(entity);
-                return true;
+                using (var scope = new TransactionScope())
+                {
+                    _projectRepository.Add(entity);
+                    scope.Complete();
+                    return true;
+                }
             }
             catch
             {
@@ -249,6 +254,12 @@ namespace NtpProje.Business.Concrete
             {
                 return 0;
             }
+        }
+
+        // 7. Dashboard sayıları (Stored Procedure: sp_GetDashboardCounts)
+        public DashboardCountsDTO GetDashboardCounts()
+        {
+            return _projectRepository.GetDashboardCountsFromSp();
         }
     }
 }

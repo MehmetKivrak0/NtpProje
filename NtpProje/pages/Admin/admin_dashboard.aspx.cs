@@ -59,18 +59,34 @@ namespace NtpProje_Web.Admin
         {
             try
             {
-                // 1. Toplam Blog Yazısı
-                lblTotalPosts.Text = _postService.CountAll().ToString();
+                // SP üzerinden dashboard sayıları (TotalPosts, PendingComments, UnreadRequests, TotalUsers)
+                var counts = _projectService.GetDashboardCounts();
 
-                // 2. Onay Bekleyen Yorumlar
-                lblNewComments.Text = _commentService.CountPending().ToString();
+                // 1. Toplam Blog Yazısı (SP yoksa fallback)
+                lblTotalPosts.Text = counts.TotalPosts > 0
+                    ? counts.TotalPosts.ToString()
+                    : _postService.CountAll().ToString();
 
-                // 3. Okunmamış Proje Teklifleri
-                lblProjectRequests.Text = _projectRequestService.CountUnread().ToString();
+                // 2. Onay Bekleyen Yorumlar (SP yoksa fallback)
+                lblNewComments.Text = counts.PendingComments > 0
+                    ? counts.PendingComments.ToString()
+                    : _commentService.CountPending().ToString();
 
-                // 4. Toplam Kullanıcı Sayısı
-                var users = _userService.GetAll();
-                lblTotalUsers.Text = users != null ? users.Count.ToString() : "0";
+                // 3. Okunmamış Proje Teklifleri (SP yoksa fallback)
+                lblProjectRequests.Text = counts.UnreadRequests > 0
+                    ? counts.UnreadRequests.ToString()
+                    : _projectRequestService.CountUnread().ToString();
+
+                // 4. Toplam Kullanıcı Sayısı (SP’den gelmiyorsa fallback)
+                if (counts.TotalUsers > 0)
+                {
+                    lblTotalUsers.Text = counts.TotalUsers.ToString();
+                }
+                else
+                {
+                    var users = _userService.GetAll();
+                    lblTotalUsers.Text = users != null ? users.Count.ToString() : "0";
+                }
 
                 // 5. Toplam Proje Sayısı (Grafik için)
                 lblProjectCount.Text = _projectService.CountAll().ToString();

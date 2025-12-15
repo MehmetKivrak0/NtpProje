@@ -80,6 +80,23 @@ namespace NtpProje.Data.Concrete
             public int? image_count { get; set; }
             public string technologies { get; set; }
         }
+
+        /// <summary>
+        /// Dashboard sayıları için Stored Procedure çağrısı (sp_GetDashboardCounts)
+        /// </summary>
+        public DashboardCountsDTO GetDashboardCountsFromSp()
+        {
+            try
+            {
+                var result = _context.ExecuteQuery<DashboardCountsDTO>("EXEC sp_GetDashboardCounts").FirstOrDefault();
+                return result ?? new DashboardCountsDTO();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("SP dashboard counts hata: " + ex.Message);
+                return new DashboardCountsDTO();
+            }
+        }
     }
 }
 

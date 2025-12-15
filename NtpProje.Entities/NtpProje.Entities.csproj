@@ -45,6 +45,7 @@
     <Compile Include="Concrete\CategoryDTO.cs" />
     <Compile Include="Concrete\CommentDTO.cs" />
     <Compile Include="Concrete\ContactMessageDTO.cs" />
+    <Compile Include="Concrete\DashboardCountsDTO.cs" />
     <Compile Include="Concrete\PostDTO.cs" />
     <Compile Include="Concrete\ProjectDTO.cs" />
     <Compile Include="Concrete\ProjectRequestDTO.cs" />

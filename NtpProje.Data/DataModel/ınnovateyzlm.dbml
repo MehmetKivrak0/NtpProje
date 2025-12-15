@@ -179,4 +179,11 @@
       <Column Name="updated_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
+  <Function Name="dbo.sp_GetDashboardCounts" Method="sp_GetDashboardCounts">
+    <ElementType Name="sp_GetDashboardCountsResult">
+      <Column Name="TotalPosts" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PendingComments" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UnreadRequests" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

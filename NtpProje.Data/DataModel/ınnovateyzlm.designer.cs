@@ -182,6 +182,13 @@ namespace NtpProje.Data.DataModel
 				return this.GetTable<team_member>();
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetDashboardCounts")]
+		public ISingleResult<sp_GetDashboardCountsResult> sp_GetDashboardCounts()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<sp_GetDashboardCountsResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.users")]
@@ -3943,6 +3950,68 @@ namespace NtpProje.Data.DataModel
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	public partial class sp_GetDashboardCountsResult
+	{
+		
+		private System.Nullable<int> _TotalPosts;
+		
+		private System.Nullable<int> _PendingComments;
+		
+		private System.Nullable<int> _UnreadRequests;
+		
+		public sp_GetDashboardCountsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPosts", DbType="Int")]
+		public System.Nullable<int> TotalPosts
+		{
+			get
+			{
+				return this._TotalPosts;
+			}
+			set
+			{
+				if ((this._TotalPosts != value))
+				{
+					this._TotalPosts = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PendingComments", DbType="Int")]
+		public System.Nullable<int> PendingComments
+		{
+			get
+			{
+				return this._PendingComments;
+			}
+			set
+			{
+				if ((this._PendingComments != value))
+				{
+					this._PendingComments = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnreadRequests", DbType="Int")]
+		public System.Nullable<int> UnreadRequests
+		{
+			get
+			{
+				return this._UnreadRequests;
+			}
+			set
+			{
+				if ((this._UnreadRequests != value))
+				{
+					this._UnreadRequests = value;
+				}
 			}
 		}
 	}

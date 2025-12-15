@@ -1,3 +1,5 @@
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje\obj\Debug\NtpProje-Web.csproj.AssemblyReference.cache
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje\obj\Debug\NtpProje-Web.csproj.CoreCompileInputs.cache
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje\bin\NtpProje.dll.config
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje\bin\NtpProje.dll
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje\bin\NtpProje.pdb
@@ -63,8 +65,6 @@ C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje\bin\EntityFramework.SqlServer
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje\bin\NtpProje.Data.pdb
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje\bin\NtpProje.Data.dll.config
-C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje\obj\Debug\NtpProje-Web.csproj.AssemblyReference.cache
-C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje\obj\Debug\NtpProje-Web.csproj.CoreCompileInputs.cache
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje\obj\Debug\NtpProje.99323C48.Up2Date
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje\obj\Debug\NtpProje.dll
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje\obj\Debug\NtpProje.pdb
