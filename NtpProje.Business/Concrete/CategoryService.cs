@@ -6,6 +6,7 @@ using NtpProje.Entities.Concrete; // DTO (CategoryDTO)
 using NtpProje.Entities.Logging;
 using NtpProje.Data.Concrete;     // Repository
 using NtpProje.Data.DataModel;    // Entity (category)
+using NtpProje.Business.Validation;
 
 namespace NtpProje.Business.Concrete
 {
@@ -60,6 +61,22 @@ namespace NtpProje.Business.Concrete
         {
             try
             {
+                // 1) Doğrulama
+                var validation = ValidationHelper.ValidateCategory(dto);
+                if (!validation.IsValid)
+                {
+                    throw new ArgumentException(string.Join(" | ", validation.Errors), nameof(dto));
+                }
+
+                // 2) Slug üret
+                var slug = GenerateSlug(dto.Name);
+
+                // 3) Slug benzersizlik kontrolü
+                if (_categoryRepository.SlugExists(slug))
+                {
+                    throw new InvalidOperationException("Bu slug zaten kullanılıyor. Lütfen farklı bir kategori adı giriniz.");
+                }
+
                 var entity = new category
                 {
                     // SQL: category_name
@@ -69,7 +86,7 @@ namespace NtpProje.Business.Concrete
                     description = dto.Description,
 
                     // SQL: slug (Otomatik olu�turuyoruz: "Web Tasar�m" -> "web-tasarim")
-                    slug = dto.Name.ToLower().Replace(" ", "-").Replace("�", "i").Replace("�", "g").Replace("�", "u").Replace("�", "s").Replace("�", "o").Replace("�", "c"),
+                    slug = slug,
 
                     // SQL: is_active (Varsay�lan aktif olsun)
                     is_active = true,
@@ -93,6 +110,13 @@ namespace NtpProje.Business.Concrete
         {
             try
             {
+                // 1) Doğrulama
+                var validation = ValidationHelper.ValidateCategory(dto);
+                if (!validation.IsValid)
+                {
+                    throw new ArgumentException(string.Join(" | ", validation.Errors), nameof(dto));
+                }
+
                 var entity = _categoryRepository.GetAll().FirstOrDefault(c => c.category_id == dto.Id);
                 if (entity == null) return false;
 
@@ -100,7 +124,16 @@ namespace NtpProje.Business.Concrete
                 entity.description = dto.Description;
 
                 // Slug'� da isme g�re g�ncelleyelim
-                entity.slug = dto.Name.ToLower().Replace(" ", "-").Replace("�", "i").Replace("�", "g").Replace("�", "u").Replace("�", "s").Replace("�", "o").Replace("�", "c");
+                var newSlug = GenerateSlug(dto.Name);
+
+                // Farklı bir slug ise benzersizlik kontrolü yap
+                if (!string.Equals(entity.slug, newSlug, StringComparison.OrdinalIgnoreCase) &&
+                    _categoryRepository.SlugExists(newSlug))
+                {
+                    throw new InvalidOperationException("Bu slug zaten kullanılıyor. Lütfen farklı bir kategori adı giriniz.");
+                }
+
+                entity.slug = newSlug;
 
                 _categoryRepository.Update(entity);
                 return true;
@@ -128,6 +161,30 @@ namespace NtpProje.Business.Concrete
                 AppLogger.LogError(ex, "CategoryService.Delete");
                 throw;
             }
+        }
+
+        // Slug üretimi için ortak metot
+        private string GenerateSlug(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return string.Empty;
+
+            var slug = name.ToLower()
+                           .Replace(" ", "-")
+                           .Replace("ı", "i")
+                           .Replace("ğ", "g")
+                           .Replace("ü", "u")
+                           .Replace("ş", "s")
+                           .Replace("ö", "o")
+                           .Replace("ç", "c");
+
+            // Birden fazla '-' karakterini tekille
+            while (slug.Contains("--"))
+            {
+                slug = slug.Replace("--", "-");
+            }
+
+            return slug.Trim('-');
         }
     }
 }

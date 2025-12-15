@@ -54,6 +54,8 @@
     <Compile Include="Concrete\ServiceService.cs" />
     <Compile Include="Concrete\TeamMemberService.cs" />
     <Compile Include="Concrete\CommentService.cs" />
+    <Compile Include="Validation\ValidationResult.cs" />
+    <Compile Include="Validation\ValidationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

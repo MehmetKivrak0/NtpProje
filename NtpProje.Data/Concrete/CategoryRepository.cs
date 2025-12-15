@@ -1,27 +1,27 @@
-    using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using NtpProje.Data.Abstract;
-using NtpProje.Data.DataModel; // Veritabaný tablolarý burada (category)
+using NtpProje.Data.DataModel; // VeritabanÄ± tablolarÄ± burada (category)
 
 namespace NtpProje.Data.Concrete
 {
-    // DÜZELTME: Repository<CategoryDTO> DEÐÝL, Repository<category> (Küçük harfle veritabaný tablosu)
+    // Repository<category> (kÃ¼Ã§Ã¼k harfle veritabanÄ± tablosu)
     public class CategoryRepository : IRepository<category>
     {
-        // Veritabaný Baðlantýsý
-        private readonly ýnnovateyzlmDataContext _context = new ýnnovateyzlmDataContext();
+        // VeritabanÄ± BaÄŸlantÄ±sÄ±
+        private readonly Ä±nnovateyzlmDataContext _context = new Ä±nnovateyzlmDataContext();
 
-        // 1. GET ALL (Tümünü Getir)
+        // 1. GET ALL (TÃ¼mÃ¼nÃ¼ Getir)
         public List<category> GetAll()
         {
             return _context.categories.ToList();
         }
 
-        // 2. GET BY ID (Tek Kayýt Getir)
+        // 2. GET BY ID (Tek KayÄ±t Getir)
         public category Get(int id)
         {
-            // Veritabanýndaki ID sütununun adý 'category_id' ise:
+            // Veritabanï¿½ndaki ID sï¿½tununun adï¿½ 'category_id' ise:
             return _context.categories.FirstOrDefault(c => c.category_id == id);
         }
 
@@ -32,11 +32,11 @@ namespace NtpProje.Data.Concrete
             _context.SubmitChanges();
         }
 
-        // 4. UPDATE (Güncelle)
+        // 4. UPDATE (GÃ¼ncelle)
         public void Update(category entity)
         {
             // LINQ to SQL'de nesne zaten takip ediliyorsa (track),
-            // sadece deðiþiklikleri kaydetmek yeterlidir.
+            // sadece deï¿½iï¿½iklikleri kaydetmek yeterlidir.
             _context.SubmitChanges();
         }
 
@@ -45,6 +45,15 @@ namespace NtpProje.Data.Concrete
         {
             _context.categories.DeleteOnSubmit(entity);
             _context.SubmitChanges();
+        }
+
+        // 6. SLUG VAR MI? (Benzersizlik kontrolÃ¼)
+        public bool SlugExists(string slug)
+        {
+            if (string.IsNullOrWhiteSpace(slug))
+                return false;
+
+            return _context.categories.Any(c => c.slug == slug);
         }
     }
 }
