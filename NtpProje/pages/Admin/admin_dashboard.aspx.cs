@@ -31,12 +31,12 @@ namespace NtpProje_Web.Admin
 
         // Servisleri Çağırıyoruz
         private readonly PostService _postService = new PostService(); // GetPublishedPosts() metodu için concrete kalıyor
-        private readonly IBaseService<CommentDTO> _commentService = new CommentService();
-        private readonly IBaseService<ProjectRequestDTO> _projectRequestService = new ProjectRequestService();
+        private readonly CommentService _commentService = new CommentService();
+        private readonly ProjectRequestService _projectRequestService = new ProjectRequestService();
         private readonly UserService _userService = new UserService(); // Login/Register metodları için concrete kalıyor
-        private readonly IBaseService<ProjectDTO> _projectService = new ProjectService();
-        private readonly IBaseService<TeamMemberDTO> _teamMemberService = new TeamMemberService();
-        private readonly IBaseService<ContactMessageDTO> _contactMessageService = new ContactMessageService();
+        private readonly ProjectService _projectService = new ProjectService();
+        private readonly TeamMemberService _teamMemberService = new TeamMemberService();
+        private readonly ContactMessageService _contactMessageService = new ContactMessageService();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -60,37 +60,26 @@ namespace NtpProje_Web.Admin
             try
             {
                 // 1. Toplam Blog Yazısı
-                var posts = _postService.GetAll();
-                lblTotalPosts.Text = posts != null ? posts.Count.ToString() : "0";
+                lblTotalPosts.Text = _postService.CountAll().ToString();
 
                 // 2. Onay Bekleyen Yorumlar
-                var comments = _commentService.GetAll();
-                int pendingComments = comments != null ? comments.Count(c => !c.IsApproved) : 0;
-                lblNewComments.Text = pendingComments.ToString();
+                lblNewComments.Text = _commentService.CountPending().ToString();
 
                 // 3. Okunmamış Proje Teklifleri
-                var requests = _projectRequestService.GetAll();
-                int unreadRequests = requests != null ? requests.Count(r => !r.IsRead) : 0;
-                lblProjectRequests.Text = unreadRequests.ToString();
+                lblProjectRequests.Text = _projectRequestService.CountUnread().ToString();
 
                 // 4. Toplam Kullanıcı Sayısı
                 var users = _userService.GetAll();
                 lblTotalUsers.Text = users != null ? users.Count.ToString() : "0";
 
                 // 5. Toplam Proje Sayısı (Grafik için)
-                var projects = _projectService.GetAll();
-                int projectCount = projects != null ? projects.Count : 0;
-                lblProjectCount.Text = projectCount.ToString();
+                lblProjectCount.Text = _projectService.CountAll().ToString();
 
                 // 6. Toplam Uzman Ekip Sayısı (Grafik için)
-                var teamMembers = _teamMemberService.GetAll();
-                int teamMemberCount = teamMembers != null ? teamMembers.Count : 0;
-                lblTeamMemberCount.Text = teamMemberCount.ToString();
+                lblTeamMemberCount.Text = _teamMemberService.CountAll().ToString();
 
                 // 7. Toplam İletişim Mesajı Sayısı (Grafik için)
-                var contactMessages = _contactMessageService.GetAll();
-                int contactMessageCount = contactMessages != null ? contactMessages.Count : 0;
-                lblContactMessageCount.Text = contactMessageCount.ToString();
+                lblContactMessageCount.Text = _contactMessageService.CountAll().ToString();
             }
             catch (Exception ex)
             {
@@ -106,46 +95,7 @@ namespace NtpProje_Web.Admin
         {
             try
             {
-                var activities = new List<ActivityItem>();
-
-                // Son eklenen blog yazıları (Son 5)
-                var recentPosts = _postService.GetAll();
-                if (recentPosts != null)
-                {
-                    foreach (var post in recentPosts.OrderByDescending(p => p.PublishDate ?? DateTime.MinValue).Take(5))
-                    {
-                        activities.Add(new ActivityItem
-                        {
-                            Icon = "📝",
-                            IconColor = "#63207c",
-                            Title = "Yeni Blog Yazısı: " + post.Title,
-                            Meta = "Kategori: " + (post.CategoryName ?? "Belirtilmemiş"),
-                            Date = post.PublishDate?.ToString("dd MMMM yyyy HH:mm") ?? "Tarih yok",
-                            SortDate = post.PublishDate ?? DateTime.MinValue
-                        });
-                    }
-                }
-
-                // Son eklenen projeler (Son 5)
-                var recentProjects = _projectService.GetAll();
-                if (recentProjects != null)
-                {
-                    foreach (var project in recentProjects.OrderByDescending(p => p.Id).Take(5))
-                    {
-                        activities.Add(new ActivityItem
-                        {
-                            Icon = "💼",
-                            IconColor = "#28a745",
-                            Title = "Yeni Proje: " + project.Title,
-                            Meta = "Müşteri: " + (project.ClientName ?? "Belirtilmemiş"),
-                            Date = project.CompletionDate.HasValue ? project.CompletionDate.Value.ToString("dd MMMM yyyy") : "Tarih yok",
-                            SortDate = project.CompletionDate ?? DateTime.MinValue
-                        });
-                    }
-                }
-
-                // Tarihe göre sırala (en yeni üstte) ve son 10 taneyi al
-                activities = activities.OrderByDescending(a => a.SortDate).Take(10).ToList();
+                var activities = BuildRecentActivities(10);
 
                 if (rptRecentActivities != null)
                 {
@@ -171,15 +121,10 @@ namespace NtpProje_Web.Admin
             try
             {
                 // Blog ve Proje sayılarını al
-                var posts = _postService.GetAll();
-                var projects = _projectService.GetAll();
-                var teamMembers = _teamMemberService.GetAll();
-                var contactMessages = _contactMessageService.GetAll();
-                
-                int blogCount = posts != null ? posts.Count : 0;
-                int projectCount = projects != null ? projects.Count : 0;
-                int teamMemberCount = teamMembers != null ? teamMembers.Count : 0;
-                int contactMessageCount = contactMessages != null ? contactMessages.Count : 0;
+                int blogCount = _postService.CountAll();
+                int projectCount = _projectService.CountAll();
+                int teamMemberCount = _teamMemberService.CountAll();
+                int contactMessageCount = _contactMessageService.CountAll();
 
                 // JSON formatında veri hazırla (basit string interpolation)
                 if (hfChartData != null)
@@ -204,7 +149,7 @@ namespace NtpProje_Web.Admin
             try
             {
                 // Aktiviteleri yükle
-                var activities = GetRecentActivitiesForExport();
+                var activities = BuildRecentActivities(10);
 
                 // CSV içeriğini oluştur
                 var csvContent = new System.Text.StringBuilder();
@@ -248,8 +193,8 @@ namespace NtpProje_Web.Admin
             }
         }
 
-        // Aktiviteleri export için hazırla
-        private List<ActivityItem> GetRecentActivitiesForExport()
+        // Son aktiviteleri hazırla (ekran ve CSV için ortak)
+        private List<ActivityItem> BuildRecentActivities(int take = 10)
         {
             var activities = new List<ActivityItem>();
 

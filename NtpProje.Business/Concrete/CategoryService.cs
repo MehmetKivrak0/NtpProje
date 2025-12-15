@@ -17,7 +17,7 @@ namespace NtpProje.Business.Concrete
             _categoryRepository = new CategoryRepository();
         }
 
-        // 1. LÝSTELEME (GET ALL)
+        // 1. Lï¿½STELEME (GET ALL)
         public List<CategoryDTO> GetAll()
         {
             var entities = _categoryRepository.GetAll();
@@ -27,16 +27,17 @@ namespace NtpProje.Business.Concrete
             {
                 dtos.Add(new CategoryDTO
                 {
-                    // SOL: DTO (Senin kodun) = SAÐ: SQL Sütunlarý (Senin Tablon)
+                    // SOL: DTO (Senin kodun) = SAï¿½: SQL Sï¿½tunlarï¿½ (Senin Tablon)
                     Id = entity.category_id,
                     Name = entity.category_name,
-                    Description = entity.description
+                    Description = entity.description,
+                    Slug = entity.slug
                 });
             }
             return dtos;
         }
 
-        // 2. ID ÝLE GETÝR (GET BY ID)
+        // 2. ID ï¿½LE GETï¿½R (GET BY ID)
         public CategoryDTO GetById(int id)
         {
             // SQL: category_id
@@ -48,7 +49,8 @@ namespace NtpProje.Business.Concrete
             {
                 Id = entity.category_id,
                 Name = entity.category_name,
-                Description = entity.description
+                Description = entity.description,
+                Slug = entity.slug
             };
         }
 
@@ -65,13 +67,13 @@ namespace NtpProje.Business.Concrete
                     // SQL: description
                     description = dto.Description,
 
-                    // SQL: slug (Otomatik oluþturuyoruz: "Web Tasarým" -> "web-tasarim")
-                    slug = dto.Name.ToLower().Replace(" ", "-").Replace("ý", "i").Replace("ð", "g").Replace("ü", "u").Replace("þ", "s").Replace("ö", "o").Replace("ç", "c"),
+                    // SQL: slug (Otomatik oluï¿½turuyoruz: "Web Tasarï¿½m" -> "web-tasarim")
+                    slug = dto.Name.ToLower().Replace(" ", "-").Replace("ï¿½", "i").Replace("ï¿½", "g").Replace("ï¿½", "u").Replace("ï¿½", "s").Replace("ï¿½", "o").Replace("ï¿½", "c"),
 
-                    // SQL: is_active (Varsayýlan aktif olsun)
+                    // SQL: is_active (Varsayï¿½lan aktif olsun)
                     is_active = true,
 
-                    // SQL: display_order (Varsayýlan 0)
+                    // SQL: display_order (Varsayï¿½lan 0)
                     display_order = 0
                 };
 
@@ -84,7 +86,7 @@ namespace NtpProje.Business.Concrete
             }
         }
 
-        // 4. GÜNCELLEME (UPDATE)
+        // 4. Gï¿½NCELLEME (UPDATE)
         public bool Update(CategoryDTO dto)
         {
             try
@@ -95,8 +97,8 @@ namespace NtpProje.Business.Concrete
                 entity.category_name = dto.Name;
                 entity.description = dto.Description;
 
-                // Slug'ý da isme göre güncelleyelim
-                entity.slug = dto.Name.ToLower().Replace(" ", "-").Replace("ý", "i").Replace("ð", "g").Replace("ü", "u").Replace("þ", "s").Replace("ö", "o").Replace("ç", "c");
+                // Slug'ï¿½ da isme gï¿½re gï¿½ncelleyelim
+                entity.slug = dto.Name.ToLower().Replace(" ", "-").Replace("ï¿½", "i").Replace("ï¿½", "g").Replace("ï¿½", "u").Replace("ï¿½", "s").Replace("ï¿½", "o").Replace("ï¿½", "c");
 
                 _categoryRepository.Update(entity);
                 return true;
@@ -107,7 +109,7 @@ namespace NtpProje.Business.Concrete
             }
         }
 
-        // 5. SÝLME (DELETE)
+        // 5. Sï¿½LME (DELETE)
         public bool Delete(int id)
         {
             try

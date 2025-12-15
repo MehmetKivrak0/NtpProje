@@ -32,12 +32,12 @@ namespace NtpProje.Business.Concrete
                     AuthorEmail = entity.author_email,
                     Content = entity.content,
 
-                    // Tarih ve Onay durumu genelde nullable olabilir, o yüzden ?? kalabilir.
-                    // Eðer bunlarda da hata verirse ?? kýsýmlarýný sil.
+                    // Tarih ve Onay durumu genelde nullable olabilir, o yï¿½zden ?? kalabilir.
+                    // Eï¿½er bunlarda da hata verirse ?? kï¿½sï¿½mlarï¿½nï¿½ sil.
                     CommentDate = entity.comment_date ?? DateTime.MinValue,
                     IsApproved = entity.is_approved ?? false,
 
-                    // DÜZELTME BURADA: post_id 'int' olduðu için ?? 0 silindi.
+                    // Dï¿½ZELTME BURADA: post_id 'int' olduï¿½u iï¿½in ?? 0 silindi.
                     PostId = entity.post_id,
 
                     UserId = entity.user_id,
@@ -63,7 +63,7 @@ namespace NtpProje.Business.Concrete
                 CommentDate = entity.comment_date ?? DateTime.MinValue,
                 IsApproved = entity.is_approved ?? false,
 
-                // DÜZELTME BURADA: ?? 0 silindi
+                // Dï¿½ZELTME BURADA: ?? 0 silindi
                 PostId = entity.post_id,
 
                 UserId = entity.user_id,
@@ -131,6 +131,19 @@ namespace NtpProje.Business.Concrete
             catch
             {
                 return false;
+            }
+        }
+
+        // 6. SAYIM: Onay bekleyen yorum adedi
+        public int CountPending()
+        {
+            try
+            {
+                return _commentRepository.GetAll().Count(c => !(c.is_approved ?? false));
+            }
+            catch
+            {
+                return 0;
             }
         }
     }

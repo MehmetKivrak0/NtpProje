@@ -45,7 +45,7 @@ namespace NtpProje.Business.Concrete
             {
                 var entity = new team_member
                 {
-                    // DTO -> Entity Eþleþmesi
+                    // DTO -> Entity Eï¿½leï¿½mesi
                     name = dto.Name,
                     title = dto.Title,
                     position = dto.Position,
@@ -57,7 +57,7 @@ namespace NtpProje.Business.Concrete
                     twitter_url = dto.TwitterUrl,
                     github_url = dto.GithubUrl,
 
-                    // Otomatik ve Varsayýlan Deðerler
+                    // Otomatik ve Varsayï¿½lan Deï¿½erler
                     is_active = true,
                     display_order = dto.DisplayOrder > 0 ? dto.DisplayOrder : 0,
                     created_date = DateTime.Now
@@ -72,7 +72,7 @@ namespace NtpProje.Business.Concrete
             }
         }
 
-        // 4. UPDATE (Güncelleme)
+        // 4. UPDATE (Gï¿½ncelleme)
         public bool Update(TeamMemberDTO dto)
         {
             try
@@ -125,7 +125,7 @@ namespace NtpProje.Business.Concrete
         {
             return new TeamMemberDTO
             {
-                // SOL: DTO = SAÐ: SQL
+                // SOL: DTO = SAï¿½: SQL
                 Id = entity.team_member_id,
                 Name = entity.name,
                 Title = entity.title,
@@ -138,10 +138,23 @@ namespace NtpProje.Business.Concrete
                 TwitterUrl = entity.twitter_url,
                 GithubUrl = entity.github_url,
 
-                // Nullable -> Non-Nullable Dönüþümleri
+                // Nullable -> Non-Nullable Dï¿½nï¿½ï¿½ï¿½mleri
                 IsActive = entity.is_active ?? true,
                 DisplayOrder = entity.display_order ?? 0
             };
+        }
+
+        // 6. SAYIM: Toplam ekip Ã¼yesi adedi
+        public int CountAll()
+        {
+            try
+            {
+                return _teamRepository.GetAll().Count();
+            }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }

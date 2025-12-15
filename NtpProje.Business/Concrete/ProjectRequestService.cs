@@ -117,6 +117,19 @@ namespace NtpProje.Business.Concrete
             }
         }
 
+        // 6. SAYIM: Okunmamış talepler
+        public int CountUnread()
+        {
+            try
+            {
+                return _projectRepository.GetAll().Count(r => !(r.is_read ?? false));
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         // --- MAPPING YARDIMCISI ---
         private ProjectRequestDTO MapEntityToDTO(project_request entity)
         {

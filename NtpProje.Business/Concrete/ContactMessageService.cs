@@ -146,5 +146,18 @@ namespace NtpProje.Business.Concrete
                 return false;
             }
         }
+
+        // 6. SAYIM: Toplam mesaj adedi
+        public int CountAll()
+        {
+            try
+            {
+                return _contactRepository.GetAll().Count();
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }

@@ -237,5 +237,18 @@ namespace NtpProje.Business.Concrete
                 return false;
             }
         }
+
+        // 6. SAYIM: Toplam proje adedi
+        public int CountAll()
+        {
+            try
+            {
+                return _projectRepository.GetAll().Count();
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }

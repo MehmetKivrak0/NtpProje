@@ -40,6 +40,19 @@ namespace NtpProje.Business.Concrete
             }
         }
 
+        // Yalnızca toplam blog sayısını döner (veri taşımadan hızlı sayaç)
+        public int CountAll()
+        {
+            try
+            {
+                return _postRepository.GetAll().Count();
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         // --- IBASE SERVICE METOTLARI ---
 
         public List<PostDTO> GetAll()
