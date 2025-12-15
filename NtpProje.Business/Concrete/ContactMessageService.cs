@@ -5,6 +5,7 @@ using NtpProje.Business.Abstract;
 using NtpProje.Entities.Concrete; // DTO
 using NtpProje.Data.Concrete;     // Repository
 using NtpProje.Data.DataModel;    // Entity (contact_message)
+using NtpProje.Entities.Logging;
 
 namespace NtpProje.Business.Concrete
 {
@@ -101,9 +102,10 @@ namespace NtpProje.Business.Concrete
                 _contactRepository.Add(entity);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                AppLogger.LogError(ex, "ContactMessageService.Add");
+                throw;
             }
         }
 
@@ -124,9 +126,10 @@ namespace NtpProje.Business.Concrete
                 _contactRepository.Update(entity);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                AppLogger.LogError(ex, "ContactMessageService.Update");
+                throw;
             }
         }
 
@@ -141,9 +144,10 @@ namespace NtpProje.Business.Concrete
                 _contactRepository.Delete(entity);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                AppLogger.LogError(ex, "ContactMessageService.Delete");
+                throw;
             }
         }
 
@@ -154,9 +158,10 @@ namespace NtpProje.Business.Concrete
             {
                 return _contactRepository.GetAll().Count();
             }
-            catch
+            catch (Exception ex)
             {
-                return 0;
+                AppLogger.LogError(ex, "ContactMessageService.CountAll");
+                throw;
             }
         }
     }

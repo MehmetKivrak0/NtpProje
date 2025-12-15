@@ -4,6 +4,7 @@ using System.Linq;
 using System.Transactions;
 using NtpProje.Business.Abstract;
 using NtpProje.Entities.Concrete; // DTO burada (ProjectDTO)
+using NtpProje.Entities.Logging;
 using NtpProje.Data.Concrete;     // Repository burada
 using NtpProje.Data.DataModel;    // Veritabanı tablosu burada (project - küçük p)
 using NtpProje.Business.Concrete; // CategoryService için
@@ -172,9 +173,10 @@ namespace NtpProje.Business.Concrete
                     return true;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                AppLogger.LogError(ex, "ProjectService.Add");
+                throw;
             }
         }
 

@@ -54,6 +54,7 @@
     <Compile Include="Concrete\StatisticDTO.cs" />
     <Compile Include="Concrete\TeamMemberDTO.cs" />
     <Compile Include="Concrete\UserDTO.cs" />
+    <Compile Include="Logging\AppLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

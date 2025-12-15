@@ -5,6 +5,7 @@ using NtpProje.Business.Abstract;
 using NtpProje.Entities.Concrete;
 using NtpProje.Data.Concrete;
 using NtpProje.Data.DataModel;
+using NtpProje.Entities.Logging;
 
 namespace NtpProje.Business.Concrete
 {
@@ -91,9 +92,10 @@ namespace NtpProje.Business.Concrete
                 _commentRepository.Add(entity);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                AppLogger.LogError(ex, "CommentService.Add");
+                throw;
             }
         }
 
@@ -111,9 +113,10 @@ namespace NtpProje.Business.Concrete
                 _commentRepository.Update(entity);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                AppLogger.LogError(ex, "CommentService.Update");
+                throw;
             }
         }
 
@@ -128,9 +131,10 @@ namespace NtpProje.Business.Concrete
                 _commentRepository.Delete(entity);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                AppLogger.LogError(ex, "CommentService.Delete");
+                throw;
             }
         }
 
@@ -141,9 +145,10 @@ namespace NtpProje.Business.Concrete
             {
                 return _commentRepository.GetAll().Count(c => !(c.is_approved ?? false));
             }
-            catch
+            catch (Exception ex)
             {
-                return 0;
+                AppLogger.LogError(ex, "CommentService.CountPending");
+                throw;
             }
         }
     }

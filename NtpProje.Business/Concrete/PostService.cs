@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NtpProje.Data.DataModel;
+using NtpProje.Entities.Logging;
 
 namespace NtpProje.Business.Concrete
 {
@@ -99,7 +100,11 @@ namespace NtpProje.Business.Concrete
                 _postRepository.Add(entity);
                 return true;
             }
-            catch { return false; }
+            catch (Exception ex)
+            {
+                AppLogger.LogError(ex, "PostService.Add");
+                throw;
+            }
         }
 
         public bool Update(PostDTO dto)
@@ -134,7 +139,11 @@ namespace NtpProje.Business.Concrete
                 _postRepository.Update(entity);
                 return true;
             }
-            catch { return false; }
+            catch (Exception ex)
+            {
+                AppLogger.LogError(ex, "PostService.Update");
+                throw;
+            }
         }
 
         public bool Delete(int id)
@@ -147,7 +156,11 @@ namespace NtpProje.Business.Concrete
                 _postRepository.Delete(entity);
                 return true;
             }
-            catch { return false; }
+            catch (Exception ex)
+            {
+                AppLogger.LogError(ex, "PostService.Delete");
+                throw;
+            }
         }
 
         // --- MAPPING METOTLARI ---

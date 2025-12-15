@@ -1,3 +1,5 @@
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\obj\Debug\NtpProje.Data.csproj.AssemblyReference.cache
+C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\obj\Debug\NtpProje.Data.csproj.CoreCompileInputs.cache
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\bin\Debug\NtpProje.Data.dll.config
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\bin\Debug\NtpProje.Data.dll
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\bin\Debug\NtpProje.Data.pdb
@@ -7,8 +9,6 @@ C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\bin\Debug\NtpProje.Entit
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\bin\Debug\NtpProje.Entities.pdb
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\bin\Debug\EntityFramework.xml
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\obj\Debug\NtpProje.Data.csproj.AssemblyReference.cache
-C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\obj\Debug\NtpProje.Data.csproj.CoreCompileInputs.cache
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\obj\Debug\NtpProje.004D0E3C.Up2Date
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\obj\Debug\NtpProje.Data.dll
 C:\Users\Mehmet\Documents\GitHub\NtpProje\NtpProje.Data\obj\Debug\NtpProje.Data.pdb

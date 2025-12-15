@@ -5,6 +5,7 @@ using NtpProje.Business.Abstract;
 using NtpProje.Entities.Concrete; // DTO
 using NtpProje.Data.Concrete;     // Repository
 using NtpProje.Data.DataModel;    // Entity (project_request)
+using NtpProje.Entities.Logging;
 
 namespace NtpProje.Business.Concrete
 {
@@ -67,9 +68,10 @@ namespace NtpProje.Business.Concrete
                 _projectRepository.Add(entity);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                AppLogger.LogError(ex, "ProjectRequestService.Add");
+                throw;
             }
         }
 
@@ -94,9 +96,10 @@ namespace NtpProje.Business.Concrete
                 _projectRepository.Update(entity);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                AppLogger.LogError(ex, "ProjectRequestService.Update");
+                throw;
             }
         }
 
@@ -111,9 +114,10 @@ namespace NtpProje.Business.Concrete
                 _projectRepository.Delete(entity);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                AppLogger.LogError(ex, "ProjectRequestService.Delete");
+                throw;
             }
         }
 

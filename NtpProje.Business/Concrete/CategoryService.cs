@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NtpProje.Business.Abstract;
 using NtpProje.Entities.Concrete; // DTO (CategoryDTO)
+using NtpProje.Entities.Logging;
 using NtpProje.Data.Concrete;     // Repository
 using NtpProje.Data.DataModel;    // Entity (category)
 
@@ -80,9 +81,10 @@ namespace NtpProje.Business.Concrete
                 _categoryRepository.Add(entity);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                AppLogger.LogError(ex, "CategoryService.Add");
+                throw;
             }
         }
 
@@ -103,9 +105,10 @@ namespace NtpProje.Business.Concrete
                 _categoryRepository.Update(entity);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                AppLogger.LogError(ex, "CategoryService.Update");
+                throw;
             }
         }
 
@@ -120,9 +123,10 @@ namespace NtpProje.Business.Concrete
                 _categoryRepository.Delete(entity);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                AppLogger.LogError(ex, "CategoryService.Delete");
+                throw;
             }
         }
     }

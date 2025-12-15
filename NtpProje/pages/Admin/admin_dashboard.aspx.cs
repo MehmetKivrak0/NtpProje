@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete; // Servisler
 using NtpProje.Entities.Concrete; // DTO'lar
+using NtpProje.Entities.Logging;
 
 namespace NtpProje_Web.Admin
 {
@@ -60,33 +61,57 @@ namespace NtpProje_Web.Admin
             try
             {
                 // SP üzerinden dashboard sayıları (TotalPosts, PendingComments, UnreadRequests, TotalUsers)
-                var counts = _projectService.GetDashboardCounts();
+                DashboardCountsDTO counts;
+                try
+                {
+                    counts = _projectService.GetDashboardCounts();
+                }
+                catch (Exception ex)
+                {
+                    AppLogger.LogError(ex, "admin_dashboard.GetDashboardCounts");
+                    counts = new DashboardCountsDTO();
+                }
 
-                // 1. Toplam Blog Yazısı (SP yoksa fallback)
-                lblTotalPosts.Text = counts.TotalPosts > 0
-                    ? counts.TotalPosts.ToString()
-                    : _postService.CountAll().ToString();
+                // 1. Toplam Blog Yazısı (SP yoksa/fail fallback)
+                int totalPosts = counts.TotalPosts;
+                if (totalPosts <= 0)
+                {
+                    try { totalPosts = _postService.CountAll(); } catch (Exception ex) { AppLogger.LogError(ex, "admin_dashboard.CountAll posts"); totalPosts = 0; }
+                }
+                lblTotalPosts.Text = totalPosts.ToString();
 
-                // 2. Onay Bekleyen Yorumlar (SP yoksa fallback)
-                lblNewComments.Text = counts.PendingComments > 0
-                    ? counts.PendingComments.ToString()
-                    : _commentService.CountPending().ToString();
+                // 2. Onay Bekleyen Yorumlar (SP yoksa/fail fallback)
+                int pendingComments = counts.PendingComments;
+                if (pendingComments <= 0)
+                {
+                    try { pendingComments = _commentService.CountPending(); } catch (Exception ex) { AppLogger.LogError(ex, "admin_dashboard.CountPending comments"); pendingComments = 0; }
+                }
+                lblNewComments.Text = pendingComments.ToString();
 
-                // 3. Okunmamış Proje Teklifleri (SP yoksa fallback)
-                lblProjectRequests.Text = counts.UnreadRequests > 0
-                    ? counts.UnreadRequests.ToString()
-                    : _projectRequestService.CountUnread().ToString();
+                // 3. Okunmamış Proje Teklifleri (SP yoksa/fail fallback)
+                int unreadRequests = counts.UnreadRequests;
+                if (unreadRequests <= 0)
+                {
+                    try { unreadRequests = _projectRequestService.CountUnread(); } catch (Exception ex) { AppLogger.LogError(ex, "admin_dashboard.CountUnread requests"); unreadRequests = 0; }
+                }
+                lblProjectRequests.Text = unreadRequests.ToString();
 
                 // 4. Toplam Kullanıcı Sayısı (SP’den gelmiyorsa fallback)
-                if (counts.TotalUsers > 0)
+                int totalUsers = counts.TotalUsers;
+                if (totalUsers <= 0)
                 {
-                    lblTotalUsers.Text = counts.TotalUsers.ToString();
+                    try
+                    {
+                        var users = _userService.GetAll();
+                        totalUsers = users != null ? users.Count : 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        AppLogger.LogError(ex, "admin_dashboard.CountAll users");
+                        totalUsers = 0;
+                    }
                 }
-                else
-                {
-                    var users = _userService.GetAll();
-                    lblTotalUsers.Text = users != null ? users.Count.ToString() : "0";
-                }
+                lblTotalUsers.Text = totalUsers.ToString();
 
                 // 5. Toplam Proje Sayısı (Grafik için)
                 lblProjectCount.Text = _projectService.CountAll().ToString();

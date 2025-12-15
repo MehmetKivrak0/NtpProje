@@ -1,9 +1,9 @@
-using NtpProje.Data.DataModel;
-using NtpProje.Data.Concrete;
-using NtpProje.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using NtpProje.Data.DataModel;
+using NtpProje.Entities.Concrete;
+using NtpProje.Entities.Logging;
 
 namespace NtpProje.Data.Concrete
 {
@@ -93,8 +93,8 @@ namespace NtpProje.Data.Concrete
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("SP dashboard counts hata: " + ex.Message);
-                return new DashboardCountsDTO();
+                AppLogger.LogError(ex, "ProjectRepository.GetDashboardCountsFromSp");
+                throw;
             }
         }
 
@@ -119,8 +119,8 @@ namespace NtpProje.Data.Concrete
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("TVF fn_GetActiveProjects hata: " + ex.Message);
-                return new List<ProjectDTO>();
+                AppLogger.LogError(ex, "ProjectRepository.GetActiveProjectsFromFunction");
+                throw;
             }
         }
     }
