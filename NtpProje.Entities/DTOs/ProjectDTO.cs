@@ -1,7 +1,7 @@
 using System;
 using NtpProje.Entities.Abstract;
 
-namespace NtpProje.Entities.Concrete
+namespace NtpProje.Entities.DTOs
 {
     public class ProjectDTO : BaseDTO
     {
@@ -20,11 +20,11 @@ namespace NtpProje.Entities.Concrete
         // SQL: image_url
         public string ImageUrl { get; set; }
 
-        // SQL: category (String olarak saklanıyor, ama artık category_id kullanılacak)
-        public string Category { get; set; }
-        
         // SQL: category_id (categories tablosuna foreign key)
         public int CategoryId { get; set; }
+        
+        // UI için JOIN sonucu (veritabanında yok)
+        public string CategoryName { get; set; }
 
         // SQL: client_name
         public string ClientName { get; set; }

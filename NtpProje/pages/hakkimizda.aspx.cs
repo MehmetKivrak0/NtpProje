@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.UI;
 using NtpProje.Business.Concrete;
-using NtpProje.Entities.Concrete; // DTO'lar için
+using NtpProje.Entities.DTOs; // DTO'lar için
 
 namespace NtpProje_Web
 {

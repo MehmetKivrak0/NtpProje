@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using NtpProje.Business.Abstract;
 using NtpProje.Data.Concrete;
-using NtpProje.Entities.Concrete;
+using NtpProje.Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using NtpProje.Data.DataModel;
@@ -37,24 +37,24 @@ namespace NtpProje.Business.Concrete
         // ***************************************************************
 
         // Kayıt İşlemi
-        public bool Register(UserDTO userDTO)
+        public bool Register(UserDTO userDTO, string password)
         {
             if (_userRepository.Get(u => u.email == userDTO.Email) != null)
             {
                 return false; // Eposta Zaten Mevcut
             }
 
-            var hashedPassword = HasPassword.HashPassword(userDTO.Password);
+            var hashedPassword = HasPassword.HashPassword(password);
 
             var newUserEntity = new Data.DataModel.user // Entity tipi küçük harfle 'user'
             {
                 // DTO (PascalCase) -> Entity (küçük harf)
-                full_name = userDTO.Full_name,
+                full_name = userDTO.FullName,
                 email = userDTO.Email,
                 password = hashedPassword,
                 phone_number = userDTO.PhoneNumber, // Telefon numarası
                 role = userDTO.Role ?? "User", // Role yoksa varsayılan "User"
-                is_active = userDTO.Is_active,
+                is_active = userDTO.IsActive,
                 created_date = DateTime.Now,
             };
 
@@ -77,14 +77,14 @@ namespace NtpProje.Business.Concrete
                     // Entity'den DTO'ya dönüşüm
                     return new UserDTO
                     {
-                        User_id = entity.user_id,
-                        Full_name = entity.full_name,
+                        Id = entity.user_id,
+                        FullName = entity.full_name,
                         Email = entity.email,
                         PhoneNumber = entity.phone_number, // Telefon numarası
                         Role = entity.role,
-                        Is_active = entity.is_active ?? false,
-                        Last_login_date = entity.last_login_date,
-                        Created_date = entity.created_date ?? DateTime.MinValue,
+                        IsActive = entity.is_active ?? false,
+                        LastLoginDate = entity.last_login_date,
+                        CreatedDate = entity.created_date ?? DateTime.MinValue,
                     };
                 }
             }
@@ -95,20 +95,26 @@ namespace NtpProje.Business.Concrete
         // 2. IBaseService Metotları (CRUD)
         // ***************************************************************
 
-        // Add, Register metodunu çağırır.
-        public bool Add(UserDTO dto) { return Register(dto); }
+        // Add metodu - Register için default şifre kullanır
+        public bool Add(UserDTO dto) 
+        { 
+            // NOT: Add method'u için şifre parametresi gerekli
+            // Default şifre kullanılabilir veya dto'da Password olmalı
+            // Şimdilik güvenli bir yaklaşım: throw exception
+            throw new NotImplementedException("Add metodu yerine Register(UserDTO, string password) kullanın.");
+        }
 
         public bool Update(UserDTO dto)
         {
-            var entity = _userRepository.Get(dto.User_id);
+            var entity = _userRepository.Get(dto.Id);
             if (entity == null) return false;
 
             // Güncellenecek alanlar
-            entity.full_name = dto.Full_name;
+            entity.full_name = dto.FullName;
             entity.email = dto.Email;
             entity.phone_number = dto.PhoneNumber; // Telefon numarası
             entity.role = dto.Role;
-            entity.is_active = dto.Is_active;
+            entity.is_active = dto.IsActive;
 
             _userRepository.Update(entity);
             return true;
@@ -131,14 +137,14 @@ namespace NtpProje.Business.Concrete
             // Entity'den DTO'ya dönüşüm
             return new UserDTO
             {
-                User_id = entity.user_id,
-                Full_name = entity.full_name,
+                Id = entity.user_id,
+                FullName = entity.full_name,
                 Email = entity.email,
                 PhoneNumber = entity.phone_number, // Telefon numarası
                 Role = entity.role,
-                Is_active = entity.is_active ?? false,
-                Created_date = entity.created_date ?? DateTime.MinValue,
-                Last_login_date = entity.last_login_date
+                IsActive = entity.is_active ?? false,
+                CreatedDate = entity.created_date ?? DateTime.MinValue,
+                LastLoginDate = entity.last_login_date
             };
         }
 
@@ -151,13 +157,13 @@ namespace NtpProje.Business.Concrete
             {
                 dtos.Add(new UserDTO
                 {
-                    User_id = entity.user_id,
-                    Full_name = entity.full_name,
+                    Id = entity.user_id,
+                    FullName = entity.full_name,
                     Email = entity.email,
                     PhoneNumber = entity.phone_number, // Telefon numarası
                     Role = entity.role,
-                    Is_active = entity.is_active ?? false,
-                    Created_date = entity.created_date ?? DateTime.MinValue,
+                    IsActive = entity.is_active ?? false,
+                    CreatedDate = entity.created_date ?? DateTime.MinValue,
                 });
             }
             return dtos;

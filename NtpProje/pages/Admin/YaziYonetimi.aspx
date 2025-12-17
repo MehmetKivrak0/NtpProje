@@ -145,7 +145,7 @@
                                             </div>
                                         </td>
                                         <td><%# Eval("ClientName") %></td>
-                                        <td><span class="category-badge"><%# Eval("Category") %></span></td>
+                                        <td><span class="category-badge"><%# Eval("CategoryName") %></span></td>
                                         <td><%# Eval("CompletionDate", "{0:MMM yyyy}") %></td>
                                         <td><span class='badge'><%# Eval("Status") %></span></td>
                                         <td>

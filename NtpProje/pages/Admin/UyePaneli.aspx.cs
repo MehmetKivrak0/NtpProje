@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using NtpProje.Business.Concrete; // UserService, PostService için
-using NtpProje.Entities.Concrete;  // UserDTO, PostDTO için
+using NtpProje.Entities.DTOs;  // UserDTO, PostDTO için
 
 namespace NtpProje.pages.Admin
 {
@@ -54,7 +54,7 @@ namespace NtpProje.pages.Admin
                     // ltrProfileBio.Text = user.Bio ?? "";
 
                     // Tarih formatı
-                    ltrProfileRegisterDate.Text = user.Created_date.ToString("dd MMMM yyyy");
+                    ltrProfileRegisterDate.Text = user.CreatedDate.ToString("dd MMMM yyyy");
 
                     // Modal'daki (Düzenleme formu) TextBox'ları doldur
                     // txtProfileName.Text = user.Full_name;

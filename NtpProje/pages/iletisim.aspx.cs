@@ -2,7 +2,7 @@
 using System.Web.UI;
 using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete; // Servisler
-using NtpProje.Entities.Concrete; // DTO'lar
+using NtpProje.Entities.DTOs; // DTO'lar
 
 namespace NtpProje_Web
 {

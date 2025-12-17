@@ -17,7 +17,7 @@
                 <ItemTemplate>
                     <div class="proje_card">
                         <div class="proje_card_image">
-                            <span class="proje_kategori_badge"><%# Eval("Category") %></span>
+                            <span class="proje_kategori_badge"><%# Eval("CategoryName") %></span>
                             
                             <a href='<%# "proje_detay.aspx?id=" + Eval("Id") %>'>
                                 <asp:Image ID="imgProje" runat="server" 

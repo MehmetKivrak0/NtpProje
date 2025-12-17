@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete; // Servisler
-using NtpProje.Entities.Concrete; // DTO'lar
+using NtpProje.Entities.DTOs; // DTO'lar
 using NtpProje.Entities.Logging;
 
 namespace NtpProje_Web.Admin

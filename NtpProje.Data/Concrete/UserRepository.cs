@@ -1,6 +1,6 @@
 using NtpProje.Data.Abstract;
 using NtpProje.Data.DataModel;
-using NtpProje.Entities.Concrete;
+using NtpProje.Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace NtpProje.Data.Concrete
 {
     public class UserRepository : IRepository<user>
     {
-        private readonly ýnnovateyzlmDataContext _context = new ýnnovateyzlmDataContext();
+        private readonly Ä±nnovateyzlmDataContext _context = new Ä±nnovateyzlmDataContext();
 
 
         public void Add(user entity)
@@ -24,13 +24,13 @@ namespace NtpProje.Data.Concrete
             }
             catch (Exception ex)
             {
-                // Output penceresinde hatayý görmek için
-                System.Diagnostics.Debug.WriteLine("VERÝTABANI KAYIT HATASI: " + ex.ToString());
+                // Output penceresinde hatayï¿½ gï¿½rmek iï¿½in
+                System.Diagnostics.Debug.WriteLine("VERï¿½TABANI KAYIT HATASI: " + ex.ToString());
 
-                // Hata durumunda iþlemi geri al (isteðe baðlý ama önerilir)
+                // Hata durumunda iï¿½lemi geri al (isteï¿½e baï¿½lï¿½ ama ï¿½nerilir)
                 // _context.Transaction.Rollback(); 
 
-                // Hatanýn Business katmanýna sýçramasý için tekrar fýrlat (throw)
+                // Hatanï¿½n Business katmanï¿½na sï¿½ï¿½ramasï¿½ iï¿½in tekrar fï¿½rlat (throw)
                 throw;
             }
         }
@@ -58,13 +58,13 @@ namespace NtpProje.Data.Concrete
             return _context.users.Where(filter).ToList();
         }
 
-        // Login ve E-posta kontrolü için kullanýlýr
+        // Login ve E-posta kontrolï¿½ iï¿½in kullanï¿½lï¿½r
         public user Get(Expression<Func<user,bool>> filter)
         {
             return _context.users.FirstOrDefault(filter);
         }
 
-        // özel Metot Login Ýçin (UserServices'Den çaðrýlýr)
+        // ï¿½zel Metot Login ï¿½ï¿½in (UserServices'Den ï¿½aï¿½rï¿½lï¿½r)
         public user GetByEmailAndPassword(string email ,string hashedPassword)
         {
             return _context.users.FirstOrDefault(u => u.email == email && u.password == hashedPassword);

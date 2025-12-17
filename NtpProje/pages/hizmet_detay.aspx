@@ -48,7 +48,7 @@
 				<asp:Repeater ID="rptTechnologies" runat="server" OnItemDataBound="rptTechnologies_ItemDataBound">
 					<ItemTemplate>
 						<div class="teknoloji_kategori">
-							<div class="tek_kategori_baslik"><%# Eval("Category") %></div>
+							<div class="tek_kategori_baslik"><%# Eval("CategoryName") %></div>
 							<div class="teknoloji_listesi">
 								<asp:Repeater ID="rptTechItems" runat="server">
 									<ItemTemplate>

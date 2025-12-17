@@ -1,7 +1,7 @@
 ﻿using System;
 using NtpProje.Entities.Abstract;
 
-namespace NtpProje.Entities.Concrete
+namespace NtpProje.Entities.DTOs
 {
     public class ContactMessageDTO : BaseDTO
     {

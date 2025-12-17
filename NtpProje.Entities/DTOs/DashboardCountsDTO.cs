@@ -1,6 +1,6 @@
 using NtpProje.Entities.Abstract;
 
-namespace NtpProje.Entities.Concrete
+namespace NtpProje.Entities.DTOs
 {
     // Dashboard özet metrikleri için basit DTO
     public class DashboardCountsDTO : BaseDTO

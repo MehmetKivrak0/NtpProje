@@ -4,7 +4,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete;
-using NtpProje.Entities.Concrete;
+using NtpProje.Entities.DTOs;
 
 // MANTIK BURADA: HTML tarafında "NtpProje_Web.Admin.IletisimMesajlari" dedik.
 // O yüzden burası da KESİNLİKLE "NtpProje_Web.Admin" olmak zorunda.

@@ -1,6 +1,6 @@
 ﻿using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete;
-using NtpProje.Entities.Concrete;
+using NtpProje.Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,8 +49,8 @@ namespace NtpProje_Web // Namespace'in NtpProje_Web olduğuna dikkat et
                     {
                         // 1. Başarılı Giriş: Session oluşturma (DTO standartlarına uygun)
                         Session["AdminUser"] = loggedInUser;
-                        Session["UserID"] = loggedInUser.User_id;
-                        Session["FullName"] = loggedInUser.Full_name;
+                        Session["UserID"] = loggedInUser.Id;
+                        Session["FullName"] = loggedInUser.FullName;
                         Session["Role"] = loggedInUser.Role;
 
                         // 2. Başarılı girişten sonra admin dashboard'a yönlendir

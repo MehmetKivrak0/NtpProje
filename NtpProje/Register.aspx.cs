@@ -4,7 +4,7 @@ using System;
 using System.Web.UI;
 using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete; // UserService için doğru namespace
-using NtpProje.Entities.Concrete;  // UserDTO için doğru namespace
+using NtpProje.Entities.DTOs;  // UserDTO için doğru namespace
 using System.Web.UI.WebControls; // Repeater/Label gibi kontroller için
 
 namespace NtpProje_Web // Namespace adınızı kontrol edin
@@ -97,18 +97,20 @@ namespace NtpProje_Web // Namespace adınızı kontrol edin
                 // 1. Verileri DTO'ya yükle (DTO alanlarını PascalCase varsayıyoruz)
                 var newUser = new UserDTO
                 {
-                    Full_name = txtFullName.Text.Trim(),     // txtFullName.Text formdan gelen Ad Soyad
+                    FullName = txtFullName.Text.Trim(),     // txtFullName.Text formdan gelen Ad Soyad
                     Email = txtEmail.Text.Trim(),           // txtEmail.Text formdan gelen Email
-                    Password = txtPassword.Text,       // txtPassword.Text formdan gelen Şifre
                     PhoneNumber = txtPhoneNumber.Text.Trim(), // Telefon numarası
 
                     // Diğer DTO alanlarına formda karşılık yoksa default değerler atayın:
                     Role = "User",
-                    Is_active = true,
+                    IsActive = true,
                 };
 
+                // Şifre ayrı parametre olarak geçiliyor (güvenlik için DTO'da yok)
+                string password = txtPassword.Text;
+
                 // 2. Business Service'i çağır
-                if (_userService.Register(newUser))
+                if (_userService.Register(newUser, password))
                 {
                     // Kayıt başarılı: Login sayfasına yönlendir
                     Response.Redirect("Login.aspx?status=registered");

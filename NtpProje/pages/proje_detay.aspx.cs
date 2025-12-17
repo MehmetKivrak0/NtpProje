@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete; // Servis
-using NtpProje.Entities.Concrete; // DTO
+using NtpProje.Entities.DTOs; // DTO
 
 namespace NtpProje_Web
 {
@@ -54,7 +54,7 @@ namespace NtpProje_Web
 
                     // 2. Verileri Kontrollere Ata
                     lblBaslik.Text = proje.Title;
-                    lblKategori.Text = proje.Category;
+                    lblKategori.Text = proje.CategoryName;
                     lblMusteri.Text = string.IsNullOrEmpty(proje.ClientName) ? "Gizli" : proje.ClientName;
 
                     // Tarih Formatlama (Gün Ay Yıl)

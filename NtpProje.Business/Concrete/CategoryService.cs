@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NtpProje.Business.Abstract;
-using NtpProje.Entities.Concrete; // DTO (CategoryDTO)
+using NtpProje.Entities.DTOs; // DTO (CategoryDTO)
 using NtpProje.Entities.Logging;
 using NtpProje.Data.Concrete;     // Repository
 using NtpProje.Data.DataModel;    // Entity (category)

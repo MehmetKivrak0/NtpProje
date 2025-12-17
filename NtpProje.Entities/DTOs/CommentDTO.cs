@@ -1,6 +1,6 @@
 using System;
 
-namespace NtpProje.Entities.Concrete
+namespace NtpProje.Entities.DTOs
 {
     public class CommentDTO
     {
@@ -22,13 +22,13 @@ namespace NtpProje.Entities.Concrete
         // SQL: is_approved
         public bool IsApproved { get; set; }
 
-        // SQL: post_id (Hangi yazýya yorum yapýldý?)
+        // SQL: post_id (Hangi yazï¿½ya yorum yapï¿½ldï¿½?)
         public int PostId { get; set; }
 
-        // SQL: user_id (Eðer üye ise ID'si, deðilse null olabilir)
+        // SQL: user_id (Eï¿½er ï¿½ye ise ID'si, deï¿½ilse null olabilir)
         public int? UserId { get; set; }
 
-        // SQL: parent_comment_id (Alt yorum mu? Varsa üst yorumun ID'si)
+        // SQL: parent_comment_id (Alt yorum mu? Varsa ï¿½st yorumun ID'si)
         public int? ParentCommentId { get; set; }
 
     }

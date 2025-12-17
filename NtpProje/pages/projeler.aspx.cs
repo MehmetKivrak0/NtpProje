@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete; // Servis için
-using NtpProje.Entities.Concrete; // DTO için
+using NtpProje.Entities.DTOs; // DTO için
 
 namespace NtpProje_Web
 {

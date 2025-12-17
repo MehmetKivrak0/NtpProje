@@ -2,7 +2,7 @@ using System;
 using System.Web;
 using System.Web.Script.Serialization;
 using NtpProje.Business.Concrete;
-using NtpProje.Entities.Concrete;
+using NtpProje.Entities.DTOs;
 
 namespace NtpProje_Web.Admin
 {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NtpProje.Data.DataModel;
-using NtpProje.Entities.Concrete;
+using NtpProje.Entities.DTOs;
 using NtpProje.Entities.Logging;
 
 namespace NtpProje.Data.Concrete
@@ -31,7 +31,7 @@ namespace NtpProje.Data.Concrete
                         Description = view.description ?? "",
                         Technologies = view.technologies ?? view.short_description ?? "",
                         ImageUrl = view.image_url ?? "",
-                        Category = view.category ?? "",
+                        CategoryName = view.category ?? "",  // View'dan category ismi gelir
                         ClientName = view.client_name ?? "",
                         ViewCount = view.view_count ?? 0,
                         CompletionDate = view.completion_date ?? view.project_date,
@@ -52,7 +52,7 @@ namespace NtpProje.Data.Concrete
                     Description = p.description ?? "",
                     Technologies = p.short_description ?? "",
                     ImageUrl = p.image_url ?? "",
-                    Category = p.category ?? "",
+                    CategoryName = p.category ?? "",  // Entity'den category string gelir
                     ClientName = p.client_name ?? "",
                     ViewCount = p.view_count ?? 0,
                     CompletionDate = p.project_date,

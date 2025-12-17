@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete; // Business Katmanı
-using NtpProje.Entities.Concrete; // Entities Katmanı
+using NtpProje.Entities.DTOs; // Entities Katmanı
 
 namespace NtpProje_Web.Admin // Namespace: Projenizdekiyle aynı olmalı
 {

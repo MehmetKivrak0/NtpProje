@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete;
-using NtpProje.Entities.Concrete;
+using NtpProje.Entities.DTOs;
 
 // DÜZELTME 1: Namespace'i temiz ve doğru olan "NtpProje_Web" yaptık.
 namespace NtpProje_Web

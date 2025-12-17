@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NtpProje.Business.Abstract;
-using NtpProje.Entities.Concrete;
+using NtpProje.Entities.DTOs;
 using NtpProje.Data.Concrete;
 using NtpProje.Data.DataModel;
 using NtpProje.Entities.Logging;

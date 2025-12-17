@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete;
-using NtpProje.Entities.Concrete;
+using NtpProje.Entities.DTOs;
 
 namespace _241613001_Mehmet_Kıvrak_NtpProje.pages
 {

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.IO;
 using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete; // Servisler
-using NtpProje.Entities.Concrete; // DTO'lar
+using NtpProje.Entities.DTOs; // DTO'lar
 
 namespace NtpProje_Web.Admin
 {
@@ -145,16 +145,16 @@ namespace NtpProje_Web.Admin
                 txtClientName.Text = project.ClientName;
                 txtTechnologies.Text = project.Technologies;
 
-                // Kategori - Artık CategoryId kullanıyoruz, yoksa eski Category string'inden bul
+                // Kategori - Artık CategoryId kullanıyoruz, yoksa eski CategoryName string'inden bul
                 if (project.CategoryId > 0)
                 {
                     if (ddlKategori.Items.FindByValue(project.CategoryId.ToString()) != null)
                         ddlKategori.SelectedValue = project.CategoryId.ToString();
                 }
-                else if (!string.IsNullOrEmpty(project.Category))
+                else if (!string.IsNullOrEmpty(project.CategoryName))
                 {
                     // Eski yapı: Kategori adından bul
-                    ListItem item = ddlKategori.Items.FindByText(project.Category);
+                    ListItem item = ddlKategori.Items.FindByText(project.CategoryName);
                     if (item != null) ddlKategori.SelectedValue = item.Value;
                 }
             }
@@ -242,7 +242,7 @@ namespace NtpProje_Web.Admin
                 Description = txtOzet.Text, // Projelerde özet kısmını kullanıyoruz
                 ImageUrl = txtImageUrl.Text,
                 CategoryId = int.Parse(ddlKategori.SelectedValue), // Kategori ID'sini alıyoruz
-                Category = ddlKategori.SelectedItem.Text, // Kategori adını da saklıyoruz (geriye dönük uyumluluk için)
+                CategoryName = ddlKategori.SelectedItem.Text, // Kategori adını da saklıyoruz
                 ClientName = txtClientName.Text,
                 Technologies = txtTechnologies.Text,
                 Status = status, // Status artık kaydediliyor

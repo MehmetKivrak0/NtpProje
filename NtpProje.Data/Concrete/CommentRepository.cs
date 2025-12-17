@@ -6,9 +6,7 @@ using NtpProje.Data.DataModel; // Veritabaný tablolarý burada (comment)
 
 namespace NtpProje.Data.Concrete
 {
-    // DÝKKAT: Repository<CommentDTO> deðil, Repository<comment> olmalý.
-    // Veritabaný tablosunun adý "comment" (küçük harf) ise böyle kalmalý.
-    // Eðer büyük harfliyse (Comment) düzeltmelisin.
+   
     public class CommentRepository : IRepository<comment>
     {
         // Veritabaný Baðlantýsý

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.IO;
 using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete; // ServiceService için
-using NtpProje.Entities.Concrete; // ServiceDTO için
+using NtpProje.Entities.DTOs; // ServiceDTO için
 
 namespace NtpProje.pages.Admin
 {

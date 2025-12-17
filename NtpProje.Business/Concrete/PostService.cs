@@ -1,6 +1,6 @@
 using NtpProje.Business.Abstract;
 using NtpProje.Data.Concrete;
-using NtpProje.Entities.Concrete;
+using NtpProje.Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;

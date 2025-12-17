@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
 using NtpProje.Business.Abstract;
-using NtpProje.Entities.Concrete; // DTO burada (ProjectDTO)
+using NtpProje.Entities.DTOs; // DTO burada (ProjectDTO)
 using NtpProje.Entities.Logging;
 using NtpProje.Data.Concrete;     // Repository burada
 using NtpProje.Data.DataModel;    // Veritabanı tablosu burada (project - küçük p)
-using NtpProje.Business.Concrete; // CategoryService için
 
 namespace NtpProje.Business.Concrete
 {
@@ -33,11 +32,11 @@ namespace NtpProje.Business.Concrete
                     foreach (var dto in viewResults)
                     {
                         int categoryId = 0;
-                        if (!string.IsNullOrEmpty(dto.Category))
+                        if (!string.IsNullOrEmpty(dto.CategoryName))
                         {
                             var categoryService = new CategoryService();
                             var allCategories = categoryService.GetAll();
-                            var matchedCategory = allCategories.FirstOrDefault(c => c.Name == dto.Category);
+                            var matchedCategory = allCategories.FirstOrDefault(c => c.Name == dto.CategoryName);
                             if (matchedCategory != null)
                                 categoryId = matchedCategory.Id;
                         }
@@ -75,7 +74,7 @@ namespace NtpProje.Business.Concrete
                     Id = entity.project_id,
                     Title = entity.project_name,
                     Description = entity.description,
-                    Category = entity.category, // Eski yapı için korunuyor
+                    CategoryName = entity.category, // Entity'den category string değeri
                     CategoryId = categoryId, // categories tablosundan bulunan ID
                     ImageUrl = entity.image_url,
                     Technologies = entity.short_description, // technologies yoktu, bunu kullandık
@@ -112,7 +111,7 @@ namespace NtpProje.Business.Concrete
                 Id = entity.project_id,
                 Title = entity.project_name,
                 Description = entity.description,
-                Category = entity.category, // Eski yapı için korunuyor
+                CategoryName = entity.category, // Entity'den category string değeri
                 CategoryId = categoryId, // categories tablosundan bulunan ID
                 ImageUrl = entity.image_url,
                 Technologies = entity.short_description,
@@ -130,7 +129,7 @@ namespace NtpProje.Business.Concrete
             {
                 // 'project' sınıfından (küçük p) nesne üretiyoruz
                 // CategoryId'den kategori adını bul
-                string categoryName = dto.Category;
+                string categoryName = dto.CategoryName;
                 if (dto.CategoryId > 0 && string.IsNullOrEmpty(categoryName))
                 {
                     var categoryService = new CategoryService();
@@ -143,7 +142,7 @@ namespace NtpProje.Business.Concrete
                 {
                     project_name = dto.Title,
                     description = dto.Description,
-                    category = categoryName ?? dto.Category, // categories tablosundan gelen kategori adı
+                    category = categoryName ?? dto.CategoryName, // categories tablosundan gelen kategori adı
                     image_url = dto.ImageUrl,
                     short_description = dto.Technologies,
                     
@@ -189,7 +188,7 @@ namespace NtpProje.Business.Concrete
                 if (entity == null) return false;
 
                 // CategoryId'den kategori adını bul
-                string categoryName = dto.Category;
+                string categoryName = dto.CategoryName;
                 if (dto.CategoryId > 0 && string.IsNullOrEmpty(categoryName))
                 {
                     var categoryService = new CategoryService();
@@ -200,7 +199,7 @@ namespace NtpProje.Business.Concrete
 
                 entity.project_name = dto.Title;
                 entity.description = dto.Description;
-                entity.category = categoryName ?? dto.Category; // categories tablosundan gelen kategori adı
+                entity.category = categoryName ?? dto.CategoryName; // categories tablosundan gelen kategori adı
                 entity.image_url = dto.ImageUrl;
                 entity.short_description = dto.Technologies;
                 

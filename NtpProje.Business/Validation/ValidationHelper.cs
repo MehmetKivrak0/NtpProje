@@ -1,4 +1,4 @@
-using NtpProje.Entities.Concrete;
+using NtpProje.Entities.DTOs;
 
 namespace NtpProje.Business.Validation
 {

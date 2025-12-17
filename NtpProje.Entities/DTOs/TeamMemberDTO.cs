@@ -1,14 +1,14 @@
 using System;
 using NtpProje.Entities.Abstract;
 
-namespace NtpProje.Entities.Concrete
+namespace NtpProje.Entities.DTOs
 {
     public class TeamMemberDTO : BaseDTO
     {
         // SQL: team_member_id
         public int Id { get; set; }
 
-        // SQL: name (Ad ve Soyad tek sütunda tutuluyor)
+        // SQL: name (Ad ve Soyad tek sï¿½tunda tutuluyor)
         public string Name { get; set; }
 
         // SQL: title
