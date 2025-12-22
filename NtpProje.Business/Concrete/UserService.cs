@@ -25,11 +25,11 @@ namespace NtpProje.Business.Concrete
 {
     public class UserService : IBaseService<UserDTO>
     {
-        private readonly UserRepository _userRepository;
+        private readonly Repository<user> _userRepository;
 
         public UserService()
         {
-            _userRepository = new UserRepository();
+            _userRepository = new Repository<user>();
         }
 
         // ***************************************************************
@@ -39,7 +39,7 @@ namespace NtpProje.Business.Concrete
         // Kayıt İşlemi
         public bool Register(UserDTO userDTO, string password)
         {
-            if (_userRepository.Get(u => u.email == userDTO.Email) != null)
+            if (_userRepository.GetAll().FirstOrDefault(u => u.email == userDTO.Email) != null)
             {
                 return false; // Eposta Zaten Mevcut
             }
@@ -65,7 +65,7 @@ namespace NtpProje.Business.Concrete
         // Giriş İşlemi
         public UserDTO Login(string email, string stringPassword)
         {
-            var entity = _userRepository.Get(u => u.email == email);
+            var entity = _userRepository.GetAll().FirstOrDefault(u => u.email == email);
 
             if (entity != null && (entity.is_active ?? false) == true) // Null güvenliği
             {

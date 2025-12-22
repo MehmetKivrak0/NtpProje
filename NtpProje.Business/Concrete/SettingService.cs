@@ -6,11 +6,11 @@ namespace NtpProje.Business.Concrete
 {
     public class SettingService
     {
-        private readonly SettingRepository _repository;
+        private readonly Repository<setting> _repository;
 
         public SettingService()
         {
-            _repository = new SettingRepository();
+            _repository = new Repository<setting>();
         }
 
         // En önemli metot bu: "Bana 'site_telefon'un değerini ver" diyoruz.
@@ -36,7 +36,7 @@ namespace NtpProje.Business.Concrete
             try
             {
                 // Önce mevcut ayarı bul
-                var setting = _repository.GetByKey(key);
+                var setting = _repository.GetAll().FirstOrDefault(x => x.setting_key == key);
 
                 if (setting != null)
                 {

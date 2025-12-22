@@ -5,17 +5,16 @@ using NtpProje.Business.Abstract;
 using NtpProje.Entities.DTOs; // DTO
 using NtpProje.Data.Concrete;     // Repository
 using NtpProje.Data.DataModel;    // Entity (contact_message)
-using NtpProje.Entities.Logging;
 
 namespace NtpProje.Business.Concrete
 {
     public class ContactMessageService : IBaseService<ContactMessageDTO>
     {
-        private readonly ContactMessageRepository _contactRepository;
+        private readonly Repository<contact_message> _contactRepository;
 
         public ContactMessageService()
         {
-            _contactRepository = new ContactMessageRepository();
+            _contactRepository = new Repository<contact_message>();
         }
 
         // 1. LİSTELEME (GET ALL)
@@ -102,9 +101,8 @@ namespace NtpProje.Business.Concrete
                 _contactRepository.Add(entity);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "ContactMessageService.Add");
                 throw;
             }
         }
@@ -126,9 +124,8 @@ namespace NtpProje.Business.Concrete
                 _contactRepository.Update(entity);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "ContactMessageService.Update");
                 throw;
             }
         }
@@ -144,9 +141,8 @@ namespace NtpProje.Business.Concrete
                 _contactRepository.Delete(entity);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "ContactMessageService.Delete");
                 throw;
             }
         }
@@ -158,9 +154,8 @@ namespace NtpProje.Business.Concrete
             {
                 return _contactRepository.GetAll().Count();
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "ContactMessageService.CountAll");
                 throw;
             }
         }

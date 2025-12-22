@@ -26,7 +26,7 @@ namespace NtpProje.Data.Concrete
             return _table.ToList();
         }
 
-        public T Get(int id)
+        public T Get(int id) //??
         {
             // Artık T'nin Id property'si olduğunu biliyoruz!
             // IEntity sayesinde x.Id kullanabiliriz

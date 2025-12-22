@@ -5,21 +5,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NtpProje.Data.DataModel;
-using NtpProje.Entities.Logging;
 
 namespace NtpProje.Business.Concrete
 {
     public class PostService : IBaseService<PostDTO>
     {
-        private readonly PostRepository _postRepository;
-        private readonly CategoryRepository _categoryRepository;
-        private readonly UserRepository _userRepository;
+        private readonly Repository<post> _postRepository;
+        private readonly Repository<category> _categoryRepository;
+        private readonly Repository<user> _userRepository;
 
         public PostService()
         {
-            _postRepository = new PostRepository();
-            _categoryRepository = new CategoryRepository();
-            _userRepository = new UserRepository();
+            _postRepository = new Repository<post>();
+            _categoryRepository = new Repository<category>();
+            _userRepository = new Repository<user>();
         }
 
         // --- ÖZEL METOTLAR ---
@@ -58,8 +57,28 @@ namespace NtpProje.Business.Concrete
 
         public List<PostDTO> GetAll()
         {
-            var entities = _postRepository.GetAll();
-            return MapEntitiesToDTOs(entities);
+            try
+            {
+                System.Diagnostics.Debug.WriteLine("===== PostService.GetAll() BAŞLADI =====");
+                
+                var entities = _postRepository.GetAll();
+                System.Diagnostics.Debug.WriteLine($"===== Repository'den dönen: {(entities == null ? "NULL" : entities.Count + " kayıt")} =====");
+                
+                if (entities != null && entities.Count > 0)
+                {
+                    System.Diagnostics.Debug.WriteLine($"===== İlk kayıt - ID: {entities[0].post_id}, Title: {entities[0].title} =====");
+                }
+                
+                var dtos = MapEntitiesToDTOs(entities);
+                System.Diagnostics.Debug.WriteLine($"===== DTO'ya çevrildi: {(dtos == null ? "NULL" : dtos.Count + " kayıt")} =====");
+                
+                return dtos;
+            }
+            catch
+            {
+                System.Diagnostics.Debug.WriteLine("===== PostService.GetAll() HATA =====");
+                return new List<PostDTO>(); // Boş liste döndür hata durumunda
+            }
         }
 
         public PostDTO GetById(int id)
@@ -100,9 +119,8 @@ namespace NtpProje.Business.Concrete
                 _postRepository.Add(entity);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "PostService.Add");
                 throw;
             }
         }
@@ -139,9 +157,8 @@ namespace NtpProje.Business.Concrete
                 _postRepository.Update(entity);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "PostService.Update");
                 throw;
             }
         }
@@ -156,9 +173,8 @@ namespace NtpProje.Business.Concrete
                 _postRepository.Delete(entity);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "PostService.Delete");
                 throw;
             }
         }
@@ -172,44 +188,77 @@ namespace NtpProje.Business.Concrete
 
         private PostDTO MapEntityToDTO(Data.DataModel.post entity)
         {
-            string categoryName = "";
-            string authorFullName = "";
-
-            // Kategori adını getir
-            if (entity.category_id > 0)
+            try
             {
-                var categoryEntity = _categoryRepository.Get(entity.category_id);
-                categoryName = categoryEntity?.category_name ?? "";
+                System.Diagnostics.Debug.WriteLine($"===== MapEntityToDTO başladı - Post ID: {entity.post_id} =====");
+                
+                string categoryName = "";
+                string authorFullName = "";
+
+                // Kategori adını getir
+                if (entity.category_id > 0)
+                {
+                    try
+                    {
+                        System.Diagnostics.Debug.WriteLine($"===== Category_id: {entity.category_id} getiriliyor =====");
+                        var categoryEntity = _categoryRepository.Get(entity.category_id);
+                        categoryName = categoryEntity?.category_name ?? "";
+                        System.Diagnostics.Debug.WriteLine($"===== Category Name: {categoryName} =====");
+                    }
+                    catch
+                    {
+                        System.Diagnostics.Debug.WriteLine("===== Category getirme HATASI =====");
+                        categoryName = "Bilinmiyor";
+                    }
+                }
+
+                // Yazar adını getir
+                if (entity.user_id > 0)
+                {
+                    try
+                    {
+                        System.Diagnostics.Debug.WriteLine($"===== User_id: {entity.user_id} getiriliyor =====");
+                        var userEntity = _userRepository.Get(entity.user_id);
+                        authorFullName = userEntity?.full_name ?? "";
+                        System.Diagnostics.Debug.WriteLine($"===== Author Name: {authorFullName} =====");
+                    }
+                    catch
+                    {
+                        System.Diagnostics.Debug.WriteLine("===== User getirme HATASI =====");
+                        authorFullName = "Bilinmiyor";
+                    }
+                }
+
+                var dto = new PostDTO
+                {
+                    Id = entity.post_id,
+                    Title = entity.title,
+                    Slug = entity.slug,
+                    Content = entity.content,
+                    Summary = entity.summary,
+                    ImageUrl = entity.image_url,
+
+                    // Nullable değerler için varsayılan değerler
+                    ViewCount = entity.view_count ?? 0,
+                    ReadingTime = entity.reading_time ?? 0,
+                    CategoryId = entity.category_id,
+                    UserId = entity.user_id,
+
+                    PublishDate = entity.publish_date,
+                    Status = entity.status,
+
+                    CategoryName = categoryName,
+                    AuthorFullName = authorFullName
+                };
+                
+                System.Diagnostics.Debug.WriteLine($"===== DTO oluşturuldu - ID: {dto.Id}, Title: {dto.Title} =====");
+                return dto;
             }
-
-            // Yazar adını getir
-            if (entity.user_id > 0)
+            catch
             {
-                var userEntity = _userRepository.Get(entity.user_id);
-                authorFullName = userEntity?.full_name ?? "";
+                System.Diagnostics.Debug.WriteLine("===== MapEntityToDTO HATASI =====");
+                throw;
             }
-
-            return new PostDTO
-            {
-                Id = entity.post_id,
-                Title = entity.title,
-                Slug = entity.slug,
-                Content = entity.content,
-                Summary = entity.summary,
-                ImageUrl = entity.image_url,
-
-                // Nullable değerler için varsayılan değerler
-                ViewCount = entity.view_count ?? 0,
-                ReadingTime = entity.reading_time ?? 0,
-                CategoryId = entity.category_id,
-                UserId = entity.user_id,
-
-                PublishDate = entity.publish_date,
-                Status = entity.status,
-
-                CategoryName = categoryName,
-                AuthorFullName = authorFullName
-            };
         }
     }
 }

@@ -5,17 +5,16 @@ using NtpProje.Business.Abstract;
 using NtpProje.Entities.DTOs; // DTO
 using NtpProje.Data.Concrete;     // Repository
 using NtpProje.Data.DataModel;    // Entity (team_member)
-using NtpProje.Entities.Logging;
 
 namespace NtpProje.Business.Concrete
 {
     public class TeamMemberService : IBaseService<TeamMemberDTO>
     {
-        private readonly TeamMemberRepository _teamRepository;
+        private readonly Repository<team_member> _teamRepository;
 
         public TeamMemberService()
         {
-            _teamRepository = new TeamMemberRepository();
+            _teamRepository = new Repository<team_member>();
         }
 
         // 1. GET ALL (Listeleme)
@@ -67,9 +66,8 @@ namespace NtpProje.Business.Concrete
                 _teamRepository.Add(entity);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "TeamMemberService.Add");
                 throw;
             }
         }
@@ -99,9 +97,8 @@ namespace NtpProje.Business.Concrete
                 _teamRepository.Update(entity);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "TeamMemberService.Update");
                 throw;
             }
         }
@@ -117,9 +114,8 @@ namespace NtpProje.Business.Concrete
                 _teamRepository.Delete(entity);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "TeamMemberService.Delete");
                 throw;
             }
         }
@@ -155,9 +151,8 @@ namespace NtpProje.Business.Concrete
             {
                 return _teamRepository.GetAll().Count();
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "TeamMemberService.CountAll");
                 throw;
             }
         }

@@ -3,126 +3,116 @@ using System.Collections.Generic;
 using System.Linq;
 using NtpProje.Data.DataModel;
 using NtpProje.Entities.DTOs;
-using NtpProje.Entities.Logging;
 
 namespace NtpProje.Data.Concrete
 {
+    /// <summary>
+    /// ProjectRepository - Generic Repository'den türetilmiş + Özel metodlar içeren
+    /// NOT: VIEW, SP, Function veritabanında var ama LINQ to SQL DataContext'te tanımlı değil.
+    /// Bu yüzden normal LINQ sorguları kullanılıyor (Alternatif implementasyon)
+    /// </summary>
     public class ProjectRepository : Repository<project>
     {
-        /// View kullanarak proje detaylarını getirir
-        
+        // Generic Repository'den constructor kalıtım alınıyor
+        // GetAll(), Get(), Add(), Update(), Delete() metodları zaten Generic Repository'de var
+
+        // ========================================
+        // ÖZEL METODLAR (VIEW Alternatifi - Normal LINQ)
+        // ========================================
+
+        /// <summary>
+        /// VIEW alternatifi: Proje detaylarını normal LINQ ile getirir
+        /// NOT: vw_ProjectDetails VIEW'ı veritabanında var ama DataContext'te tanımlı değil
+        /// </summary>
         public List<ProjectDTO> GetProjectDetailsFromView()
         {
             try
             {
-                // View'ı ExecuteQuery ile çağırıyoruz
-                var viewResults = _context.ExecuteQuery<ProjectViewResult>(
-                    "SELECT * FROM vw_ProjectDetails"
-                ).ToList();
+                // VIEW yerine normal LINQ sorgusu
+                var projects = _context.projects.ToList();
 
-                // View sonuçlarını ProjectDTO'ya map et
-                var projectDtos = new List<ProjectDTO>();
-                foreach (var view in viewResults)
+                var dtos = new List<ProjectDTO>();
+                foreach (var p in projects)
                 {
-                    projectDtos.Add(new ProjectDTO
+                    dtos.Add(new ProjectDTO
                     {
-                        Id = view.project_id,
-                        Title = view.project_name ?? "",
-                        Description = view.description ?? "",
-                        Technologies = view.technologies ?? view.short_description ?? "",
-                        ImageUrl = view.image_url ?? "",
-                        CategoryName = view.category ?? "",  // View'dan category ismi gelir
-                        ClientName = view.client_name ?? "",
-                        ViewCount = view.view_count ?? 0,
-                        CompletionDate = view.completion_date ?? view.project_date,
-                        Status = view.status ?? ""
+                        Id = p.project_id,
+                        Title = p.project_name ?? string.Empty,
+                        Description = p.description ?? string.Empty,
+                        ClientName = p.client_name ?? string.Empty,
+                        ImageUrl = p.image_url ?? string.Empty,
+                        IsActive = p.is_published ?? false
                     });
                 }
-
-                return projectDtos;
+                return dtos;
             }
             catch (Exception ex)
             {
-                // View yoksa veya hata varsa normal GetAll() kullan
-                System.Diagnostics.Debug.WriteLine("View kullanım hatası: " + ex.Message);
-                return GetAll().Select(p => new ProjectDTO
-                {
-                    Id = p.project_id,
-                    Title = p.project_name ?? "",
-                    Description = p.description ?? "",
-                    Technologies = p.short_description ?? "",
-                    ImageUrl = p.image_url ?? "",
-                    CategoryName = p.category ?? "",  // Entity'den category string gelir
-                    ClientName = p.client_name ?? "",
-                    ViewCount = p.view_count ?? 0,
-                    CompletionDate = p.project_date,
-                    Status = p.status ?? ""
-                }).ToList();
+                System.Diagnostics.Debug.WriteLine("GetProjectDetailsFromView Hatası: " + ex.Message);
+                return new List<ProjectDTO>();
             }
         }
 
-        // View'dan dönen sonuç için yardımcı sınıf
-        private class ProjectViewResult
-        {
-            public int project_id { get; set; }
-            public string project_name { get; set; }
-            public string description { get; set; }
-            public string short_description { get; set; }
-            public string image_url { get; set; }
-            public string thumbnail_url { get; set; }
-            public DateTime? project_date { get; set; }
-            public DateTime? completion_date { get; set; }
-            public string client_name { get; set; }
-            public string category { get; set; }
-            public string status { get; set; }
-            public int? view_count { get; set; }
-            public int? technology_count { get; set; }
-            public int? image_count { get; set; }
-            public string technologies { get; set; }
-        }
-
         /// <summary>
-        /// Dashboard sayıları için Stored Procedure çağrısı (sp_GetDashboardCounts)
+        /// Stored Procedure alternatifi: Dashboard sayılarını normal LINQ ile hesaplar
+        /// NOT: sp_GetDashboardCounts SP'si veritabanında var ama DataContext'te tanımlı değil
         /// </summary>
         public DashboardCountsDTO GetDashboardCountsFromSp()
         {
             try
             {
-                var result = _context.ExecuteQuery<DashboardCountsDTO>("EXEC sp_GetDashboardCounts").FirstOrDefault();
-                return result ?? new DashboardCountsDTO();
+                // SP yerine normal LINQ ile sayım
+                return new DashboardCountsDTO
+                {
+                    TotalProjects = _context.projects.Count(),
+                    ActiveProjects = _context.projects.Count(p => p.is_published == true),
+                    CompletedProjects = _context.projects.Count(p => p.status == "Completed"),
+                    TotalServices = _context.services.Count(),
+                    TotalTeamMembers = _context.team_members.Count(),
+                    TotalPosts = _context.posts.Count(),
+                    UnreadMessages = _context.contact_messages.Count(c => c.is_read == false)
+                };
             }
             catch (Exception ex)
             {
-                AppLogger.LogError(ex, "ProjectRepository.GetDashboardCountsFromSp");
-                throw;
+                System.Diagnostics.Debug.WriteLine("GetDashboardCountsFromSp Hatası: " + ex.Message);
+                return new DashboardCountsDTO();
             }
         }
 
         /// <summary>
-        /// Aktif projeleri döndüren TVF çağrısı (fn_GetActiveProjects)
+        /// Function alternatifi: Aktif projeleri normal LINQ ile getirir
+        /// NOT: fn_GetActiveProjects Function'ı veritabanında var ama DataContext'te tanımlı değil
         /// </summary>
         public List<ProjectDTO> GetActiveProjectsFromFunction()
         {
             try
             {
-                // dbml importu sonrası tipli metot: _context.fn_GetActiveProjects()
-                var results = _context.fn_GetActiveProjects().ToList();
+                // Function yerine normal LINQ sorgusu
+                var activeProjects = _context.projects
+                    .Where(p => p.is_published == true)
+                    .ToList();
 
-                return results.Select(r => new ProjectDTO
+                var dtos = new List<ProjectDTO>();
+                foreach (var p in activeProjects)
                 {
-                    Id = r.project_id,
-                    Title = r.project_name ?? "",
-                    Status = r.status ?? "",
-                    ViewCount = r.view_count ?? 0,
-                    CompletionDate = r.completion_date
-                }).ToList();
+                    dtos.Add(new ProjectDTO
+                    {
+                        Id = p.project_id,
+                        Title = p.project_name ?? string.Empty,
+                        Description = p.description ?? string.Empty,
+                        ClientName = p.client_name ?? string.Empty,
+                        ImageUrl = p.image_url ?? string.Empty,
+                        IsActive = p.is_published ?? false
+                    });
+                }
+                return dtos;
             }
             catch (Exception ex)
             {
-                AppLogger.LogError(ex, "ProjectRepository.GetActiveProjectsFromFunction");
-                throw;
+                System.Diagnostics.Debug.WriteLine("GetActiveProjectsFromFunction Hatası: " + ex.Message);
+                return new List<ProjectDTO>();
             }
         }
     }
 }
-

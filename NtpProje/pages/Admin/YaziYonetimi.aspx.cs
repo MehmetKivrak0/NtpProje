@@ -46,8 +46,11 @@ namespace NtpProje_Web.Admin // Namespace: Projenizdekiyle aynı olmalı
         {
             try
             {
+                System.Diagnostics.Debug.WriteLine("***** LoadPosts BAŞLADI *****");
+                
                 // PostService'den verileri çekiyoruz
                 var posts = _postService.GetAll();
+                System.Diagnostics.Debug.WriteLine($"***** LoadPosts: posts = {(posts == null ? "NULL" : posts.Count.ToString())} *****");
 
                 // Tarihe göre sıralama (Varsa)
                 if (posts != null && posts.Count > 0)
@@ -59,23 +62,46 @@ namespace NtpProje_Web.Admin // Namespace: Projenizdekiyle aynı olmalı
                 {
                     rptPosts.DataSource = posts;
                     rptPosts.DataBind();
+                    System.Diagnostics.Debug.WriteLine("***** rptPosts DataBind yapıldı *****");
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("***** rptPosts NULL! *****");
                 }
 
                 string totalPostCount = posts != null ? posts.Count.ToString() : "0";
+                System.Diagnostics.Debug.WriteLine($"***** totalPostCount = {totalPostCount} *****");
 
                 if (ltrTotalPosts != null)
                 {
                     ltrTotalPosts.Text = totalPostCount;
+                    System.Diagnostics.Debug.WriteLine($"***** ltrTotalPosts.Text = {totalPostCount} *****");
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("***** ltrTotalPosts NULL! *****");
                 }
 
                 if (ltrTotalPostsSidebar != null)
                 {
                     ltrTotalPostsSidebar.Text = totalPostCount;
+                    System.Diagnostics.Debug.WriteLine($"***** ltrTotalPostsSidebar.Text = {totalPostCount} *****");
                 }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("***** ltrTotalPostsSidebar NULL! *****");
+                }
+                
+                System.Diagnostics.Debug.WriteLine("***** LoadPosts BİTTİ *****");
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("POST YÜKLEME HATASI: " + ex.Message);
+                System.Diagnostics.Debug.WriteLine("***** POST YÜKLEME HATASI: " + ex.Message + " *****");
+                System.Diagnostics.Debug.WriteLine("***** Stack Trace: " + ex.StackTrace + " *****");
+                
+                // Hata durumunda da kontrollere değer atayalım
+                if (ltrTotalPosts != null) ltrTotalPosts.Text = "0";
+                if (ltrTotalPostsSidebar != null) ltrTotalPostsSidebar.Text = "0";
             }
         }
 

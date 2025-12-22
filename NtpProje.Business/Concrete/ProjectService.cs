@@ -4,7 +4,6 @@ using System.Linq;
 using System.Transactions;
 using NtpProje.Business.Abstract;
 using NtpProje.Entities.DTOs; // DTO burada (ProjectDTO)
-using NtpProje.Entities.Logging;
 using NtpProje.Data.Concrete;     // Repository burada
 using NtpProje.Data.DataModel;    // Veritabanı tablosu burada (project - küçük p)
 
@@ -45,10 +44,10 @@ namespace NtpProje.Business.Concrete
                     return viewResults;
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 // View kullanılamazsa normal yönteme geç (Güvenli Fallback)
-                System.Diagnostics.Debug.WriteLine("View kullanımı başarısız, normal yönteme geçiliyor: " + ex.Message);
+                System.Diagnostics.Debug.WriteLine("View kullanımı başarısız, normal yönteme geçiliyor");
             }
 
             // VIEW KULLANILAMAZSA NORMAL YÖNTEM (Mevcut Kod - Geriye Uyumluluk)
@@ -172,9 +171,8 @@ namespace NtpProje.Business.Concrete
                     return true;
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "ProjectService.Add");
                 throw;
             }
         }

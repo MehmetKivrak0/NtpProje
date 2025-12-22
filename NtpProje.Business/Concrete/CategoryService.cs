@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using NtpProje.Business.Abstract;
 using NtpProje.Entities.DTOs; // DTO (CategoryDTO)
-using NtpProje.Entities.Logging;
 using NtpProje.Data.Concrete;     // Repository
 using NtpProje.Data.DataModel;    // Entity (category)
-using NtpProje.Business.Validation;
 
 namespace NtpProje.Business.Concrete
 {
     public class CategoryService : IBaseService<CategoryDTO>
     {
-        private readonly CategoryRepository _categoryRepository;
+        private readonly Repository<category> _categoryRepository;
 
         public CategoryService()
         {
-            _categoryRepository = new CategoryRepository();
+            _categoryRepository = new Repository<category>();
         }
 
         // 1. L�STELEME (GET ALL)
@@ -61,18 +59,11 @@ namespace NtpProje.Business.Concrete
         {
             try
             {
-                // 1) Doğrulama
-                var validation = ValidationHelper.ValidateCategory(dto);
-                if (!validation.IsValid)
-                {
-                    throw new ArgumentException(string.Join(" | ", validation.Errors), nameof(dto));
-                }
-
-                // 2) Slug üret
+                // Slug üret
                 var slug = GenerateSlug(dto.Name);
 
                 // 3) Slug benzersizlik kontrolü
-                if (_categoryRepository.SlugExists(slug))
+                if (_categoryRepository.GetAll().Any(c => c.slug == slug))
                 {
                     throw new InvalidOperationException("Bu slug zaten kullanılıyor. Lütfen farklı bir kategori adı giriniz.");
                 }
@@ -98,9 +89,8 @@ namespace NtpProje.Business.Concrete
                 _categoryRepository.Add(entity);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "CategoryService.Add");
                 throw;
             }
         }
@@ -110,13 +100,6 @@ namespace NtpProje.Business.Concrete
         {
             try
             {
-                // 1) Doğrulama
-                var validation = ValidationHelper.ValidateCategory(dto);
-                if (!validation.IsValid)
-                {
-                    throw new ArgumentException(string.Join(" | ", validation.Errors), nameof(dto));
-                }
-
                 var entity = _categoryRepository.GetAll().FirstOrDefault(c => c.category_id == dto.Id);
                 if (entity == null) return false;
 
@@ -128,7 +111,7 @@ namespace NtpProje.Business.Concrete
 
                 // Farklı bir slug ise benzersizlik kontrolü yap
                 if (!string.Equals(entity.slug, newSlug, StringComparison.OrdinalIgnoreCase) &&
-                    _categoryRepository.SlugExists(newSlug))
+                    _categoryRepository.GetAll().Any(c => c.slug == newSlug))
                 {
                     throw new InvalidOperationException("Bu slug zaten kullanılıyor. Lütfen farklı bir kategori adı giriniz.");
                 }
@@ -138,9 +121,8 @@ namespace NtpProje.Business.Concrete
                 _categoryRepository.Update(entity);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "CategoryService.Update");
                 throw;
             }
         }
@@ -156,9 +138,8 @@ namespace NtpProje.Business.Concrete
                 _categoryRepository.Delete(entity);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "CategoryService.Delete");
                 throw;
             }
         }

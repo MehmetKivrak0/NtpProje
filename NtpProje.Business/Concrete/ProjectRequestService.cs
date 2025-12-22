@@ -5,17 +5,16 @@ using NtpProje.Business.Abstract;
 using NtpProje.Entities.DTOs; // DTO
 using NtpProje.Data.Concrete;     // Repository
 using NtpProje.Data.DataModel;    // Entity (project_request)
-using NtpProje.Entities.Logging;
 
 namespace NtpProje.Business.Concrete
 {
     public class ProjectRequestService : IBaseService<ProjectRequestDTO>
     {
-        private readonly ProjectRequestRepository _projectRepository;
+        private readonly Repository<project_request> _projectRepository;
 
         public ProjectRequestService()
         {
-            _projectRepository = new ProjectRequestRepository();
+            _projectRepository = new Repository<project_request>();
         }
 
         // 1. GET ALL
@@ -68,9 +67,8 @@ namespace NtpProje.Business.Concrete
                 _projectRepository.Add(entity);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "ProjectRequestService.Add");
                 throw;
             }
         }
@@ -96,9 +94,8 @@ namespace NtpProje.Business.Concrete
                 _projectRepository.Update(entity);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "ProjectRequestService.Update");
                 throw;
             }
         }
@@ -114,9 +111,8 @@ namespace NtpProje.Business.Concrete
                 _projectRepository.Delete(entity);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                AppLogger.LogError(ex, "ProjectRequestService.Delete");
                 throw;
             }
         }

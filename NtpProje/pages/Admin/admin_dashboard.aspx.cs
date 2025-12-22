@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using NtpProje.Business.Abstract;
 using NtpProje.Business.Concrete; // Servisler
 using NtpProje.Entities.DTOs; // DTO'lar
-using NtpProje.Entities.Logging;
 
 namespace NtpProje_Web.Admin
 {
@@ -66,9 +65,8 @@ namespace NtpProje_Web.Admin
                 {
                     counts = _projectService.GetDashboardCounts();
                 }
-                catch (Exception ex)
+                catch
                 {
-                    AppLogger.LogError(ex, "admin_dashboard.GetDashboardCounts");
                     counts = new DashboardCountsDTO();
                 }
 
@@ -76,7 +74,7 @@ namespace NtpProje_Web.Admin
                 int totalPosts = counts.TotalPosts;
                 if (totalPosts <= 0)
                 {
-                    try { totalPosts = _postService.CountAll(); } catch (Exception ex) { AppLogger.LogError(ex, "admin_dashboard.CountAll posts"); totalPosts = 0; }
+                    try { totalPosts = _postService.CountAll(); } catch { totalPosts = 0; }
                 }
                 lblTotalPosts.Text = totalPosts.ToString();
 
@@ -84,7 +82,7 @@ namespace NtpProje_Web.Admin
                 int pendingComments = counts.PendingComments;
                 if (pendingComments <= 0)
                 {
-                    try { pendingComments = _commentService.CountPending(); } catch (Exception ex) { AppLogger.LogError(ex, "admin_dashboard.CountPending comments"); pendingComments = 0; }
+                    try { pendingComments = _commentService.CountPending(); } catch { pendingComments = 0; }
                 }
                 lblNewComments.Text = pendingComments.ToString();
 
@@ -92,7 +90,7 @@ namespace NtpProje_Web.Admin
                 int unreadRequests = counts.UnreadRequests;
                 if (unreadRequests <= 0)
                 {
-                    try { unreadRequests = _projectRequestService.CountUnread(); } catch (Exception ex) { AppLogger.LogError(ex, "admin_dashboard.CountUnread requests"); unreadRequests = 0; }
+                    try { unreadRequests = _projectRequestService.CountUnread(); } catch { unreadRequests = 0; }
                 }
                 lblProjectRequests.Text = unreadRequests.ToString();
 
@@ -105,9 +103,8 @@ namespace NtpProje_Web.Admin
                         var users = _userService.GetAll();
                         totalUsers = users != null ? users.Count : 0;
                     }
-                    catch (Exception ex)
+                    catch
                     {
-                        AppLogger.LogError(ex, "admin_dashboard.CountAll users");
                         totalUsers = 0;
                     }
                 }

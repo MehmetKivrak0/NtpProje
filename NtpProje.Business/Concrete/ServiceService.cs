@@ -10,11 +10,11 @@ namespace NtpProje.Business.Concrete
 {
     public class ServiceService : IBaseService<ServiceDTO>
     {
-        private readonly ServiceRepository _serviceRepository;
+        private readonly Repository<service> _serviceRepository;
 
         public ServiceService()
         {
-            _serviceRepository = new ServiceRepository();
+            _serviceRepository = new Repository<service>();
         }
 
         // 1. GET ALL (Listeleme)

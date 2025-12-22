@@ -54,18 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\*.cs" />
-    <Compile Include="Concrete\CategoryRepository.cs" />
-    <Compile Include="Concrete\CommentRepository.cs" />
-    <Compile Include="Concrete\ContactMessageRepository.cs" />
-    <Compile Include="Concrete\PostRepository.cs" />
-    <Compile Include="Concrete\ProjectRepository.cs" />
-    <Compile Include="Concrete\ProjectRequestRepository.cs" />
     <Compile Include="Concrete\Repository.cs" />
-    <Compile Include="Concrete\ServiceRepository.cs" />
-    <Compile Include="Concrete\SettingRepository.cs" />
-    <Compile Include="Concrete\StatisticRepository.cs" />
-    <Compile Include="Concrete\TeamMemberRepository.cs" />
-    <Compile Include="Concrete\UserRepository.cs" />
+    <Compile Include="Concrete\ProjectRepository.cs" />
     <Compile Include="DataModel\EntityExtensions.cs" />
     <Compile Include="DataModel\ınnovateyzlm.designer.cs">
       <AutoGen>True</AutoGen>

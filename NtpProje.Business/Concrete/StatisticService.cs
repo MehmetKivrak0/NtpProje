@@ -10,11 +10,11 @@ namespace NtpProje.Business.Concrete
 {
     public class StatisticService : IBaseService<StatisticDTO>
     {
-        private readonly StatisticRepository _statisticRepository;
+        private readonly Repository<statistic> _statisticRepository;
 
         public StatisticService()
         {
-            _statisticRepository = new StatisticRepository();
+            _statisticRepository = new Repository<statistic>();
         }
 
         // 1. GET ALL
