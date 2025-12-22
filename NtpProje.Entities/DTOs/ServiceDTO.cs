@@ -29,9 +29,6 @@ namespace NtpProje.Entities.DTOs
         // SQL: image_url
         public string ImageUrl { get; set; }
 
-        // SQL: is_active
-        public bool IsActive { get; set; }
-
         // SQL: display_order
         public int DisplayOrder { get; set; }
 

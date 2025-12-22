@@ -1,15 +1,14 @@
 using System;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
 namespace NtpProje.Entities.Abstract
 {
     /// <summary>
     /// Tüm domain entity'lerin base class'ı
     /// </summary>
-    public abstract class BaseEntity : IEntity<int>
+    public abstract class BaseEntity : IEntity
     {
-        /// <summary>
-        /// Primary key
-        /// </summary>
+        
         public int Id { get; set; }
         
         /// <summary>

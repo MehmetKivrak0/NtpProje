@@ -38,9 +38,6 @@ namespace NtpProje.Entities.DTOs
         // SQL: github_url
         public string GithubUrl { get; set; }
 
-        // SQL: is_active
-        public bool IsActive { get; set; }
-
         // SQL: display_order
         public int DisplayOrder { get; set; }
     }

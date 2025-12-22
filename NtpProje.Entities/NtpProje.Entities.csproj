@@ -42,10 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <!-- Abstract Layer (Base Classes & Interfaces) -->
-    <Compile Include="Abstract\IEntity.cs" />
     <Compile Include="Abstract\BaseEntity.cs" />
     <Compile Include="Abstract\BaseDTO.cs" />
-    
+    <Compile Include="Abstract\IEntity.cs" />
     <!-- Domain Entities -->
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Comment.cs" />
@@ -56,7 +55,6 @@
     <Compile Include="Entities\Setting.cs" />
     <Compile Include="Entities\TeamMember.cs" />
     <Compile Include="Entities\User.cs" />
-    
     <!-- Data Transfer Objects -->
     <Compile Include="DTOs\CategoryDTO.cs" />
     <Compile Include="DTOs\CommentDTO.cs" />
@@ -70,10 +68,8 @@
     <Compile Include="DTOs\StatisticDTO.cs" />
     <Compile Include="DTOs\TeamMemberDTO.cs" />
     <Compile Include="DTOs\UserDTO.cs" />
-    
     <!-- Logging -->
     <Compile Include="Logging\AppLogger.cs" />
-    
     <!-- Properties -->
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

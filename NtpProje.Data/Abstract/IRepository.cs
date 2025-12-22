@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using NtpProje.Entities.Abstract;
 
 namespace NtpProje.Data.Abstract
 {
-    // Burasý sadece kurallarý belirler (Interface)
-    public interface IRepository<T> where T : class
+    // T : class -> T bir referans tipi olmalÄ±
+    // IEntity -> T'nin mutlaka Id property'si olmalÄ± (IEntity implement etmeli)
+    public interface IRepository<T> where T : class, IEntity
     {
         List<T> GetAll();
         T Get(int id);

@@ -66,6 +66,7 @@
     <Compile Include="Concrete\StatisticRepository.cs" />
     <Compile Include="Concrete\TeamMemberRepository.cs" />
     <Compile Include="Concrete\UserRepository.cs" />
+    <Compile Include="DataModel\EntityExtensions.cs" />
     <Compile Include="DataModel\ınnovateyzlm.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -4,10 +4,13 @@ using System.Linq;
 using System.Data.Linq; // LINQ to SQL kütüphanesi
 using NtpProje.Data.Abstract;
 using NtpProje.Data.DataModel;
+using NtpProje.Entities.Abstract;
 
 namespace NtpProje.Data.Concrete
 {
-    public class Repository<T> : IRepository<T> where T : class
+    // T : class -> T bir referans tipi olmalı
+    // IEntity -> T'nin mutlaka Id property'si olmalı (generic çalışabilmek için)
+    public class Repository<T> : IRepository<T> where T : class, IEntity
     {
         protected readonly ınnovateyzlmDataContext _context;
         protected readonly Table<T> _table; // DbSet yerine Table kullanılır
@@ -25,9 +28,9 @@ namespace NtpProje.Data.Concrete
 
         public T Get(int id)
         {
-            
-
-            throw new NotImplementedException("LINQ to SQL Generic yapıda ID ile çekme işlemi Service katmanında yapılmalıdır.");
+            // Artık T'nin Id property'si olduğunu biliyoruz!
+            // IEntity sayesinde x.Id kullanabiliriz
+            return _table.FirstOrDefault(x => x.Id == id);
         }
 
         public void Add(T entity)

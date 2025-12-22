@@ -26,9 +26,6 @@ namespace NtpProje.Entities.DTOs
         // SQL: is_read
         public bool IsRead { get; set; }
 
-        // SQL: created_date
-        public DateTime CreatedDate { get; set; }
-
         // SQL: ip_address
         public string IpAddress { get; set; }
 
